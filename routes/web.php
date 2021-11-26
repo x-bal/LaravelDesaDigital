@@ -3,6 +3,8 @@
 use App\Http\Controllers\Desa\WargaController;
 use App\Http\Controllers\Desa\AntrianController;
 use App\Http\Controllers\Desa\GalleryController;
+use App\Http\Controllers\Desa\InformasiController;
+use App\Http\Controllers\Desa\ProdukController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
     });
     Route::prefix('desa')->name('desa.')->group(function () {
+        Route::resource('informasi',InformasiController::class);
+        Route::resource('produk',ProdukController::class);
         Route::resource('gallery',GalleryController::class);
         Route::resource('warga',WargaController::class);
         Route::resource('antrian', AntrianController::class);
