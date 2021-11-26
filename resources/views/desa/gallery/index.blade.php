@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Masyarakat List')
+@section('title', 'Gallery List')
 @push('bread')
-<li class="breadcrumb-item active">Masyarakat</li>
+<li class="breadcrumb-item active">Gallery</li>
 @endpush
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline-info"><i class="fas fa-long-arrow-alt-left"></i> <span>Back</span></a>
-                <a href="{{ route('desa.warga.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> <span>add</span></a>
+                <a href="{{ route('desa.gallery.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> <span>add</span></a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -18,32 +18,20 @@
                             <tr>
                                 <th>No.</th>
                                 <th>desa</th>
-                                <th>kecamatan</th>
-                                <th>kabupaten</th>
-                                <th>nik</th>
-                                <th>nama_warga</th>
-                                <th>jenis_kelamin</th>
-                                <th>tempat lahir</th>
-                                <th>tanggal lahir</th>
+                                <th>photo</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($wargas as $data)
+                            @foreach($galleries as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->desa_id }}</td>
-                                <td>{{ $data->kecamatan_id }}</td>
-                                <td>{{ $data->kabupaten_id }}</td>
-                                <td>{{ $data->nik }}</td>
-                                <td>{{ $data->nama_warga }}</td>
-                                <td>{{ $data->jenis_kelamin }}</td>
-                                <td>{{ $data->tempat_lahir }}</td>
-                                <td>{{ $data->tanggal_lahir }}</td>
+                                <td>{{ $data->desa->nama_desa }}</td>
+                                <td><img src="{{ asset('storage/'.$data->photo) }}" class="img-thumbnail wd-100p wd-sm-200" alt=""></td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('desa.warga.edit', $data->id) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</a>
-                                        <form action="{{ route('desa.warga.destroy', $data->id) }}" method="post">
+                                        <a target="_blank" href="{{ asset('storage/'.$data->photo) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-eye"></i> Show</a>
+                                        <form action="{{ route('desa.gallery.destroy', $data->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit"><i class="fas fa-trash"></i> Delete</button>
