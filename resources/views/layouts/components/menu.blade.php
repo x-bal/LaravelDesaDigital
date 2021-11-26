@@ -68,7 +68,7 @@
             <h3>Produk Warga</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="shopping-cart-outline"></i><span class="side-menu__label">Produk Warga</span></a>
+            <a class="side-menu__item" href="{{ route('desa.produk.index') }}"><i class="side-menu__icon" data-eva="shopping-cart-outline"></i><span class="side-menu__label">Produk Warga</span></a>
         </li>
         <li>
             <h3>Aduan</h3>
@@ -81,10 +81,7 @@
             <h3>Informasi</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Kategori Informasi</span></a>
-        </li>
-        <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Informasi</span></a>
+            <a class="side-menu__item" href="{{ route('desa.informasi.index') }}"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Informasi</span></a>
         </li>
         @endrole
         @role('Warga')

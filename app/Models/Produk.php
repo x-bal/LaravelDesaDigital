@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Produk extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    public function photo()
+    {
+        return $this->hasMany(Photo::class);
+    }
 }

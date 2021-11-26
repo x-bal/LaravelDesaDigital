@@ -16,7 +16,6 @@ class CreateProduksTable extends Migration
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('desa_id')->constrained('desas');
-            $table->foreignId('photo_id')->constrained('photos');
             $table->string('nama_produk');
             $table->text('deskripsi');
             $table->double('harga');
