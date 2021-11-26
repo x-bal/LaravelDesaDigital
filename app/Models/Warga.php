@@ -16,6 +16,11 @@ class Warga extends Model
         return $this->hasMany(Antrian::class);
     }
 
+    public function permohonan()
+    {
+        return $this->hasMany(PermohonanSurat::class);
+    }
+
     public static function getPossibleJenisKelamin()
     {
         $level = DB::select(DB::raw('SHOW COLUMNS FROM wargas WHERE Field = "jenis_kelamin"'))[0]->Type;

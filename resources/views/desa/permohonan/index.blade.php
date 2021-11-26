@@ -1,21 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Antrian List')
+@section('title', 'Permohonan Surat List')
 @push('bread')
-<li class="breadcrumb-item active">Antrian</li>
+<li class="breadcrumb-item active">Permohonan Surat</li>
 @endpush
 @section('content')
-@if(session('speech'))
-{!! session('speech') !!}
-@endif
 <div class="row mt-3">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Antrian Tanggal : {{ date('d/m/Y') }}</h5>
-            </div>
             <div class="card-header d-flex flex-row justify-content-between">
                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline-info"><i class="fas fa-arrow-left"></i> Back</a>
-                <a href="{{ route('desa.antrian.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Create New</a>
+                <a href="{{ route('desa.permohonan.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Create New</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -23,30 +17,23 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>No Antrian</th>
                                 <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Jenis Surat</th>
-                                <th>Tanggal Antri</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($antrians as $antrian)
+                            @foreach($permohonans as $permohonanSurat)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <th>{{ $antrian->no_antrian }}</th>
-                                <th>{{ $antrian->warga->nik }}</th>
-                                <th>{{ $antrian->warga->nama_warga }}</th>
-                                <th>{{ $antrian->jenis->jenis_surat }}</th>
-                                <th>{{ $antrian->tanggal_antri }}</th>
+                                <th>{{ $permohonanSurat->warga->nik }}</th>
+                                <th>{{ $permohonanSurat->warga->nama_warga }}</th>
+                                <th>{{ $permohonanSurat->jenis->jenis_surat }}</th>
                                 <td>
                                     <div class="btn-group">
-                                        @if($antrian->status != 2)
-                                        <a href="{{ route('desa.antrian.status', $antrian->id) }}?status={{ $antrian->status == 0 ? 1 : 2 }}" class="btn btn-sm btn-outline-success">{{ $antrian->status == 0 ? 'Panggil' : 'Konfirmasi' }}</a>
-                                        @endif
-                                        <a href="{{ route('desa.antrian.edit', $antrian->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
-                                        <form action="{{ route('desa.antrian.destroy', $antrian->id) }}" method="post">
+                                        <a href="{{ route('desa.permohonan.edit', $permohonanSurat->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <form action="{{ route('desa.permohonan.destroy', $permohonanSurat->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit">Destroy</button>

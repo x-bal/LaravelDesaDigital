@@ -19,4 +19,9 @@ class Desa extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function permohonan()
+    {
+        return $this->hasMany(PermohonanSurat::class);
+    }
 }

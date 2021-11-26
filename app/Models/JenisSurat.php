@@ -14,4 +14,9 @@ class JenisSurat extends Model
     {
         return $this->hasMany(Antrian::class, 'jenis_surat_id');
     }
+
+    public function permohonan()
+    {
+        return $this->hasMany(PermohonanSurat::class, 'jenis_surat_id');
+    }
 }
