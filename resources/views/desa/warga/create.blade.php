@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
-                <a href="{{ route('desa.warga.index') }} " class="btn btn-sm btn-outline-info">Back</a>
+                <a href="{{ route('desa.warga.index') }} " class="btn btn-sm btn-outline-info"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
             </div>
             <div class="card-body">
                 <form action="{{ route('desa.warga.store') }}" method="post" id="form">
@@ -18,7 +18,7 @@
                 </form>
             </div>
             <div class="card-footer d-flex flex-row justify-content-end">
-                <button class="btn btn-sm btn-success" id="store">Store</button>
+                <button class="btn btn-sm btn-outline-success" id="store"><i class="fas fa-cloud-upload-alt"></i> Store</button>
             </div>
         </div>
     </div>
