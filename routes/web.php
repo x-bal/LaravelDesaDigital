@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Desa\WargaController;
+use App\Http\Controllers\Desa\AntrianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,16 +25,14 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::prefix('utama')->name('utama.')->group(function(){
-
+    Route::prefix('utama')->name('utama.')->group(function () {
     });
-    Route::prefix('kabupaten')->name('kabupaten.')->group(function(){
-
+    Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
     });
     Route::prefix('desa')->name('desa.')->group(function () {
         Route::resource('warga',WargaController::class);
+        Route::resource('antrian', AntrianController::class);
     });
-    Route::prefix('warga')->name('warga.')->group(function(){
-
+    Route::prefix('warga')->name('warga.')->group(function () {
     });
 });
