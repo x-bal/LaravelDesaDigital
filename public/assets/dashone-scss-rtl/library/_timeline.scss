@@ -1,0 +1,55 @@
+/*----------Timeline--------*/
+/*latetes news timeline */
+
+.latest-timeline-1 ul.timeline-1 {
+    list-style-type: none;
+    position: relative;
+  
+    &:before {
+      content: ' ';
+      border: 2px dotted #edeff5;
+      margin: 20px 20px 0 22px;
+      display: inline-block;
+      position: absolute;
+      right: -5px;
+      width: 2px;
+      height: 100%;
+      z-index: 0;
+    }
+  
+    > li {
+      margin: 22px 0;
+      padding-right: 1rem;
+  
+      .product-icon {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        border-radius: 50%;
+        position: absolute;
+        right: 1px;
+        background-color: #f3f6f7;
+        font-size: 20px;
+        line-height: 35px;
+        font-size: 15px;
+      }
+  
+      &:nth-child(2):before {
+        border: 3px solid #fb1c52;
+      }
+  
+      &:nth-child(3):before {
+        border: 3px solid #e9b307;
+      }
+  
+      &:nth-child(4):before {
+        border: 3px solid #4481eb;
+      }
+  
+      &:last-child:before {
+        border: 3px solid #27af06;
+      }
+    }
+  }
+  
+  /*----------Timeline--------*/

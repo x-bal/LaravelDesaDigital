@@ -1,0 +1,119 @@
+.media-icon {
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	color: $white;
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  
+	i {
+	  font-size: 24px;
+	}
+  }
+  
+  .main-media-date {
+	h1 {
+	  font-size: 42px;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: $default-color;
+	  line-height: .95;
+	}
+  
+	.media-body {
+	  margin-left: 5px;
+	}
+  
+	p {
+	  color: $default-color;
+	  font-weight: 700;
+	  margin-bottom: 0;
+	  text-transform: uppercase;
+	}
+  
+	span {
+	  display: block;
+	  line-height: 1.2;
+	}
+  }
+  
+  .main-media-list-activity {
+	.media + .media {
+	  margin-top: 25px;
+	}
+  
+	.media-icon {
+	  width: 32px;
+	  height: 32px;
+	  line-height: 32px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: $white;
+	  border-radius: 100%;
+  
+	  i {
+		font-size: 18px;
+		line-height: 0.9;
+	  }
+	}
+  
+	.media-body {
+	  margin-right: 15px;
+  
+	  h6 {
+		margin-bottom: 2px;
+		color: $default-color;
+	  }
+  
+	  span {
+		display: block;
+		font-size: 11px;
+		color: #c4cdd7;
+	  }
+	}
+  
+	.media-right {
+	  font-size: 11px;
+	  color: #c4cdd7;
+	}
+  }
+  
+  .main-media-list-reviews {
+	.media + .media {
+	  margin-top: 25px;
+	}
+  
+	.main-img-user {
+	  width: 32px;
+	  height: 32px;
+  
+	  &::after {
+		display: none;
+	  }
+	}
+  
+	.media-body {
+	  margin-left: 15px;
+  
+	  h6 {
+		margin-bottom: 2px;
+		line-height: 1;
+	  }
+  
+	  small {
+		display: inline-block;
+		font-size: 12px;
+		color: #c4cdd7;
+		line-height: 1;
+	  }
+	}
+  }
+
+  @media (max-width: 450px) {
+	.main-content .container-fluid .card-body .profile-footer{
+		display: block;
+		margin-bottom: -17px;
+	 }
+   }

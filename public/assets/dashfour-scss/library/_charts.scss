@@ -1,0 +1,313 @@
+/* ###### 5.2 Charts  ###### */
+
+.main-donut-chart {
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+  
+	.slice {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+  
+	.chart-center {
+	  position: absolute;
+	  border-radius: 50%;
+  
+	  span {
+		display: block;
+		text-align: center;
+	  }
+	}
+  }
+  
+  .card--donut .main-donut-chart.chart4 {
+	width: 140px;
+	height: 140px;
+	background: $light;
+  
+	.slice {
+	  &.one {
+		clip: rect(0 140px 70px 0);
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+		background: $teal;
+	  }
+  
+	  &.two {
+		clip: rect(0 70px 140px 0);
+		-webkit-transform: rotate(244.8deg);
+		transform: rotate(244.8deg);
+		background: $teal;
+	  }
+	}
+  
+	.chart-center {
+	  top: 10px;
+	  left: 10px;
+	  width: 120px;
+	  height: 120px;
+	  background: $white;
+  
+	  span {
+		font-size: 40px;
+		line-height: 120px;
+		color: $teal;
+  
+		&:after {
+		  content: "2 hrs";
+		}
+	  }
+	}
+  }
+  
+  .r-chart {
+	width: 100%;
+	height: 130px;
+  }
+  
+  .flot-chart01 {
+	width: 100%;
+  }
+  
+  .az-donut-chart {
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+  }
+  
+  .chart-legend2 span {
+	width: 20px;
+	height: 4px;
+	margin-top: 14px;
+	display: inline-flex;
+	margin-left: 10px;
+  }
+  
+  .apexcharts-zoom-icon, .apexcharts-zoom-in-icon, .apexcharts-zoom-out-icon, .apexcharts-reset-zoom-icon, .apexcharts-pan-icon, .apexcharts-selection-icon, .apexcharts-menu-icon, .apexcharts-toolbar-custom-icon {
+	display: none;
+  }
+  
+  .card--donut {
+	.card-body {
+	  padding: 25px 20px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	}
+  
+	.main-donut-chart {
+	  &.chart1 {
+		width: 140px;
+		height: 140px;
+		background: $light;
+  
+		.slice {
+		  &.one {
+			clip: rect(0 140px 70px 0);
+			-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+			background: #fc4975;
+		  }
+  
+		  &.two {
+			clip: rect(0 70px 140px 0);
+			-webkit-transform: rotate(290deg);
+			transform: rotate(290deg);
+			background: #fc4975;
+		  }
+		}
+  
+		.chart-center {
+		  top: 10px;
+		  left: 10px;
+		  width: 120px;
+		  height: 120px;
+		  background: $white;
+  
+		  span {
+			font-size: 40px;
+			line-height: 120px;
+			color: #fc4975;
+  
+			&:after {
+			  content: "80%";
+			}
+		  }
+		}
+	  }
+  
+	  &.chart2 {
+		width: 140px;
+		height: 140px;
+		background: $light;
+  
+		.slice {
+		  &.one {
+			clip: rect(0 140px 70px 0);
+			-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+			background: $primary;
+		  }
+  
+		  &.two {
+			clip: rect(0 70px 140px 0);
+			-webkit-transform: rotate(244.8deg);
+			transform: rotate(270deg);
+			background: $primary;
+		  }
+		}
+  
+		.chart-center {
+		  top: 10px;
+		  left: 10px;
+		  width: 120px;
+		  height: 120px;
+		  background: $white;
+  
+		  span {
+			font-size: 40px;
+			line-height: 120px;
+			color: $primary;
+  
+			&:after {
+			  content: "78%";
+			}
+		  }
+		}
+	  }
+  
+	  &.chart3 {
+		width: 140px;
+		height: 140px;
+		background: $light;
+  
+		.slice {
+		  &.one {
+			clip: rect(0 140px 70px 0);
+			-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+			background: $success;
+		  }
+  
+		  &.two {
+			clip: rect(0 70px 140px 0);
+			-webkit-transform: rotate(270deg);
+			transform: rotate(270deg);
+			background: $success;
+		  }
+		}
+  
+		.chart-center {
+		  top: 10px;
+		  left: 10px;
+		  width: 120px;
+		  height: 120px;
+		  background: $white;
+  
+		  span {
+			font-size: 40px;
+			line-height: 120px;
+			color: $success;
+  
+			&:after {
+			  content: "75%";
+			}
+		  }
+		}
+	  }
+  
+	  &.chart1 .chart-center span, &.chart2 .chart-center span, &.chart3 .chart-center span, &.chart4 .chart-center span {
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-size: 32px !important;
+	  }
+	}
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 20px 20px 0;
+	}
+  }
+  
+  .morris-wrapper-demo {
+	height: 200px;
+	position: relative;
+	margin-left: -15px;
+	margin-right: -15px;
+  }
+  
+  @media (min-width: 576px) {
+	.morris-wrapper-demo {
+	  height: 300px;
+	}
+  }
+  
+  .morris-donut-wrapper-demo {
+	height: 200px;
+  }
+  
+  @media (min-width: 576px) {
+	.morris-donut-wrapper-demo {
+	  height: 250px;
+	}
+  }
+  
+  .chartjs-wrapper-demo {
+	height: 250px;
+  }
+  
+  @media (max-width: 330px) {
+	.chartjs-wrapper-demo {
+	  width: 290px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.chartjs-wrapper-demo {
+	  height: 300px;
+	}
+  }
+  
+  .chartist-wrapper-demo {
+	height: 200px;
+  }
+  
+  @media (min-width: 768px) {
+	.chartist-wrapper-demo {
+	  height: 300px;
+	}
+  }
+  
+  .pie-legend-style {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
+	margin-top: 13px;
+  
+	li {
+	  position: relative;
+	  text-transform: uppercase;
+	  font-size: 10px;
+	  font-weight: 500;
+	  letter-spacing: 1px;
+	  padding-left: 15px;
+	  line-height: .95;
+	  float: left;
+	  margin-top: 9px;
+  
+	  span {
+		width: 16px;
+		height: 8px;
+		display: inline-block;
+		margin-right: 10px;
+	  }
+	}
+  }
+  
+  .morris-hover.morris-default-style {
+	border-radius: 0;
+  }

@@ -1,0 +1,86 @@
+.tabs-style-1 .main-nav-line .nav-link {
+	&.active {
+	  &::before {
+		bottom: 0;
+		background: $primary;
+	  }
+  
+	  background: $background;
+	}
+  
+	padding: 10px 18px 10px 18px;
+	background: $white;
+  }
+  
+  .tabs-style-2 .main-nav-line .nav-link {
+	&.active {
+	  &::before {
+		display: none;
+	  }
+  
+	  background: $primary;
+	  color: $white;
+	}
+  
+	padding: 10px 18px 10px 18px;
+	background: $background;
+	margin: 0 5px 0px 0;
+  }
+  
+  .tabs-style-3 {
+	padding: 20px;
+	border: 1px solid $border;
+  
+	.nav.panel-tabs li a {
+	  padding: 10px 18px 10px 18px;
+	  background: $background;
+	  border-radius: 20px;
+	  margin: 0 5px 5px 0;
+	  text-align: center;
+	  display: block;
+	  color: #14112d;
+	}
+  
+	.tabs-menu-body {
+	  margin-top: 20px;
+	}
+  
+	.nav.panel-tabs li a.active {
+	  background: $primary;
+	  color: $white;
+	}
+  }
+  
+  .tabs-style-4 {
+	.nav.panel-tabs li {
+	  display: block;
+	  width: 100%;
+	}
+  
+	.tabs-menu-body {
+	  padding: 20px;
+	  border: 1px solid $border;
+	}
+  
+	.nav.panel-tabs li a {
+	  padding: 10px 18px 10px 18px;
+	  background: $background;
+	  border-radius: 0px;
+	  margin: 0 0 5px 0;
+	  text-align: center;
+	  display: block;
+	  color: #14112d;
+	  width: 100%;
+  
+	  &.active {
+		background: $primary;
+		color: $white;
+	  }
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.tabs-style-4 .tab-menu-heading {
+	  width: 200px;
+	}
+  }

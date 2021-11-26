@@ -1,0 +1,154 @@
+.media {
+	display: flex;
+	align-items: flex-start;
+  }
+  
+  .media-body {
+	flex: 1;
+  }
+  
+  .media-icon {
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	color: $white;
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  
+	i {
+	  font-size: 16px;
+	}
+  }
+  
+  .media-dashboard-one {
+	display: block;
+  
+	.media-right {
+	  width: 100%;
+	  flex-shrink: 0;
+	}
+  
+	.media-body {
+	  margin-bottom: 20px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.media-dashboard-one {
+	  display: flex;
+	  align-items: stretch;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.media-dashboard-one .media-right {
+	  width: 280px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.media-dashboard-one .media-body {
+	  margin-right: 20px;
+	  margin-bottom: 0;
+	}
+  }
+  
+  .main-media-list-reviews {
+	.media + .media {
+	  margin-top: 25px;
+	}
+  
+	.main-img-user {
+	  width: 32px;
+	  height: 32px;
+  
+	  &::after {
+		display: none;
+	  }
+	}
+  
+	.media-body {
+	  margin-left: 15px;
+  
+	  h6 {
+		margin-bottom: 2px;
+		line-height: 1;
+	  }
+  
+	  small {
+		display: inline-block;
+		font-size: 12px;
+		color: #7c8a9e;
+		line-height: 1;
+	  }
+	}
+  }
+  
+  .main-media-date {
+	h1 {
+	  font-size: 42px;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: #14112d;
+	  line-height: .95;
+	}
+  
+	.media-body {
+	  margin-left: 5px;
+	}
+  
+	p {
+	  color: #14112d;
+	  font-weight: 700;
+	  margin-bottom: 0;
+	  text-transform: uppercase;
+	}
+  
+	span {
+	  display: block;
+	  line-height: 1.2;
+	}
+  }
+  
+  .main-media-list-activity {
+	.media + .media {
+	  margin-top: 25px;
+	}
+  
+	.media-icon {
+	  width: 32px;
+	  height: 32px;
+	  line-height: 32px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: $white;
+	  border-radius: 100%;
+  
+	  i {
+		font-size: 18px;
+		line-height: 0.9;
+	  }
+	}
+  
+	.media-body {
+	  margin-right: 15px;
+  
+	  h6 {
+		margin-bottom: 2px;
+		color: #14112d;
+	  }
+  
+	  span {
+		display: block;
+		font-size: 11px;
+		color: #7c8a9e;
+	  }
+	}
+  
+	.media-right {
+	  font-size: 11px;
+	  color: #7c8a9e;
+	}
+  }

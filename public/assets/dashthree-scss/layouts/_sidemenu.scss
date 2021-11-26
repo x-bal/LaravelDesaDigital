@@ -1,0 +1,249 @@
+.app-sidebar {
+	.side-menu__item.active:hover {
+	  color: $primary !important;
+	}
+  
+	.slide {
+	  &.active .side-menu__icon, &.is-expanded .side-menu__icon {
+		fill: $primary  !important;
+	  }
+  
+	  &.active {
+		.side-menu__icon {
+		  fill: $primary  !important;
+		}
+  
+		.side-menu__item {
+		  color: $primary !important;
+		}
+	  }
+	}
+  
+	.side-menu__item {
+	  &.active {
+		&:hover {
+		  color: $primary !important;
+		}
+  
+		.side-menu__icon {
+		  fill: $primary  !important;
+		}
+	  }
+  
+	  &:hover .side-menu__icon {
+		fill: $primary  !important;
+	  }
+  
+	  &.active:hover .side-menu__icon {
+		color: $primary !important;
+	  }
+	}
+  }
+  
+  .slide-menu li.active > a:hover {
+	background: rgba(255, 255, 255, 0.02);
+	color: $primary !important;
+  }
+  
+  .app-sidebar .side-menu__item.active {
+	background: transparent;
+	color: $primary;
+  }
+  
+  .slide-menu li.active > a {
+	background: transparent;
+	color: $primary !important;
+  }
+  
+  .app-sidebar {
+	.slide-menu .slide-item:hover, .side-menu__item:hover {
+	  color: $primary;
+	}
+  }
+  
+  .sub-slide.is-expanded .sub-side-menu__item {
+	color: $primary;
+  }
+  
+  .slide.is-expanded .side-menu__item {
+	color: $primary;
+	background: transparent;
+  }
+  
+  .app-sidebar ul li a {
+	color: $default-color;
+  }
+  
+  .side-menu__icon {
+	width: 30px;
+	height: 30px;
+	padding: 5px;
+	background: #e1e6ef;
+	border-radius: 4px;
+	fill: #565367;
+  }
+  
+  .slide .slide-menu {
+	border-left: 2px solid #e2e6ef;
+	margin-left: 13px;
+  }
+  
+  .slide-menu li {
+	position: relative;
+  
+	&.active:before {
+	  content: '';
+	  position: absolute;
+	  width: 15px;
+	  height: 2px;
+	  background: #e2e6ef;
+	  left: 0px;
+	  top: 15px;
+	  display: block;
+	}
+  }
+  .slide-item {
+	padding: 0 0 0 45px !important;
+  }
+  
+  .slide-item {
+	padding: 0 0 0 25px !important;
+  }
+  
+  .sub-side-menu__item {
+	padding: 3px 0 3px 25px !important;
+  }
+  
+  .sub-slide-menu li.active:before {
+	display: none;
+  }
+  
+  .sub-slide-item {
+	padding: 4px 0 4px 45px !important;
+  }
+  
+  .sub-slide-menu li.active:before {
+	content: '';
+	position: absolute;
+	width: 7px !important;
+	height: 7px !important;
+	left: 32px !important;
+	top: 12px !important;
+	display: block;
+	border-radius: 50%;
+	background: $background !important;
+	border-width: 1.4px;
+	border-style: solid;
+	border-color: $primary;
+  }
+  
+  .app-sidebar__user-name {
+	font-weight: 700;
+	font-size: 15px;
+  }
+  
+  .app-sidebar__user .user-info {
+	text-align: left;
+  }
+  
+  .slide-menu li {
+	position: relative;
+  }
+  
+  .sub-slide-menu li {
+	&.active:before {
+	  content: '';
+	  position: absolute;
+	  width: 6px;
+	  height: 6px;
+	  left: 43px;
+	  top: 12px;
+	  display: block;
+	  border-radius: 50%;
+	  background: $white !important;
+	  border-width: 1.4px;
+	  border-style: solid;
+	  border-color: $primary;
+	}
+  
+	&:before {
+	  display: none;
+	}
+  }
+  
+  .side-menu h3 {
+	color: #969aab;
+  }
+  
+  .app.sidebar-mini .main-footer {
+	box-shadow: 5px 7px 26px -5px $background;
+	background-color: $background;
+  }
+  
+  .app-sidebar {
+	background: $background;
+	box-shadow: none;
+	border-top: 1px solid #e5e8ef;
+	border-right: 1px solid #e5e8ef;
+  }
+  
+  .side-menu li ul li a:before {
+	display: none;
+  }
+  
+  .app-sidebar__user {
+	display: flex;
+  
+	.user-pro-body {
+	  display: inherit;
+	}
+  
+	.user-info {
+	  margin-left: 15px;
+	  flex: 1;
+	}
+  }
+  
+  .side-menu__item {
+	border-top: 0;
+  }
+  
+  .slide.is-expanded .side-menu__item, .side-menu .slide:last-child a {
+	border-bottom: 0;
+  }
+  
+  .slide .slide-menu li {
+	&:first-child a {
+	  margin-top: 0px;
+	}
+  
+	&:last-child a {
+	  margin-bottom: 0px;
+	}
+  }
+  
+  .app-sidebar__user {
+	border-bottom: 1px solid  $border;
+  }
+  
+  .app-sidebar__toggle {
+	margin-left: auto;
+  }
+  
+  @media (max-width: 992px) {
+	.app .main-header-left {
+	  padding-right: 35px;
+	  border: 0;
+	}
+  
+	.app-sidebar {
+	  margin-top: 60px !important;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.sidenav-toggled.sidenav-toggled1 .app-sidebar__toggle {
+	  margin-left: auto;
+	  margin-right: 0;
+	}
+  }

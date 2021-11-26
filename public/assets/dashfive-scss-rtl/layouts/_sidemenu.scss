@@ -1,0 +1,37 @@
+@media (max-width: 992px) and (min-width: 768px) {
+	.app-sidebar {
+	  z-index: 1000;
+	  margin-top: 0 !important;
+	}
+  
+	.app-sidebar__toggle {
+	  position: inherit !important;
+	}
+  }
+  
+  @media (max-width: 992px) {
+	.app .main-header-left {
+	  padding-right: 35px;
+	  border: 0;
+	}
+  
+	.app-sidebar {
+	  margin-top: 60px !important;
+	}
+  }
+  
+  @media (max-width: 767px) {
+	.app-sidebar__toggle {
+	  top: 14px;
+	  position: absolute;
+	}
+  
+	.app-sidebar {
+	  margin-top: 0 !important;
+	  padding-top: 63px !important;
+	}
+  }
+  
+  .side-menu__icon {
+	fill: #565367;
+  }

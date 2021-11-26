@@ -1,0 +1,254 @@
+/*--- CHARTS ---*/
+
+.chart {
+	height: 85%;
+	width: auto;
+  }
+  
+  .chart-circle {
+	display: block;
+	height: 8rem;
+	width: 8rem;
+	position: relative;
+	margin: 0 auto;
+  
+	canvas {
+	  margin: 0 auto;
+	  display: block;
+	  max-width: 100%;
+	  max-height: 100%;
+	}
+  }
+  
+  .chart-circle-xs {
+	height: 2.5rem;
+	width: 2.5rem;
+	font-size: .8rem;
+  }
+  
+  .chart-circle-sm {
+	height: 4rem;
+	width: 4rem;
+	font-size: .8rem;
+  }
+  
+  .chart-circle-lg {
+	height: 10rem;
+	width: 10rem;
+	font-size: .8rem;
+  }
+  
+  .chart-circle-value {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	bottom: 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	line-height: 1;
+  }
+  
+  .chart-circle .chart-circle-value.circle-style {
+	position: absolute;
+	top: 26px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	bottom: 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	line-height: 1;
+	width: 76px;
+	height: 76px;
+	line-height: 76px;
+	border: 3px dotted $primary;
+	border-radius: 50%;
+	background: $background;
+  }
+  
+  .chart-circle-value small {
+	display: block;
+	color: #9aa0ac;
+	font-size: 0.9375rem;
+  }
+  
+  .chart-legend2 span {
+	width: 20px;
+	height: 4px;
+	margin-top: 14px;
+	display: inline-flex;
+	margin-left: 10px;
+  }
+  
+  /*--- CHARTS ---*/
+  
+  /* ###### 5.2 Charts  ###### */
+  
+  .main-donut-chart {
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+  
+	.slice {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+  
+	.chart-center {
+	  position: absolute;
+	  border-radius: 50%;
+  
+	  span {
+		display: block;
+		text-align: center;
+	  }
+	}
+  }
+  
+  .morris-wrapper-demo {
+	height: 200px;
+	position: relative;
+	margin-left: -15px;
+	margin-right: -15px;
+  }
+  
+  @media (min-width: 576px) {
+	.morris-wrapper-demo {
+	  height: 300px;
+	}
+  }
+  
+  .morris-donut-wrapper-demo {
+	height: 200px;
+  }
+  
+  @media (min-width: 576px) {
+	.morris-donut-wrapper-demo {
+	  height: 250px;
+	}
+  }
+  
+  .chartjs-wrapper-demo {
+	height: 250px;
+  }
+  
+  @media (max-width: 330px) {
+	.chartjs-wrapper-demo {
+	  width: 290px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.chartjs-wrapper-demo {
+	  height: 300px;
+	}
+  }
+  
+  .chartist-wrapper-demo {
+	height: 200px;
+  }
+  
+  @media (min-width: 768px) {
+	.chartist-wrapper-demo {
+	  height: 300px;
+	}
+  }
+  
+  .flot-chart-wrapper {
+	position: relative;
+	margin: -30px -14px -20px -52px;
+  
+	.flot-chart {
+	  .flot-x-axis > div {
+		font-size: 10px;
+		letter-spacing: .5px;
+		text-transform: uppercase;
+		color: $white-8;
+		transform: translate(5px, -33px);
+	  }
+  
+	  .flot-y-axis > div {
+		font-size: 12px;
+		letter-spacing: .5px;
+		text-transform: uppercase;
+		color: rgb(85, 83, 103);
+		transform: translate(70px, 5px);
+	  }
+	}
+  }
+  
+  .flot-absolute-value .bg-light {
+	background-color: #adc4f7 !important;
+  }
+  
+  #chart {
+	min-height: auto !important;
+  }
+  
+  .pie-legend-style {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
+	margin-top: 13px;
+  
+	li {
+	  position: relative;
+	  text-transform: uppercase;
+	  font-size: 10px;
+	  font-weight: 500;
+	  letter-spacing: 1px;
+	  padding-left: 15px;
+	  line-height: .95;
+	  float: left;
+	  margin-top: 9px;
+  
+	  span {
+		width: 16px;
+		height: 8px;
+		display: inline-block;
+		margin-right: 10px;
+	  }
+	}
+  }
+  
+  .apexcharts-zoom-icon, .apexcharts-zoom-in-icon, .apexcharts-zoom-out-icon, .apexcharts-reset-zoom-icon, .apexcharts-pan-icon, .apexcharts-selection-icon, .apexcharts-menu-icon, .apexcharts-toolbar-custom-icon {
+	display: none;
+  }
+  
+  .r-chart {
+	width: 100%;
+	height: 130px;
+  }
+  
+  .flot-chart01 {
+	width: 100%;
+  }
+  
+  #metric .apexcharts-toolbar {
+	display: none;
+  }
+  
+  .az-donut-chart {
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+  }

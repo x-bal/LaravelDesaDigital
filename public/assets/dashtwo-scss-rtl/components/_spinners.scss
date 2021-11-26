@@ -1,0 +1,89 @@
+@keyframes spinner-border {
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  
+  .spinner-border {
+	display: inline-block;
+	width: 3rem;
+	height: 3rem;
+	vertical-align: text-bottom;
+	border: 0.15em solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	animation: spinner-border .75s linear infinite;
+  }
+  
+  .spinner-border-sm {
+	width: 1rem;
+	height: 1rem;
+	border-width: 0.2em;
+  }
+  
+  @keyframes spinner-grow {
+	0% {
+	  transform: scale(0);
+	}
+  
+	50% {
+	  opacity: 1;
+	}
+  }
+  
+  .spinner-grow {
+	display: inline-block;
+	width: 3rem;
+	height: 3rem;
+	vertical-align: text-bottom;
+	background-color: currentColor;
+	border-radius: 50%;
+	opacity: 0;
+	animation: spinner-grow .75s linear infinite;
+  }
+  
+  .spinner-grow-sm {
+	width: 1rem;
+	height: 1rem;
+  }
+  
+  .spinner, .spinner-lg {
+	background-color: $primary;
+  }
+  
+  .spinner2 {
+	margin: 100px auto;
+	width: 40px;
+	height: 40px;
+	position: relative;
+  }
+  
+  .spinner1 {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	margin: 100px auto;
+  }
+  
+  .spinner1-lg {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	margin: 100px auto;
+  }
+  
+  .spinner {
+	width: 40px;
+	height: 40px;
+	margin: 100px auto;
+	-webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+	animation: sk-rotateplane 1.2s infinite ease-in-out;
+  }
+  
+  .spinner-lg {
+	width: 100px;
+	height: 100px;
+	margin: 100px auto;
+	-webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+	animation: sk-rotateplane 1.2s infinite ease-in-out;
+  }

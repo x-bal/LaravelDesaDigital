@@ -1,0 +1,124 @@
+/*-- Ie Issues--*/
+
+*::-ms-backdrop, .ie-image-5 {
+	width: 130px !important;
+  }
+  
+  *::-ms-backdrop, .main-header .main-header-right .main-header-message .dropdown-menu {
+	min-width: 25rem;
+  }
+  
+  @media (min-width: 992px) {
+	*::-ms-backdrop, .main-content-body {
+	  flex: inherit;
+	}
+  }
+  
+  @media (max-width: 568px) {
+	*::-ms-backdrop {
+	  left: -266px;
+	  right: 0;
+	}
+  
+	.main-header {
+	  .mobile-search .dropdown-menu, .main-header-message .dropdown-menu {
+		left: -266px;
+		right: 0;
+	  }
+	}
+  
+	*::-ms-backdrop, .main-header .main-header-message .dropdown-menu {
+	  top: 40px;
+	}
+  
+	*::-ms-backdrop, .flot-absolute-value .col {
+	  display: inline-table;
+	}
+  
+	*::-ms-backdrop, .main-header .mobile-search .dropdown-menu {
+	  left: -240px;
+	  right: -153px;
+	}
+  }
+  
+  @media (max-width: 767px) and (min-width: 481px) {
+	*::-ms-backdrop, .sidenav-toggled.sidebar-mini .app-sidebar .user-info {
+	  display: block !important;
+	}
+  }
+  
+  *::-ms-backdrop, .sidenav-toggled.sidebar-mini .app-sidebar .user-info {
+	display: block !important;
+  }
+  
+  *::-ms-backdrop, .main-header .main-header-right .main-header-search .dropdown-menu {
+	top: 50px;
+  }
+  
+  *::-ms-backdrop, .main-header-fullscreen.fullscreen-button {
+	display: none;
+  }
+  
+  *::-ms-backdrop, .main-msg-wrapper {
+	display: inline-table;
+  }
+  
+  *::-ms-backdrop, .img-fluid {
+	height: 243px;
+  }
+  
+  *::-ms-backdrop {
+	top: 20px;
+  }
+  
+  .datetimepicker table th {
+	&.prev span::before, &.next span::before {
+	  top: 20px;
+	}
+  }
+  
+  *::-ms-backdrop, .btn-icon-list .btn {
+	display: table;
+	vertical-align: middle;
+	text-align: center;
+	margin-right: 10px;
+  }
+  
+  *::-ms-backdrop, .menu-item-container .product-img {
+	height: 155px;
+  }
+  
+  *::-ms-backdrop, .img-thumbnail {
+	height: 127px;
+  }
+  
+  *::-ms-backdrop, .main-profile-work-list .media-body {
+	margin-left: 56px !important;
+  }
+  
+  *::-ms-backdrop, .main-profile-work-list .media {
+	dispLay: -ms-inline-grid !important;
+  }
+  
+  *::-ms-backdrop, .main-profile-contact-list .media-body {
+	margin-left: 56px !important;
+  }
+  
+  *::-ms-backdrop, .main-profile-contact-list .media {
+	dispLay: -ms-inline-grid !important;
+  }
+  
+  *::-ms-backdrop, .card-img-top {
+	height: 177px;
+  }
+  
+  *::-ms-backdrop, .sub-headerstyle .select2-container {
+	width: 150px !important;
+	right: 0px;
+	bottom: 4px;
+	top: 2px;
+  }
+  
+  *::-ms-backdrop, .sub-headerstyle .media {
+	display: inline-block;
+  }

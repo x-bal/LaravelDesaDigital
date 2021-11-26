@@ -1,0 +1,203 @@
+/*--- BREADCRUMB ---*/
+
+.breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.75rem 1rem;
+	margin-bottom: 1rem;
+	list-style: none;
+	background-color: $background;
+	border-radius: 0px;
+  }
+  
+  .breadcrumb-item {
+	+ .breadcrumb-item {
+	  padding-left: 0.5rem;
+  
+	  &::before {
+		display: inline-block;
+		padding-right: 0.5rem;
+		color: #969aab;
+		content: "/";
+	  }
+  
+	  &:hover::before {
+		text-decoration: underline;
+		text-decoration: none;
+	  }
+	}
+  
+	&.active {
+	  color: #969aab;
+	}
+  }
+  
+  .breadcrumb {
+	background-color: $background;
+  }
+  
+  .breadcrumb-style1, .breadcrumb-style2, .breadcrumb-style3 {
+	border-radius: 0;
+	background-color: transparent;
+	padding: 0;
+  }
+  
+  .breadcrumb-style1 .breadcrumb-item, .breadcrumb-style2 .breadcrumb-item, .breadcrumb-style3 .breadcrumb-item {
+	font-size: 11px;
+	font-weight: 500;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	letter-spacing: .5px;
+	text-transform: uppercase;
+  }
+  
+  .breadcrumb-style1 .breadcrumb-item a, .breadcrumb-style2 .breadcrumb-item a, .breadcrumb-style3 .breadcrumb-item a {
+	color: #14112d;
+  }
+  
+  .breadcrumb-style1 .breadcrumb-item a {
+	&:hover, &:focus {
+	  color: $primary;
+	}
+  }
+  
+  .breadcrumb-style2 .breadcrumb-item a {
+	&:hover, &:focus {
+	  color: $primary;
+	}
+  }
+  
+  .breadcrumb-style3 .breadcrumb-item a {
+	&:hover, &:focus {
+	  color: $primary;
+	}
+  }
+  
+  .breadcrumb-style1 .breadcrumb-item.active, .breadcrumb-style2 .breadcrumb-item.active, .breadcrumb-style3 .breadcrumb-item.active {
+	color: $primary;
+  }
+  
+  .breadcrumb-style1 .breadcrumb-item + .breadcrumb-item::before, .breadcrumb-style2 .breadcrumb-item + .breadcrumb-item::before, .breadcrumb-style3 .breadcrumb-item + .breadcrumb-item::before {
+	color: #969aab;
+  }
+  
+  .breadcrumb-style2 .breadcrumb-item + .breadcrumb-item::before, .breadcrumb-style3 .breadcrumb-item + .breadcrumb-item::before {
+	width: 16px;
+	text-align: center;
+	font-family: 'Ionicons';
+  }
+  
+  .breadcrumb-style2 .breadcrumb-item + .breadcrumb-item::before {
+	content: '\f3d1';
+  }
+  
+  .breadcrumb-style3 .breadcrumb-item + .breadcrumb-item::before {
+	content: '\f287';
+  }
+  
+  /*--- BREADCRUMB ---*/
+  /*--Breadcrumb--*/
+  
+  .breadcrumb1 {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.75rem 1rem;
+	margin-bottom: 1rem;
+	list-style: none;
+	background-color: $background;
+	border-radius: 0px;
+  }
+  
+  .breadcrumb-item1 {
+	a:hover {
+	  color: #123787;
+	}
+  
+	+ .breadcrumb-item1 {
+	  &::before {
+		display: inline-block;
+		padding-right: 0.5rem;
+		padding-left: 0.5rem;
+		content: "/";
+		color: $white;
+	  }
+  
+	  &:hover::before {
+		text-decoration: none;
+		text-decoration: none;
+	  }
+	}
+  
+	&.active {
+	  color: #807b90;
+	}
+  }
+  
+  /*--Breadcrumb--*/
+  
+  .main-breadcrumbs {
+	padding: 0;
+	background-color: transparent;
+	margin-bottom: 0;
+  
+	.breadcrumb-item {
+	  font-size: 10px;
+	  text-transform: uppercase;
+	  letter-spacing: .5px;
+	  font-weight: 700;
+  
+	  a {
+		color: #22252f;
+		transition: all 0.2s ease-in-out;
+  
+		&:hover {
+		  color: #969aab;
+		}
+	  }
+  
+	  &.active {
+		color: $primary;
+	  }
+  
+	  + .breadcrumb-item {
+		padding-left: 8px;
+  
+		&::before {
+		  color: #969aab;
+		  padding-right: 8px;
+		  font-weight: 400;
+		}
+	  }
+	}
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+	.main-breadcrumbs .breadcrumb-item a {
+	  transition: none;
+	}
+  }
+  
+  .page-header .breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 0 !important;
+	list-style: none;
+	border-radius: 0px;
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+	padding: 0 !important;
+	background-color: transparent !important;
+  
+	.breadcrumb-item a {
+	  color: $default-color;
+	}
+  }
+  
+  .page-heaer-icon {
+	width: 20px;
+	height: 20px;
+  }
+  
+  .page-header .breadcrumb .breadcrumb-item.active {
+	color: $primary;
+  }

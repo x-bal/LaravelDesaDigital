@@ -1,0 +1,8599 @@
+/*--- CARD STYLES ---*/
+
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: $white;
+	background-clip: border-box;
+	box-shadow: $shadow;
+	border-radius: 30px;
+	border: 0;
+  
+	> {
+	  hr {
+		margin-right: 0;
+		margin-left: 0;
+	  }
+  
+	  .list-group {
+		&:first-child .list-group-item:first-child {
+		  border-top-left-radius: 3px;
+		  border-top-right-radius: 3px;
+		}
+  
+		&:last-child .list-group-item:last-child {
+		  border-bottom-right-radius: 3px;
+		  border-bottom-left-radius: 3px;
+		}
+	  }
+	}
+  }
+  
+  .card-body {
+	flex: 1 1 auto;
+	padding: 30px;
+  }
+  
+  .card-title {
+	margin-bottom: 0.75rem;
+	font-weight: 500;
+  }
+  
+  .card-subtitle {
+	margin-top: -0.375rem;
+	margin-bottom: 0;
+  }
+  
+  .card-text:last-child {
+	margin-bottom: 0;
+  }
+  
+  .card-link {
+	&:hover {
+	  text-decoration: none;
+	}
+  
+	+ .card-link {
+	  margin-left: 1.25rem;
+	}
+  }
+  
+  .card-header {
+	padding: 1rem 1.25rem;
+	margin-bottom: 0;
+	background-color: rgb(255, 255, 255);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 30px;
+  
+	&:first-child {
+	  border-radius: 30px 30px 0 0;
+	}
+  
+	+ .list-group .list-group-item:first-child {
+	  border-top: 0;
+	}
+  }
+  
+  .card-footer {
+	padding: 1rem 1.25rem;
+	background-color: rgb(255, 255, 255);
+	border-top: 1px solid rgba(0, 0, 0, 0.125);
+  
+	&:last-child {
+	  border-radius: 0 0 30px 30px;
+	}
+  }
+  
+  .card-header-tabs {
+	margin-right: -0.625rem;
+	margin-bottom: -0.75rem;
+	margin-left: -0.625rem;
+	border-bottom: 0;
+  }
+  
+  .card-header-pills {
+	margin-right: -0.625rem;
+	margin-left: -0.625rem;
+  }
+  
+  .card-img-overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1.25rem;
+  }
+  
+  .card-img {
+	width: 100%;
+	border-radius: calc(3px - 1px);
+  }
+  
+  .card-img-top {
+	width: 100%;
+	border-top-left-radius: calc(3px - 1px);
+	border-top-right-radius: calc(3px - 1px);
+  }
+  
+  .card-img-bottom {
+	width: 100%;
+	border-bottom-right-radius: calc(3px - 1px);
+	border-bottom-left-radius: calc(3px - 1px);
+  }
+  
+  .card-deck {
+	display: flex;
+	flex-direction: column;
+  
+	.card {
+	  margin-bottom: 15px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-deck {
+	  flex-flow: row wrap;
+	  margin-right: -15px;
+	  margin-left: -15px;
+  
+	  .card {
+		display: flex;
+		flex: 1 0 0%;
+		flex-direction: column;
+		margin-right: 15px;
+		margin-bottom: 0;
+		margin-left: 15px;
+	  }
+	}
+  }
+  
+  .card-group {
+	display: flex;
+	flex-direction: column;
+  
+	> .card {
+	  margin-bottom: 15px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-group {
+	  flex-flow: row wrap;
+  
+	  > .card {
+		flex: 1 0 0%;
+		margin-bottom: 0;
+  
+		+ .card {
+		  margin-left: 0;
+		  border-left: 0;
+		}
+  
+		&:not(:last-child) {
+		  border-top-right-radius: 0;
+		  border-bottom-right-radius: 0;
+  
+		  .card-img-top, .card-header {
+			border-top-right-radius: 0;
+		  }
+  
+		  .card-img-bottom, .card-footer {
+			border-bottom-right-radius: 0;
+		  }
+		}
+  
+		&:not(:first-child) {
+		  border-top-left-radius: 0;
+		  border-bottom-left-radius: 0;
+  
+		  .card-img-top, .card-header {
+			border-top-left-radius: 0;
+		  }
+  
+		  .card-img-bottom, .card-footer {
+			border-bottom-left-radius: 0;
+		  }
+		}
+	  }
+	}
+  }
+  
+  .card-columns .card {
+	margin-bottom: 0.75rem;
+  }
+  
+  @media (min-width: 576px) {
+	.card-columns {
+	  column-count: 3;
+	  column-gap: 1.25rem;
+	  orphans: 1;
+	  widows: 1;
+  
+	  .card {
+		display: inline-block;
+		width: 100%;
+	  }
+	}
+  }
+  
+  .card {
+	&.text-white .card-title, &.tx-white .card-title {
+	  color: $white;
+	}
+  }
+  
+  .card-header, .card-footer {
+	position: relative;
+	border-color: $gray-300;
+	padding-left: 30px;
+	padding-right: 30px;
+  }
+  
+  .card-header {
+	border-bottom: 0;
+  
+	&:first-child {
+	  border-radius: 30px 30px 0 0;
+	}
+  }
+  
+  .card-header-tab {
+	border-bottom: 0;
+	padding: 0;
+  }
+  
+  .card-title {
+	font-weight: 700;
+	color: $default-color;
+  }
+  
+  /*--- CARD STYLES ---*/
+  
+  .card--one {
+	position: relative;
+	border-color: $gray-300;
+  
+	.card-header {
+	  padding: 20px;
+	  background-color: transparent;
+  
+	  .card-title {
+		color: $default-color;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 1;
+		margin-bottom: 3px;
+	  }
+  
+	  .card-text {
+		margin-bottom: 0;
+	  }
+  
+	  .btn-group {
+		margin-top: 15px;
+  
+		.btn, .sp-container button {
+		  font-size: 12px;
+		  font-weight: 500;
+		  padding: 5px 10px;
+		  min-height: inherit;
+		  background-color: $white;
+		  color: #c4cdd7;
+		  border: 1px solid $gray-300;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-header {
+	  display: flex;
+	  align-items: flex-start;
+	  justify-content: space-between;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-header .btn-group {
+	  margin-top: 0;
+	}
+  }
+  
+  .sp-container .card--one .card-header .btn-group button {
+	font-size: 12px;
+	font-weight: 500;
+	padding: 5px 10px;
+	min-height: inherit;
+	background-color: $white;
+	color: #c4cdd7;
+	border: 1px solid $gray-300;
+  }
+  
+  .card--one .card-header .btn-group {
+	.btn:hover, .sp-container button:hover {
+	  background-color: $background;
+	  border-color: $gray-300;
+	}
+  }
+  
+  .sp-container .card--one .card-header .btn-group button:hover {
+	background-color: $background;
+	border-color: $gray-300;
+  }
+  
+  .card--one .card-header .btn-group {
+	.btn:focus, .sp-container button:focus {
+	  background-color: $background;
+	  border-color: $gray-300;
+	}
+  }
+  
+  .sp-container .card--one .card-header .btn-group button:focus {
+	background-color: $background;
+	border-color: $gray-300;
+  }
+  
+  .card--one .card-header .btn-group {
+	.btn + .btn, .sp-container button + .btn {
+	  margin-left: -1px;
+	}
+  }
+  
+  .sp-container .card--one .card-header .btn-group button + .btn, .card--one .card-header .btn-group .sp-container .btn + button, .sp-container .card--one .card-header .btn-group .btn + button, .card--one .card-header .btn-group .sp-container button + button, .sp-container .card--one .card-header .btn-group button + button {
+	margin-left: -1px;
+  }
+  
+  .card--one .card-header .btn-group {
+	.btn.active, .sp-container button.active {
+	  color: $default-color;
+	  background-color: $background;
+	  border-color: $gray-300;
+	}
+  }
+  
+  .sp-container .card--one .card-header .btn-group button.active {
+	color: $default-color;
+	background-color: $background;
+	border-color: $gray-300;
+  }
+  
+  .card--one {
+	.card-body {
+	  padding: 10px 0 20px;
+	  position: relative;
+	  overflow: hidden;
+  
+	  .flot-chart-wrapper {
+		position: relative;
+		margin-left: -28px;
+		margin-right: -20px;
+	  }
+  
+	  .flot-chart {
+		width: 100%;
+		height: 150px;
+  
+		.flot-y-axis > div {
+		  transform: translateX(50px);
+		  text-shadow: 1px 1px rgba(255, 255, 255, 0.75);
+		  color: $default-color;
+		  font-weight: 700;
+		  font-size: 11px;
+		}
+  
+		.flot-x-axis > div {
+		  color: #c4cdd7;
+		  font-weight: 500;
+		  font-size: 11px;
+		}
+	  }
+	}
+  
+	.card-body-top {
+	  display: flex;
+	  align-items: flex-start;
+	  flex-wrap: wrap;
+	  padding-left: 20px;
+  
+	  > div {
+		flex-basis: 50%;
+	  }
+  
+	  label {
+		font-size: 12px;
+		margin-bottom: 3px;
+	  }
+  
+	  h2 {
+		font-size: 20px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-body .flot-chart {
+	  height: 275px;
+	}
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+	.card--one .card-body .flot-chart {
+	  height: 252px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-body-top {
+	  position: absolute;
+	  top: -5px;
+	  left: 20px;
+	  z-index: 5;
+	  padding-left: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-body-top > div {
+	  flex-basis: auto;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-body-top > div + div {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-body-top label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--one .card-body-top h2 {
+	  font-size: 24px;
+	  letter-spacing: -.5px;
+	}
+  }
+  
+  .card--two {
+	height: 100%;
+	border-color: $gray-300;
+	background-color: $white-5;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 20px 20px 0;
+  
+	  h6 {
+		font-size: 28px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+		display: flex;
+		align-items: baseline;
+		margin-bottom: 2px;
+		line-height: 1;
+		letter-spacing: -1px;
+  
+		i {
+		  margin-left: 10px;
+		  font-size: 24px;
+		}
+  
+		small {
+		  font-size: 12px;
+		  font-weight: 400;
+		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  margin-left: 5px;
+		  color: #c4cdd7;
+		  letter-spacing: normal;
+		}
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		font-size: 13px;
+	  }
+	}
+  
+	.card-body {
+	  padding: 0;
+	  overflow: hidden;
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin: 0 -10px -10px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 100px;
+	}
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+	.card--two .card-header h6 {
+	  font-size: 24px;
+	}
+  }
+  
+  .card--three {
+	height: 150px;
+	border-color: $gray-300;
+	background-color: $white-5;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 20px;
+	  position: absolute;
+	  max-width: 50%;
+  
+	  h6 {
+		font-size: 28px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+		display: flex;
+		align-items: baseline;
+		margin-bottom: 15px;
+		line-height: 1;
+		letter-spacing: -1px;
+  
+		small {
+		  font-size: 12px;
+		  font-weight: 400;
+		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  margin-left: 5px;
+		  letter-spacing: normal;
+		}
+	  }
+  
+	  p {
+		margin-bottom: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: $default-color;
+	  }
+  
+	  > small {
+		font-size: 11px;
+		display: none;
+		color: #c4cdd7;
+	  }
+	}
+  
+	.card-body {
+	  padding: 0 0 0 20px;
+	  display: flex;
+	  justify-content: flex-end;
+	}
+  
+	.chart {
+	  width: 70%;
+	  height: 150px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--three {
+	  height: 170px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--three {
+	  height: 100%;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card--three .card-header h6 {
+	  font-size: 32px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--three .card-header > small {
+	  display: block;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--three .chart {
+	  width: auto;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--three .chart {
+	  height: 170px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--three .chart {
+	  height: 200px;
+	  width: 80%;
+	}
+  }
+  
+  .card--pageviews {
+	border-color: $gray-300;
+	padding: 20px;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 0 0 10px;
+	}
+  
+	.card-title {
+	  font-weight: 700;
+	  font-size: 14px;
+	  color: $default-color;
+	  margin-bottom: 5px;
+	}
+  
+	.card-text {
+	  font-size: 13px;
+	  margin-bottom: 0;
+	}
+  
+	.card-body {
+	  padding: 0;
+	}
+  }
+  
+  .card--four {
+	border-color: $gray-300;
+	padding: 20px;
+	height: 100%;
+  
+	.card-header {
+	  padding: 0 0 20px;
+	  background-color: transparent;
+	}
+  
+	.card-title {
+	  font-weight: 700;
+	  font-size: 14px;
+	  color: $default-color;
+	  margin-bottom: 0;
+	}
+  
+	.card-body {
+	  padding: 0;
+	}
+  
+	.chart {
+	  width: calc(100vw - 80px);
+	  height: 200px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--four .card-body {
+	  padding: 0 20px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--four .chart {
+	  width: auto;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--four .chart {
+	  height: 85%;
+	}
+  }
+  
+  .card--five {
+	border-color: $gray-300;
+	padding: 20px;
+  
+	.card-header {
+	  padding: 0;
+	  background-color: transparent;
+	}
+  
+	.card-title {
+	  font-weight: 700;
+	  font-size: 14px;
+	  color: $default-color;
+	  margin-bottom: 5px;
+	}
+  
+	.card-text {
+	  display: block;
+	  font-size: 12px;
+	}
+  
+	.card-body {
+	  padding: 20px 0 5px;
+  
+	  label {
+		display: block;
+		margin-bottom: 2px;
+		font-size: 12px;
+	  }
+  
+	  h4 {
+		color: $default-color;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 700;
+		letter-spacing: -.5px;
+		margin-bottom: 0;
+	  }
+	}
+  
+	.card-chart {
+	  width: 40px;
+	  height: 40px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  margin-bottom: 10px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--five .card-chart {
+	  margin-bottom: 0;
+	  margin-right: 10px;
+	}
+  }
+  
+  .card-table-one {
+	padding: 20px 20px 10px;
+	border-color: $gray-300;
+  
+	.card-title {
+	  font-size: 14px;
+	  font-weight: 700;
+	  margin-bottom: 5px;
+	}
+  
+	.table-responsive {
+	  width: calc(100vw - 80px);
+	}
+  
+	.table {
+	  margin-bottom: 0;
+  
+	  thead tr > {
+		th, td {
+		  vertical-align: middle;
+		  white-space: nowrap;
+		  padding-right: 2px;
+		}
+	  }
+  
+	  tbody tr > {
+		th, td {
+		  vertical-align: middle;
+		  white-space: nowrap;
+		  padding-right: 2px;
+		}
+	  }
+  
+	  thead tr > {
+		th {
+		  &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+			text-align: right;
+		  }
+		}
+  
+		td {
+		  &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+			text-align: right;
+		  }
+		}
+	  }
+  
+	  tbody tr > {
+		th {
+		  &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+			text-align: right;
+		  }
+		}
+  
+		td {
+		  &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+			text-align: right;
+		  }
+		}
+	  }
+  
+	  thead tr > {
+		th strong, td strong {
+		  color: $default-color;
+		}
+	  }
+  
+	  tbody tr > {
+		th strong, td strong {
+		  color: $default-color;
+		}
+	  }
+	}
+  
+	.flag-icon {
+	  font-size: 20px;
+	  line-height: 1;
+	  border-radius: 100%;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-table-one .table-responsive {
+	  width: 100%;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-table-one .table {
+	  thead tr > {
+		th, td {
+		  padding-left: 0;
+		  padding-right: 0;
+		}
+	  }
+  
+	  tbody tr > {
+		th, td {
+		  padding-left: 0;
+		  padding-right: 0;
+		}
+	  }
+	}
+  }
+  
+  .card-option .btns a {
+	font-size: 14px;
+	font-weight: 500;
+	padding: 5px 15px;
+	color: $default-color;
+	border: 1px solid #eceef2;
+	border-radius: 14px;
+  
+	&.active {
+	  background: #ebecf5;
+	}
+  }
+  
+  .card-dashboard-twentysix h4 {
+	margin-top: 5px;
+	line-height: .7;
+	color: #1c273c;
+	font-size: 26px;
+	font-weight: 700;
+  }
+  
+  .card-dashboard-one {
+	position: relative;
+	border-color: #cdd4e0;
+  
+	.card-header {
+	  padding: 20px;
+	  background-color: transparent;
+  
+	  .card-title {
+		color: #1c273c;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 1;
+		margin-bottom: 3px;
+	  }
+  
+	  .card-text {
+		margin-bottom: 0;
+	  }
+  
+	  .btn-group {
+		margin-top: 15px;
+  
+		.btn, .sp-container button {
+		  font-size: 12px;
+		  font-weight: 500;
+		  padding: 5px 10px;
+		  min-height: inherit;
+		  background-color: $white;
+		  color: #c4cdd7;
+		  border: 1px solid #cdd4e0;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-header {
+	  display: flex;
+	  align-items: flex-start;
+	  justify-content: space-between;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-header .btn-group {
+	  margin-top: 0;
+	}
+  }
+  
+  .sp-container .card-dashboard-one .card-header .btn-group button {
+	font-size: 12px;
+	font-weight: 500;
+	padding: 5px 10px;
+	min-height: inherit;
+	background-color: $white;
+	color: #c4cdd7;
+	border: 1px solid #cdd4e0;
+  }
+  
+  .card-dashboard-one .card-header .btn-group {
+	.btn:hover, .sp-container button:hover {
+	  background-color: $gray-300;
+	  border-color: #cdd4e0;
+	}
+  }
+  
+  .sp-container .card-dashboard-one .card-header .btn-group button:hover {
+	background-color: $gray-300;
+	border-color: #cdd4e0;
+  }
+  
+  .card-dashboard-one .card-header .btn-group {
+	.btn:focus, .sp-container button:focus {
+	  background-color: $gray-300;
+	  border-color: #cdd4e0;
+	}
+  }
+  
+  .sp-container .card-dashboard-one .card-header .btn-group button:focus {
+	background-color: $gray-300;
+	border-color: #cdd4e0;
+  }
+  
+  .card-dashboard-one .card-header .btn-group {
+	.btn + .btn, .sp-container button + .btn {
+	  margin-left: -1px;
+	}
+  }
+  
+  .sp-container .card-dashboard-one .card-header .btn-group button + .btn, .card-dashboard-one .card-header .btn-group .sp-container .btn + button, .sp-container .card-dashboard-one .card-header .btn-group .btn + button, .card-dashboard-one .card-header .btn-group .sp-container button + button, .sp-container .card-dashboard-one .card-header .btn-group button + button {
+	margin-left: -1px;
+  }
+  
+  .card-dashboard-one .card-header .btn-group {
+	.btn.active, .sp-container button.active {
+	  color: #1c273c;
+	  background-color: #e3e7ed;
+	  border-color: #cdd4e0;
+	}
+  }
+  
+  .sp-container .card-dashboard-one .card-header .btn-group button.active {
+	color: #1c273c;
+	background-color: #e3e7ed;
+	border-color: #cdd4e0;
+  }
+  
+  .card-dashboard-one {
+	.card-body {
+	  padding: 10px 0 20px;
+	  position: relative;
+	  overflow: hidden;
+  
+	  .flot-chart-wrapper {
+		position: relative;
+		margin-left: -28px;
+		margin-right: -20px;
+	  }
+  
+	  .flot-chart {
+		width: 100%;
+		height: 150px;
+		left: -2px;
+  
+		.flot-y-axis > div {
+		  transform: translateX(50px);
+		  text-shadow: 1px 1px rgba(255, 255, 255, 0.75);
+		  color: #010a1f;
+		  font-weight: 700;
+		  font-size: 11px;
+		}
+  
+		.flot-x-axis > div {
+		  color: #97a3b9;
+		  font-weight: 500;
+		  font-size: 11px;
+		}
+	  }
+	}
+  
+	.card-body-top {
+	  display: flex;
+	  align-items: flex-start;
+	  flex-wrap: wrap;
+	  padding-left: 20px;
+  
+	  > div {
+		flex-basis: 50%;
+	  }
+  
+	  label {
+		font-size: 12px;
+		margin-bottom: 3px;
+	  }
+  
+	  h2 {
+		font-size: 20px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-body .flot-chart {
+	  height: 275px;
+	}
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+	.card-dashboard-one .card-body .flot-chart {
+	  height: 252px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-body-top {
+	  position: absolute;
+	  top: -5px;
+	  left: 20px;
+	  z-index: 5;
+	  padding-left: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-body-top > div {
+	  flex-basis: auto;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-body-top > div + div {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-body-top label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-one .card-body-top h2 {
+	  font-size: 24px;
+	  letter-spacing: -.5px;
+	}
+  }
+  
+  .card--donut .main-donut-chart.chart4 {
+	width: 140px;
+	height: 140px;
+	background: $background;
+  
+	.slice {
+	  &.one {
+		clip: rect(0 140px 70px 0);
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+		background: $teal;
+	  }
+  
+	  &.two {
+		clip: rect(0 70px 140px 0);
+		-webkit-transform: rotate(244.8deg);
+		transform: rotate(244.8deg);
+		background: $teal;
+	  }
+	}
+  
+	.chart-center {
+	  top: 10px;
+	  left: 10px;
+	  width: 120px;
+	  height: 120px;
+	  background: $white;
+  
+	  span {
+		font-size: 40px;
+		line-height: 120px;
+		color: $teal;
+  
+		&:after {
+		  content: "2 hrs";
+		}
+	  }
+	}
+  }
+  
+  .card-index-10 {
+	.card-header {
+	  background-color: transparent;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  padding: 20px 20px 0;
+	}
+  
+	.card-title {
+	  font-size: 14px;
+	  margin-bottom: 0;
+	}
+  
+	.card-body {
+	  padding: 15px 20px 20px;
+	}
+  
+	.card-body-top {
+	  display: flex;
+	  margin-bottom: 20px;
+	  position: absolute;
+	  margin-left: 36px;
+  
+	  h6 {
+		color: #1c273c;
+		font-size: 18px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 0;
+		letter-spacing: -.75px;
+  
+		small {
+		  font-weight: 600;
+		}
+  
+		span {
+		  color: $default-color;
+		  font-weight: 400;
+		  letter-spacing: normal;
+		}
+	  }
+  
+	  label {
+		display: block;
+		margin-bottom: 0;
+		color: #c4cdd7;
+		font-size: 11px;
+	  }
+  
+	  > div + div {
+		margin-left: 30px;
+	  }
+	}
+  
+	.az-content-label, .card-table-two .card-title {
+	  font-size: 10px;
+	  color: #010a1f;
+	  letter-spacing: .5px;
+	  margin-bottom: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-index-10 .card-body-top h6 {
+	  font-size: 25px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-index-10 .chartjs-wrapper-demo {
+	  height: 300px;
+	  position: relative;
+	  text-align: center;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-index-10 .card-body-top label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  .card-table-two .card-index-10 .card-title, .card-index-10 .card-dashboard-eight .card-title, .card-dashboard-eight .card-index-10 .card-title {
+	font-size: 10px;
+	color: #010a1f;
+	letter-spacing: .5px;
+	margin-bottom: 0;
+  }
+  
+  .card-index-10 {
+	.chart-legend {
+	  display: flex;
+	  align-items: center;
+	  font-size: 10px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+	  letter-spacing: .5px;
+	  line-height: .6;
+	  position: absolute;
+	  top: 62px;
+	  margin: 0 auto;
+	  text-align: center;
+	  margin-left: 70%;
+  
+	  span {
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		margin-right: 5px;
+	  }
+  
+	  > div {
+		display: flex;
+		align-items: center;
+  
+		+ div {
+		  margin-left: 20px;
+		}
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-right: -10px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 130px;
+	}
+  }
+  
+  .card-minimal-four {
+	.coin-logo i {
+	  line-height: 0;
+	}
+  
+	.card-body {
+	  padding: 0;
+	  overflow: hidden;
+	  position: relative;
+	  background-color: $white;
+	}
+  
+	.card-body-top {
+	  top: 15px;
+	  left: 10px;
+	  position: absolute;
+	  font-size: 10px;
+	  text-transform: uppercase;
+	  letter-spacing: 1px;
+	  z-index: 10;
+  
+	  a {
+		color: #1c273c;
+		font-weight: 700;
+		width: 20px;
+		text-align: right;
+		display: inline-block;
+  
+		&:hover, &:focus {
+		  color: #3366ff;
+		}
+	  }
+  
+	  div + div {
+		margin-top: 5px;
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-left: -20px;
+	  margin-right: -9px;
+	  margin-bottom: -17px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 150px;
+	}
+  
+	.card-footer {
+	  background-color: transparent;
+	  border-top-color: #cdd4e0;
+	  padding: 0;
+  
+	  .nav-link {
+		flex: 1;
+		display: block;
+		text-align: center;
+		background-color: $background;
+		position: relative;
+		padding-left: 10px;
+		padding-right: 10px;
+  
+		&:hover, &:focus {
+		  background-color: #eeeff4;
+		}
+  
+		span {
+		  display: block;
+  
+		  &:first-child {
+			color: #97a3b9;
+			font-weight: 700;
+			font-size: 11px;
+		  }
+  
+		  &:last-child {
+			color: #010a1f;
+			font-weight: 500;
+			font-size: 11px;
+			font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  }
+		}
+  
+		+ .nav-link {
+		  border-left: 1px solid #cdd4e0;
+		}
+  
+		&.active {
+		  background-color: $white;
+  
+		  &::before {
+			content: '';
+			position: absolute;
+			top: -1px;
+			left: 0;
+			right: 0;
+			border-top: 1px solid #f7f7f7;
+			z-index: 5;
+		  }
+  
+		  span:first-child {
+			color: #1c273c;
+		  }
+		}
+	  }
+	}
+  }
+  
+  .card-dashboard-seventeen {
+	position: relative;
+  
+	.card-body {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	  height: 180px;
+	  position: relative;
+	  z-index: 10;
+  
+	  h4 {
+		margin-bottom: 0;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+	  }
+  
+	  span {
+		font-size: 11px;
+	  }
+	}
+  
+	.card-title {
+	  line-height: 1.3;
+	}
+  
+	&.bg-primary-dark {
+	  background-color: #0033cc;
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  right: -8px;
+	  bottom: -8px;
+	  left: -8px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 180px;
+	}
+  }
+  
+  .card-dashboard-eighteen {
+	display: block;
+	padding: 20px;
+  
+	.card-title {
+	  font-weight: 700;
+	  text-transform: uppercase;
+	}
+  
+	.card-body {
+	  padding: 20px 0 34px;
+	  align-items: flex-start;
+  
+	  h6 {
+		color: #1c273c;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 600;
+		font-size: 21px;
+		letter-spacing: -.8px;
+		margin-bottom: 2px;
+		position: relative;
+		padding-left: 23px;
+  
+		span {
+		  font-weight: 400;
+		  color: #97a3b9;
+		  letter-spacing: normal;
+		}
+  
+		&::before {
+		  content: '';
+		  position: absolute;
+		  display: block;
+		  top: calc(50% - 8px);
+		  left: 0;
+		  width: 16px;
+		  height: 16px;
+		  border-radius: 100%;
+		  border: 4px solid transparent;
+		}
+  
+		&.dot-primary::before {
+		  border-color: $primary;
+		}
+  
+		&.dot-info::before {
+		  border-color: $info;
+		}
+  
+		&.dot-danger::before {
+		  border-color: #fc4975;
+		}
+  
+		&.dot-warning::before {
+		  border-color: #f7931a;
+		}
+	  }
+  
+	  label {
+		color: #c4cdd7;
+		margin-bottom: 0;
+		display: block;
+	  }
+	}
+  
+	.chartjs-wrapper {
+	  height: 309px;
+	  position: relative;
+	  margin-left: -10px;
+	  margin-right: -5px;
+	}
+  }
+  
+  .card-dashboard-nineteen {
+	overflow: hidden;
+	position: relative;
+	background-color: #f9f9f9;
+  
+	.card-header {
+	  padding: 20px 20px 0;
+	  background-color: transparent;
+  
+	  .row {
+		display: block;
+  
+		> div {
+		  max-width: none;
+  
+		  + div {
+			margin-top: 20px;
+		  }
+		}
+	  }
+  
+	  h4 {
+		font-size: 24px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 600;
+		letter-spacing: -1px;
+		color: #1c273c;
+		margin-bottom: 10px;
+  
+		span {
+		  font-weight: 400;
+		  letter-spacing: normal;
+		  color: #97a3b9;
+		}
+	  }
+  
+	  .az-content-label, .card-table-two .card-title {
+		text-transform: none;
+		line-height: 1.3;
+		margin-bottom: 5px;
+		font-size: 0.875rem;
+	  }
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-nineteen .card-header {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  z-index: 10;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-nineteen .card-header .row {
+	  display: flex;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-nineteen .card-header .row > div + div {
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-nineteen .card-header h4 {
+	  font-size: 30px;
+	}
+  }
+  
+  .card-table-two .card-dashboard-nineteen .card-header .card-title, .card-dashboard-nineteen .card-header .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-nineteen .card-header .card-title {
+	text-transform: none;
+	line-height: 1.3;
+	margin-bottom: 5px;
+	font-size: 0.875rem;
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-nineteen .card-header {
+	  .az-content-label, .card-table-two .card-title {
+		font-size: 14px;
+	  }
+	}
+  
+	.card-table-two .card-dashboard-nineteen .card-header .card-title, .card-dashboard-nineteen .card-header .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-nineteen .card-header .card-title {
+	  font-size: 14px;
+	}
+  }
+  
+  .card-dashboard-nineteen .card-header {
+	p {
+	  font-size: 11px;
+	  color: #c4cdd7;
+	  margin-bottom: 0;
+	}
+  
+	.btn, .sp-container button {
+	  text-transform: uppercase;
+	  font-weight: 500;
+	  font-size: 11px;
+	  letter-spacing: .5px;
+	  padding: 5px 20px;
+	  min-height: inherit;
+	  border-width: 2px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-nineteen .card-header p {
+	  font-size: 12px;
+	}
+  }
+  
+  .sp-container .card-dashboard-nineteen .card-header button {
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .5px;
+	padding: 5px 20px;
+	min-height: inherit;
+	border-width: 2px;
+  }
+  
+  .card-dashboard-nineteen {
+	.card-title {
+	  text-transform: uppercase;
+	  font-weight: 700;
+	  margin-bottom: 15px;
+	  color: $default-color;
+	}
+  
+	.chart-legend {
+	  margin-top: 22px;
+	  display: flex;
+	  align-items: center;
+  
+	  > div {
+		position: relative;
+		text-transform: uppercase;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: .5px;
+  
+		&::before {
+		  content: '';
+		  position: relative;
+		  top: 1.5px;
+		  display: inline-block;
+		  width: 10px;
+		  height: 10px;
+		  margin-right: 5px;
+		}
+  
+		&:first-child::before {
+		  background-color: #4745d9;
+		}
+  
+		&:nth-child(2)::before {
+		  background-color: #33c5fd;
+		}
+  
+		&:last-child::before {
+		  background-color: #bbdafc;
+		}
+  
+		+ div {
+		  margin-left: 10px;
+		}
+	  }
+	}
+  
+	.card-body {
+	  padding: 0;
+	  position: relative;
+	}
+  
+	.flot-chart-wrapper {
+	  position: relative;
+	  margin: -30px -8px -16px -47px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 250px;
+  
+	  .flot-x-axis {
+		transform: translate(18px, -25px);
+		color: $white;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		opacity: .5;
+	  }
+  
+	  .flot-y-axis {
+		transform: translate(66px, -13px);
+		color: rgba(0, 0, 0, 0.65);
+		font-weight: 400;
+		font-size: 10px;
+		letter-spacing: .5px;
+	  }
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-nineteen .chart-legend {
+	  margin-left: 70px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-nineteen .chart-legend > div {
+	  letter-spacing: 1px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-nineteen .chart-legend > div + div {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 375px) and (max-width: 575px) {
+	.card-dashboard-nineteen .card-body {
+	  padding-top: 170px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-nineteen .card-body {
+	  padding-top: 130px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-nineteen .card-body {
+	  padding-top: 95px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-nineteen .flot-chart-wrapper {
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-nineteen .flot-chart {
+	  height: 314px;
+	}
+  }
+  
+  .card-dashboard-twenty {
+	.card-body {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: flex-start;
+	}
+  
+	.chartjs-wrapper {
+	  width: 100%;
+	  height: 230px;
+	}
+  
+	.expansion-value {
+	  display: flex;
+	  justify-content: space-between;
+	  font-size: 17px;
+	  font-weight: 700;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  letter-spacing: -.5px;
+	  margin-bottom: 5px;
+	  margin-top: auto;
+  
+	  strong {
+		&:first-child {
+		  color: #1c273c;
+		}
+  
+		&:last-child {
+		  color: #c4cdd7;
+		}
+	  }
+	}
+  
+	.progress {
+	  margin-bottom: 3px;
+	  height: 4px;
+	}
+  
+	.expansion-label {
+	  display: flex;
+	  justify-content: space-between;
+  
+	  span {
+		font-weight: 400;
+		font-size: 11px;
+		color: $default-color;
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+	.card-dashboard-twenty .chartjs-wrapper {
+	  margin-top: auto;
+	}
+  }
+  
+  .card-dashboard-progress {
+	.progress-legend {
+	  margin: 0;
+	  padding: 0;
+	  list-style: none;
+	  display: flex;
+	  align-items: center;
+  
+	  li {
+		position: relative;
+		text-transform: uppercase;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		padding-left: 15px;
+		line-height: .95;
+  
+		&::before {
+		  content: '';
+		  position: absolute;
+		  top: 1px;
+		  left: 0;
+		  width: 8px;
+		  height: 8px;
+		}
+  
+		&:first-child::before {
+		  background-color: #3366ff;
+		}
+  
+		&:last-child::before {
+		  background-color: $teal;
+		}
+  
+		+ li {
+		  margin-left: 20px;
+		}
+	  }
+	}
+  
+	.media {
+	  display: block;
+  
+	  > label {
+		width: 50px;
+		display: block;
+		margin-bottom: 0;
+	  }
+  
+	  + .media {
+		margin-top: 15px;
+	  }
+	}
+  
+	.media-body {
+	  margin-top: 5px;
+	}
+  
+	.progress {
+	  background-color: $background;
+	}
+  
+	.progress-bar {
+	  height: 25px;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  font-weight: 600;
+  
+	  + .progress-bar {
+		margin-left: 1px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-progress .media {
+	  display: flex;
+	  align-items: center;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-progress .media-body {
+	  margin-top: 0;
+	  margin-left: 15px;
+	}
+  }
+  
+  .card-dashboard-twentytwo {
+	background-color: $white;
+	position: relative;
+	height: 120px;
+  
+	.media {
+	  padding: 20px;
+	  position: relative;
+	  z-index: 5;
+	}
+  
+	.media-icon {
+	  width: 45px;
+	  height: 45px;
+	  color: $white;
+	  border-radius: 100%;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+  
+	  i {
+		font-size: 24px;
+		line-height: 0;
+  
+		&.typcn {
+		  line-height: .9;
+		}
+	  }
+	}
+  
+	.media-body {
+	  margin-left: 15px;
+	  padding-top: 5px;
+  
+	  h6 {
+		margin-bottom: 5px;
+		line-height: .7;
+		color: #1c273c;
+		font-size: 26px;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		letter-spacing: -.5px;
+		display: flex;
+		align-items: flex-end;
+  
+		> small {
+		  color: $white;
+		  padding: 2px 3px;
+		  font-size: 9px;
+		  font-weight: 500;
+		  line-height: 1.1;
+		  margin-left: 5px;
+		  letter-spacing: normal;
+  
+		  &.up {
+			background-color: $success;
+		  }
+  
+		  &.down {
+			background-color: $danger;
+		  }
+		}
+	  }
+  
+	  > {
+		span {
+		  display: block;
+		}
+  
+		small {
+		  display: block;
+		  font-size: 11px;
+		  color: #97a3b9;
+  
+		  strong {
+			font-weight: 500;
+		  }
+		}
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  right: -9px;
+	  left: -9px;
+	  opacity: .3;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 120px;
+	}
+  }
+  
+  .card-dashboard-twentyone {
+	position: relative;
+  
+	.card-body {
+	  background-color: #ffffff;
+	  padding: 20px;
+	  height: 100%;
+	  border-right: 1px solid $gray-300;
+  
+	  .az-content-label, .card-table-two .card-title {
+		margin-bottom: 8px;
+		text-transform: capitalize;
+		font-size: 14px;
+	  }
+	}
+  }
+  
+  .card-table-two .card-dashboard-twentyone .card-body .card-title, .card-dashboard-twentyone .card-body .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-twentyone .card-body .card-title {
+	margin-bottom: 8px;
+	text-transform: capitalize;
+	font-size: 14px;
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-twentyone .list-group {
+	  margin-bottom: 10px;
+	}
+  }
+  
+  .card-dashboard-twentyone {
+	.list-group-item {
+	  padding: 8px 0;
+	  border-width: 0;
+	  border-right-width: 0;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  flex-wrap: wrap;
+	  position: relative;
+	  background-color: transparent;
+  
+	  span {
+		flex-basis: 50%;
+		max-width: 50%;
+  
+		&:last-of-type {
+		  text-align: right;
+		  color: #1c273c;
+		  font-size: 12px;
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		}
+	  }
+  
+	  .progress {
+		margin-top: 5px;
+		margin-bottom: 0;
+		flex-basis: 100%;
+		max-width: 100%;
+		height: 5px;
+		background-color: #b4bdce;
+	  }
+  
+	  &:first-child {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	  }
+  
+	  &:last-child {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	  }
+	}
+  
+	.vmap-wrapper {
+	  width: 100%;
+	  height: 180px;
+  
+	  .jqvmap-zoomin, .jqvmap-zoomout {
+		width: 24px;
+		height: 24px;
+		left: 15px;
+		border-radius: 100%;
+		background-color: #1c273c;
+		color: $white;
+		font-size: 20px;
+		font-weight: 500;
+		opacity: .2;
+	  }
+  
+	  .jqvmap-zoomin {
+		&:hover, &:focus {
+		  opacity: .8;
+		}
+	  }
+  
+	  .jqvmap-zoomout {
+		&:hover, &:focus {
+		  opacity: .8;
+		}
+	  }
+  
+	  .jqvmap-zoomin {
+		top: 15px;
+	  }
+  
+	  .jqvmap-zoomout {
+		top: 45px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twentyone .vmap-wrapper {
+	  height: 250px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-twentyone .vmap-wrapper {
+	  height: 100%;
+	}
+  }
+  
+  .card-dashboard-twentythree {
+	background-color: $gray-300;
+  
+	.az-donut-chart.chart1 {
+	  width: 130px;
+	  height: 130px;
+	  background: #b4bdce;
+  
+	  .slice {
+		&.one {
+		  clip: rect(0 130px 65px 0);
+		  -webkit-transform: rotate(90deg);
+		  transform: rotate(90deg);
+		  background: #5b47fb;
+		}
+  
+		&.two {
+		  clip: rect(0 65px 130px 0);
+		  -webkit-transform: rotate(234deg);
+		  transform: rotate(234deg);
+		  background: #5b47fb;
+		}
+	  }
+  
+	  .chart-center {
+		top: 15px;
+		left: 15px;
+		width: 100px;
+		height: 100px;
+		background: $gray-300;
+  
+		span {
+		  font-size: 40px;
+		  line-height: 100px;
+		  color: #5b47fb;
+  
+		  &:after {
+			content: "65%";
+		  }
+  
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-size: 32px;
+		}
+	  }
+	}
+  
+	label {
+	  display: flex;
+	  align-items: center;
+	  text-transform: uppercase;
+	  font-weight: 500;
+	  font-size: 10px;
+	  line-height: 1;
+	  letter-spacing: .5px;
+  
+	  span {
+		display: block;
+		width: 8px;
+		height: 8px;
+		border-radius: 100%;
+		margin-right: 5px;
+	  }
+	}
+  
+	h5 {
+	  font-size: 24px;
+	  font-weight: 700;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: #1c273c;
+	  letter-spacing: -1px;
+	}
+  }
+  
+  .card-dashboard-audience-metrics {
+	background-color: $gray-300;
+	position: relative;
+	overflow: hidden;
+	height: 250px;
+  
+	.card-header {
+	  padding: 20px 20px 0;
+	  background-color: $white;
+	  position: relative;
+	  z-index: 10;
+	}
+  
+	.card-title {
+	  font-size: 14px;
+	  margin-bottom: 5px;
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  right: 0;
+	  bottom: -20px;
+	  left: 0;
+	  padding: 5px 5px 0;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 180px !important;
+  
+	  .flot-x-axis > div {
+		text-transform: uppercase;
+		font-size: 10px;
+		font-weight: 700;
+		color: #c4cdd7;
+		display: none;
+  
+		span:last-child {
+		  padding-left: 2px;
+		  font-weight: 700;
+		  color: #1c273c;
+		}
+	  }
+	}
+  
+	.card-body {
+	  background-color:#ffffff;
+	  display: flex;
+	  padding: 0 20px 20px;
+	  flex: none;
+	  position: relative;
+	  z-index: 10;
+  
+	  > div + div {
+		margin-left: 10px;
+		padding-left: 10px;
+		border-left: 1px solid #b4bdce;
+	  }
+  
+	  h4 {
+		font-weight: 700;
+		font-size: 17px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+		letter-spacing: -.5px;
+		margin-bottom: 3px;
+	  }
+  
+	  label {
+		margin-bottom: 0;
+		display: flex;
+		align-items: center;
+		font-size: 11px;
+  
+		span {
+		  display: inline-block;
+		  width: 9px;
+		  height: 9px;
+		  margin-right: 5px;
+		  border-radius: 100%;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-audience-metrics {
+	  height: 270px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-audience-metrics .chart-wrapper {
+	  padding-bottom: 10px;
+	  bottom: 10px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-audience-metrics .flot-chart .flot-x-axis > div {
+	  display: block;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-audience-metrics .card-body > div + div {
+	  margin-left: 20px;
+	  padding-left: 20px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-audience-metrics .card-body h4 {
+	  font-size: 21px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-audience-metrics .card-body label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  .card-dashboard-twentysix {
+	.card-header {
+	  padding: 15px 15px 10px;
+	  background-color: transparent;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	}
+  
+	.card-title {
+	  margin-bottom: 0;
+	  text-transform: uppercase;
+	}
+  
+	.chart-legend {
+	  display: flex;
+	  align-items: center;
+  
+	  > div {
+		font-size: 10px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: .5px;
+  
+		+ div {
+		  margin-left: 15px;
+		}
+	  }
+  
+	  span {
+		display: inline-block;
+		width: 8px;
+		height: 8px;
+		margin-right: 2px;
+	  }
+	}
+  
+	.card-body {
+	  position: relative;
+	  overflow: hidden;
+  
+	  h6 {
+		margin-bottom: 0;
+		color: #1c273c;
+		font-size: 22px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		letter-spacing: -.5px;
+		line-height: 1;
+  
+		span {
+		  font-weight: 400;
+		  font-size: 18px;
+		  letter-spacing: -1px;
+		}
+	  }
+  
+	  label {
+		font-size: 12px;
+		margin-bottom: 0;
+		color: #97a3b9;
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin: -30px -18px -15px -18px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 120px;
+  
+	  .flot-x-axis > div {
+		font-size: 10px;
+		letter-spacing: .5px;
+		text-transform: uppercase;
+		color: $black (-2);
+		transform: translateY(-20px);
+	  }
+  
+	  .flot-y-axis > div {
+		font-size: 10px;
+		transform: translateX(33px);
+		color: rgba(28, 39, 60, 0.5);
+	  }
+	}
+  
+	&.card-dark-one .card-title, &.card-dark-two .card-title, &.card-dark-one .card-body h6, &.card-dark-two .card-body h6 {
+	  color: $white;
+	}
+  
+	&.card-dark-one .card-body h6 span, &.card-dark-two .card-body h6 span {
+	  color: $white-5;
+	}
+  
+	&.card-dark-one .card-body label, &.card-dark-two .card-body label {
+	  color: $white-7;
+	}
+  
+	&.card-dark-one .flot-chart .flot-y-axis > div, &.card-dark-two .flot-chart .flot-y-axis > div {
+	  color: $white-2;
+	}
+  
+	&.card-dark-one {
+	  background-color: #5f45b7;
+	  background-image: linear-gradient(to bottom, #42406f 0%, #5f45b7 100%);
+	  background-repeat: repeat-x;
+	}
+  
+	&.card-dark-two {
+	  background-color: #0040ff;
+	  background-image: linear-gradient(to bottom, #0a47ff 0%, #3366ff 100%);
+	  background-repeat: repeat-x;
+	}
+  }
+  
+  .card-dashboard-twentyfive {
+	.card-title {
+	  font-size: 14px;
+	  margin-bottom: 15px;
+	}
+  
+	.col + .col {
+	  border-left: 1px solid #cdd4e0;
+	}
+  
+	.card-label {
+	  display: block;
+	  text-transform: uppercase;
+	  font-size: 11px;
+	  font-weight: 500;
+	  letter-spacing: .5px;
+	  margin-bottom: 2px;
+	  color: #97a3b9;
+	  white-space: nowrap;
+	}
+  
+	.card-value {
+	  font-size: 22px;
+	  font-weight: 600;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: #1c273c;
+	  margin-bottom: 0;
+	  letter-spacing: -1px;
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin: 0 -8px -5px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 35px;
+	}
+  }
+  
+  .card-dashboard-twentyfour {
+	.card-header {
+	  background-color: transparent;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  padding: 20px 20px 0;
+	}
+  
+	.card-title {
+	  font-size: 14px;
+	  margin-bottom: 0;
+	}
+  
+	.card-body {
+	  padding: 15px 20px 20px;
+	}
+  
+	.card-body-top {
+	  display: flex;
+	  margin-bottom: 20px;
+  
+	  h6 {
+		color: #1c273c;
+		font-size: 18px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 0;
+		letter-spacing: -.75px;
+  
+		small {
+		  font-weight: 600;
+		}
+  
+		span {
+		  color: #97a3b9;
+		  font-weight: 400;
+		  letter-spacing: normal;
+		}
+	  }
+  
+	  label {
+		display: block;
+		margin-bottom: 0;
+		color: #c4cdd7;
+		font-size: 11px;
+	  }
+  
+	  > div + div {
+		margin-left: 30px;
+	  }
+	}
+  
+	.az-content-label, .card-table-two .card-title {
+	  font-size: 10px;
+	  color: #010a1f;
+	  letter-spacing: .5px;
+	  margin-bottom: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twentyfour .card-body-top h6 {
+	  font-size: 22px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twentyfour .card-body-top label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  .card-table-two .card-dashboard-twentyfour .card-title, .card-dashboard-twentyfour .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-twentyfour .card-title {
+	font-size: 10px;
+	color: #010a1f;
+	letter-spacing: .5px;
+	margin-bottom: 0;
+  }
+  
+  .card-dashboard-twentyfour {
+	.chart-legend {
+	  display: flex;
+	  align-items: center;
+	  font-size: 10px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+	  letter-spacing: .5px;
+	  line-height: .6;
+  
+	  span {
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		margin-right: 5px;
+	  }
+  
+	  > div {
+		display: flex;
+		align-items: center;
+  
+		+ div {
+		  margin-left: 20px;
+		}
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-right: -10px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 130px;
+	}
+  }
+  
+  .card-dashboard-thirteen {
+	border-color: #cdd4e0;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(28, 39, 60, 0.1);
+  
+	.az-content-label, .card-table-two .card-title {
+	  font-size: 13px;
+	}
+  }
+  
+  .card-table-two .card-dashboard-thirteen .card-title, .card-dashboard-thirteen .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-thirteen .card-title {
+	font-size: 13px;
+  }
+  
+  .card-dashboard-thirteen {
+	.media {
+	  margin-bottom: 15px;
+	}
+  
+	.media-icon {
+	  font-size: 45px;
+	  line-height: 1;
+	  margin-right: 10px;
+	  display: flex;
+  
+	  i {
+		line-height: 0;
+	  }
+	}
+  
+	.media-body {
+	  h6 {
+		font-size: 22px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+		letter-spacing: -.5px;
+		margin-bottom: 2px;
+  
+		span {
+		  font-weight: 400;
+		  color: #010a1f;
+		}
+	  }
+  
+	  label {
+		font-weight: 700;
+		font-size: 12px;
+		text-transform: uppercase;
+		margin-bottom: 0;
+		display: block;
+		letter-spacing: .5px;
+	  }
+	}
+  }
+  
+  .card-dashboard-fourteen {
+	border-color: #cdd4e0;
+	box-shadow: 0 0 10px rgba(28, 39, 60, 0.1);
+	padding: 20px;
+  
+	.az-content-label, .card-table-two .card-title {
+	  font-size: 0.875rem;
+	  margin-bottom: 20px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-fourteen {
+	  height: 100%;
+	}
+  }
+  
+  .card-table-two .card-dashboard-fourteen .card-title, .card-dashboard-fourteen .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-fourteen .card-title {
+	font-size: 0.875rem;
+	margin-bottom: 20px;
+  }
+  
+  .card-dashboard-fourteen {
+	.az-content-label span, .card-table-two .card-title span {
+	  font-weight: 400;
+	  color: #97a3b9;
+	  text-transform: none;
+	}
+  }
+  
+  .card-table-two .card-dashboard-fourteen .card-title span, .card-dashboard-fourteen .card-dashboard-eight .card-title span, .card-dashboard-eight .card-dashboard-fourteen .card-title span {
+	font-weight: 400;
+	color: #97a3b9;
+	text-transform: none;
+  }
+  
+  .card-dashboard-fourteen {
+	.card-body {
+	  padding: 0;
+	  min-height: 100px;
+  
+	  h1 {
+		color: #1c273c;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 600;
+		letter-spacing: -1px;
+		margin-bottom: 0;
+  
+		span {
+		  color: $default-color;
+		  letter-spacing: normal;
+		  font-weight: 400;
+		  margin-right: 5px;
+		}
+	  }
+  
+	  h4 {
+		color: #1c273c;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 0;
+		letter-spacing: -.5px;
+	  }
+  
+	  .progress {
+		margin-bottom: 2px;
+	  }
+  
+	  small {
+		font-size: 11px;
+		color: #97a3b9;
+	  }
+	}
+  
+	.sparkline-wrapper canvas {
+	  width: 100% !important;
+	}
+  
+	.card-footer {
+	  background-color: transparent;
+	  padding: 0;
+	  margin-top: 15px;
+	  border-top-width: 0;
+  
+	  h6 {
+		color: #1c273c;
+		font-size: 20px;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 0;
+		letter-spacing: -.5px;
+	  }
+  
+	  label {
+		display: block;
+		margin-bottom: 0;
+		color: #97a3b9;
+		font-size: 11px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-fourteen .card-footer label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  .card-dashboard-twelve {
+	border-color: #cdd4e0;
+  
+	.card-header {
+	  background-color: transparent;
+	  border-bottom: 1px solid $background;
+	  padding: 20px;
+	}
+  
+	.card-title {
+	  text-transform: uppercase;
+	  font-weight: 700;
+	  margin-bottom: 20px;
+  
+	  span {
+		font-weight: 400;
+		color: #010a1f;
+		text-transform: capitalize;
+	  }
+	}
+  
+	.sales-overview {
+	  display: flex;
+	  align-items: flex-start;
+	  flex-wrap: wrap;
+  
+	  .media {
+		align-items: flex-end;
+		flex-shrink: 0;
+		flex-basis: calc(50% - 10px);
+  
+		+ .media {
+		  margin-left: 20px;
+		}
+	  }
+  
+	  .media-icon {
+		width: 45px;
+		height: 45px;
+		color: $white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		top: -5px;
+		margin-right: 15px;
+		border-radius: 100%;
+		display: none;
+  
+		.typcn {
+		  line-height: .9;
+		  font-size: 24px;
+		}
+	  }
+  
+	  label {
+		text-transform: uppercase;
+		font-size: 9px;
+		font-weight: 700;
+		letter-spacing: .5px;
+		color: #010a1f;
+		margin-bottom: 8px;
+	  }
+  
+	  h4 {
+		font-size: 20px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 600;
+		color: #1c273c;
+		line-height: 1;
+		letter-spacing: -1px;
+		margin-bottom: 3px;
+  
+		span {
+		  color: #010a1f;
+		  font-weight: 400;
+		}
+	  }
+  
+	  .media-body > span {
+		display: block;
+		font-size: 10px;
+		color: #97a3b9;
+  
+		strong {
+		  font-weight: 500;
+		  color: #010a1f;
+		}
+	  }
+  
+	  p {
+		font-size: 11px;
+		margin-bottom: 0;
+		color: #97a3b9;
+	  }
+	}
+  
+	.card-body {
+	  position: relative;
+	  padding: 20px 5px;
+	}
+  
+	.chart-legend {
+	  margin-bottom: 20px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  position: absolute;
+	  top: 5px;
+	  left: 0;
+	  right: 0;
+	  z-index: 1;
+	  font-size: 10px;
+	  font-weight: 500;
+	  letter-spacing: 1px;
+	  text-transform: uppercase;
+  
+	  div {
+		display: flex;
+		align-items: center;
+  
+		+ div {
+		  margin-left: 15px;
+		}
+	  }
+  
+	  span {
+		width: 10px;
+		height: 4px;
+		display: block;
+		margin-right: 5px;
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-left: -13px;
+	  margin-right: -13px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 200px;
+	  position: relative;
+  
+	  .flot-x-axis > div span {
+		&:first-child {
+		  display: block;
+		  text-transform: uppercase;
+		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-weight: 500;
+		  font-size: 10px;
+		  color: #c4cdd7;
+		}
+  
+		&:last-child {
+		  display: block;
+		  font-size: 16px;
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  color: #1c273c;
+		  line-height: 1;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-twelve .sales-overview {
+	  margin-bottom: 10px;
+	  flex-wrap: nowrap;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .sales-overview .media {
+	  flex-basis: auto;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .sales-overview .media + .media {
+	  margin-left: 40px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-twelve .sales-overview .media + .media {
+	  margin-left: 50px;
+	}
+  }
+  
+  @media (max-width: 575.98px) {
+	.card-dashboard-twelve .sales-overview .media:nth-child(3) {
+	  margin-left: 0;
+	  margin-top: 15px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-twelve .sales-overview .media:last-child {
+	  flex: 1;
+	  display: block;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .sales-overview label {
+	  font-size: 10px;
+	  margin-bottom: 5px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .sales-overview h4 {
+	  font-size: 28px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .sales-overview .media-body > span {
+	  font-size: 11px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .card-body {
+	  padding: 20px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .chart-legend {
+	  top: 65px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .chart-legend div + div {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .chart-legend span {
+	  width: 40px;
+	  margin-right: 10px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-twelve .chart-wrapper {
+	  margin-left: -10px;
+	  margin-right: -15px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-twelve .flot-chart {
+	  height: 250px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-twelve .flot-chart {
+	  height: 300px;
+	}
+  }
+  
+  .card-dashboard-two {
+	.flot-chart {
+	  width: 100%;
+	  height: 100px;
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin: 0 -8px -8px;
+	}
+  
+	.card-header {
+	  h6 {
+		font-size: 28px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+		display: flex;
+		align-items: baseline;
+		margin-bottom: 2px;
+		line-height: 1;
+		letter-spacing: -1px;
+  
+		i {
+		  margin-left: 10px;
+		  font-size: 24px;
+		}
+  
+		small {
+		  font-size: 12px;
+		  font-weight: 400;
+		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  margin-left: 5px;
+		  color: #c4cdd7;
+		  letter-spacing: normal;
+		}
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		font-size: 13px;
+	  }
+	}
+  }
+  
+  .card-dashboard-three {
+	height: 150px;
+	border-radius: 0;
+	border-color: #cdd4e0;
+	background-color: $white-5;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 20px;
+	  position: absolute;
+	  max-width: 50%;
+  
+	  h6 {
+		font-size: 28px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+		display: flex;
+		align-items: baseline;
+		margin-bottom: 15px;
+		line-height: 1;
+		letter-spacing: -1px;
+  
+		small {
+		  font-size: 12px;
+		  font-weight: 400;
+		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  margin-left: 5px;
+		  letter-spacing: normal;
+		}
+	  }
+  
+	  p {
+		margin-bottom: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #1c273c;
+	  }
+  
+	  > small {
+		font-size: 11px;
+		display: none;
+		color: #c4cdd7;
+	  }
+	}
+  
+	.card-body {
+	  padding: 0 0 0 20px;
+	  display: flex;
+	  justify-content: flex-end;
+	}
+  
+	.chart {
+	  width: 70%;
+	  height: 150px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-three {
+	  height: 170px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-three {
+	  height: 100%;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card-dashboard-three .card-header h6 {
+	  font-size: 32px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-three .card-header > small {
+	  display: block;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-three .chart {
+	  width: auto;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-three .chart {
+	  height: 170px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-three .chart {
+	  height: 234px;
+	  width: 80%;
+	}
+  }
+  
+  .card-dashboard-pageviews {
+	border-color: #cdd4e0;
+	border-radius: 0;
+	padding: 20px;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 0 0 10px;
+	}
+  
+	.card-title {
+	  font-weight: 700;
+	  font-size: 14px;
+	  color: #1c273c;
+	  margin-bottom: 5px;
+	}
+  
+	.card-text {
+	  font-size: 13px;
+	  margin-bottom: 0;
+	}
+  
+	.card-body {
+	  padding: 0;
+	}
+  }
+  
+  .card-dashboard-four {
+	border-radius: 0;
+	border-color: #cdd4e0;
+	padding: 20px;
+	height: 100%;
+  
+	.card-header {
+	  padding: 0 0 20px;
+	  background-color: transparent;
+	}
+  
+	.card-title {
+	  font-weight: 700;
+	  font-size: 14px;
+	  color: #1c273c;
+	  margin-bottom: 0;
+	}
+  
+	.card-body {
+	  padding: 0;
+	}
+  
+	.chart {
+	  width: calc(100vw - 80px);
+	  height: 200px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-four .card-body {
+	  padding: 0 20px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card-dashboard-four .chart {
+	  width: auto;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-four .chart {
+	  height: 85%;
+	}
+  }
+  
+  .card-dashboard-five {
+	border-color: #cdd4e0;
+	padding: 20px;
+  
+	.card-header {
+	  padding: 0;
+	  background-color: transparent;
+	}
+  
+	.card-title {
+	  font-weight: 700;
+	  font-size: 14px;
+	  color: #1c273c;
+	  margin-bottom: 5px;
+	}
+  
+	.card-text {
+	  display: block;
+	  font-size: 12px;
+	}
+  
+	.card-body {
+	  padding: 20px 0 5px;
+  
+	  label {
+		display: block;
+		margin-bottom: 2px;
+		font-size: 12px;
+	  }
+  
+	  h4 {
+		color: #1c273c;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 700;
+		letter-spacing: -.5px;
+		margin-bottom: 0;
+	  }
+	}
+  
+	.card-chart {
+	  width: 40px;
+	  height: 40px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  margin-bottom: 10px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-five .card-chart {
+	  margin-bottom: 0;
+	  margin-right: 10px;
+	}
+  }
+  
+  .card-dashboard-seven {
+	border-color: $gray-300;
+	margin-bottom: 20px;
+	width: 100vw;
+	border-left-width: 0;
+	border-right-width: 0;
+	position: relative;
+	margin-left: -20px;
+	margin-right: -20px;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 20px;
+	  border-bottom: 1px solid #e6e9ef;
+	  background-color:#ffffff;
+  
+	  .media {
+		align-items: center;
+  
+		> div:first-child {
+		  line-height: 40px;
+		  font-size: 16px;
+		  margin-right: 5px;
+		  color: $primary;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  height: 40px;
+		  background-color: #eaebfe;
+		  border-radius: 50%;
+		}
+	  }
+  
+	  .media-body {
+		margin-top: 3px;
+	  }
+  
+	  label {
+		margin-bottom: 2px;
+		display: block;
+		line-height: 1;
+		font-size: 11px;
+		color: #97a3b9;
+	  }
+  
+	  .date {
+		font-weight: 500;
+		display: flex;
+		align-items: center;
+  
+		span {
+		  display: block;
+		}
+  
+		a {
+		  margin-left: 5px;
+		  font-size: 14px;
+		  color: #97a3b9;
+		  display: block;
+  
+		  i {
+			line-height: 0;
+			position: relative;
+			top: 1px;
+		  }
+		}
+	  }
+	}
+  
+	.card-body {
+	  padding: 20px;
+  
+	  .row > div + div {
+		position: relative;
+  
+		&::before {
+		  content: '';
+		  position: absolute;
+		  top: 0;
+		  left: -1px;
+		  bottom: 0;
+		  border-left: 1px dotted #cdd4e0;
+		  display: none;
+		}
+	  }
+  
+	  .az-content-label, .card-table-two .card-title {
+		text-transform: none;
+		color: #010a1f;
+		font-weight: 500;
+		font-size: 0.875rem;
+		margin-bottom: 10px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-seven {
+	  margin-bottom: 20px;
+	  margin-left: 0;
+	  margin-right: 0;
+	  width: auto;
+	  border-left-width: 1px;
+	  border-right-width: 1px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-seven .card-header {
+	  padding: 20px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-seven .card-header .media > div:first-child {
+	  width: 40px;
+	  font-size: 19px;
+	  margin-right: 8px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-seven .card-body .row > div + div::before {
+	  display: block;
+	}
+  }
+  
+  .card-table-two .card-dashboard-seven .card-body .card-title, .card-dashboard-seven .card-body .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-seven .card-body .card-title {
+	text-transform: none;
+	color: #010a1f;
+	font-weight: 500;
+	font-size: 0.875rem;
+	margin-bottom: 10px;
+  }
+  
+  .card-dashboard-seven .card-body {
+	h2 {
+	  color: #1c273c;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  font-weight: 600;
+	  font-size: 24px;
+	  letter-spacing: -1px;
+	  margin-bottom: 5px;
+	  line-height: 1;
+  
+	  span {
+		font-weight: 400;
+		color: #010a1f;
+		letter-spacing: normal;
+	  }
+	}
+  
+	.desc {
+	  display: flex;
+	  align-items: flex-end;
+	  margin-bottom: 15px;
+  
+	  > i {
+		line-height: 0;
+		font-size: 18px;
+	  }
+  
+	  span {
+		display: block;
+		line-height: 1;
+		margin-left: 5px;
+  
+		strong {
+		  color: #1c273c;
+		}
+	  }
+  
+	  &.up > i {
+		color: $success;
+	  }
+  
+	  &.down > i {
+		color: $danger;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-seven .card-body h2 {
+	  font-size: 25px;
+	}
+  }
+  
+  .card-dashboard-six {
+	border-color: #cdd4e0;
+	padding: 20px;
+  
+	.card-header {
+	  padding: 0;
+	  background-color: transparent;
+	  margin-bottom: 20px;
+	}
+  
+	.az-content-label, .card-table-two .card-title {
+	  margin-bottom: 5px;
+	  font-size: 0.875rem;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-six .card-header {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-six .card-header {
+	  margin-bottom: 30px;
+	}
+  }
+  
+  .card-table-two .card-dashboard-six .card-title, .card-dashboard-six .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-six .card-title {
+	margin-bottom: 5px;
+	font-size: 0.875rem;
+  }
+  
+  .card-dashboard-six .chart-legend {
+	margin-top: 20px;
+	display: flex;
+  
+	> div {
+	  display: flex;
+	  align-items: center;
+	  font-size: 11px;
+	  font-weight: 500;
+  
+	  + div {
+		margin-top: 2px;
+	  }
+  
+	  span {
+		&:last-child {
+		  width: 8px;
+		  height: 8px;
+		  margin-left: 5px;
+		}
+  
+		&:first-child {
+		  width: 100px;
+		  text-align: right;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-six .chart-legend {
+	  display: block;
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-six .chart-legend > div span:last-child {
+	  margin-left: 10px;
+	  width: 20px;
+	}
+  }
+  
+  .card-dashboard-eight {
+	border-color: 0;
+	background-color: $white;
+	padding: 20px;
+	padding: 30px;
+  
+	.card-title {
+	  font-size: 13px;
+	  margin-bottom: 5px;
+	}
+  
+	.list-group-item {
+	  padding: 14px 0;
+	  border-left-width: 0;
+	  border-right-width: 0;
+	  border-style: solid;
+	  border-color: $gray-300;
+	  background-color: transparent;
+	  display: flex;
+	  flex-direction: row;
+	  align-items: center;
+	  justify-content: flex-start;
+  
+	  &:first-child {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	  }
+  
+	  &:last-child {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		margin-right: 10px;
+	  }
+  
+	  span {
+		display: block;
+		margin-right: auto;
+		font-weight: 700;
+		color: #1c273c;
+		font-size: 18px;
+	  }
+	}
+  
+	.flag-icon {
+	  font-size: 30px;
+	  line-height: 1;
+	  border-radius: 50%;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-eight {
+	  height: 100%;
+	}
+  }
+  
+  .card-dashboard-nine {
+	border-color: #cdd4e0;
+	background-color: $white-5;
+	position: relative;
+	padding: 20px 20px 15px;
+  
+	.card-header {
+	  position: absolute;
+	  top: 20px;
+	  left: 20px;
+	  right: 20px;
+	  padding: 0;
+	  background-color: transparent;
+	  z-index: 5;
+  
+	  h1 {
+		font-size: 32px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 8px;
+		line-height: 1;
+		letter-spacing: -.5px;
+		color: #1c273c;
+	  }
+	}
+  
+	.az-content-label, .card-table-two .card-title {
+	  font-size: 13px;
+	  margin-bottom: 10px;
+	  color: #010a1f;
+	}
+  }
+  
+  .card-table-two .card-dashboard-nine .card-title, .card-dashboard-nine .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-nine .card-title {
+	font-size: 13px;
+	margin-bottom: 10px;
+	color: #010a1f;
+  }
+  
+  .card-dashboard-nine {
+	.card-title {
+	  font-weight: 600;
+	}
+  
+	.az-content-text {
+	  color: #c4cdd7;
+	}
+  
+	.bar-chart {
+	  position: relative;
+	  width: auto;
+	  height: 200px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-nine .bar-chart {
+	  height: 210px;
+	}
+  }
+  
+  .card-dashboard-eleven {
+	border-color: #cdd4e0;
+	position: relative;
+	overflow: hidden;
+  
+	.card-header {
+	  padding: 20px;
+	  background-color: transparent;
+	  position: relative;
+	  z-index: 200;
+	}
+  
+	.az-content-label, .card-table-two .card-title {
+	  display: block;
+	  font-size: 13px;
+	  margin-bottom: 5px;
+	  color: #3b4863;
+	  line-height: 1.4;
+	}
+  }
+  
+  .card-table-two .card-dashboard-eleven .card-title, .card-dashboard-eleven .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-eleven .card-title {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 5px;
+	color: #3b4863;
+	line-height: 1.4;
+  }
+  
+  .card-dashboard-eleven {
+	.card-text {
+	  color: #c4cdd7;
+	}
+  
+	.card-body {
+	  padding: 0 0 5px;
+	  margin-left: 20px;
+	  position: relative;
+	  z-index: 200;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 250px;
+	}
+  
+	.card-footer {
+	  z-index: 200;
+	  background-color: transparent;
+	  padding: 0;
+	  border-width: 0;
+  
+	  > div {
+		flex: 1;
+		padding: 15px 20px;
+		border-top: 1px solid #cdd4e0;
+		position: relative;
+	  }
+  
+	  label {
+		font-weight: 700;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+		color: #596882;
+		display: block;
+	  }
+  
+	  h6 {
+		font-size: 28px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+		line-height: .7;
+		letter-spacing: -1px;
+		margin-bottom: 10px;
+		display: flex;
+		align-items: baseline;
+  
+		span {
+		  margin-left: 5px;
+		  font-size: 11px;
+		  font-weight: 500;
+		  display: block;
+		  padding: 4px 6px;
+		  color: $white;
+		  line-height: .8;
+		  position: relative;
+		  bottom: 3px;
+		  letter-spacing: normal;
+  
+		  &.up {
+			background-color: $success;
+		  }
+  
+		  &.down {
+			background-color: $danger;
+		  }
+		}
+	  }
+  
+	  small {
+		display: block;
+		font-size: 13px;
+		color: #596882;
+	  }
+	}
+  
+	.jqvmap {
+	  position: absolute;
+	  top: 10%;
+	  left: 0;
+	  width: 100%;
+	  height: 300px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-eleven .card-footer {
+	  display: flex;
+	  align-items: stretch;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-eleven .card-footer > div + div {
+	  border-left: 1px solid #cdd4e0;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-eleven .jqvmap {
+	  height: 80%;
+	}
+  }
+  
+  .card-dashboard-fifteen {
+	padding: 20px 20px 0;
+	overflow: hidden;
+  
+	h1 {
+	  font-size: 40px;
+	  font-weight: 500;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: #1c273c;
+	  margin-bottom: 0;
+	  line-height: 1;
+  
+	  span {
+		display: inline;
+		font-size: 18px;
+		color: #c4cdd7;
+	  }
+	}
+  
+	label {
+	  font-size: 14px;
+	  font-weight: 500;
+	  display: block;
+	}
+  
+	span {
+	  color: #97a3b9;
+	  display: block;
+	  font-size: 12px;
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-left: -32px;
+	  margin-right: -32px;
+	  margin-bottom: -10px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 127px;
+	  position: relative;
+	  margin-top: 20px;
+  
+	  .flot-x-axis > div:nth-child(4) {
+		color: #1c273c !important;
+	  }
+	}
+  }
+  
+  .card-dashboard-balance {
+	position: relative;
+	overflow: hidden;
+  
+	.card-body {
+	  padding: 20px;
+	  position: relative;
+	  z-index: 5;
+	}
+  
+	.fab {
+	  position: absolute;
+	  top: 20px;
+	  right: 20px;
+	  font-size: 48px;
+	  color: #3366ff;
+	  z-index: 5;
+	  background-color: $white;
+	}
+  
+	.az-content-label, .card-table-two .card-title {
+	  color: #c4cdd7;
+	  font-size: 10px;
+	  font-weight: 500;
+	  letter-spacing: 1px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-balance {
+	  min-height: 260px;
+	  height: 100%;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-balance .card-body {
+	  padding: 30px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	}
+  }
+  
+  .card-table-two .card-dashboard-balance .card-title, .card-dashboard-balance .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-balance .card-title {
+	color: #c4cdd7;
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 1px;
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-balance {
+	  .az-content-label, .card-table-two .card-title {
+		font-size: 11px;
+	  }
+	}
+  
+	.card-table-two .card-dashboard-balance .card-title, .card-dashboard-balance .card-dashboard-eight .card-title, .card-dashboard-eight .card-dashboard-balance .card-title {
+	  font-size: 11px;
+	}
+  }
+  
+  .card-dashboard-balance {
+	.balance-amount {
+	  color: #1c273c;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  font-weight: 600;
+	  font-size: 28px;
+	  letter-spacing: -1px;
+	  margin-bottom: 20px;
+  
+	  span {
+		color: $white;
+		font-weight: 400;
+		letter-spacing: normal;
+	  }
+	}
+  
+	.account-number {
+	  display: flex;
+	  align-items: center;
+	  font-size: 20px;
+	  font-weight: 700;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: #1c273c;
+	  letter-spacing: -1px;
+	  margin-bottom: 20px;
+  
+	  span {
+		display: flex;
+		align-items: center;
+		line-height: 1;
+  
+		+ span {
+		  margin-left: 20px;
+		}
+  
+		i {
+		  width: 5px;
+		  height: 5px;
+		  background-color: #1c273c;
+		  border-radius: 100%;
+  
+		  + i {
+			margin-left: 5px;
+		  }
+		}
+	  }
+	}
+  
+	.account-name {
+	  color: #1c273c;
+	  font-weight: 400;
+	  margin-bottom: 0;
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  top: 20px;
+	  bottom: 10px;
+	  left: -10px;
+	  right: -10px;
+	  opacity: .3;
+	  z-index: 4;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 100%;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-balance .balance-amount {
+	  font-size: 36px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-balance .account-number {
+	  font-size: 28px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-balance .account-number span + span {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card-dashboard-balance .account-number span + span {
+	  margin-left: 50px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-balance .account-number span i {
+	  width: 10px;
+	  height: 10px;
+	}
+  }
+  
+  .card-dashboard-ratio {
+	.card-body {
+	  display: flex;
+	  align-items: center;
+  
+	  + .card-body {
+		padding-top: 0px;
+	  }
+  
+	  > div {
+		&:first-child {
+		  width: 140px;
+		  display: none;
+		  align-items: center;
+		  justify-content: center;
+		}
+  
+		&:last-child {
+		  flex: 1;
+		}
+	  }
+  
+	  h5 {
+		font-size: 28px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: #1c273c;
+		letter-spacing: -1px;
+		margin-bottom: 2px;
+	  }
+	}
+  
+	.card-icon {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: #cdd4e0;
+	  font-size: 140px;
+  
+	  .typcn {
+		line-height: 1;
+  
+		&::before {
+		  width: auto;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-ratio .card-body > div:first-child {
+	  display: flex;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-dashboard-ratio .card-body > div:last-child {
+	  margin-left: 30px;
+	}
+  }
+  
+  .card-dashboard-finance {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+  
+	.card-title {
+	  margin-bottom: 20px;
+	}
+  
+	h2 {
+	  line-height: 1;
+	  color: #1c273c;
+	  font-weight: 600;
+	  font-size: 30px;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  letter-spacing: -1px;
+	  margin-top: 10px;
+	  margin-bottom: 2px;
+  
+	  span {
+		letter-spacing: normal;
+		color: #97a3b9;
+		font-weight: 400;
+		margin-right: 5px;
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-finance {
+	  min-height: 172px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card-dashboard-finance {
+	  min-height: 165px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-finance .card-title {
+	  margin-bottom: auto;
+	}
+  }
+  
+  .card-dashboard-table-six {
+	.card-title {
+	  padding: 15px 20px;
+	  margin-bottom: 0;
+	  border-bottom: 1px solid $gray-300;
+	}
+  
+	.table-responsive {
+	  width: calc(100vw - 42px);
+	}
+  
+	.table {
+	  margin-bottom: 0;
+  
+	  thead tr {
+		th {
+		  white-space: nowrap;
+		}
+  
+		&:first-child {
+		  background-color: $background;
+  
+		  th {
+			padding: 10px 12px;
+			line-height: 1;
+  
+			&:last-child {
+			  border-left: 1px solid $gray-300;
+			}
+		  }
+		}
+  
+		&:last-child th {
+		  width: 13%;
+		  padding: 10px 12px;
+		  line-height: 1;
+		  text-align: right;
+  
+		  &:first-child {
+			width: 22%;
+		  }
+  
+		  &:nth-child(2), &:nth-child(6) {
+			border-left: 1px solid $gray-300;
+		  }
+		}
+	  }
+  
+	  tbody tr {
+		td {
+		  text-align: right;
+		  white-space: nowrap;
+  
+		  &:first-child {
+			text-align: left;
+		  }
+  
+		  &:nth-child(2), &:nth-child(6) {
+			border-left: 1px solid $gray-300;
+		  }
+		}
+  
+		&:last-child td {
+		  font-weight: 500;
+		  color: #1c273c;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-dashboard-table-six .table-responsive {
+	  width: 100%;
+	}
+  }
+  
+  .card-minimal-two {
+	height: auto;
+	border-color: #cdd4e0;
+	background-color: transparent;
+	overflow: hidden;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 15px;
+	  align-items: center;
+	  justify-content: space-between;
+  
+	  > .nav .nav-link {
+		padding: 8px 18px;
+		font-weight: 500;
+		background-color: $background;
+  
+		+ .nav-link {
+		  margin-left: 2px;
+		}
+  
+		&:hover, &:focus {
+		  background-color: #cdd4e0;
+		}
+  
+		&.active {
+		  background-color: #5b47fb;
+		  color: $white;
+		}
+	  }
+	}
+  
+	.card-header-right {
+	  display: flex;
+	  align-items: center;
+	  margin-top: 20px;
+  
+	  .nav {
+		justify-content: flex-end;
+		width: 100%;
+	  }
+  
+	  .nav-link {
+		padding: 5px 10px;
+		text-transform: capitalize;
+  
+		+ .nav-link {
+		  margin-left: 2px;
+		}
+  
+		span {
+		  &:first-child {
+			display: none;
+		  }
+  
+		  &:last-child {
+			text-transform: uppercase;
+			font-size: 11px;
+			font-weight: 500;
+		  }
+		}
+  
+		&:hover, &:focus {
+		  background-color: $background;
+		}
+  
+		&.active {
+		  background-color: #97a3b9;
+		  color: $white;
+		}
+	  }
+	}
+  
+	.card-body {
+	  position: relative;
+	  overflow: hidden;
+	}
+  
+	.flot-wrapper {
+	  position: relative;
+	  bottom: -14px;
+	  margin-right: -9px;
+	  margin-left: -31px;
+	  margin-top: -25px;
+  
+	  .flot-x-axis > div {
+		transform: translate(22px, -23px);
+	  }
+  
+	  .flot-y-axis > div {
+		transform: translateX(-10px);
+	  }
+	}
+  
+	.flot-chart {
+	  width: auto;
+	  height: 250px;
+	  position: relative;
+	}
+  
+	.more-info {
+	  position: absolute;
+	  top: 50%;
+	  right: 10px;
+  
+	  div {
+		display: flex;
+		align-items: flex-start;
+		font-size: 13px;
+	  }
+  
+	  span {
+		&:first-child {
+		  width: 80px;
+		  text-align: right;
+		  color: #c4cdd7;
+		  display: block;
+		  line-height: 1.35;
+		}
+  
+		&:last-child {
+		  margin-left: 15px;
+		  color: #1c273c;
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-size: 14px;
+		}
+	  }
+	}
+  
+	.trans-card {
+	  .media-icon {
+		color: #f7931a;
+		font-size: 42px;
+		line-height: 0;
+	  }
+  
+	  .row {
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		overflow-x: auto;
+  
+		> div {
+		  flex-shrink: 0;
+		}
+	  }
+  
+	  label {
+		margin-bottom: 2px;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 11px;
+		letter-spacing: .5px;
+		color: #c4cdd7;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		color: #1c273c;
+		font-weight: 700;
+		font-size: 16px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .card-header {
+	  display: flex;
+	  padding: 15px 20px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .card-header > .nav .nav-link {
+	  padding: 8px 20px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card-minimal-two .card-header > .nav .nav-link {
+	  padding: 8px 30px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .card-header-right {
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .card-header-right .nav-link {
+	  padding: 8px 10px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-minimal-two .card-header-right .nav-link span:first-child {
+	  display: inline;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-minimal-two .card-header-right .nav-link span:last-child {
+	  display: none;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .flot-wrapper {
+	  margin-right: -9px;
+	  margin-left: -2px;
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .flot-chart {
+	  height: 330px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .more-info {
+	  right: 20px;
+	  top: 50%;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .more-info {
+	  right: 30px;
+	  top: 45%;
+	}
+  }
+  
+  .card-minimal-one {
+	border-color: #cdd4e0;
+	min-height: 320px;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+  
+	.card-body {
+	  position: relative;
+	  padding: 20px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: flex-start;
+	  z-index: 5;
+  
+	  > {
+		label {
+		  font-weight: 700;
+		  font-size: 14px;
+		  color: #5b47fb;
+		  text-transform: uppercase;
+		  margin-bottom: 5px;
+		  display: block;
+		  line-height: 1;
+  
+		  span {
+			font-weight: 500;
+			color: #596882;
+		  }
+		}
+  
+		small {
+		  font-size: 12px;
+		  display: block;
+		  color: #97a3b9;
+		}
+  
+		h6 {
+		  color: #1c273c;
+		  font-size: 36px;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-weight: 600;
+		  letter-spacing: -2px;
+		  display: flex;
+		  line-height: 1;
+		  align-items: flex-end;
+		  margin: 15px 0;
+  
+		  span {
+			font-weight: 400;
+			margin-right: 3px;
+			color: #010a1f;
+		  }
+		}
+	  }
+	}
+  
+	.value-info {
+	  display: flex;
+	  align-items: center;
+  
+	  + .value-info {
+		margin-top: 5px;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		color: #1c273c;
+		font-weight: 700;
+		font-family: 'Archivo', sans-serif;
+		font-size: 14px;
+		letter-spacing: -.35px;
+  
+		span {
+		  letter-spacing: normal;
+		  margin-right: 2px;
+		  color: #010a1f;
+		}
+	  }
+  
+	  label {
+		display: block;
+		margin-bottom: 0;
+		font-weight: 700;
+		width: 40px;
+		position: relative;
+		top: -2px;
+	  }
+	}
+  
+	.open-info {
+	  display: flex;
+	  align-items: flex-start;
+	  margin-top: auto;
+	  margin-bottom: 25px;
+  
+	  > div + div {
+		margin-left: 25px;
+	  }
+  
+	  label {
+		font-size: 12px;
+		margin-bottom: 2px;
+		color: #7f8da9;
+	  }
+  
+	  h6 {
+		margin-bottom: 0;
+		color: #1c273c;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 700;
+		font-size: 13px;
+  
+		span {
+		  font-weight: 400;
+		}
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  left: -9px;
+	  right: -8px;
+	  bottom: -13px;
+  
+	  .flot-x-axis > div {
+		transform: translate(20px, -23px);
+	  }
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 250px;
+	  position: relative;
+	}
+  }
+  
+  .card-minimal-four {
+	border-color: #cdd4e0;
+  
+	.card-header {
+	  background-color: transparent;
+	  border-bottom: 1px solid #cdd4e0;
+  
+	  h6 {
+		font-size: 14px;
+		font-weight: 700;
+		margin-bottom: 2px;
+		color: #1c273c;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		white-space: nowrap;
+  
+		span {
+		  color: $danger;
+		}
+	  }
+  
+	  .media {
+		align-items: center;
+	  }
+  
+	  .media-body {
+		margin-left: 12px;
+	  }
+	}
+  
+	.coin-logo {
+	  width: 42px;
+	  height: 42px;
+	  color: $white;
+	  border-radius: 100%;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  font-size: 24px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-dashboard-twentyone .vmap-wrapper {
+	  height: 100%;
+	}
+  
+	.card-dashboard-twentysix .flot-chart {
+	  width: 100%;
+	  height: 120px;
+	}
+  
+	.card-dashboard-twentyfive .flot-chart {
+	  width: 100%;
+	  height: 35px;
+	}
+  
+	.card-dashboard-twentyfour .flot-chart {
+	  width: 100%;
+	  height: 130px;
+	}
+  
+	.card--twelve .card-header .btn-group {
+	  .btn.active, .sp-container button.active {
+		color: #1c273c;
+		background-color: $background;
+		border-color: #cdd4e0;
+	  }
+	}
+  
+	.sp-container .card--twelve .card-header .btn-group button.active {
+	  color: #1c273c;
+	  background-color: $background;
+	  border-color: #cdd4e0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .card-header .btn-group {
+	  margin-top: 0;
+	}
+  
+	.btn-group, .btn-group-vertical {
+	  position: relative;
+	  display: inline-flex;
+	  vertical-align: middle;
+	}
+  
+	.card--twelve .card-header .btn-group {
+	  .btn, .sp-container button {
+		font-size: 12px;
+		font-weight: 500;
+		padding: 5px 10px;
+		min-height: inherit;
+		background-color: $white;
+		color: #c4cdd7;
+		border: 1px solid #cdd4e0;
+	  }
+	}
+  
+	.sp-container .card--twelve .card-header .btn-group button {
+	  font-size: 12px;
+	  font-weight: 500;
+	  padding: 5px 10px;
+	  min-height: inherit;
+	  background-color: $white;
+	  color: #c4cdd7;
+	  border: 1px solid #cdd4e0;
+	}
+  
+	.card--twelve .card-header .btn-group {
+	  .btn:hover, .sp-container button:hover {
+		background-color: $gray-300;
+		border-color: #cdd4e0;
+	  }
+	}
+  
+	.sp-container .card--twelve .card-header .btn-group button:hover {
+	  background-color: $gray-300;
+	  border-color: #cdd4e0;
+	}
+  
+	.card--twelve .card-header .btn-group {
+	  .btn:focus, .sp-container button:focus {
+		background-color: $gray-300;
+		border-color: #cdd4e0;
+	  }
+	}
+  
+	.sp-container .card--twelve .card-header .btn-group button:focus {
+	  background-color: $gray-300;
+	  border-color: #cdd4e0;
+	}
+  
+	.card--twelve .card-header .btn-group {
+	  .btn + .btn, .sp-container button + .btn {
+		margin-left: -1px;
+	  }
+	}
+  
+	.sp-container .card--twelve .card-header .btn-group button + .btn, .card--twelve .card-header .btn-group .sp-container .btn + button, .sp-container .card--twelve .card-header .btn-group .btn + button, .card--twelve .card-header .btn-group .sp-container button + button, .sp-container .card--twelve .card-header .btn-group button + button {
+	  margin-left: -1px;
+	}
+  
+	.card--twelve .card-header .btn-group {
+	  .btn.active, .sp-container button.active {
+		color: #1c273c;
+		background-color: $background;
+		border-color: #cdd4e0;
+	  }
+	}
+  
+	.sp-container .card--twelve .card-header .btn-group button.active {
+	  color: #1c273c;
+	  background-color: $background;
+	  border-color: #cdd4e0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .card-header {
+	  display: flex;
+	  align-items: flex-start;
+	  justify-content: space-between;
+	}
+  }
+  
+  .card--seven {
+	border-color: $gray-300;
+	margin-bottom: 20px;
+	width: 100vw;
+	border-left-width: 0;
+	border-right-width: 0;
+	position: relative;
+	margin-left: -20px;
+	margin-right: -20px;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 20px;
+	  border-bottom: 1px solid $gray-300;
+	  background-color: $background;
+  
+	  .media {
+		align-items: center;
+  
+		> div:first-child {
+		  line-height: 0;
+		  font-size: 16px;
+		  margin-right: 5px;
+		  color: $white;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  width: 32px;
+		  height: 34px;
+		  background-color: #c4cdd7;
+		}
+	  }
+  
+	  .media-body {
+		margin-top: 3px;
+	  }
+  
+	  label {
+		margin-bottom: 0;
+		display: block;
+		line-height: 1;
+		font-size: 11px;
+		color: #c4cdd7;
+	  }
+  
+	  .date {
+		font-weight: 500;
+		display: flex;
+		align-items: center;
+  
+		span {
+		  display: block;
+		}
+  
+		a {
+		  margin-left: 5px;
+		  font-size: 14px;
+		  color: #c4cdd7;
+		  display: block;
+  
+		  i {
+			line-height: 0;
+			position: relative;
+			top: 1px;
+		  }
+		}
+	  }
+	}
+  
+	.card-body {
+	  padding: 20px;
+  
+	  .row > div + div {
+		position: relative;
+  
+		&::before {
+		  content: '';
+		  position: absolute;
+		  top: 0;
+		  left: -1px;
+		  bottom: 0;
+		  border-left: 1px solid $gray-300;
+		  display: none;
+		}
+	  }
+  
+	  .main-content-label, .card-table-two .card-title {
+		text-transform: none;
+		color: $default-color;
+		font-weight: 500;
+		font-size: 0.875rem;
+		margin-bottom: 10px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--seven {
+	  margin-bottom: 20px;
+	  margin-left: 0;
+	  margin-right: 0;
+	  width: auto;
+	  border-left-width: 1px;
+	  border-right-width: 1px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--seven .card-header {
+	  padding: 20px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--seven .card-header .media > div:first-child {
+	  width: 34px;
+	  font-size: 24px;
+	  margin-right: 8px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--seven .card-body .row > div + div::before {
+	  display: block;
+	}
+  }
+  
+  .card-table-two .card--seven .card-body .card-title, .card--seven .card-body .card--eight .card-title, .card--eight .card--seven .card-body .card-title {
+	text-transform: none;
+	color: $default-color;
+	font-weight: 500;
+	font-size: 0.875rem;
+	margin-bottom: 10px;
+  }
+  
+  .card--seven .card-body {
+	h2 {
+	  color: $default-color;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  font-weight: 600;
+	  font-size: 24px;
+	  letter-spacing: -1px;
+	  margin-bottom: 5px;
+	  line-height: 1;
+  
+	  span {
+		font-weight: 400;
+		color: $default-color;
+		letter-spacing: normal;
+	  }
+	}
+  
+	.desc {
+	  display: flex;
+	  align-items: flex-end;
+	  margin-bottom: 15px;
+  
+	  > i {
+		line-height: 0;
+		font-size: 18px;
+	  }
+  
+	  span {
+		display: block;
+		line-height: 1;
+		margin-left: 5px;
+  
+		strong {
+		  color: $default-color;
+		}
+	  }
+  
+	  &.up > i {
+		color: $success;
+	  }
+  
+	  &.down > i {
+		color: $danger;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--seven .card-body h2 {
+	  font-size: 32px;
+	}
+  }
+  
+  .card--six {
+	border-color: $gray-300;
+	padding: 20px;
+  
+	.card-header {
+	  padding: 0;
+	  background-color: transparent;
+	  margin-bottom: 20px;
+	}
+  
+	.main-content-label, .card-table-two .card-title {
+	  margin-bottom: 5px;
+	  font-size: 0.875rem;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--six .card-header {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--six .card-header {
+	  margin-bottom: 30px;
+	}
+  }
+  
+  .card-table-two .card--six .card-title, .card--six .card--eight .card-title, .card--eight .card--six .card-title {
+	margin-bottom: 5px;
+	font-size: 0.875rem;
+  }
+  
+  .card--six .chart-legend {
+	margin-top: 20px;
+	display: flex;
+  
+	> div {
+	  display: flex;
+	  align-items: center;
+	  font-size: 11px;
+	  font-weight: 500;
+  
+	  + div {
+		margin-top: 2px;
+		margin-top: 2px;
+	  }
+  
+	  display: flex;
+	  align-items: center;
+	  font-size: 11px;
+	  font-weight: 500;
+  
+	  span:last-child {
+		width: 20px;
+		height: 6px;
+		margin-left: 10px;
+	  }
+	}
+  
+	position: absolute;
+  
+	/* bottom: 121px; */
+	right: 41px;
+  
+	/* right: 0; */
+	left: auto;
+	margin: 0 auto;
+	text-align: center;
+	top: 120px;
+	z-index: 1;
+  }
+  
+  @media (min-width: 576px) {
+	.card--six .chart-legend {
+	  display: block;
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--six .chart-legend > div span:last-child {
+	  margin-right: 3px;
+	}
+  }
+  
+  .card--map-one {
+	border-color: $gray-300;
+	padding: 20px;
+  
+	.main-content-label, .card-table-two .card-title {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--map-one {
+	  height: 100%;
+	}
+  }
+  
+  .card-table-two .card--map-one .card-title, .card--map-one .card--eight .card-title, .card--eight .card--map-one .card-title {
+	font-size: 0.875rem;
+  }
+  
+  .card--map-one .vmap-wrapper {
+	height: 200px;
+  }
+  
+  @media (min-width: 576px) {
+	.card--map-one .vmap-wrapper {
+	  height: 300px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--map-one .vmap-wrapper {
+	  height: 260px;
+	}
+  }
+  
+  .card-table-two {
+	border-color: $gray-300;
+	padding: 20px;
+  
+	.card-title {
+	  font-size: 13px;
+	  margin-bottom: 5px;
+	}
+  
+	.table-responsive {
+	  width: calc(100vw - 62px);
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-table-two .table-responsive {
+	  width: 100%;
+	}
+  }
+  
+  .card--eight {
+	border-color: $gray-300;
+	background-color: $white-5;
+	padding: 20px;
+  
+	.card-title {
+	  font-size: 13px;
+	  margin-bottom: 5px;
+	}
+  
+	.list-group-item {
+	  padding: 10px 0;
+	  border-left-width: 0;
+	  border-right-width: 0;
+	  border-style: solid;
+	  border-color: $gray-300;
+	  background-color: transparent;
+	  display: flex;
+	  flex-direction: row;
+	  align-items: center;
+	  justify-content: flex-start;
+  
+	  &:first-child {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	  }
+  
+	  &:last-child {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		margin-left: 10px;
+	  }
+  
+	  span {
+		display: block;
+		margin-left: auto;
+		font-weight: 600;
+		font-family: 'Archivo', Arial, sans-serif;
+		color: $default-color;
+	  }
+	}
+  
+	.flag-icon {
+	  font-size: 24px;
+	  line-height: 1;
+	  border-radius: 100%;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--eight {
+	  height: 100%;
+	}
+  }
+  
+  .card--nine {
+	border-color: $gray-300;
+	background-color: rgb(255, 255, 255);
+	position: relative;
+	padding: 20px 20px 15px;
+  
+	.card-header {
+	  position: absolute;
+	  top: 20px;
+	  left: 20px;
+	  right: 20px;
+	  padding: 0;
+	  background-color: transparent;
+	  z-index: 1;
+  
+	  h1 {
+		font-size: 32px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 8px;
+		line-height: 1;
+		letter-spacing: -.5px;
+		color: $default-color;
+	  }
+	}
+  
+	.main-content-label, .card-table-two .card-title {
+	  margin-bottom: 10px;
+	  color: $default-color;
+	}
+  }
+  
+  .card-table-two .card--nine .card-title, .card--nine .card--eight .card-title, .card--eight .card--nine .card-title {
+	margin-bottom: 10px;
+	color: $default-color;
+  }
+  
+  .card--nine {
+	.card-title {
+	  font-weight: 600;
+	}
+  
+	.main-content-text {
+	  color: #c4cdd7;
+	}
+  
+	.bar-chart {
+	  position: relative;
+	  width: auto;
+	  height: 261px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--nine .bar-chart {
+	  height: 261px;
+	}
+  }
+  
+  .card--ten {
+	border-width: 0;
+	padding: 20px;
+  
+	+ .card--ten {
+	  margin-top: 20px;
+	}
+  
+	.main-content-label, .card-table-two .card-title {
+	  font-size: 13px;
+	  font-weight: 500;
+	  margin-bottom: 15px;
+	  line-height: 1.05;
+	  color: $white;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--ten {
+	  width: calc(50% - 11px);
+	  display: inline-block;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--ten {
+	  width: auto;
+	  display: block;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--ten + .card--ten {
+	  margin-top: 0;
+	  margin-left: 18px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--ten + .card--ten {
+	  margin-left: 0;
+	  margin-top: 20px;
+	}
+  }
+  
+  .card-table-two .card--ten .card-title, .card--ten .card--eight .card-title, .card--eight .card--ten .card-title {
+	font-size: 13px;
+	font-weight: 500;
+	margin-bottom: 15px;
+	line-height: 1.05;
+	color: $white;
+  }
+  
+  .card--ten .card-body {
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+  
+	> div {
+	  flex: 1;
+  
+	  label {
+		font-size: 13px;
+		margin-bottom: 0;
+		color: rgba(255, 255, 255, 0.75);
+	  }
+  
+	  h6 {
+		margin-bottom: 2px;
+		color: $white;
+		font-size: 32px;
+		font-weight: 600;
+		line-height: .975;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+		span {
+		  font-size: 13px;
+		}
+  
+		.percent {
+		  font-size: 20px;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--ten .card-body > div {
+	  flex: none;
+	}
+  }
+  
+  @media (min-width: 1360px) {
+	.card--ten .card-body > div {
+	  &:first-child {
+		flex-basis: 60%;
+	  }
+  
+	  &:last-child {
+		flex-basis: 40%;
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--ten .card-body > div h6 {
+	  font-size: 24px;
+	}
+  }
+  
+  .card--eleven {
+	border-color: $gray-300;
+	position: relative;
+	overflow: hidden;
+  
+	.card-header {
+	  padding: 20px;
+	  background-color: transparent;
+	  position: relative;
+	  z-index: 200;
+	}
+  
+	.main-content-label, .card-table-two .card-title {
+	  display: block;
+	  font-size: 13px;
+	  margin-bottom: 5px;
+	  color: $dark;
+	  line-height: 1.4;
+	}
+  }
+  
+  .card-table-two .card--eleven .card-title, .card--eleven .card--eight .card-title, .card--eight .card--eleven .card-title {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 5px;
+	color: $dark;
+	line-height: 1.4;
+  }
+  
+  .card--eleven {
+	.card-text {
+	  color: #c4cdd7;
+	}
+  
+	.card-body {
+	  padding: 0 0 5px;
+	  margin-left: 20px;
+	  position: relative;
+	  z-index: 200;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 250px;
+	}
+  
+	.card-footer {
+	  z-index: 200;
+	  background-color: transparent;
+	  padding: 0;
+	  border-width: 0;
+  
+	  > div {
+		flex: 1;
+		padding: 15px 20px;
+		border-top: 1px solid $gray-300;
+		position: relative;
+	  }
+  
+	  label {
+		font-weight: 700;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+		color: $default-color;
+		display: block;
+	  }
+  
+	  h6 {
+		font-size: 28px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+		line-height: .7;
+		letter-spacing: -1px;
+		margin-bottom: 10px;
+		display: flex;
+		align-items: baseline;
+  
+		span {
+		  margin-left: 5px;
+		  font-size: 11px;
+		  font-weight: 500;
+		  display: block;
+		  padding: 4px 6px;
+		  color: $white;
+		  line-height: .8;
+		  position: relative;
+		  bottom: 3px;
+		  letter-spacing: normal;
+  
+		  &.up {
+			background-color: $success;
+		  }
+  
+		  &.down {
+			background-color: $danger;
+		  }
+		}
+	  }
+  
+	  small {
+		display: block;
+		font-size: 13px;
+		color: $default-color;
+	  }
+	}
+  
+	.jqvmap {
+	  position: absolute;
+	  top: 10%;
+	  left: 0;
+	  width: 100%;
+	  height: 300px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--eleven .card-footer {
+	  display: flex;
+	  align-items: stretch;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--eleven .card-footer > div + div {
+	  border-left: 1px solid $gray-300;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--eleven .jqvmap {
+	  height: 80%;
+	}
+  }
+  
+  .card--twelve {
+	border-color: none;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 20px;
+	}
+  
+	.card-title {
+	  text-transform: uppercase;
+	  font-weight: 700;
+	  margin-bottom: 20px;
+  
+	  span {
+		font-weight: 400;
+		color: $default-color;
+		text-transform: capitalize;
+	  }
+	}
+  
+	.sales-overview {
+	  display: flex;
+	  align-items: flex-start;
+	  flex-wrap: wrap;
+  
+	  .media {
+		align-items: flex-end;
+		flex-shrink: 0;
+		flex-basis: calc(50% - 10px);
+	  }
+  
+	  .media-icon {
+		width: 45px;
+		height: 45px;
+		color: $white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		top: -5px;
+		margin-right: 15px;
+		border-radius: 100%;
+		display: none;
+  
+		.typcn {
+		  line-height: .9;
+		  font-size: 24px;
+		}
+	  }
+  
+	  label {
+		/* text-transform: uppercase; */
+		font-size: 9px;
+		font-weight: 700;
+		letter-spacing: .5px;
+		margin-bottom: 8px;
+	  }
+  
+	  h4 {
+		font-size: 20px;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: -1px;
+		margin-bottom: 3px;
+  
+		span {
+		  font-weight: 400;
+		}
+	  }
+  
+	  .media-body > span {
+		display: block;
+		font-size: 10px;
+		color: #c4cdd7;
+  
+		strong {
+		  font-weight: 500;
+		  color: $default-color;
+		}
+	  }
+  
+	  p {
+		font-size: 11px;
+		margin-bottom: 0;
+		color: #c4cdd7;
+	  }
+	}
+  
+	.card-body {
+	  position: relative;
+	}
+  
+	.chart-legend {
+	  margin-bottom: 20px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  position: absolute;
+	  top: 5px;
+	  left: 0;
+	  right: 0;
+	  z-index: 10;
+	  font-size: 10px;
+	  font-weight: 500;
+	  letter-spacing: 1px;
+	  text-transform: uppercase;
+  
+	  div {
+		display: flex;
+		align-items: center;
+  
+		+ div {
+		  margin-left: 15px;
+		}
+	  }
+  
+	  span {
+		width: 10px;
+		height: 4px;
+		display: block;
+		margin-right: 5px;
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-left: -13px;
+	  margin-right: -13px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 200px;
+	  position: relative;
+  
+	  .flot-x-axis > div span {
+		&:first-child {
+		  display: block;
+		  text-transform: uppercase;
+		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-weight: 500;
+		  font-size: 9px;
+		  color: #c4cdd7;
+		}
+  
+		&:last-child {
+		  display: block;
+		  font-size: 13px;
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  color: $default-color;
+		  line-height: 1;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 1024px) {
+	.card--twelve .sales-overview {
+	  margin-bottom: 10px;
+	  flex-wrap: nowrap;
+	  left: 80px;
+	  z-index: 1;
+	  width: 100%;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .sales-overview .media + .media {
+	  margin-left: 0px;
+	}
+  }
+  
+  @media (max-width: 575.98px) {
+	.card--twelve .sales-overview .media {
+	  &:nth-child(n) {
+		margin-left: 0;
+		margin-top: 15px;
+	  }
+  
+	  &:nth-child(1), &:nth-child(2) {
+		margin-left: 0;
+		margin-top: 0px;
+	  }
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--twelve .sales-overview .media:last-child {
+	  flex: 1;
+	  display: block;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .sales-overview label {
+	  font-size: 16px;
+	  margin-bottom: 8px;
+	  font-weight: 600;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .sales-overview h4 {
+	  font-size: 35px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .sales-overview .media-body > span {
+	  font-size: 13px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .chart-legend {
+	  top: 65px;
+	  right: 21px;
+	  left: auto;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .chart-legend div + div {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve .chart-legend span {
+	  width: 40px;
+	  margin-right: 10px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twelve {
+	  .chart-wrapper {
+		margin-left: -10px;
+		margin-right: -15px;
+	  }
+  
+	  .flot-chart {
+		width: 100% !important;
+		height: 200px;
+		position: relative;
+	  }
+	}
+  
+	.app .card--twelve .flot-chart {
+	  width: 100% !important;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--twelve .flot-chart {
+	  height: 250px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--twelve .flot-chart {
+	  height: 350px !important;
+	}
+  }
+  
+  .card--thirteen {
+	border-color: $gray-300;
+	padding: 20px;
+	box-shadow: 0 2px 10px -1px rgba(8, 35, 171, 0.05);
+  
+	.main-content-label, .card-table-two .card-title {
+	  font-size: 13px;
+	}
+  }
+  
+  .card-table-two .card--thirteen .card-title, .card--thirteen .card--eight .card-title, .card--eight .card--thirteen .card-title {
+	font-size: 13px;
+  }
+  
+  .card--thirteen {
+	.media {
+	  margin-bottom: 15px;
+	}
+  
+	.media-icon {
+	  font-size: 45px;
+	  line-height: 1;
+	  margin-right: 10px;
+	  display: flex;
+  
+	  i {
+		line-height: 0;
+	  }
+	}
+  
+	.media-body {
+	  h6 {
+		font-size: 22px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+		letter-spacing: -.5px;
+		margin-bottom: 2px;
+  
+		span {
+		  font-weight: 400;
+		  color: $default-color;
+		}
+	  }
+  
+	  label {
+		font-weight: 700;
+		font-size: 12px;
+		text-transform: uppercase;
+		margin-bottom: 0;
+		display: block;
+		letter-spacing: .5px;
+	  }
+	}
+  }
+  
+  .card-category {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+  }
+  
+  .card--nine .chart-legend {
+	span {
+	  width: 20px;
+	  height: 4px;
+	  margin: 8px 5px 0px 10px;
+	}
+  
+	position: absolute;
+	bottom: 121px;
+	right: 41px;
+  }
+  
+  .card--twentyfour {
+	.card-header {
+	  background-color: transparent;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  padding: 20px 20px 0;
+	}
+  
+	.card-title {
+	  font-size: 14px;
+	  margin-bottom: 0;
+	}
+  
+	.card-body {
+	  padding: 15px 20px 20px;
+	}
+  
+	.card-body-top {
+	  display: flex;
+	  margin-bottom: 20px;
+  
+	  h6 {
+		color: $default-color;
+		font-size: 18px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 0;
+		letter-spacing: -.75px;
+  
+		small {
+		  font-weight: 600;
+		}
+  
+		span {
+		  color: #c4cdd7;
+		  font-weight: 400;
+		  letter-spacing: normal;
+		}
+	  }
+  
+	  label {
+		display: block;
+		margin-bottom: 0;
+		color: #c4cdd7;
+		font-size: 11px;
+	  }
+  
+	  > div + div {
+		margin-left: 30px;
+	  }
+	}
+  
+	.main-content-label, .card-table-two .card-title {
+	  font-size: 10px;
+	  color: $default-color;
+	  letter-spacing: .5px;
+	  margin-bottom: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twentyfour .card-body-top h6 {
+	  font-size: 22px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twentyfour .card-body-top label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  .card-table-two .card--twentyfour .card-title, .card--twentyfour .card--eight .card-title, .card--eight .card--twentyfour .card-title {
+	font-size: 10px;
+	color: $default-color;
+	letter-spacing: .5px;
+	margin-bottom: 0;
+  }
+  
+  .card--twentyfour {
+	.chart-legend {
+	  display: flex;
+	  align-items: center;
+	  font-size: 10px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+	  letter-spacing: .5px;
+	  line-height: .6;
+  
+	  span {
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		margin-right: 5px;
+	  }
+  
+	  > div {
+		display: flex;
+		align-items: center;
+  
+		+ div {
+		  margin-left: 20px;
+		}
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-right: -10px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 130px;
+	}
+  }
+  
+  .card--twentyfive {
+	.card-title {
+	  font-size: 14px;
+	  margin-bottom: 15px;
+	}
+  
+	.col + .col {
+	  border-left: 1px solid $gray-300;
+	}
+  
+	.card-label {
+	  display: block;
+	  text-transform: uppercase;
+	  font-size: 11px;
+	  font-weight: 500;
+	  letter-spacing: .5px;
+	  margin-bottom: 2px;
+	  color: #c4cdd7;
+	  white-space: nowrap;
+	}
+  
+	.card-value {
+	  font-size: 22px;
+	  font-weight: 600;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: $default-color;
+	  margin-bottom: 0;
+	  letter-spacing: -1px;
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin: 0 -8px -5px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 35px;
+	}
+  }
+  
+  .card--twentysix {
+	.card-header {
+	  padding: 15px 15px 10px;
+	  background-color: transparent;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	}
+  
+	.card-title {
+	  margin-bottom: 0;
+	  text-transform: uppercase;
+	}
+  
+	.chart-legend {
+	  display: flex;
+	  align-items: center;
+  
+	  > div {
+		font-size: 10px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: .5px;
+  
+		+ div {
+		  margin-left: 15px;
+		}
+	  }
+  
+	  span {
+		display: inline-block;
+		width: 8px;
+		height: 8px;
+		margin-right: 2px;
+	  }
+	}
+  
+	.card-body {
+	  padding: 0;
+	  position: relative;
+	  overflow: hidden;
+  
+	  h6 {
+		margin-bottom: 0;
+		color: $default-color;
+		font-size: 22px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		letter-spacing: -.5px;
+		line-height: 1;
+  
+		span {
+		  font-weight: 400;
+		  font-size: 18px;
+		  letter-spacing: -1px;
+		}
+	  }
+  
+	  label {
+		font-size: 12px;
+		margin-bottom: 0;
+		color: #c4cdd7;
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin: -30px -18px -15px -18px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 120px;
+  
+	  .flot-x-axis > div {
+		font-size: 10px;
+		letter-spacing: .5px;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.75);
+		transform: translateY(-20px);
+	  }
+  
+	  .flot-y-axis > div {
+		font-size: 10px;
+		transform: translateX(33px);
+		color: rgba(20, 17, 45, 0.5);
+	  }
+	}
+  
+	&.card-dark-one .card-title, &.card-dark-two .card-title, &.card-dark-one .card-body h6, &.card-dark-two .card-body h6 {
+	  color: $white;
+	}
+  
+	&.card-dark-one .card-body h6 span, &.card-dark-two .card-body h6 span {
+	  color: $white-5;
+	}
+  
+	&.card-dark-one .card-body label, &.card-dark-two .card-body label {
+	  color: $white-7;
+	}
+  
+	&.card-dark-one .flot-chart .flot-y-axis > div, &.card-dark-two .flot-chart .flot-y-axis > div {
+	  color: $white-2;
+	}
+  
+	&.card-dark-one {
+	  background-color: #5f45b7;
+	  background-image: linear-gradient(to bottom, #42406f 0%, #5f45b7 100%);
+	  background-repeat: repeat-x;
+	}
+  
+	&.card-dark-two {
+	  background-color: #0040ff;
+	  background-image: linear-gradient(to bottom, #0a47ff 0%, $primary 100%);
+	  background-repeat: repeat-x;
+	}
+  }
+  
+  .card--twentyone {
+	position: relative;
+  
+	.card-body {
+	  background-color: $background;
+	  padding: 20px;
+	  height: 100%;
+  
+	  .main-content-label, .card-table-two .card-title {
+		margin-bottom: 8px;
+		text-transform: capitalize;
+		font-size: 14px;
+	  }
+	}
+  }
+  
+  .card-table-two .card--twentyone .card-body .card-title, .card--twentyone .card-body .card--eight .card-title, .card--eight .card--twentyone .card-body .card-title {
+	margin-bottom: 8px;
+	text-transform: capitalize;
+	font-size: 14px;
+  }
+  
+  @media (min-width: 768px) {
+	.card--twentyone .list-group {
+	  margin-bottom: 10px;
+	}
+  }
+  
+  .card--twentyone {
+	.list-group-item {
+	  padding: 8px 0;
+	  border-width: 0;
+	  border-right-width: 0;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  flex-wrap: wrap;
+	  position: relative;
+	  background-color: transparent;
+  
+	  span {
+		flex-basis: 50%;
+		max-width: 50%;
+  
+		&:last-of-type {
+		  text-align: right;
+		  color: $default-color;
+		  font-size: 12px;
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		}
+	  }
+  
+	  .progress {
+		margin-top: 5px;
+		margin-bottom: 0;
+		flex-basis: 100%;
+		max-width: 100%;
+		height: 5px;
+		background-color: #b4bdce;
+	  }
+  
+	  &:first-child {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	  }
+  
+	  &:last-child {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	  }
+	}
+  
+	.vmap-wrapper {
+	  width: 100%;
+	  height: 180px;
+  
+	  .jqvmap-zoomin, .jqvmap-zoomout {
+		width: 24px;
+		height: 24px;
+		left: 15px;
+		border-radius: 100%;
+		background-color: $default-color;
+		color: $white;
+		font-size: 20px;
+		font-weight: 500;
+		opacity: .2;
+	  }
+  
+	  .jqvmap-zoomin {
+		&:hover, &:focus {
+		  opacity: .8;
+		}
+	  }
+  
+	  .jqvmap-zoomout {
+		&:hover, &:focus {
+		  opacity: .8;
+		}
+	  }
+  
+	  .jqvmap-zoomin {
+		top: 15px;
+	  }
+  
+	  .jqvmap-zoomout {
+		top: 45px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--twentyone .vmap-wrapper {
+	  height: 250px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--twentyone .vmap-wrapper {
+	  height: 100%;
+	}
+  }
+  
+  .card--twentytwo {
+	background-color: $white;
+	position: relative;
+	height: 120px;
+  
+	.media {
+	  padding: 20px;
+	  position: relative;
+	  z-index: 5;
+	}
+  
+	.media-icon {
+	  width: 45px;
+	  height: 45px;
+	  color: $white;
+	  border-radius: 100%;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+  
+	  i {
+		font-size: 24px;
+		line-height: 0;
+  
+		&.typcn {
+		  line-height: .9;
+		}
+	  }
+	}
+  
+	.media-body {
+	  margin-left: 15px;
+	  padding-top: 5px;
+  
+	  h6 {
+		margin-bottom: 5px;
+		line-height: .7;
+		color: $default-color;
+		font-size: 26px;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		letter-spacing: -.5px;
+		display: flex;
+		align-items: flex-end;
+  
+		> small {
+		  color: $white;
+		  padding: 2px 3px;
+		  font-size: 9px;
+		  font-weight: 500;
+		  line-height: 1.1;
+		  margin-left: 5px;
+		  letter-spacing: normal;
+  
+		  &.up {
+			background-color: $success;
+		  }
+  
+		  &.down {
+			background-color: $danger;
+		  }
+		}
+	  }
+  
+	  > {
+		span {
+		  display: block;
+		}
+  
+		small {
+		  display: block;
+		  font-size: 11px;
+		  color: #c4cdd7;
+  
+		  strong {
+			font-weight: 500;
+		  }
+		}
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  right: -9px;
+	  left: -9px;
+	  opacity: .3;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 120px;
+	}
+  }
+  
+  .card--twentythree {
+	background-color: $background;
+  
+	.main-donut-chart.chart1 {
+	  width: 130px;
+	  height: 130px;
+	  background: #b4bdce;
+  
+	  .slice {
+		&.one {
+		  clip: rect(0 130px 65px 0);
+		  -webkit-transform: rotate(90deg);
+		  transform: rotate(90deg);
+		  background: $primary;
+		}
+  
+		&.two {
+		  clip: rect(0 65px 130px 0);
+		  -webkit-transform: rotate(234deg);
+		  transform: rotate(234deg);
+		  background: $primary;
+		}
+	  }
+  
+	  .chart-center {
+		top: 15px;
+		left: 15px;
+		width: 100px;
+		height: 100px;
+		background: $background;
+  
+		span {
+		  font-size: 40px;
+		  line-height: 100px;
+		  color: $primary;
+  
+		  &:after {
+			content: "65%";
+		  }
+  
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-size: 32px;
+		}
+	  }
+	}
+  
+	label {
+	  display: flex;
+	  align-items: center;
+	  text-transform: uppercase;
+	  font-weight: 500;
+	  font-size: 10px;
+	  line-height: 1;
+	  letter-spacing: .5px;
+  
+	  span {
+		display: block;
+		width: 8px;
+		height: 8px;
+		border-radius: 100%;
+		margin-right: 5px;
+	  }
+	}
+  
+	h5 {
+	  font-size: 24px;
+	  font-weight: 700;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: $default-color;
+	  letter-spacing: -1px;
+	}
+  }
+  
+  .card--audience-metrics {
+	background-color: $background;
+	position: relative;
+	overflow: hidden;
+	height: 250px;
+  
+	.card-header {
+	  padding: 20px 20px 0;
+	  background-color: $background;
+	  position: relative;
+	  z-index: 10;
+	}
+  
+	.card-title {
+	  font-size: 14px;
+	  margin-bottom: 5px;
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  right: 0;
+	  bottom: -20px;
+	  left: 0;
+	  padding: 5px 5px 0;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 180px;
+  
+	  .flot-x-axis > div {
+		text-transform: uppercase;
+		font-size: 10px;
+		font-weight: 700;
+		color: #c4cdd7;
+		display: none;
+  
+		span:last-child {
+		  padding-left: 2px;
+		  font-weight: 700;
+		  color: $default-color;
+		}
+	  }
+	}
+  
+	.card-body {
+	  background-color: $background;
+	  display: flex;
+	  padding: 0 20px 20px;
+	  flex: none;
+	  position: relative;
+	  z-index: 10;
+  
+	  > div + div {
+		margin-left: 10px;
+		padding-left: 10px;
+		border-left: 1px solid $gray-300;
+	  }
+  
+	  h4 {
+		font-weight: 700;
+		font-size: 17px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+		letter-spacing: -.5px;
+		margin-bottom: 3px;
+	  }
+  
+	  label {
+		margin-bottom: 0;
+		display: flex;
+		align-items: center;
+		font-size: 11px;
+  
+		span {
+		  display: inline-block;
+		  width: 9px;
+		  height: 9px;
+		  margin-right: 5px;
+		  border-radius: 100%;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--audience-metrics {
+	  height: 270px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--audience-metrics .chart-wrapper {
+	  padding-bottom: 10px;
+	  bottom: 10px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--audience-metrics .flot-chart .flot-x-axis > div {
+	  display: block;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--audience-metrics .card-body > div + div {
+	  margin-left: 20px;
+	  padding-left: 20px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--audience-metrics .card-body h4 {
+	  font-size: 21px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--audience-metrics .card-body label {
+	  font-size: 0.875rem;
+	}
+  }
+  
+  .card--seventeen {
+	position: relative;
+  
+	.card-body {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	  height: 180px;
+	  position: relative;
+	  z-index: 10;
+  
+	  h4 {
+		margin-bottom: 0;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+	  }
+  
+	  span {
+		font-size: 11px;
+	  }
+	}
+  
+	.card-title {
+	  line-height: 1.3;
+	}
+  
+	&.bg-primary-dark {
+	  background-color: #0033cc;
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  right: -8px;
+	  bottom: -8px;
+	  left: -8px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 180px;
+	}
+  }
+  
+  .card--eighteen {
+	display: block;
+	padding: 20px;
+  
+	.card-title {
+	  font-weight: 700;
+	  text-transform: uppercase;
+	}
+  
+	.card-body {
+	  padding: 20px 0 34px;
+	  align-items: flex-start;
+  
+	  h6 {
+		color: $default-color;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 600;
+		font-size: 21px;
+		letter-spacing: -.8px;
+		margin-bottom: 2px;
+		position: relative;
+		padding-left: 23px;
+  
+		span {
+		  font-weight: 400;
+		  color: #c4cdd7;
+		  letter-spacing: normal;
+		}
+  
+		&::before {
+		  content: '';
+		  position: absolute;
+		  display: block;
+		  top: calc(50% - 8px);
+		  left: 0;
+		  width: 16px;
+		  height: 16px;
+		  border-radius: 100%;
+		  border: 4px solid transparent;
+		}
+  
+		&.dot-primary::before {
+		  border-color: $primary;
+		}
+  
+		&.dot-purple::before {
+		  border-color: $purple;
+		}
+  
+		&.dot-teal::before {
+		  border-color: $teal;
+		}
+  
+		&.dot-dark-blue::before {
+		  border-color: #0033cc;
+		}
+	  }
+  
+	  label {
+		color: #c4cdd7;
+		margin-bottom: 0;
+		display: block;
+	  }
+	}
+  
+	.chartjs-wrapper {
+	  height: 309px;
+	  position: relative;
+	  margin-left: -10px;
+	  margin-right: -5px;
+	}
+  }
+  
+  .card--nineteen {
+	overflow: hidden;
+	position: relative;
+	background-color: #f9f9f9;
+  
+	.card-header {
+	  padding: 20px 20px 0;
+	  background-color: transparent;
+  
+	  .row {
+		display: block;
+  
+		> div {
+		  max-width: none;
+  
+		  + div {
+			margin-top: 20px;
+		  }
+		}
+	  }
+  
+	  h4 {
+		font-size: 24px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 600;
+		letter-spacing: -1px;
+		color: $default-color;
+		margin-bottom: 10px;
+  
+		span {
+		  font-weight: 400;
+		  letter-spacing: normal;
+		  color: #c4cdd7;
+		}
+	  }
+  
+	  .main-content-label, .card-table-two .card-title {
+		text-transform: none;
+		line-height: 1.3;
+		margin-bottom: 5px;
+		font-size: 0.875rem;
+	  }
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--nineteen .card-header {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  z-index: 10;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--nineteen .card-header .row {
+	  display: flex;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--nineteen .card-header .row > div + div {
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--nineteen .card-header h4 {
+	  font-size: 30px;
+	}
+  }
+  
+  .card-table-two .card--nineteen .card-header .card-title, .card--nineteen .card-header .card--eight .card-title, .card--eight .card--nineteen .card-header .card-title {
+	text-transform: none;
+	line-height: 1.3;
+	margin-bottom: 5px;
+	font-size: 0.875rem;
+  }
+  
+  @media (min-width: 992px) {
+	.card--nineteen .card-header {
+	  .main-content-label, .card-table-two .card-title {
+		font-size: 14px;
+	  }
+	}
+  
+	.card-table-two .card--nineteen .card-header .card-title, .card--nineteen .card-header .card--eight .card-title, .card--eight .card--nineteen .card-header .card-title {
+	  font-size: 14px;
+	}
+  }
+  
+  .card--nineteen .card-header {
+	p {
+	  font-size: 11px;
+	  color: #c4cdd7;
+	  margin-bottom: 0;
+	}
+  
+	.btn, .sp-container button {
+	  text-transform: uppercase;
+	  font-weight: 500;
+	  font-size: 11px;
+	  letter-spacing: .5px;
+	  padding: 5px 20px;
+	  min-height: inherit;
+	  border-width: 2px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--nineteen .card-header p {
+	  font-size: 12px;
+	}
+  }
+  
+  .sp-container .card--nineteen .card-header button {
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: .5px;
+	padding: 5px 20px;
+	min-height: inherit;
+	border-width: 2px;
+  }
+  
+  .card--nineteen {
+	.card-title {
+	  text-transform: uppercase;
+	  font-weight: 700;
+	  margin-bottom: 15px;
+	  color: #0040ff;
+	}
+  
+	.chart-legend {
+	  margin-top: 22px;
+	  display: flex;
+	  align-items: center;
+  
+	  > div {
+		position: relative;
+		text-transform: uppercase;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: .5px;
+  
+		&::before {
+		  content: '';
+		  position: relative;
+		  top: 1.5px;
+		  display: inline-block;
+		  width: 10px;
+		  height: 10px;
+		  margin-right: 5px;
+		}
+  
+		&:first-child::before {
+		  background-color: #05478f;
+		}
+  
+		&:nth-child(2)::before {
+		  background-color: #2f93fe;
+		}
+  
+		&:last-child::before {
+		  background-color: #bbdafc;
+		}
+  
+		+ div {
+		  margin-left: 10px;
+		}
+	  }
+	}
+  
+	.card-body {
+	  padding: 0;
+	  position: relative;
+	}
+  
+	.flot-chart-wrapper {
+	  position: relative;
+	  margin: -30px -8px -16px -47px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 250px;
+  
+	  .flot-x-axis {
+		transform: translate(18px, -25px);
+		color: $white;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		opacity: .5;
+	  }
+  
+	  .flot-y-axis {
+		transform: translate(66px, -13px);
+		color: rgba(0, 0, 0, 0.65);
+		font-weight: 400;
+		font-size: 10px;
+		letter-spacing: .5px;
+	  }
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--nineteen .chart-legend {
+	  margin-left: 70px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--nineteen .chart-legend > div {
+	  letter-spacing: 1px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--nineteen .chart-legend > div + div {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 375px) and (max-width: 575px) {
+	.card--nineteen .card-body {
+	  padding-top: 170px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--nineteen .card-body {
+	  padding-top: 130px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--nineteen .card-body {
+	  padding-top: 95px;
+	}
+  }
+  
+  @media (min-width: 375px) {
+	.card--nineteen .flot-chart-wrapper {
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--nineteen .flot-chart {
+	  height: 314px;
+	}
+  }
+  
+  .card--twenty {
+	.card-body {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: flex-start;
+	}
+  
+	.chartjs-wrapper {
+	  width: 100%;
+	  height: 230px;
+	}
+  
+	.expansion-value {
+	  display: flex;
+	  justify-content: space-between;
+	  font-size: 17px;
+	  font-weight: 700;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  letter-spacing: -.5px;
+	  margin-bottom: 5px;
+	  margin-top: auto;
+  
+	  strong {
+		&:first-child {
+		  color: $default-color;
+		}
+  
+		&:last-child {
+		  color: #c4cdd7;
+		}
+	  }
+	}
+  
+	.progress {
+	  margin-bottom: 3px;
+	  height: 4px;
+	}
+  
+	.expansion-label {
+	  display: flex;
+	  justify-content: space-between;
+  
+	  span {
+		font-weight: 400;
+		font-size: 11px;
+		color: #c4cdd7;
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+	.card--twenty .chartjs-wrapper {
+	  margin-top: auto;
+	}
+  }
+  
+  .card--progress {
+	.progress-legend {
+	  margin: 0;
+	  padding: 0;
+	  list-style: none;
+	  display: flex;
+	  align-items: center;
+  
+	  li {
+		position: relative;
+		text-transform: uppercase;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		padding-left: 15px;
+		line-height: .95;
+  
+		&::before {
+		  content: '';
+		  position: absolute;
+		  top: 1px;
+		  left: 0;
+		  width: 8px;
+		  height: 8px;
+		}
+  
+		&:first-child::before {
+		  background-color: $primary;
+		}
+  
+		&:last-child::before {
+		  background-color: $teal;
+		}
+  
+		+ li {
+		  margin-left: 20px;
+		}
+	  }
+	}
+  
+	.media {
+	  display: block;
+  
+	  > label {
+		width: 50px;
+		display: block;
+		margin-bottom: 0;
+	  }
+  
+	  + .media {
+		margin-top: 15px;
+	  }
+	}
+  
+	.media-body {
+	  margin-top: 5px;
+	}
+  
+	.progress {
+	  background-color: $background;
+	}
+  
+	.progress-bar {
+	  height: 25px;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  font-weight: 600;
+  
+	  + .progress-bar {
+		margin-left: 1px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--progress .media {
+	  display: flex;
+	  align-items: center;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--progress .media-body {
+	  margin-top: 0;
+	  margin-left: 15px;
+	}
+  }
+  
+  .card-minimal-one {
+	border-color: $gray-300;
+	min-height: 320px;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+  
+	.card-body {
+	  position: relative;
+	  padding: 20px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: flex-start;
+	  z-index: 5;
+  
+	  > {
+		label {
+		  font-weight: 700;
+		  font-size: 14px;
+		  color: $primary;
+		  text-transform: uppercase;
+		  margin-bottom: 5px;
+		  display: block;
+		  line-height: 1;
+  
+		  span {
+			font-weight: 500;
+			color: $default-color;
+		  }
+		}
+  
+		small {
+		  font-size: 12px;
+		  display: block;
+		  color: #c4cdd7;
+		}
+  
+		h6 {
+		  color: $default-color;
+		  font-size: 36px;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-weight: 600;
+		  letter-spacing: -2px;
+		  display: flex;
+		  line-height: 1;
+		  align-items: flex-end;
+		  margin: 15px 0;
+  
+		  span {
+			font-weight: 400;
+			margin-right: 3px;
+			color: $default-color;
+		  }
+		}
+	  }
+	}
+  
+	.value-info {
+	  display: flex;
+	  align-items: center;
+  
+	  + .value-info {
+		margin-top: 5px;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		color: $default-color;
+		font-weight: 700;
+		font-family: 'Archivo', sans-serif;
+		font-size: 14px;
+		letter-spacing: -.35px;
+  
+		span {
+		  letter-spacing: normal;
+		  margin-right: 2px;
+		  color: $default-color;
+		}
+	  }
+  
+	  label {
+		display: block;
+		margin-bottom: 0;
+		font-weight: 700;
+		width: 40px;
+		position: relative;
+		top: -2px;
+	  }
+	}
+  
+	.open-info {
+	  display: flex;
+	  align-items: flex-start;
+	  margin-top: auto;
+	  margin-bottom: 25px;
+  
+	  > div + div {
+		margin-left: 25px;
+	  }
+  
+	  label {
+		font-size: 12px;
+		margin-bottom: 2px;
+		color: #7f8da9;
+	  }
+  
+	  h6 {
+		margin-bottom: 0;
+		color: $default-color;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 700;
+		font-size: 13px;
+  
+		span {
+		  font-weight: 400;
+		}
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  left: -9px;
+	  right: -8px;
+	  bottom: -13px;
+  
+	  .flot-x-axis > div {
+		transform: translate(20px, -23px);
+	  }
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 250px;
+	  position: relative;
+	}
+  }
+  
+  .card-minimal-two {
+	height: 100%;
+	border-color: $gray-300;
+	background-color: transparent;
+	overflow: hidden;
+  
+	.card-header {
+	  background-color: transparent;
+	  padding: 15px;
+	  align-items: center;
+	  justify-content: space-between;
+  
+	  > .nav .nav-link {
+		padding: 8px 18px;
+		font-weight: 500;
+		background-color: $background;
+  
+		+ .nav-link {
+		  margin-left: 2px;
+		}
+  
+		&:hover, &:focus {
+		  background-color: $background;
+		}
+  
+		&.active {
+		  background-color: $primary;
+		  color: $white;
+		}
+	  }
+	}
+  
+	.card-header-right {
+	  display: flex;
+	  align-items: center;
+	  margin-top: 20px;
+  
+	  .nav {
+		justify-content: flex-end;
+		width: 100%;
+	  }
+  
+	  .nav-link {
+		padding: 5px 10px;
+		text-transform: capitalize;
+  
+		+ .nav-link {
+		  margin-left: 2px;
+		}
+  
+		span {
+		  &:first-child {
+			display: none;
+		  }
+  
+		  &:last-child {
+			text-transform: uppercase;
+			font-size: 11px;
+			font-weight: 500;
+		  }
+		}
+  
+		&:hover, &:focus {
+		  background-color: $background;
+		}
+  
+		&.active {
+		  background-color: #c4cdd7;
+		  color: $white;
+		}
+	  }
+	}
+  
+	.card-body {
+	  position: relative;
+	  overflow: hidden;
+	  padding: 0;
+	}
+  
+	.flot-wrapper {
+	  position: relative;
+	  bottom: -14px;
+	  margin-right: -9px;
+	  margin-left: -31px;
+	  margin-top: -25px;
+  
+	  .flot-x-axis > div {
+		transform: translate(22px, -23px);
+	  }
+  
+	  .flot-y-axis > div {
+		transform: translateX(-10px);
+	  }
+	}
+  
+	.flot-chart {
+	  width: auto;
+	  height: 250px;
+	  position: relative;
+	}
+  
+	.more-info {
+	  position: absolute;
+	  top: 10px;
+	  right: 10px;
+  
+	  div {
+		display: flex;
+		align-items: flex-start;
+		font-size: 13px;
+	  }
+  
+	  span {
+		&:first-child {
+		  width: 80px;
+		  text-align: right;
+		  color: #c4cdd7;
+		  display: block;
+		  line-height: 1.35;
+		}
+  
+		&:last-child {
+		  margin-left: 15px;
+		  color: $default-color;
+		  font-weight: 700;
+		  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  font-size: 14px;
+		}
+	  }
+	}
+  
+	.card-footer {
+	  padding: 20px;
+	  position: relative;
+	  z-index: 2;
+	  overflow-y: hidden;
+	  width: calc(100vw - 40px);
+	  margin-bottom: -8px;
+  
+	  .media-icon {
+		color: #f7931a;
+		font-size: 42px;
+		line-height: 0;
+	  }
+  
+	  .media-body {
+		margin-left: 20px;
+		margin-bottom: 10px;
+	  }
+  
+	  .row {
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		overflow-x: auto;
+  
+		> div {
+		  flex-shrink: 0;
+		}
+	  }
+  
+	  label {
+		margin-bottom: 2px;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 11px;
+		letter-spacing: .5px;
+		color: #c4cdd7;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		color: $default-color;
+		font-weight: 700;
+		font-size: 16px;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .card-header {
+	  display: flex;
+	  padding: 15px 20px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .card-header > .nav .nav-link {
+	  padding: 8px 20px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card-minimal-two .card-header > .nav .nav-link {
+	  padding: 8px 30px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .card-header-right {
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .card-header-right .nav-link {
+	  padding: 8px 10px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-minimal-two .card-header-right .nav-link span:first-child {
+	  display: inline;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card-minimal-two .card-header-right .nav-link span:last-child {
+	  display: none;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .card-body {
+	  padding: 0 20px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .flot-wrapper {
+	  margin-right: -9px;
+	  margin-left: 10px;
+	  margin-top: 0;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .flot-chart {
+	  height: 300px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-two .more-info {
+	  right: 20px;
+	  top: 30px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .more-info {
+	  right: 30px;
+	  top: 50px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-two .card-footer {
+	  width: auto;
+	}
+  }
+  
+  .card-minimal-three {
+	border-color: $gray-300;
+	width: calc(100vw - 38px);
+  
+	.card-header {
+	  border-bottom: 1px solid $gray-300;
+	  background-color: transparent;
+	  padding: 20px 20px 0;
+  
+	  .main-content-text {
+		margin-bottom: 20px;
+	  }
+	}
+  
+	.main-nav-tabs {
+	  padding: 0;
+	  background-color: transparent;
+	  position: relative;
+	  margin-left: -15px;
+	  margin-right: -15px;
+	  margin-bottom: 3px;
+  
+	  .lSAction > a {
+		background-color: $background;
+		color: $default-color;
+  
+		&::before {
+		  top: -4px;
+		}
+  
+		&.lSPrev {
+		  left: -35px;
+		}
+	  }
+  
+	  .tab-item {
+		min-width: 203px;
+	  }
+  
+	  .tab-link {
+		background-color: $background;
+		font-weight: 500;
+		align-items: flex-start;
+		padding-top: 8px;
+  
+		&:hover {
+		  background-color: $background;
+		}
+  
+		&.active {
+		  background-color: $primary;
+		  color: $white;
+  
+		  &:hover, &:focus {
+			background-color: $primary;
+			color: $white;
+		  }
+		}
+	  }
+	}
+  
+	.card-body {
+	  padding: 0;
+	}
+  
+	.tab-pane-header {
+	  padding: 20px;
+	  background-color: $white;
+	  border-bottom: 1px solid $gray-300;
+  
+	  .main-content-label, .card-table-two .card-title {
+		margin-bottom: 3px;
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-minimal-three {
+	  width: 634px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card-minimal-three {
+	  width: 753px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-three .main-nav-tabs .tab-item {
+	  min-width: 150px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card-minimal-three .tab-pane-header {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	}
+  }
+  
+  .card-table-two .card-minimal-three .tab-pane-header .card-title, .card-minimal-three .tab-pane-header .card--eight .card-title, .card--eight .card-minimal-three .tab-pane-header .card-title {
+	margin-bottom: 3px;
+  }
+  
+  .card-minimal-three {
+	.tab-pane-header > div:last-child {
+	  display: flex;
+	  margin-top: 15px;
+  
+	  a {
+		flex: 1;
+  
+		+ a {
+		  margin-left: 10px;
+		}
+	  }
+	}
+  
+	.tab-pane-body {
+	  padding: 20px;
+  
+	  .table {
+		thead tr {
+		  th, td {
+			white-space: nowrap;
+		  }
+		}
+  
+		tbody tr {
+		  th, td {
+			white-space: nowrap;
+		  }
+		}
+	  }
+	}
+  
+	.no-transactions-panel {
+	  height: 200px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  flex-direction: column;
+  
+	  .icon-wrapper {
+		width: 80px;
+		height: 80px;
+		background-color: $background;
+		color: #c4cdd7;
+		font-size: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 20px;
+		border-radius: 100%;
+  
+		i {
+		  line-height: 0;
+		}
+	  }
+  
+	  h6 {
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 15px;
+		color: $default-color;
+		letter-spacing: 1px;
+		margin-bottom: 2px;
+	  }
+	}
+  
+	.table tbody tr td {
+	  vertical-align: middle;
+  
+	  span {
+		display: block;
+		width: 8px;
+		height: 8px;
+		border-radius: 100%;
+	  }
+  
+	  &:last-child {
+		font-weight: 500;
+		color: $default-color;
+	  }
+	}
+  }
+  
+  .card-crypto-portfolio {
+	width: 100%;
+	border-color: $gray-300;
+	margin-top: 20px;
+  
+	.card-title {
+	  text-transform: uppercase;
+	}
+  
+	.table {
+	  margin-bottom: 0;
+  
+	  thead tr {
+		th, td {
+		  padding: 10px 0;
+		  text-align: right;
+		  white-space: nowrap;
+		}
+	  }
+  
+	  tbody tr {
+		th, td {
+		  padding: 10px 0;
+		  text-align: right;
+		  white-space: nowrap;
+		}
+	  }
+  
+	  thead tr {
+		th:first-child, td:first-child {
+		  text-align: left;
+		}
+	  }
+  
+	  tbody tr {
+		th:first-child, td:first-child {
+		  text-align: left;
+		}
+	  }
+  
+	  thead tr th {
+		font-size: 10px;
+	  }
+  
+	  tbody tr td:first-child {
+		font-weight: 500;
+		color: $default-color;
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card-crypto-portfolio {
+	  width: calc(33.33333% - 13px);
+	  margin-top: 0;
+	}
+  }
+  
+  .card-minimal-four {
+	border-color: $gray-300;
+  
+	.card-header {
+	  background-color: transparent;
+	  border-bottom: 1px solid $gray-300;
+  
+	  h6 {
+		font-size: 14px;
+		font-weight: 700;
+		margin-bottom: 2px;
+		color: $default-color;
+	  }
+  
+	  p {
+		margin-bottom: 0;
+		white-space: nowrap;
+  
+		span {
+		  color: $danger;
+		}
+	  }
+  
+	  .media {
+		align-items: center;
+	  }
+  
+	  .media-body {
+		margin-left: 12px;
+	  }
+	}
+  
+	.coin-logo i {
+	  line-height: 0;
+	}
+  
+	.card-body {
+	  padding: 0;
+	  overflow: hidden;
+	  position: relative;
+	  background-color: $background;
+	}
+  
+	.card-body-top {
+	  top: 15px;
+	  left: 10px;
+	  position: absolute;
+	  font-size: 10px;
+	  text-transform: uppercase;
+	  letter-spacing: 1px;
+	  z-index: 10;
+  
+	  a {
+		color: $default-color;
+		font-weight: 700;
+		width: 20px;
+		text-align: right;
+		display: inline-block;
+  
+		&:hover, &:focus {
+		  color: $primary;
+		}
+	  }
+  
+	  div + div {
+		margin-top: 5px;
+	  }
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-left: -20px;
+	  margin-right: -9px;
+	  margin-bottom: -17px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 150px;
+	}
+  
+	.card-footer {
+	  background-color: transparent;
+	  border-top-color: $gray-300;
+	  padding: 0;
+  
+	  .nav-link {
+		flex: 1;
+		display: block;
+		text-align: center;
+		background-color: $background;
+		position: relative;
+		padding-left: 10px;
+		padding-right: 10px;
+  
+		&:hover, &:focus {
+		  background-color: #eeeff4;
+		}
+  
+		span {
+		  display: block;
+  
+		  &:first-child {
+			color: #c4cdd7;
+			font-weight: 700;
+			font-size: 11px;
+		  }
+  
+		  &:last-child {
+			color: $default-color;
+			font-weight: 500;
+			font-size: 11px;
+			font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		  }
+		}
+  
+		+ .nav-link {
+		  border-left: 1px solid $gray-300;
+		}
+  
+		&.active {
+		  background-color: $background;
+  
+		  &::before {
+			content: '';
+			position: absolute;
+			top: -1px;
+			left: 0;
+			right: 0;
+			border-top: 1px solid #f7f7f7;
+			z-index: 5;
+		  }
+  
+		  span:first-child {
+			color: $default-color;
+		  }
+		}
+	  }
+	}
+  }
+  
+  .card--donut {
+	.card-body {
+	  padding: 25px 20px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	}
+  
+	.main-donut-chart {
+	  &.chart1 {
+		width: 140px;
+		height: 140px;
+		background: #dfe4ea;
+  
+		.slice {
+		  &.one {
+			clip: rect(0 140px 70px 0);
+			-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+			background: #fc4975;
+		  }
+  
+		  &.two {
+			clip: rect(0 70px 140px 0);
+			-webkit-transform: rotate(290deg);
+			transform: rotate(290deg);
+			background: #fc4975;
+		  }
+		}
+  
+		.chart-center {
+		  top: 10px;
+		  left: 10px;
+		  width: 120px;
+		  height: 120px;
+		  background: $white;
+  
+		  span {
+			font-size: 40px;
+			line-height: 120px;
+			color: #fc4975;
+  
+			&:after {
+			  content: "80%";
+			}
+		  }
+		}
+	  }
+  
+	  &.chart2 {
+		width: 140px;
+		height: 140px;
+		background: #dfe4ea;
+  
+		.slice {
+		  &.one {
+			clip: rect(0 140px 70px 0);
+			-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+			background: $primary;
+		  }
+  
+		  &.two {
+			clip: rect(0 70px 140px 0);
+			-webkit-transform: rotate(244.8deg);
+			transform: rotate(270deg);
+			background: $primary;
+		  }
+		}
+  
+		.chart-center {
+		  top: 10px;
+		  left: 10px;
+		  width: 120px;
+		  height: 120px;
+		  background: $white;
+  
+		  span {
+			font-size: 40px;
+			line-height: 120px;
+			color: $primary;
+  
+			&:after {
+			  content: "78%";
+			}
+		  }
+		}
+	  }
+  
+	  &.chart3 {
+		width: 140px;
+		height: 140px;
+		background: $background;
+  
+		.slice {
+		  &.one {
+			clip: rect(0 140px 70px 0);
+			-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+			background: $success;
+		  }
+  
+		  &.two {
+			clip: rect(0 70px 140px 0);
+			-webkit-transform: rotate(270deg);
+			transform: rotate(270deg);
+			background: $success;
+		  }
+		}
+  
+		.chart-center {
+		  top: 10px;
+		  left: 10px;
+		  width: 120px;
+		  height: 120px;
+		  background: $white;
+  
+		  span {
+			font-size: 40px;
+			line-height: 120px;
+			color: $success;
+  
+			&:after {
+			  content: "75%";
+			}
+		  }
+		}
+	  }
+  
+	  &.chart1 .chart-center span, &.chart2 .chart-center span, &.chart3 .chart-center span, &.chart4 .chart-center span {
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-size: 32px !important;
+	  }
+	}
+  }
+  
+  .card--balance {
+	position: relative;
+	overflow: hidden;
+  
+	.card-body {
+	  padding: 20px;
+	  position: relative;
+	  z-index: 5;
+	}
+  
+	.fab {
+	  position: absolute;
+	  top: 20px;
+	  right: 20px;
+	  font-size: 48px;
+	  color: $primary;
+	  z-index: 5;
+	  background-color: $white;
+	}
+  
+	.main-content-label, .card-table-two .card-title {
+	  color: #c4cdd7;
+	  font-size: 10px;
+	  font-weight: 500;
+	  letter-spacing: 1px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--balance {
+	  min-height: 260px;
+	  height: 100%;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--balance .card-body {
+	  padding: 30px;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	}
+  }
+  
+  .card-table-two .card--balance .card-title, .card--balance .card--eight .card-title, .card--eight .card--balance .card-title {
+	color: #c4cdd7;
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 1px;
+  }
+  
+  @media (min-width: 576px) {
+	.card--balance {
+	  .main-content-label, .card-table-two .card-title {
+		font-size: 11px;
+	  }
+	}
+  
+	.card-table-two .card--balance .card-title, .card--balance .card--eight .card-title, .card--eight .card--balance .card-title {
+	  font-size: 11px;
+	}
+  }
+  
+  .card--balance {
+	.balance-amount {
+	  color: $default-color;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  font-weight: 600;
+	  font-size: 28px;
+	  letter-spacing: -1px;
+	  margin-bottom: 20px;
+  
+	  span {
+		color: #c4cdd7;
+		font-weight: 400;
+		letter-spacing: normal;
+	  }
+	}
+  
+	.account-number {
+	  display: flex;
+	  align-items: center;
+	  font-size: 20px;
+	  font-weight: 700;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: $default-color;
+	  letter-spacing: -1px;
+	  margin-bottom: 20px;
+  
+	  span {
+		display: flex;
+		align-items: center;
+		line-height: 1;
+  
+		+ span {
+		  margin-left: 20px;
+		}
+  
+		i {
+		  width: 5px;
+		  height: 5px;
+		  background-color: $default-color;
+		  border-radius: 100%;
+  
+		  + i {
+			margin-left: 5px;
+		  }
+		}
+	  }
+	}
+  
+	.account-name {
+	  color: $default-color;
+	  font-weight: 400;
+	  margin-bottom: 0;
+	}
+  
+	.chart-wrapper {
+	  position: absolute;
+	  top: 20px;
+	  bottom: 10px;
+	  left: -10px;
+	  right: -10px;
+	  opacity: .3;
+	  z-index: 4;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 100%;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--balance .balance-amount {
+	  font-size: 36px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--balance .account-number {
+	  font-size: 28px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--balance .account-number span + span {
+	  margin-left: 30px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card--balance .account-number span + span {
+	  margin-left: 50px;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--balance .account-number span i {
+	  width: 10px;
+	  height: 10px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card--ratio {
+	  height: 350px;
+	}
+  }
+  
+  .card--ratio {
+	.card-body {
+	  display: flex;
+	  align-items: center;
+  
+	  + .card-body {
+		padding-top: 0px;
+	  }
+  
+	  > div {
+		&:first-child {
+		  width: 140px;
+		  display: none;
+		  align-items: center;
+		  justify-content: center;
+		}
+  
+		&:last-child {
+		  flex: 1;
+		}
+	  }
+  
+	  h5 {
+		font-size: 28px;
+		font-weight: 600;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		color: $default-color;
+		letter-spacing: -1px;
+		margin-bottom: 2px;
+	  }
+	}
+  
+	.card-icon {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: $background;
+	  font-size: 140px;
+  
+	  .typcn {
+		line-height: 1;
+  
+		&::before {
+		  width: auto;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--ratio .card-body > div:first-child {
+	  display: flex;
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--ratio .card-body > div:last-child {
+	  margin-left: 30px;
+	}
+  }
+  
+  .card--finance {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+  
+	.card-title {
+	  margin-bottom: 20px;
+	}
+  
+	h2 {
+	  line-height: 1;
+	  color: $default-color;
+	  font-weight: 600;
+	  font-size: 30px;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  letter-spacing: -1px;
+	  margin-top: 10px;
+	  margin-bottom: 2px;
+  
+	  span {
+		letter-spacing: normal;
+		color: #c4cdd7;
+		font-weight: 400;
+		margin-right: 5px;
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--finance {
+	  min-height: 172px;
+	}
+  }
+  
+  @media (min-width: 1200px) {
+	.card--finance {
+	  min-height: 165px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--finance .card-title {
+	  margin-bottom: auto;
+	}
+  }
+  
+  .card--table-six {
+	.card-title {
+	  padding: 15px 20px;
+	  margin-bottom: 0;
+	  border-bottom: 1px solid $gray-300;
+	}
+  
+	.table-responsive {
+	  width: calc(100vw - 42px);
+	}
+  
+	.table {
+	  margin-bottom: 0;
+  
+	  thead tr {
+		th {
+		  white-space: nowrap;
+		}
+  
+		&:first-child {
+		  background-color: $background;
+  
+		  th {
+			padding: 10px 12px;
+			line-height: 1;
+  
+			&:last-child {
+			  border-left: 1px solid $gray-300;
+			}
+		  }
+		}
+  
+		&:last-child th {
+		  width: 13%;
+		  padding: 10px 12px;
+		  line-height: 1;
+		  text-align: right;
+  
+		  &:first-child {
+			width: 22%;
+		  }
+  
+		  &:nth-child(2), &:nth-child(6) {
+			border-left: 1px solid $gray-300;
+		  }
+		}
+	  }
+  
+	  tbody tr {
+		td {
+		  text-align: right;
+		  white-space: nowrap;
+  
+		  &:first-child {
+			text-align: left;
+		  }
+  
+		  &:nth-child(2), &:nth-child(6) {
+			border-left: 1px solid $gray-300;
+		  }
+		}
+  
+		&:last-child td {
+		  font-weight: 500;
+		  color: $default-color;
+		}
+	  }
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.card--table-six .table-responsive {
+	  width: 100%;
+	}
+  }
+  
+  .card--donut .card-header {
+	background-color: transparent;
+	padding: 20px 20px 0;
+  }
+  
+  .card--sixteen {
+	.main-img-user::after {
+	  display: none;
+	}
+  
+	.table tbody > tr {
+	  background-color: transparent;
+  
+	  th, td {
+		padding: 10px 10px 10px 0;
+		vertical-align: middle;
+		white-space: nowrap;
+	  }
+  
+	  th:first-child, td:first-child {
+		width: 10%;
+	  }
+  
+	  th:nth-child(2), td:nth-child(2) {
+		width: 60%;
+	  }
+  
+	  th:last-child, td:last-child {
+		width: 30%;
+	  }
+	}
+  }
+  
+  .card--fifteen {
+	padding: 20px 20px 0;
+	overflow: hidden;
+  
+	h1 {
+	  font-size: 40px;
+	  font-weight: 500;
+	  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	  color: $default-color;
+	  margin-bottom: 0;
+	  line-height: 1;
+  
+	  span {
+		display: inline;
+		font-size: 18px;
+		color: #c4cdd7;
+	  }
+	}
+  
+	label {
+	  font-size: 14px;
+	  font-weight: 500;
+	  display: block;
+	}
+  
+	span {
+	  color: #c4cdd7;
+	  display: block;
+	  font-size: 12px;
+	}
+  
+	.chart-wrapper {
+	  position: relative;
+	  margin-left: -32px;
+	  margin-right: -32px;
+	  margin-bottom: -10px;
+	}
+  
+	.flot-chart {
+	  width: 100%;
+	  height: 127px;
+	  position: relative;
+	  margin-top: 20px;
+  
+	  .flot-x-axis > div:nth-child(4) {
+		color: $default-color !important;
+	  }
+	}
+  }
+  
+  
+  @media (min-width: 576px) {
+	.card--calendar .ui-datepicker .ui-datepicker-calendar, .card--twelve .flot-chart {
+	  width: 100%;
+	}
+  }
+  
+  .card--events {
+	border-color: $gray-300;
+	box-shadow: 0 2px 10px -1px rgba(8, 35, 171, 0.05);
+	overflow: hidden;
+  
+	.card-header {
+	  padding: 20px;
+	  background-color: transparent;
+	}
+  }
+  
+  .card--calendar .card--events {
+	margin-left: -20px;
+	margin-right: -20px;
+  
+	.list-group-item {
+	  padding: 13px 20px 13px 40px;
+	}
+  }
+  
+  .card--events {
+	.card-title {
+	  color: #c4cdd7;
+	  text-transform: uppercase;
+	  margin-bottom: 10px;
+	  font-size: 10px;
+	  font-weight: 500;
+	  letter-spacing: 1px;
+	}
+  
+	.card-subtitle {
+	  color: $default-color;
+	  font-weight: 400;
+	  font-size: 18px;
+	}
+  
+	.card-body {
+	  padding: 0;
+	}
+  
+	.list-group-item {
+	  padding: 15px 40px 15px 20px;
+	  border-left-width: 0;
+	  border-right-width: 0;
+	  position: relative;
+  
+	  &:first-child, &:last-child {
+		border-radius: 0;
+	  }
+  
+	  label {
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 10px;
+		color: $default-color;
+		margin-bottom: 8px;
+		letter-spacing: .5px;
+  
+		span {
+		  color: #c4cdd7;
+		  font-weight: 500;
+		}
+	  }
+  
+	  h6 {
+		font-size: 14px;
+		font-weight: 700;
+		color: $default-color;
+		margin-bottom: 5px;
+		display: flex;
+		align-items: center;
+	  }
+  
+	  p {
+		margin-bottom: 5px;
+  
+		strong {
+		  font-weight: 500;
+		}
+	  }
+  
+	  small {
+		font-size: 11px;
+  
+		span {
+		  font-weight: 700;
+		  text-transform: uppercase;
+		}
+	  }
+	}
+  
+	.event-indicator {
+	  width: 10px;
+	  height: 10px;
+	  position: absolute;
+	  top: 21px;
+	  right: 20px;
+	  border-radius: 100%;
+	}
+  
+	.event-user {
+	  margin-top: 10px;
+	  display: flex;
+	  align-items: center;
+  
+	  .main-img-user {
+		width: 28px;
+		height: 28px;
+  
+		&::after {
+		  display: none;
+		}
+  
+		+ .main-img-user {
+		  margin-left: -6px;
+		}
+	  }
+  
+	  a:last-child {
+		margin-left: 10px;
+		color: #c4cdd7;
+		font-weight: 500;
+		font-size: 11px;
+  
+		&:hover, &:focus {
+		  color: $default-color;
+		}
+	  }
+	}
+  }
+  
+  .card--fourteen {
+	border-color: $gray-300;
+	box-shadow: 0 2px 10px -1px rgba(8, 35, 171, 0.05);
+	padding: 20px;
+  
+	.main-content-label, .card-table-two .card-title {
+	  font-size: 0.875rem;
+	  margin-bottom: 20px;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.card--fourteen {
+	  height: 100%;
+	}
+  }
+  
+  .card-table-two .card--fourteen .card-title, .card--fourteen .card--eight .card-title, .card--eight .card--fourteen .card-title {
+	font-size: 0.875rem;
+	margin-bottom: 20px;
+  }
+  
+  .card--fourteen {
+	.main-content-label span, .card-table-two .card-title span {
+	  font-weight: 400;
+	  color: #c4cdd7;
+	  text-transform: none;
+	}
+  }
+  
+  .card-table-two .card--fourteen .card-title span, .card--fourteen .card--eight .card-title span, .card--eight .card--fourteen .card-title span {
+	font-weight: 400;
+	color: #c4cdd7;
+	text-transform: none;
+  }
+  
+  .card--fourteen {
+	.card-body {
+	  padding: 0;
+	  min-height: 100px;
+  
+	  h1 {
+		color: $default-color;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		font-weight: 600;
+		letter-spacing: -1px;
+		margin-bottom: 0;
+  
+		span {
+		  color: #c4cdd7;
+		  letter-spacing: normal;
+		  font-weight: 400;
+		  margin-right: 5px;
+		}
+	  }
+  
+	  h4 {
+		color: $default-color;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 0;
+		letter-spacing: -.5px;
+	  }
+  
+	  .progress {
+		margin-bottom: 2px;
+	  }
+  
+	  small {
+		font-size: 11px;
+		color: #c4cdd7;
+	  }
+	}
+  
+	.sparkline-wrapper canvas {
+	  width: 100% !important;
+	}
+  
+	.card-footer {
+	  background-color: transparent;
+	  padding: 0;
+	  margin-top: 15px;
+	  border-top-width: 0;
+  
+	  h6 {
+		color: $default-color;
+		font-size: 20px;
+		font-weight: 700;
+		font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		margin-bottom: 0;
+		letter-spacing: -.5px;
+	  }
+  
+	  label {
+		display: block;
+		margin-bottom: 0;
+		color: #c4cdd7;
+		font-size: 11px;
+	  }
+	}
+  }
+  
+  @media (min-width: 576px) {
+	.card--fourteen .card-footer label {
+	  font-size: 0.875rem;
+	}
+  }

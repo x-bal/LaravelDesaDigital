@@ -1,0 +1,152 @@
+.main-iconbar-primary {
+	background-color: #0040ff;
+	padding-top: 0;
+  
+	.main-img-user::after {
+	  box-shadow: none;
+	}
+  
+	.main-iconbar-logo {
+	  background-color: #5a7bff;
+	  color: $white;
+	  height: 64px;
+  
+	  &::after {
+		display: none;
+	  }
+	}
+  
+	.nav {
+	  justify-content: center;
+	}
+  
+	.nav-link {
+	  width: 42px;
+	  height: 42px;
+	  color: $white-5;
+	  border-radius: 0px;
+	  transition: all 0.2s ease-in-out;
+  
+	  &:hover, &:focus {
+		color: $white;
+		background-color: $white-1;
+	  }
+  
+	  &.active {
+		color: $white;
+		background-color: $white-2;
+	  }
+	}
+  
+	.main-iconbar-help {
+	  color: $white-5;
+  
+	  &:hover, &:focus {
+		color: $white;
+	  }
+	}
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+	.main-iconbar-primary .nav-link {
+	  transition: none;
+	}
+  }
+  
+  .main-iconbar-aside-primary {
+	width: 250px;
+	background-color: $background;
+	box-shadow: 0 0 16px rgba(20, 17, 45, 0.08);
+	border-right: 1px solid $border;
+  
+	.main-iconbar-header {
+	  padding: 18px 25px;
+	  background-color: $white;
+	  border-bottom: 1px solid $border;
+	}
+  
+	.main-iconbar-body {
+	  padding: 20px 25px;
+  
+	  .nav {
+		padding-top: 0;
+		padding-left: 0;
+		border-left-width: 0;
+	  }
+  
+	  .nav-item + .nav-item, .nav-sub, .nav-sub-item + .nav-sub-item {
+		border-top-color: $border;
+	  }
+  
+	  .nav-link {
+		&:hover, &:focus, &.active {
+		  color: $primary;
+		}
+	  }
+	}
+  
+	.main-iconbar-toggle-menu {
+	  display: none;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.main-iconbar-aside-primary.show + .main-content {
+	  margin-left: 64px;
+	}
+  }
+  
+  .icons-list {
+	list-style: none;
+	padding: 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	border-top: 1px solid $border;
+	border-left: 1px solid $border;
+	margin-bottom: 0;
+  
+	> li {
+	  -ms-flex: 1 0 4rem;
+	  flex: 1 0 4rem;
+	}
+  }
+  
+  .icons-list-wrap {
+	overflow: hidden;
+  }
+  
+  .icons-list-item {
+	text-align: center;
+	height: 4rem;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	border-right: 1px solid $border;
+	border-bottom: 1px solid $border;
+  
+	i {
+	  font-size: 1.25rem;
+	}
+  }
+  
+  .main-icon-group {
+	text-align: center;
+	padding: 20px;
+	color: $dark;
+  
+	i {
+	  line-height: 1;
+	  font-size: 24px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.main-icon-group i {
+	  font-size: 32px;
+	}
+  }

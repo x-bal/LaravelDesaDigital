@@ -1,0 +1,31 @@
+@media (max-width: 992px) and (min-width: 768px) {
+	.app-sidebar {
+	  z-index: 1000;
+	}
+  }
+  
+  @media (max-width: 992px) and (min-width: 768px) {
+	.app-sidebar {
+	  margin-top: 0 !important;
+	}
+  
+	.app-sidebar__toggle {
+	  position: inherit !important;
+	}
+  }
+  
+  @media (max-width: 767px) {
+	.app-sidebar {
+	  margin-top: 0 !important;
+	  padding-top: 63px !important;
+	}
+  
+	.app-sidebar__toggle {
+	  top: 14px;
+	  position: absolute;
+	}
+  }
+  
+  .side-menu__icon {
+	fill: #565367;
+  }
