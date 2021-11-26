@@ -43,6 +43,49 @@
         <li>
             <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
         </li>
+        <li>
+            <h3>Pengguna</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="stop-circle-outline"></i><span class="side-menu__label">Pengguna</span></a>
+        </li>
+        <li>
+            <h3>Surat</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="list-outline"></i><span class="side-menu__label">Antrian</span></a>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="email-outline"></i><span class="side-menu__label">Permohonan Surat</span></a>
+        </li>
+        <li>
+            <h3>Gallery</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="grid-outline"></i><span class="side-menu__label">Gallery</span></a>
+        </li>
+        <li>
+            <h3>Produk Warga</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="shopping-cart-outline"></i><span class="side-menu__label">Produk Warga</span></a>
+        </li>
+        <li>
+            <h3>Aduan</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="file-text-outline"></i><span class="side-menu__label">Aduan</span></a>
+        </li>
+
+        <li>
+            <h3>Informasi</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Kategori Informasi</span></a>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Informasi</span></a>
+        </li>
         @endrole
         @role('Warga')
         <li>
