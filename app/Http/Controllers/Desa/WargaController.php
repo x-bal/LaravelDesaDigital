@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Desa;
 
 use App\Http\Controllers\Controller;
+use App\Models\Desa;
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
+use App\Models\Warga;
 use Illuminate\Http\Request;
 
 class WargaController extends Controller
@@ -14,7 +18,10 @@ class WargaController extends Controller
      */
     public function index()
     {
-        //
+        $wargas = Warga::orderBy('created_at','desc')->get();
+        return view('desa.warga.index',[
+            'wargas' => $wargas
+        ]);
     }
 
     /**
@@ -24,7 +31,12 @@ class WargaController extends Controller
      */
     public function create()
     {
-        //
+        return view('desa.warga.create',[
+            'warga' => new Warga(),
+            'desas' => Desa::get(),
+            'kecamatans' => Kecamatan::get(),
+            'kabupatens' => Kabupaten::get()
+        ]);
     }
 
     /**

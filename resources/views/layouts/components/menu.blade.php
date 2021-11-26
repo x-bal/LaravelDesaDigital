@@ -41,7 +41,7 @@
             <h3>Daftar Masyarakat</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
+            <a class="side-menu__item" href="{{ route('desa.warga.index') }}"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
         </li>
         <li>
             <h3>Pengguna</h3>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Desa\WargaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
     });
     Route::prefix('desa')->name('desa.')->group(function () {
-    
+        Route::resource('warga',WargaController::class);
     });
     Route::prefix('warga')->name('warga.')->group(function(){
 
