@@ -14,4 +14,9 @@ class Desa extends Model
     {
         return $this->belongsTo(Kecamatan::class);
     }
+
+    public function admindesa()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

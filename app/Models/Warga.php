@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Warga extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    public function antrian()
+    {
+        return $this->hasMany(Antrian::class);
+    }
 }
