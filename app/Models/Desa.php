@@ -24,4 +24,9 @@ class Desa extends Model
     {
         return $this->hasMany(PermohonanSurat::class);
     }
+
+    public function warga()
+    {
+        return $this->hasMany(Warga::class);
+    }
 }

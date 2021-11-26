@@ -32,9 +32,9 @@
                             @foreach($wargas as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->desa_id }}</td>
-                                <td>{{ $data->kecamatan_id }}</td>
-                                <td>{{ $data->kabupaten_id }}</td>
+                                <td>{{ $data->desa->nama_desa }}</td>
+                                <td>{{ $data->kecamatan->nama_kecamatan }}</td>
+                                <td>{{ $data->kabupaten->nama_kabupaten }}</td>
                                 <td>{{ $data->nik }}</td>
                                 <td>{{ $data->nama_warga }}</td>
                                 <td>{{ $data->jenis_kelamin }}</td>
