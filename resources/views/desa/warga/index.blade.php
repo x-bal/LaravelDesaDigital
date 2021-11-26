@@ -23,8 +23,8 @@
                                 <th>nik</th>
                                 <th>nama_warga</th>
                                 <th>jenis_kelamin</th>
-                                <th>tempat_lahir</th>
-                                <th>tanggal_lahir</th>
+                                <th>tempat lahir</th>
+                                <th>tanggal lahir</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

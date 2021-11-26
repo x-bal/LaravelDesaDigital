@@ -21,5 +21,5 @@ class Warga extends Model
 
         return $values;
     }
-
+    protected $guarded = [];
 }
