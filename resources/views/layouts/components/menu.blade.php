@@ -1,0 +1,57 @@
+<!--App Sidebar-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <div class="app-sidebar__user clearfix">
+        <div class="user-pro-body">
+            <div class="sideuser-img">
+                <img src="{ asset('storage/'.$pegawai->foto) }" alt="user-img" class="">
+                <span class="sidebar-icon"></span>
+            </div>
+            <div class="user-info">
+                <h2 class="app-sidebar__user-name">{ Nama }</h2>
+                <span class="app-sidebar__title">{ nama }</span>
+            </div>
+        </div>
+    </div>
+    <ul class="side-menu">
+        <li>
+            <h3>Main</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="{{ route('home') }}"><i class="side-menu__icon" data-eva="monitor-outline"></i><span class="side-menu__label">Dashboard</span></a>
+        </li>
+        @role('Utama')
+        <li>
+            <h3>Daftar Masyarakat</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
+        </li>
+        @endrole
+        @role('Kabupaten')
+        <li>
+            <h3>Daftar Masyarakat</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
+        </li>
+        @endrole
+        @role('Desa')
+        <li>
+            <h3>Daftar Masyarakat</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
+        </li>
+        @endrole
+        @role('Warga')
+        <li>
+            <h3>Daftar Masyarakat</h3>
+        </li>
+        <li>
+            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
+        </li>
+        @endrole
+    </ul>
+</aside>
+<!--/App Sidebar-->
