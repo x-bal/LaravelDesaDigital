@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
         Route::get('antrian/{antrian:id}/status', [AntrianController::class, 'status'])->name('antrian.status');
         Route::resource('permohonan', PermohonanSuratController::class);
     });
-    Route::prefix('warga')->name('warga.')->group(function () {
+    Route::prefix('warga')->middleware('verified')->name('warga.')->group(function () {
         Route::resource('masyarakat',MasyarakatController::class);
     });
 });
