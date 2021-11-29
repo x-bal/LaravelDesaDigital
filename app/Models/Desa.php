@@ -29,4 +29,9 @@ class Desa extends Model
     {
         return $this->hasMany(Warga::class);
     }
+
+    public function loket()
+    {
+        return $this->hasMany(Loket::class);
+    }
 }

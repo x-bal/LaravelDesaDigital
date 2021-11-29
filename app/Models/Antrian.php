@@ -19,4 +19,9 @@ class Antrian extends Model
     {
         return $this->belongsTo(JenisSurat::class, 'jenis_surat_id');
     }
+
+    public function loket()
+    {
+        return $this->belongsTo(Loket::class);
+    }
 }
