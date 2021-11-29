@@ -47,4 +47,8 @@ class Warga extends Model
     {
         return $this->belongsTo(Kabupaten::class);
     }
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
