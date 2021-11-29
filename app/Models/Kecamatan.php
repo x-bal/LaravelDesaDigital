@@ -19,4 +19,9 @@ class Kecamatan extends Model
     {
         return $this->hasMany(Desa::class);
     }
+
+    public function warga()
+    {
+        return $this->hasMany(Warga::class);
+    }
 }

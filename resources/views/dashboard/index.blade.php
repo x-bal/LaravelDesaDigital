@@ -4,20 +4,20 @@
 <li class="breadcrumb-item active" aria-current="page"><a href="">Dashboard</a></li>
 @endpush
 @section('content')
-    @auth
-        @role('Utama')
+@auth
+@role('Utama')
 
-        @endrole
+@endrole
 
-        @role('Kabupaten')
+@role('Kabupaten')
 
-        @endrole
+@endrole
 
-        @role('Desa')
-        
-        @endrole
-        @role('Warga')
+@role('Desa')
 
-        @endrole
-    @endauth
+@endrole
+@role('Warga')
+
+@endrole
+@endauth
 @endsection

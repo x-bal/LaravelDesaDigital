@@ -14,4 +14,19 @@ class Desa extends Model
     {
         return $this->belongsTo(Kecamatan::class);
     }
+
+    public function admindesa()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function permohonan()
+    {
+        return $this->hasMany(PermohonanSurat::class);
+    }
+
+    public function warga()
+    {
+        return $this->hasMany(Warga::class);
+    }
 }

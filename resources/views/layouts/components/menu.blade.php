@@ -18,7 +18,7 @@
             <h3>Main</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="{{ route('home') }}"><i class="side-menu__icon" data-eva="monitor-outline"></i><span class="side-menu__label">Dashboard</span></a>
+            <a class="side-menu__item" href="{{ route('dashboard') }}"><i class="side-menu__icon" data-eva="monitor-outline"></i><span class="side-menu__label">Dashboard</span></a>
         </li>
         @role('Utama')
         <li>
@@ -53,10 +53,10 @@
             <h3>Surat</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="list-outline"></i><span class="side-menu__label">Antrian</span></a>
+            <a class="side-menu__item" href="{{  route('desa.antrian.index') }}"><i class="side-menu__icon" data-eva="list-outline"></i><span class="side-menu__label">Antrian</span></a>
         </li>
         <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="email-outline"></i><span class="side-menu__label">Permohonan Surat</span></a>
+            <a class="side-menu__item" href="{{ route('desa.permohonan.index') }}"><i class="side-menu__icon" data-eva="email-outline"></i><span class="side-menu__label">Permohonan Surat</span></a>
         </li>
         <li>
             <h3>Gallery</h3>

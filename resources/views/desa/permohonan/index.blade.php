@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Masyarakat List')
+@section('title', 'Permohonan Surat List')
 @push('bread')
-<li class="breadcrumb-item active">Masyarakat</li>
+<li class="breadcrumb-item active">Permohonan Surat</li>
 @endpush
 @section('content')
-<div class="row">
+<div class="row mt-3">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
-                <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline-info"><i class="fas fa-long-arrow-alt-left"></i> <span>Back</span></a>
-                <a href="{{ route('desa.warga.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> <span>add</span></a>
+                <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline-info"><i class="fas fa-arrow-left"></i> Back</a>
+                <a href="{{ route('desa.permohonan.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Create New</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -17,36 +17,26 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>desa</th>
-                                <th>kecamatan</th>
-                                <th>kabupaten</th>
-                                <th>nik</th>
-                                <th>nama_warga</th>
-                                <th>jenis_kelamin</th>
-                                <th>tempat lahir</th>
-                                <th>tanggal lahir</th>
+                                <th>Nik</th>
+                                <th>Nama</th>
+                                <th>Jenis Surat</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($wargas as $data)
+                            @foreach($permohonans as $permohonanSurat)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->desa->nama_desa }}</td>
-                                <td>{{ $data->kecamatan->nama_kecamatan }}</td>
-                                <td>{{ $data->kabupaten->nama_kabupaten }}</td>
-                                <td>{{ $data->nik }}</td>
-                                <td>{{ $data->nama_warga }}</td>
-                                <td>{{ $data->jenis_kelamin }}</td>
-                                <td>{{ $data->tempat_lahir }}</td>
-                                <td>{{ $data->tanggal_lahir }}</td>
+                                <th>{{ $permohonanSurat->warga->nik }}</th>
+                                <th>{{ $permohonanSurat->warga->nama_warga }}</th>
+                                <th>{{ $permohonanSurat->jenis->jenis_surat }}</th>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('desa.warga.edit', $data->id) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</a>
-                                        <form action="{{ route('desa.warga.destroy', $data->id) }}" method="post">
+                                        <a href="{{ route('desa.permohonan.edit', $permohonanSurat->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <form action="{{ route('desa.permohonan.destroy', $permohonanSurat->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit"><i class="fas fa-trash"></i> Delete</button>
+                                            <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit">Destroy</button>
                                         </form>
                                     </div>
                                 </td>
