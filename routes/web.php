@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Desa\WargaController;
 use App\Http\Controllers\Desa\AntrianController;
 use App\Http\Controllers\Desa\GalleryController;
@@ -20,15 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/antrian', [App\Http\Controllers\HomeController::class, 'antrian'])->name('antrian');
+Route::post('/antrian', [App\Http\Controllers\HomeController::class, 'storeAntrian'])->name('antrian.store');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::prefix('utama')->name('utama.')->group(function () {
     });
     Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
@@ -36,10 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::prefix('desa')->name('desa.')->group(function () {
         Route::resource('gallery', GalleryController::class);
         Route::resource('warga', WargaController::class);
-        Route::resource('informasi',InformasiController::class);
-        Route::resource('produk',ProdukController::class);
-        Route::resource('gallery',GalleryController::class);
-        Route::resource('warga',WargaController::class);
+        Route::resource('informasi', InformasiController::class);
+        Route::resource('produk', ProdukController::class);
+        Route::resource('gallery', GalleryController::class);
+        Route::resource('warga', WargaController::class);
         Route::resource('antrian', AntrianController::class);
         Route::get('antrian/{antrian:id}/status', [AntrianController::class, 'status'])->name('antrian.status');
         Route::resource('permohonan', PermohonanSuratController::class);

@@ -18,7 +18,7 @@
             <h3>Main</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="{{ route('home') }}"><i class="side-menu__icon" data-eva="monitor-outline"></i><span class="side-menu__label">Dashboard</span></a>
+            <a class="side-menu__item" href="{{ route('dashboard') }}"><i class="side-menu__icon" data-eva="monitor-outline"></i><span class="side-menu__label">Dashboard</span></a>
         </li>
         @role('Utama')
         <li>
