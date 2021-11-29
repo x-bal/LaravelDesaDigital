@@ -81,7 +81,11 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]);
             $warga = Warga::where('nama_warga', $user->name)->first();
+            Warga::find($warga->id)->update([
+                'is_nik' => null
+            ]);
             $user->warga()->sync($warga->id);
+            $user->assignRole('Warga');
             DB::commit();
             return $user;
 

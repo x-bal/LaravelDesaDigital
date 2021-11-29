@@ -8,8 +8,8 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
-                <a href="{{ url()->previous() }}" class="btn btn-sm btn-info">Back</a>
-                <a href="{{ route('desa.produk.create') }}" class="btn btn-sm btn-primary">Create New</a>
+                <a href="{{ url()->previous() }}" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> <span>Back</span></a>
+                <a href="{{ route('desa.produk.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> <span>add</span></a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -32,12 +32,12 @@
                                 <th>{{ $data->nama_produk}}</th>
                                 <th>{{ $data->harga}}</th>
                                 <th>{{ $data->deskripsi}}</th>
-                                <th>{{ $data->desa_id }}</th>
+                                <th>{{ $data->desa->nama_desa }}</th>
                                 <td>
-                                    <ul>
+                                    <ul class="list-group list-group-horizontal-md">
                                         @foreach($data->photo as $row)
-                                        <li>
-                                            <img src="{{ asset('/storage/'.$row->photo) }}" alt="" class="responsive-img">
+                                        <li class="list-group-item">
+                                            <img src="{{ asset('/storage/'.$row->photo) }}" width="50" heith="50" alt="">
                                         </li>
                                         @endforeach
                                     </ul>
@@ -45,11 +45,11 @@
 
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('desa.produk.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <a href="{{ route('desa.produk.edit', $data->id) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                         <form action="{{ route('desa.produk.destroy', $data->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-sm btn-danger delete_confirm" type="submit">Destroy</button>
+                                            <button class="btn btn-sm btn-danger delete_confirm" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                         </form>
                                     </div>
                                 </td>

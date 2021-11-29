@@ -14,10 +14,10 @@
 @endrole
 
 @role('Desa')
-
+    @include('desa.dashboard')
 @endrole
 @role('Warga')
-
+    @include('warga.dashboard')
 @endrole
 @endauth
 @endsection

@@ -9,6 +9,7 @@ use App\Http\Controllers\Desa\PermohonanSuratController;
 use App\Http\Controllers\Desa\InformasiController;
 use App\Http\Controllers\Desa\PenggunaController;
 use App\Http\Controllers\Desa\ProdukController;
+use App\Http\Controllers\Warga\MasyarakatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,6 @@ Route::post('/aduan', [App\Http\Controllers\HomeController::class, 'storeAduan']
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
     Route::prefix('utama')->name('utama.')->group(function () {
     });
     Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
@@ -52,5 +52,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('permohonan', PermohonanSuratController::class);
     });
     Route::prefix('warga')->name('warga.')->group(function () {
+        Route::resource('masyarakat',MasyarakatController::class);
     });
 });

@@ -4,12 +4,12 @@
     <div class="app-sidebar__user clearfix">
         <div class="user-pro-body">
             <div class="sideuser-img">
-                <img src="{ asset('storage/'.$pegawai->foto) }" alt="user-img" class="">
+                <img src="{{ asset('assets/img/photos/1.jpg') }}" alt="user-img" class="">
                 <span class="sidebar-icon"></span>
             </div>
             <div class="user-info">
-                <h2 class="app-sidebar__user-name">{ Nama }</h2>
-                <span class="app-sidebar__title">{ nama }</span>
+                <h2 class="app-sidebar__user-name">{{ auth()->user()->name }}</h2>
+                <span class="app-sidebar__title">{{ auth()->user()->roles()->first()->name }}</span>
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@
             <h3>Daftar Masyarakat</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
+            <a class="side-menu__item" href="{{ route('warga.masyarakat.index') }}"><i class="side-menu__icon" data-eva="layout-outline"></i><span class="side-menu__label">Daftar Masyarakat</span></a>
         </li>
         @endrole
     </ul>

@@ -45,11 +45,11 @@
                                         @if($antrian->status != 2)
                                         <a href="{{ route('desa.antrian.status', $antrian->id) }}?status={{ $antrian->status == 0 ? 1 : 2 }}" class="btn btn-sm btn-outline-success">{{ $antrian->status == 0 ? 'Panggil' : 'Konfirmasi' }}</a>
                                         @endif
-                                        <a href="{{ route('desa.antrian.edit', $antrian->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <a href="{{ route('desa.antrian.edit', $antrian->id) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</a>
                                         <form action="{{ route('desa.antrian.destroy', $antrian->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit">Destroy</button>
+                                            <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                         </form>
                                     </div>
                                 </td>

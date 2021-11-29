@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="deskripsi" class="form-label">deskripsi</label>
-            <input type="text" name="deskripsi" id="deskripsi" value="{{ $informasi->deskripsi ?? old('deskripsi') }}" class="form-control @error('deskripsi') is-invalid  @enderror">
+            <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid  @enderror">{{ $informasi->deskripsi ?? old('deskripsi') }}</textarea>
             @error('deskripsi')
             <div class="invalid-feedback">
                 {{ $message }}

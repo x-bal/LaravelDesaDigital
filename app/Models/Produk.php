@@ -13,4 +13,8 @@ class Produk extends Model
     {
         return $this->hasMany(Photo::class);
     }
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class);
+    }
 }

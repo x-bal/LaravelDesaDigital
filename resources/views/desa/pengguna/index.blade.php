@@ -1,15 +1,14 @@
 @extends('layouts.app')
-@section('title', 'Aduan List')
+@section('title', 'Pengguna List')
 @push('bread')
-<li class="breadcrumb-item active">Aduan</li>
+<li class="breadcrumb-item active">Pengguna</li>
 @endpush
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
-                <a href="{{ url()->previous() }}" class="btn btn-sm btn-info">Back</a>
-                <a href="{{ route('desa.pengguna.create') }}" class="btn btn-sm btn-primary">Create New</a>
+                <a href="{{ url()->previous() }}" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> <span>Back</span</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -36,7 +35,7 @@
                                             <form action="{{ route('desa.pengguna.destroy', $data->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn btn-sm btn-danger delete_confirm" type="submit">Destroy</button>
+                                                <button class="btn btn-sm btn-danger delete_confirm" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                             </form>
                                         </div>
                                     </td>
