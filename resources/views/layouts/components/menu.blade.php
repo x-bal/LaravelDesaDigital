@@ -74,7 +74,7 @@
             <h3>Aduan</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="#"><i class="side-menu__icon" data-eva="file-text-outline"></i><span class="side-menu__label">Aduan</span></a>
+            <a class="side-menu__item" href="{{ route('desa.aduan.index') }}"><i class="side-menu__icon" data-eva="file-text-outline"></i><span class="side-menu__label">Aduan</span></a>
         </li>
 
         <li>

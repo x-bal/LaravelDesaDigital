@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Desa\AduanController;
 use App\Http\Controllers\Desa\WargaController;
 use App\Http\Controllers\Desa\AntrianController;
 use App\Http\Controllers\Desa\GalleryController;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
     });
     Route::prefix('desa')->name('desa.')->group(function () {
+        Route::resource('aduan',AduanController::class);
         Route::resource('pengguna',PenggunaController::class);
         Route::resource('gallery', GalleryController::class);
         Route::resource('warga', WargaController::class);

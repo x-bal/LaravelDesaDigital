@@ -9,7 +9,6 @@
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-info">Back</a>
-                <a href="{{ route('desa.pengguna.create') }}" class="btn btn-sm btn-primary">Create New</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -17,33 +16,28 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>NIk</th>
-                                <th>Name</th>
-                                <td>Email</td>
+                                <th>Aduan</th>
+                                <th>Response</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($penggunas as $data)
-                                @foreach($data->user as $row)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->nik }}</td>
-                                    <td>{{ $data->nama_warga }}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->email }}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="{{ route('desa.pengguna.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                            <form action="{{ route('desa.pengguna.destroy', $data->id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-sm btn-danger delete_confirm" type="submit">Destroy</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
+                            @foreach($aduans as $data)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $data->judul_aduan }}</td>
+                                <td>{{ $data->responses }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('desa.aduan.edit', $data->id) }}" class="btn btn-sm btn-info">Response</a>
+                                        <form action="{{ route('desa.aduan.destroy', $data->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-danger delete_confirm" type="submit">Destroy</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
