@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Desa;
 use App\Http\Controllers\Controller;
 use App\Models\Aduan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AduanController extends Controller
 {
@@ -15,7 +16,7 @@ class AduanController extends Controller
      */
     public function index()
     {
-        return view('desa.aduan.index',[
+        return view('desa.aduan.index', [
             'aduans' => Aduan::latest()->get()
         ]);
     }
@@ -60,7 +61,9 @@ class AduanController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('desa.aduan.edit', [
+            'aduan' => Aduan::findOrFail($id)
+        ]);
     }
 
     /**
@@ -72,7 +75,13 @@ class AduanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attr = $this->validate($request, [
+            'respon' => 'required'
+        ]);
+
+        Aduan::findOrFail($id)->update($attr);
+        Alert::success('success', 'success response');
+        return back();
     }
 
     /**
@@ -83,6 +92,8 @@ class AduanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Aduan::findOrFail($id)->delete();
+        Alert::success('success', 'success delete aduan');
+        return back();
     }
 }

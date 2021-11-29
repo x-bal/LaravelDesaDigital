@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label for="responses" class="form-label">responses</label>
-            <input type="text" name="responses" id="responses" value="{{ $aduan->responses ?? old('responses') }}" class="form-control @error('responses') is-invalid @enderror">
-            @error('responses')
+            <label for="respon" class="form-label">respon</label>
+            <input type="text" name="respon" id="respon" value="{{ $aduan->respon ?? old('respon') }}" class="form-control @error('respon') is-invalid @enderror">
+            @error('respon')
                 <span class="invalid-feedback">
                     {{ $message }}
                 </span>

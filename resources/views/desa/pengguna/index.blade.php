@@ -30,11 +30,9 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->nik }}</td>
                                     <td>{{ $data->nama_warga }}</td>
-                                    <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('desa.pengguna.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                             <form action="{{ route('desa.pengguna.destroy', $data->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')

@@ -16,6 +16,7 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>Nama Warga</th>
                                 <th>Aduan</th>
                                 <th>Response</th>
                                 <th>Action</th>
@@ -25,8 +26,9 @@
                             @foreach($aduans as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->judul_aduan }}</td>
-                                <td>{{ $data->responses }}</td>
+                                <td>{{ $data->warga->nama_warga }} | {{ $data->warga->nik }} </td>
+                                <td>{{ $data->aduan }}</td>
+                                <td>{{ $data->respon }}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('desa.aduan.edit', $data->id) }}" class="btn btn-sm btn-info">Response</a>

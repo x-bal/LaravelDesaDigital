@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PenggunaController extends Controller
 {
@@ -84,6 +86,12 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $warga = Warga::findOrFail($id);
+        $user = DB::table('user_warga')->where('warga_id',$warga->id)->first()->user_id;
+        $warga->user()->detach();
+        User::find($user)->delete();
+        $warga->delete();
+        Alert::success('succes');
+        return back();
     }
 }
