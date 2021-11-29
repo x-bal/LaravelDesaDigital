@@ -51,4 +51,9 @@ class Warga extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function aduan()
+    {
+        return $this->hasMany(Aduan::class);
+    }
 }
