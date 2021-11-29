@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('gallery', GalleryController::class);
         Route::resource('warga', WargaController::class);
         Route::resource('loket', LoketController::class);
+        Route::get('loket/{loket:id}', [LoketController::class, 'reset'])->name('loket.reset');
         Route::resource('antrian', AntrianController::class);
         Route::get('antrian/{antrian:id}/status', [AntrianController::class, 'status'])->name('antrian.status');
         Route::resource('permohonan', PermohonanSuratController::class);

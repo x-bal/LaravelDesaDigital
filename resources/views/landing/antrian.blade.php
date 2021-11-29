@@ -27,7 +27,7 @@
         <div class="card shadow">
             <div class="card-body text-center">
                 <div class="">
-                    <h2 class="">{{ $lkt->antrian()->where('status', 2)->count() }}</h2>
+                    <h2 class="">{{ $lkt->antrian()->where('tanggal_antri', now()->format('Y-m-d'))->where('status', 2)->count() }}</h2>
                     <h3 class="">{{ $lkt->nama }}</h3>
                     <b>Antrian Selesai</b>
                 </div>

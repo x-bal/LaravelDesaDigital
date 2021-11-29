@@ -25,11 +25,15 @@ class LoketController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['nama' => 'required']);
+        $request->validate([
+            'nama' => 'required',
+            'kuota' => 'required',
+        ]);
 
         try {
             Loket::create([
                 'nama' => $request->nama,
+                'kuota' => $request->kuota,
                 'desa_id' => auth()->user()->desa[0]->id
             ]);
 
@@ -53,11 +57,15 @@ class LoketController extends Controller
 
     public function update(Request $request, Loket $loket)
     {
-        $request->validate(['nama' => 'required']);
+        $request->validate([
+            'nama' => 'required',
+            'kuota' => 'required',
+        ]);
 
         try {
             $loket->update([
                 'nama' => $request->nama,
+                'kuota' => $request->kuota,
             ]);
 
             Alert::success('Success!', 'Loket berhasil diupdate');
@@ -73,6 +81,14 @@ class LoketController extends Controller
         $loket->delete();
 
         Alert::success('Success!', 'Loket berhasil didelete');
+        return redirect()->route('desa.loket.index');
+    }
+
+    public function reset(Loket $loket)
+    {
+        $loket->update(['kuota' => 20]);
+
+        Alert::success('Success!', 'Kuota loket berhasil direset');
         return redirect()->route('desa.loket.index');
     }
 }

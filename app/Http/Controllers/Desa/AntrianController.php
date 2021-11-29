@@ -12,9 +12,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AntrianController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $antrians = Antrian::get();
+        $from = $request->from;
+        $to = $request->to;
+
+        if ($from && $to) {
+            $antrians = Antrian::where('desa_id', auth()->user()->desa[0]->id)->whereBetween('tanggal_antri', [$from, $to])->get();
+        } else {
+            $antrians = Antrian::where('desa_id', auth()->user()->desa[0]->id)->where('tanggal_antri', now()->format('Y-m-d'))->get();
+        }
 
         return view('desa.antrian.index', compact('antrians'));
     }
