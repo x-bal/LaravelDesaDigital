@@ -7,6 +7,7 @@ use App\Http\Controllers\Desa\AntrianController;
 use App\Http\Controllers\Desa\GalleryController;
 use App\Http\Controllers\Desa\PermohonanSuratController;
 use App\Http\Controllers\Desa\InformasiController;
+use App\Http\Controllers\Desa\LoketController;
 use App\Http\Controllers\Desa\PenggunaController;
 use App\Http\Controllers\Desa\ProdukController;
 use Illuminate\Support\Facades\Auth;
@@ -39,14 +40,15 @@ Route::middleware('auth')->group(function () {
     Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
     });
     Route::prefix('desa')->name('desa.')->group(function () {
-        Route::resource('aduan',AduanController::class);
-        Route::resource('pengguna',PenggunaController::class);
+        Route::resource('aduan', AduanController::class);
+        Route::resource('pengguna', PenggunaController::class);
         Route::resource('gallery', GalleryController::class);
         Route::resource('warga', WargaController::class);
         Route::resource('informasi', InformasiController::class);
         Route::resource('produk', ProdukController::class);
         Route::resource('gallery', GalleryController::class);
         Route::resource('warga', WargaController::class);
+        Route::resource('loket', LoketController::class);
         Route::resource('antrian', AntrianController::class);
         Route::get('antrian/{antrian:id}/status', [AntrianController::class, 'status'])->name('antrian.status');
         Route::resource('permohonan', PermohonanSuratController::class);

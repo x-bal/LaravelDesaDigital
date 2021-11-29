@@ -17,6 +17,7 @@ class CreateAntriansTable extends Migration
             $table->id();
             $table->foreignId('warga_id')->constrained('wargas');
             $table->foreignId('desa_id')->constrained('desas');
+            $table->foreignId('loket_id')->constrained('lokets');
             $table->foreignId('jenis_surat_id')->constrained('jenis_surats');
             $table->integer('no_antrian');
             $table->date('tanggal_antri');

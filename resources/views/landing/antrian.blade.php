@@ -2,27 +2,39 @@
 
 @section('content')
 <div class="row mt-5">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card shadow">
             <div class="card-body text-center p-5">
+                @if($sisaloket != 0)
                 <h2>{{ $no_antri + 1 }}</h2>
                 <b>No Antrian</b>
                 <br>
-                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary mt-5 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Daftar
                 </button>
+                <p class="text-secondary">*Nomor antrian anda otomatis akan diarahkan ke loket yang tersedia.</p>
+                @else
+                <p class="text-secondary">*Nomor antrian telah habis, silahkan datang kembali.</p>
+                @endif
             </div>
         </div>
     </div>
+</div>
+
+<div class="row d-flex justify-content-between my-3">
+    @foreach($loket as $lkt)
     <div class="col-md-6">
         <div class="card shadow">
-            <div class="card-body text-center p-5">
-                <h2>{{ $selesai }}</h2>
-                <b>Antrian Selesai</b>
-                <br><br><br>
+            <div class="card-body text-center">
+                <div class="">
+                    <h2 class="">{{ $lkt->antrian()->where('status', 2)->count() }}</h2>
+                    <h3 class="">{{ $lkt->nama }}</h3>
+                    <b>Antrian Selesai</b>
+                </div>
             </div>
         </div>
     </div>
+    @endforeach
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

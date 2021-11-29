@@ -41,6 +41,7 @@ class UserSeeder extends Seeder
                 'role' => 'Warga',
             ]
         ];
+
         foreach ($users as $key) {
             $user = User::create([
                 'name' => $key['name'],
