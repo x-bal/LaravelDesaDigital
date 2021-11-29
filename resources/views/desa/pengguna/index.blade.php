@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
-                <a href="{{ url()->previous() }}" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> <span>Back</span</a>
+                <a href="{{ url()->previous() }}" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> <span>Back</span></a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
