@@ -184,7 +184,7 @@
                     <a class="dropdown-item" href="#"><i class="si si-calendar"></i> Activity</a>
                     <a class="dropdown-item" href="#"><i class="si si-bubbles"></i> Chat</a>
                     <a class="dropdown-item" href="#"><i class="si si-settings"></i> Settings</a>
-                    <a class="dropdown-item" href="#" onclick="logoutform()"><i class="si si-power"></i> Logo Out</a>
+                    <a class="dropdown-item" href="#" onclick="logoutform()"><i class="si si-power"></i> Log Out</a>
                     <form action="{{ route('logout') }}" method="post" id="logout-form">
                         @csrf
                     </form>

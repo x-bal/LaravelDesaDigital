@@ -19,6 +19,7 @@
                                 <th>No.</th>
                                 <th>Nama</th>
                                 <th>Desa</th>
+                                <th>Kuota</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -28,8 +29,10 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <th>{{ $loket->nama }}</th>
                                 <th>{{ $loket->desa->nama_desa }}</th>
+                                <th>{{ $loket->kuota }}</th>
                                 <td>
                                     <div class="btn-group">
+                                        <a href="{{ route('desa.loket.reset', $loket->id) }}" class="btn btn-sm btn-outline-success">Reset</a>
                                         <a href="{{ route('desa.loket.edit', $loket->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
                                         <form action="{{ route('desa.loket.destroy', $loket->id) }}" method="post">
                                             @csrf

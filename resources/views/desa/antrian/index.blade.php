@@ -11,13 +11,26 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Antrian Tanggal : {{ date('d/m/Y') }}</h5>
+                <h5 class="card-title">Antrian Tanggal : {{ request('from') && request('to') ? request('from') . ' s/d '. request('to') : now('Asia/Jakarta')->format('d/m/Y') }}</h5>
             </div>
             <div class="card-header d-flex flex-row justify-content-between">
                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline-info"><i class="fas fa-arrow-left"></i> Back</a>
                 <a href="{{ route('desa.antrian.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Create New</a>
             </div>
             <div class="card-body">
+                <form action="" method="get" class="mb-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="date" name="from" id="from" class="form-control" value="{{ request('from') ?? '' }}">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" name="to" id="to" class="form-control" value="{{ request('to') ?? '' }}">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table class="table table-striped" id="datatable">
                         <thead>
