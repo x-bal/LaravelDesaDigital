@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aduan;
 use App\Models\Antrian;
 use App\Models\JenisSurat;
 use App\Models\Warga;
@@ -42,6 +43,35 @@ class HomeController extends Controller
             ]);
 
             Alert::success('Selamat!', 'Pendaftaran antrian berhasil dilakukan');
+            return back();
+        } catch (\Throwable $th) {
+            Alert::error('Error!', 'Mohon periksa kembali data yang anda masukkan');
+            return back();
+        }
+    }
+
+    public function aduan()
+    {
+        return view('landing.aduan');
+    }
+
+    public function storeAduan()
+    {
+        request()->validate([
+            'nik' => 'required',
+            'aduan' => 'required'
+        ]);
+
+        try {
+            $warga = Warga::where('nik', request('nik'))->firstOrFail();
+
+            Aduan::create([
+                'warga_id' => $warga->id,
+                'desa_id' => $warga->desa_id,
+                'aduan' => request('aduan')
+            ]);
+
+            Alert::success('Success!', 'Aduan berhasil dikirim');
             return back();
         } catch (\Throwable $th) {
             Alert::error('Error!', 'Mohon periksa kembali data yang anda masukkan');

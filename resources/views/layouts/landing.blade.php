@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('antrian*') ? 'active' : '' }}" href="/antrian">Antrian</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('aduan*') ? 'active' : '' }}" href="/aduan">Aduan</a>
+                    </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown

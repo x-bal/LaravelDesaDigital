@@ -27,6 +27,8 @@ Auth::routes(['verify' => true]);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/antrian', [App\Http\Controllers\HomeController::class, 'antrian'])->name('antrian');
 Route::post('/antrian', [App\Http\Controllers\HomeController::class, 'storeAntrian'])->name('antrian.store');
+Route::get('/aduan', [App\Http\Controllers\HomeController::class, 'aduan'])->name('aduan');
+Route::post('/aduan', [App\Http\Controllers\HomeController::class, 'storeAduan'])->name('aduan.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -36,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
     });
     Route::prefix('desa')->name('desa.')->group(function () {
-        Route::resource('pengguna',PenggunaController::class);
+        Route::resource('pengguna', PenggunaController::class);
         Route::resource('gallery', GalleryController::class);
         Route::resource('warga', WargaController::class);
         Route::resource('informasi', InformasiController::class);
