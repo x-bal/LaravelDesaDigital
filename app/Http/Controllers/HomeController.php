@@ -33,29 +33,26 @@ class HomeController extends Controller
         $request->validate([
             'nik' => 'required',
             'jenis' => 'required',
+            'loket_id' => 'required'
         ]);
 
         try {
             $warga = Warga::where('nik', $request->nik)->firstOrFail();
 
-            $loket = Loket::where('desa_id', $warga->desa_id)->where('kuota', '>', 0)->first();
-            if ($loket) {
-                Antrian::create([
-                    'warga_id' => $warga->id,
-                    'jenis_surat_id' => $request->jenis,
-                    'no_antrian' => $request->no_antri,
-                    'desa_id' => $warga->desa_id,
-                    'loket_id' => $loket->id
-                ]);
-                $sisa = $loket->kuota - 1;
-                $loket->update(['kuota' => $sisa]);
+            $loket = Loket::where('desa_id', $warga->desa_id)->where('kuota', '>', 0)->find($request->loket_id);
 
-                Alert::success('Selamat!', 'Pendaftaran antrian berhasil dilakukan');
-                return back();
-            } else {
-                Alert::error('Error!', 'Mohon maaf nomor antrian telah habis');
-                return back();
-            }
+            Antrian::create([
+                'warga_id' => $warga->id,
+                'jenis_surat_id' => $request->jenis,
+                'no_antrian' => $request->no_antri,
+                'desa_id' => $warga->desa_id,
+                'loket_id' => $loket->id
+            ]);
+            $sisa = $loket->kuota - 1;
+            $loket->update(['kuota' => $sisa]);
+
+            Alert::success('Selamat!', 'Pendaftaran antrian berhasil dilakukan');
+            return back();
         } catch (\Throwable $th) {
             Alert::error('Error!', $th->getMessage());
             return back();

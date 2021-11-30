@@ -98,16 +98,16 @@ class AntrianController extends Controller
 
     public function status(Antrian $antrian)
     {
-        if (request('status') == 1) {
-            $txt = 'Nomor Antrian ' . $antrian->no_antrian;
-            $txt = rawurlencode($txt);
-            $html = file_get_contents('https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q=' . $txt . '&tl=id-IN');
-            $player = "<audio hidden controls='controls' autoplay><source src='data:audio/mpeg;base64," . base64_encode($html) . "'></audio>";
-
+        // return $antrian;
+        if ($antrian->status == 0) {
             $antrian->update(['status' => 1]);
+            $message = 'Nomor antrian telah dipanggil';
 
-            return back()->with('speech', $player);
-        } else {
+            return response()->json([
+                'message' => $message
+            ]);
+        }
+        if ($antrian->status == 1) {
             $antrian->update(['status' => 2]);
             PermohonanSurat::create([
                 'jenis_surat_id' => $antrian->jenis_surat_id,
@@ -115,7 +115,7 @@ class AntrianController extends Controller
                 'desa_id' => $antrian->desa_id,
             ]);
 
-            Alert::success('Success', 'Antrian berhasil dikonfirmasi');
+            Alert::success('Selamat', 'Antrian berhasil dikonfirmasi');
             return back();
         }
     }
