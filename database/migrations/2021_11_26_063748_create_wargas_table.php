@@ -18,6 +18,7 @@ class CreateWargasTable extends Migration
             $table->foreignId('desa_id')->constrained('desas');
             $table->foreignId('kecamatan_id')->constrained('kecamatans');
             $table->foreignId('kabupaten_id')->constrained('kabupatens');
+            $table->foreignId('user_id')->nullable();
             $table->integer('nik')->unique();
             $table->string('nama_warga');
             $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
