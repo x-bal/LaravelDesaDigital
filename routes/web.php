@@ -27,11 +27,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/antrian', [App\Http\Controllers\HomeController::class, 'antrian'])->name('antrian');
-Route::post('/antrian', [App\Http\Controllers\HomeController::class, 'storeAntrian'])->name('antrian.store');
-Route::get('/aduan', [App\Http\Controllers\HomeController::class, 'aduan'])->name('aduan');
-Route::post('/aduan', [App\Http\Controllers\HomeController::class, 'storeAduan'])->name('aduan.store');
+Route::middleware('guest')->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/antrian', [App\Http\Controllers\HomeController::class, 'antrian'])->name('antrian');
+    Route::post('/antrian', [App\Http\Controllers\HomeController::class, 'storeAntrian'])->name('antrian.store');
+    Route::get('/aduan', [App\Http\Controllers\HomeController::class, 'aduan'])->name('aduan');
+    Route::post('/aduan', [App\Http\Controllers\HomeController::class, 'storeAduan'])->name('aduan.store');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -55,6 +57,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('permohonan', PermohonanSuratController::class);
     });
     Route::prefix('warga')->middleware('verified')->name('warga.')->group(function () {
-        Route::resource('masyarakat',MasyarakatController::class);
+        Route::resource('masyarakat', MasyarakatController::class);
     });
 });
