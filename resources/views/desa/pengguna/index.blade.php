@@ -19,6 +19,7 @@
                                 <th>NIk</th>
                                 <th>Name</th>
                                 <td>Email</td>
+                                <td>Verifikasi</td>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -30,6 +31,7 @@
                                     <td>{{ $data->nik }}</td>
                                     <td>{{ $data->nama_warga }}</td>
                                     <td>{{ $row->email }}</td>
+                                    <td>{{ $row->email_verified_at }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <form action="{{ route('desa.pengguna.destroy', $data->id) }}" method="post">

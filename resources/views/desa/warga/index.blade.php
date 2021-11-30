@@ -25,6 +25,7 @@
                                 <th>jenis_kelamin</th>
                                 <th>tempat lahir</th>
                                 <th>tanggal lahir</th>
+                                <th>di daftarkan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -40,6 +41,7 @@
                                 <td>{{ $data->jenis_kelamin }}</td>
                                 <td>{{ $data->tempat_lahir }}</td>
                                 <td>{{ $data->tanggal_lahir }}</td>
+                                <td>{{ $data->is_nik ?? 'Kosong' }}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{ route('desa.warga.edit', $data->id) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</a>

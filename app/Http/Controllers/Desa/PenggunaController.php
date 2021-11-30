@@ -86,12 +86,17 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
-        $warga = Warga::findOrFail($id);
-        $user = DB::table('user_warga')->where('warga_id',$warga->id)->first()->user_id;
-        $warga->user()->detach();
-        User::find($user)->delete();
-        $warga->delete();
-        Alert::success('succes');
-        return back();
+        try {
+            $warga = Warga::findOrFail($id);
+            $user = DB::table('user_warga')->where('warga_id', $warga->id)->first()->user_id;
+            $warga->user()->detach();
+            User::find($user)->delete();
+            $warga->delete();
+            Alert::success('succes');
+            return back();
+        } catch (\Throwable $th) {
+            Alert::error($th->getMessage());
+            return back();
+        }
     }
 }
