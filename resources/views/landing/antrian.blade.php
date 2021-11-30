@@ -27,7 +27,7 @@
         <div class="card shadow">
             <div class="card-body text-center">
                 <div class="">
-                    @if($lkt->antrian()->where('tanggal_antri', now()->format('Y-m-d'))->where('status', 0)->count() > $lkt->kuota)
+                    @if($lkt->antrian()->where('tanggal_antri', now()->format('Y-m-d'))->count() > $lkt->kuota)
                     <p>*Nomor antrian telah habis</p>
                     @else
                     <h2 class="">{{ $lkt->antrian()->where('tanggal_antri', now()->format('Y-m-d'))->count() + 1 }}</h2>
@@ -38,6 +38,23 @@
                         Daftar
                     </button>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
+
+<div class="row d-flex justify-content-between my-4">
+    @foreach($loket as $done)
+    <div class="col-md-6 mb-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <div class="">
+                    <h2 class="">{{ $done->antrian()->where('tanggal_antri', now()->format('Y-m-d'))->where('status', 2)->count() }}</h2>
+                    <h3 class="">{{ $done->nama }}</h3>
+                    <b>Antrian Selesai</b>
+                    <br><br>
                 </div>
             </div>
         </div>
