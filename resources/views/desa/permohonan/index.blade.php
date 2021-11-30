@@ -32,11 +32,11 @@
                                 <th>{{ $permohonanSurat->jenis->jenis_surat }}</th>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('desa.permohonan.edit', $permohonanSurat->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <a href="{{ route('desa.permohonan.edit', $permohonanSurat->id) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</a>
                                         <form action="{{ route('desa.permohonan.destroy', $permohonanSurat->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit">Destroy</button>
+                                            <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                         </form>
                                     </div>
                                 </td>
