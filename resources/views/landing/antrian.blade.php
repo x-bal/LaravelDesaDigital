@@ -1,5 +1,12 @@
 @extends('layouts.landing')
-
+@section('css')
+<style>
+    body {
+        background-image: url("{{ asset('storage/' . App\Models\Desa::find(1)->background) }}");
+        background-size: cover;
+    }
+</style>
+@stop
 @section('content')
 <!-- <div class="row mt-5">
     <div class="col-md-12">

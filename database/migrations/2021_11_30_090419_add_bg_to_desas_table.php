@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserWargaTable extends Migration
+class AddBgToDesasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateUserWargaTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_warga', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('warga_id')->constrained('wargas');
+        Schema::table('desas', function (Blueprint $table) {
+            $table->string('background')->nullable()->after('nama_desa');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateUserWargaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_warga');
+        Schema::table('desas', function (Blueprint $table) {
+            //
+        });
     }
 }

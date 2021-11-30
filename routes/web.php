@@ -38,12 +38,14 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/setting', [DashboardController::class, 'setting'])->name('setting');
+    Route::post('/setting/{desa:id}', [DashboardController::class, 'updateSetting'])->name('setting.update');
     Route::prefix('utama')->name('utama.')->group(function () {
     });
     Route::prefix('kabupaten')->name('kabupaten.')->group(function () {
     });
     Route::prefix('desa')->name('desa.')->group(function () {
-        Route::resource('kategori_informasi',KategoriInformasiController::class);
+        Route::resource('kategori_informasi', KategoriInformasiController::class);
         Route::resource('aduan', AduanController::class);
         Route::resource('pengguna', PenggunaController::class);
         Route::resource('gallery', GalleryController::class);
