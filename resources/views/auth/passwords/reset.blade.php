@@ -1,13 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
+<!-- Loader -->
+<div id="loading">
+    <img src="../../../assets/img/loader1.svg" class="loader-img" alt="Loader">
+</div>
+<!-- Loader -->
+<!-- Main-signin-wrapper -->
+<div class="main-signin-wrapper">
+    <div class="row text-center pl-0 pr-0 ml-0 mr-0">
+        <div class="col-lg-6 d-block mx-auto">
+            <div class="card">
                 <div class="card-body">
+                    <img src="../../../assets/img/brand/logo-1.png" class="mb-3" alt="Logo">
+                    <h4> {{ __('Reset Password') }}</h4>
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 

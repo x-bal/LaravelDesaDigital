@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Aduan;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AduanController extends Controller
 {
@@ -14,7 +18,12 @@ class AduanController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $aduan = Aduan::where('warga_id', Auth::user()->warga->first()->id)->latest()->get();
+            return response()->json($aduan);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage());
+        }
     }
 
     /**
@@ -35,7 +44,22 @@ class AduanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'aduan' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag());
+        }
+        $attr = $request->all();
+        try {
+            $attr['desa_id'] = Auth::user()->warga->first()->desa_id;
+            $attr['warga_id'] = Auth::user()->warga->first()->id;
+
+            $response = Aduan::create($attr);
+            return response()->json($response);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage());
+        }
     }
 
     /**
@@ -46,7 +70,8 @@ class AduanController extends Controller
      */
     public function show($id)
     {
-        //
+        $response = Aduan::findOrFail($id);
+        return response()->json($response);
     }
 
     /**
@@ -69,7 +94,19 @@ class AduanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'aduan' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag());
+        }
+        $attr = $request->all();
+        try {
+            $response = Aduan::findOrFail($id)->update($attr);
+            return response()->json($response);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage());
+        }
     }
 
     /**
@@ -80,6 +117,11 @@ class AduanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $response = Aduan::findOrFail($id)->delete();
+            return response()->json($response);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage());
+        }
     }
 }

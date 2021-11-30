@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\PermohonanSurat;
-use Exception;
+use App\Http\Resources\ProdukResource;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
-class SuratController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +17,9 @@ class SuratController extends Controller
      */
     public function index()
     {
-        try {
-            $response = PermohonanSurat::where('warga_id', Auth::user()->warga->first()->id)->with('jenis','warga','desa')->latest()->get();
-            return response()->json($response);
-        } catch (\Throwable $th) {
-            return response()->json($th->getMessage());
-        }
+        $produk = Produk::where('desa_id', Auth::user()->warga->first()->desa_id)->with('photo')->latest()->get();
+        $response = ProdukResource::collection($produk);
+        return response()->json($response);
     }
 
     /**
@@ -44,7 +40,7 @@ class SuratController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
