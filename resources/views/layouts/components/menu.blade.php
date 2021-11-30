@@ -84,6 +84,9 @@
             <h3>Informasi</h3>
         </li>
         <li>
+            <a class="side-menu__item" href="{{ route('desa.kategori_informasi.index') }}"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Kategori Informasi</span></a>
+        </li>
+        <li>
             <a class="side-menu__item" href="{{ route('desa.informasi.index') }}"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Informasi</span></a>
         </li>
         @endrole

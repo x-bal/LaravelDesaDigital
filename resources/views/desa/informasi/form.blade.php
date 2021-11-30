@@ -36,4 +36,19 @@
             @enderror
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="kategori_informasi_id" class="form-label">kategori informasi id</label>
+            <select name="kategori_informasi_id" id="kategori_informasi_id" class="form-control @error('kategori_informasi_id') is-invalid  @enderror">
+                @foreach($kategori_informasis as $data)
+                <option @if($informasi->kategori_informasi_id ?? old('kategori_informasi_id') == $data->id) selected @endif value="{{ $data->id }}">{{ $data->nama }}</option>
+                @endforeach
+            </select>
+            @error('kategori_informasi_id')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+    </div>
 </div>

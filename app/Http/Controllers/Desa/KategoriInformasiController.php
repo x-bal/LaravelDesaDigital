@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Desa;
 
 use App\Http\Controllers\Controller;
-use App\Models\Desa;
-use App\Models\Informasi;
 use App\Models\KategoriInformasi;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class InformasiController extends Controller
+class KategoriInformasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,8 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        $informasis = Informasi::orderBy('created_at', 'desc')->get();
-        return view('desa.informasi.index', [
-            'informasis' => $informasis
+        return view('desa.kategori_informasi.index',[
+            'kategori_informasis' => KategoriInformasi::get()
         ]);
     }
 
@@ -31,10 +28,8 @@ class InformasiController extends Controller
      */
     public function create()
     {
-        return view('desa.informasi.create', [
-            'informasi' => new Informasi(),
-            'desas' => Desa::get(),
-            'kategori_informasis' => KategoriInformasi::get()
+        return view('desa.kategori_informasi.create',[
+            'kategori_informasi' => new KategoriInformasi()
         ]);
     }
 
@@ -46,13 +41,10 @@ class InformasiController extends Controller
      */
     public function store(Request $request)
     {
-        $attr = $this->validate($request, [
-            'desa_id' => 'required',
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'kategori_informasi_id' => 'required'
+        $attr = $this->validate($request,[
+            'nama' => 'required'
         ]);
-        Informasi::create($attr);
+        KategoriInformasi::create($attr);
         Alert::success('success');
         return back();
     }
@@ -76,10 +68,8 @@ class InformasiController extends Controller
      */
     public function edit($id)
     {
-        return view('desa.informasi.edit', [
-            'informasi' => Informasi::findOrFail($id),
-            'desas' => Desa::get(),
-            'kategori_informasis' => KategoriInformasi::get()
+        return view('desa.kategori_informasi.edit',[
+            'kategori_informasi' => KategoriInformasi::findOrFail($id)
         ]);
     }
 
@@ -92,13 +82,10 @@ class InformasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $attr = $this->validate($request, [
-            'desa_id' => 'required',
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'kategori_informasi_id' => 'required'
+        $attr = $this->validate($request,[
+            'nama' => 'required'
         ]);
-        Informasi::findOrFail($id)->update($attr);
+        KategoriInformasi::findOrFail($id)->update($attr);
         Alert::success('success');
         return back();
     }
@@ -112,10 +99,11 @@ class InformasiController extends Controller
     public function destroy($id)
     {
         try {
-            Informasi::findOrFail($id)->delete();
+            //code...
+            KategoriInformasi::findOrFail($id)->delete();
             Alert::success('success');
-            return back();
         } catch (\Throwable $th) {
+            //throw $th;
             Alert::error($th->getMessage());
             return back();
         }
