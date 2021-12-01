@@ -52,6 +52,7 @@ class ProdukController extends Controller
             'desa_id' => 'required'
         ]);
         unset($attr['photo']);
+        $attr['user_id'] = auth()->user()->id;
         $produk = Produk::create($attr);
         foreach ($request->photo as $img) {
             $name = $img->getClientOriginalName();
@@ -105,6 +106,7 @@ class ProdukController extends Controller
             'deskripsi' => 'required',
             'desa_id' => 'required'
         ]);
+        $attr['user_id'] = auth()->user()->id;
         $produk = Produk::findOrFail($id)->update($attr);
         if ($request->photo) {
 

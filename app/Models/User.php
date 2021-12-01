@@ -49,6 +49,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function warga()
     {
-        return $this->hasOne(Warga::class);
+        return $this->hasOne(Warga::class, 'user_id');
     }
 }

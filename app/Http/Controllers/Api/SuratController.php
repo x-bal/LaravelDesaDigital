@@ -19,7 +19,7 @@ class SuratController extends Controller
     public function index()
     {
         try {
-            $response = PermohonanSurat::where('warga_id', Auth::user()->warga->first()->id)->with('jenis','warga','desa')->latest()->get();
+            $response = PermohonanSurat::where('warga_id', Auth::user()->warga->id)->with('jenis','warga','desa')->latest()->get();
             return response()->json($response);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage());

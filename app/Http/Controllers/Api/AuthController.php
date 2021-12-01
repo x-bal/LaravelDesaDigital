@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
@@ -15,6 +17,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'nik' => 'required',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8'
@@ -24,16 +27,35 @@ class AuthController extends Controller
             return response()->json($validator->errors());
         }
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        if (!Warga::where('nik', $request->nik)->where('nama_warga', $request->name)->exists()) {
+            return response()->json(['message' => 'nik and name is not registered']);
+        }
+        if (Warga::where('nik', $request->nik)->has('user')->exists()) {
+            return response()->json(['message' => 'nik already has an account']);
+        }
+        DB::beginTransaction();
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+            Warga::where('nama_warga', $request->name)->update([
+                'is_nik' => null,
+                'user_id' => $user->id
+            ]);
 
-        return response()
-            ->json(['data' => $user, 'access_token' => $token, 'token_type' => 'Bearer',]);
+            $user->assignRole('Warga');
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            DB::commit();
+
+            return response()->json(['data' => $user, 'access_token' => $token, 'token_type' => 'Bearer',]);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage());
+        }
     }
 
     public function login(Request $request)
@@ -60,15 +82,17 @@ class AuthController extends Controller
             'message' => 'You have successfully logged out and the token was successfully deleted'
         ];
     }
-    public function forgot() {
+    public function forgot()
+    {
         $credentials = request()->validate(['email' => 'required|email']);
 
         Password::sendResetLink($credentials);
 
         return response()->json(["msg" => 'Reset password link sent on your email id.']);
     }
-    public function reset() {
-        
+    public function reset()
+    {
+
         $credentials = request()->validate([
             'email' => 'required|email',
             'token' => 'required|string',

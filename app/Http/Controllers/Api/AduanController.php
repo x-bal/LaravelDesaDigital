@@ -19,7 +19,7 @@ class AduanController extends Controller
     public function index()
     {
         try {
-            $aduan = Aduan::where('warga_id', Auth::user()->warga->first()->id)->latest()->get();
+            $aduan = Aduan::where('warga_id', Auth::user()->warga->id)->latest()->get();
             return response()->json($aduan);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage());
@@ -52,8 +52,8 @@ class AduanController extends Controller
         }
         $attr = $request->all();
         try {
-            $attr['desa_id'] = Auth::user()->warga->first()->desa_id;
-            $attr['warga_id'] = Auth::user()->warga->first()->id;
+            $attr['desa_id'] = Auth::user()->warga->desa_id;
+            $attr['warga_id'] = Auth::user()->warga->id;
 
             $response = Aduan::create($attr);
             return response()->json($response);

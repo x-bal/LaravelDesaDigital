@@ -19,7 +19,7 @@ class MasyarakatController extends Controller
      */
     public function index()
     {
-        $wargas = Warga::where('is_nik',auth()->user()->warga->first()->nik)->orderBy('created_at', 'desc')->get();
+        $wargas = Warga::where('is_nik',auth()->user()->warga->nik)->orderBy('created_at', 'desc')->get();
         return view('warga.masyarakat.index', [
             'wargas' => $wargas
         ]);
@@ -58,7 +58,7 @@ class MasyarakatController extends Controller
             'kecamatan_id' => 'required',
             'kabupaten_id' => 'required',
         ]);
-        $attr['is_nik'] = auth()->user()->warga->first()->nik;
+        $attr['is_nik'] = auth()->user()->warga->nik;
         Warga::create($attr);
         Alert::success('success');
         return back();
@@ -110,7 +110,7 @@ class MasyarakatController extends Controller
             'kecamatan_id' => 'required',
             'kabupaten_id' => 'required',
         ]);
-        $attr['is_nik'] = auth()->user()->warga->first()->nik;
+        $attr['is_nik'] = auth()->user()->warga->nik;
         Warga::findOrFail($id)->update($attr);
         Alert::success('success');
         return back();

@@ -19,7 +19,7 @@ class PenggunaController extends Controller
     public function index()
     {
         return view('desa.pengguna.index',[
-            'penggunas' => Warga::get()
+            'penggunas' => User::whereHas('roles', function($qr){ return $qr->where('name','Warga'); })->get()
         ]);
     }
 
@@ -87,11 +87,11 @@ class PenggunaController extends Controller
     public function destroy($id)
     {
         try {
-            $warga = Warga::findOrFail($id);
-            $user = DB::table('user_warga')->where('warga_id', $warga->id)->first()->user_id;
-            $warga->user()->detach();
-            User::find($user)->delete();
-            $warga->delete();
+            $user = User::find($id);
+            Warga::where('user_id', $user->id)->update([
+                'user_id' => null
+            ]);
+            $user->delete();
             Alert::success('succes');
             return back();
         } catch (\Throwable $th) {

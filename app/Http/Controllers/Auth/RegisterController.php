@@ -80,15 +80,13 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
             ]);
-            $warga = Warga::where('nama_warga', $user->name)->first();
-            Warga::find($warga->id)->update([
-                'is_nik' => null
+            Warga::where('nama_warga', $user->name)->update([
+                'is_nik' => null,
+                'user_id' => $user->id
             ]);
-            $user->warga()->sync($warga->id);
             $user->assignRole('Warga');
             DB::commit();
             return $user;
-
         } catch (Exception $err) {
             DB::rollBack();
             abort(500);

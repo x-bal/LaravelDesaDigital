@@ -25,13 +25,12 @@
                         </thead>
                         <tbody>
                             @foreach($penggunas as $data)
-                                @foreach($data->user as $row)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->nik }}</td>
-                                    <td>{{ $data->nama_warga }}</td>
-                                    <td>{{ $row->email }}</td>
-                                    <td>{{ $row->email_verified_at }}</td>
+                                    <td>{{ $data->warga->nik ?? 'kosong'}}</td>
+                                    <td>{{ $data->warga->nama_warga ?? 'kosong' }}</td>
+                                    <td>{{ $data->email }}</td>
+                                    <td>{{ $data->email_verified_at ?? 'Belum Di Verifikasi' }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <form action="{{ route('desa.pengguna.destroy', $data->id) }}" method="post">
@@ -42,7 +41,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @endforeach
                             @endforeach
                         </tbody>
                     </table>
