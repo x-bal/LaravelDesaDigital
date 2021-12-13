@@ -25,7 +25,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('apib/login', [App\Http\Controllers\Apib\AuthController::class, 'login'])->name('apib.login');
+Route::get('apib/aduan', [App\Http\Controllers\Apib\AuthController::class, 'aduan'])->name('apib.aduan');
+Route::get('apib/datas', [App\Http\Controllers\Apib\AuthController::class, 'datas'])->name('apib.datas');
 Auth::routes(['verify' => true]);
 
 Route::middleware('guest')->group(function () {
