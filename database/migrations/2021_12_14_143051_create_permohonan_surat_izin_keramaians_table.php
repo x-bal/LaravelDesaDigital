@@ -17,7 +17,7 @@ class CreatePermohonanSuratIzinKeramaiansTable extends Migration
             $table->id();
             $table->foreignId('permohonan_surat_id')->constrained('permohonan_surats');
             $table->date('berlaku_mulai')->nullable();
-            $table->date('berlaku_sampat')->nullable();
+            $table->date('berlaku_sampai')->nullable();
             $table->timestamps();
         });
     }

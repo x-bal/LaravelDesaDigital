@@ -12,20 +12,30 @@
                 <a href="{{ route('desa.cetak_surat.index') }} " class="btn btn-sm btn-outline-info"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
             </div>
             <div class="card-body">
-                <div class="form-group row">
-                    <div class="col-md-6">
-                        <label for="" class="form-label">Nik</label>
-                        <select id="select2" class="form-control select2-ajax-cetak-surat"></select>
+                <form action="{{ route('desa.cetak_surat.store') }}" method="post" id="form">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Nik</label>
+                            <select id="select2" name="warga_id" class="form-control select2-ajax-cetak-surat"></select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row" id="warga">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" id="tempat_lahir" readonly>
+                    <div class="form-group row" id="warga">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="umur" id="umur" readonly>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" id="tanggal_lahir" readonly>
+                    <div>
+                        @include('desa.cetak_surat.form')
                     </div>
-                </div>
+                </form>
+
             </div>
             <div class="card-footer d-flex flex-row justify-content-end">
                 <button class="btn btn-sm btn-outline-success" id="store"><i class="fas fa-cloud-upload-alt"></i> Store</button>
@@ -36,18 +46,19 @@
 @stop
 @push('script')
 <script>
-    $('#select2').on('change',function(){
-        const id =  $(this).val()
+    $('#select2').on('change', function() {
+        const id = $(this).val()
         $.ajax({
             url: `/api/select2/cetaksurat/${id}`,
             success: data => {
                 console.log(data)
-                $('#tempat_lahir').val(data.tempat_lahir)
-                $('#tanggal_lahir').val(data.tanggal_lahir)
+                $('#tempat_lahir').val(data.resource.tempat_lahir)
+                $('#tanggal_lahir').val(data.resource.tanggal_lahir)
+                $('#umur').val(data.umur)
             }
         })
     })
-    $('#store').on('click', function(){
+    $('#store').on('click', function() {
         $('#form').submit()
     });
 </script>

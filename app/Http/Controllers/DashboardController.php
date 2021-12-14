@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
     public function setting()
     {
-        $desa = Desa::find(auth()->user()->desa[0]->id);
+        $desa = Desa::find(auth()->user()->desa_id);
         return view('dashboard.setting', compact('desa'));
     }
 

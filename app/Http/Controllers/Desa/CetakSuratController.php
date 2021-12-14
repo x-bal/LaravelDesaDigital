@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Desa;
 
 use App\Http\Controllers\Controller;
 use App\Models\JenisSurat;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CetakSuratController extends Controller
 {
@@ -16,7 +18,7 @@ class CetakSuratController extends Controller
     public function index()
     {
         $jenis_surat = JenisSurat::get();
-        return view('desa.cetak_surat.index',[
+        return view('desa.cetak_surat.index', [
             'jenis_surat' => $jenis_surat
         ]);
     }
@@ -39,7 +41,22 @@ class CetakSuratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $file = public_path('template/surat_hilang.rtf');
+
+        $array = array(
+            '[nama_kab]' => 'BOGOR',
+            '[nama_kec]' => 'Bojonggede',
+            '[nama_des]' => 'Jl. Manunggal Gg. 8 Loa Bakung, Samarinda',
+            '[alamat_des]' => 'Jl. Manunggal Gg. 8 Loa Bakung, Samarinda',
+            '[judul_surat]' => 'Samarinda',
+            '[format_nomor_surat]' => 'Noviyanto Rahmadi',
+            '[jabatan]' => date('d F Y'),
+        );
+
+        $nama_file = 'surat-keterangan-kerja.doc';
+
+        return \WordTemplate::export($file, $array, $nama_file);
     }
 
     /**
@@ -50,8 +67,49 @@ class CetakSuratController extends Controller
      */
     public function show($id)
     {
-        return view('desa.cetak_surat.show',[
-            'jenis_surat' => JenisSurat::findOrFail($id)
+        $jenis_surat = JenisSurat::findOrFail($id);
+        switch ($jenis_surat->id) {
+            case 1:
+                $table = 'permohonan_surat_skcks';
+                break;
+            case 2:
+                $table = 'permohonan_surat_kehilangans';
+                break;
+            case 3:
+                $table = 'permohonan_surat_izin_keramaians';
+                break;
+            case 4:
+                $table = 'permohonan_surat_pengantars';
+                break;
+            case 5:
+                $table = 'permohonan_surat_kuasas';
+                break;
+            case 6:
+                $table = 'permohonan_surat_usahas';
+                break;
+            case 7:
+                $table = 'permohonan_surat_domisili_usahas';
+                break;
+            case 8:
+                $table = 'permohonan_surat_pergi_kawins';
+                break;
+            case 9:
+                $table = '';
+                break;
+            case 10:
+                $table = 'permohonan_surat_jaminan_kesehatans';
+                break;
+            case 11:
+
+                $table = 'permohonan_surat_kurang_mampus';
+                break;
+            default:
+                $table = '';
+                break;
+        }
+        return view('desa.cetak_surat.show', [
+            'jenis_surat' => $jenis_surat,
+            'table' => $table
         ]);
     }
 

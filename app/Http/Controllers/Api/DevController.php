@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Warga;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DevController extends Controller
@@ -20,6 +21,10 @@ class DevController extends Controller
     public function showcetaksurat($id)
     {
         $resource = Warga::findOrFail($id);
-        return response()->json($resource);
+        $response = [
+            'resource' => $resource,
+            'umur' =>  Carbon::now()->format('Y') - Carbon::parse($resource->tanggal_lahir)->format('Y')
+        ];
+        return response()->json($response);
     }
 }

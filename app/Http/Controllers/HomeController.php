@@ -29,11 +29,11 @@ class HomeController extends Controller
         $sisaloket = Loket::where('kuota', '>', 0)->count();
         $loket = Loket::get();
         $jenis = JenisSurat::get();
-        $playlist = Playlist::first();
+        $playlist = Playlist::firstOrFail();
         $marques = Marque::get();
         $siswa = Antrian::where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->where('status', 0)->count();
 
-        return view('landing.antrian', compact('no_antri', 'jenis',  'loket', 'sisaloket', 'playlist', 'marques', 'sisa'));
+        return view('landing.antrian', compact('no_antri', 'jenis',  'loket', 'sisaloket', 'playlist', 'marques'));
     }
 
     public function storeAntrian(Request $request)
