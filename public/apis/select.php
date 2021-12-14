@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+require_once 'includes/Constants.php';
 $query = mysqli_query($con, "SELECT * FROM data");
 $data = array();
 $qry_array = array();

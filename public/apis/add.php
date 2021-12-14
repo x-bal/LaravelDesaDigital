@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+require_once 'includes/Constants.php';
 
 $uid = $_POST['uid'];
 $name = $_POST['name'];

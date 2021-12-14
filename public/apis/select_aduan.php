@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+require_once 'includes/Constants.php';
 $query = mysqli_query($con, "select
 aduans.*,
 wargas.id as wargas_id,

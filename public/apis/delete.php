@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+require_once 'includes/Constants.php';
 
 $id = $_POST['id'];
 
