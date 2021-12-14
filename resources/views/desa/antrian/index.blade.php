@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Antrian List')
+@push('head')
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
+@endpush
 @push('bread')
 <li class="breadcrumb-item active">Antrian</li>
 @endpush
@@ -7,6 +10,24 @@
 @if(session('speech'))
 {!! session('speech') !!}
 @endif
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Jumlah antrian hari ini
+            </div>
+
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach($loket as $lkt)
+                    <li class="list-group-item justify-content-between">Loket {{ $lkt->nama }} <span class="badgetext badge badge-primary badge-pill">{{ $lkt->antrian()->where('tanggal_antri', now()->format('Y-m-d'))->count() }}</span> </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row mt-3">
     <div class="col-md-12">
         <div class="card">
@@ -37,10 +58,11 @@
                             <tr>
                                 <th>No.</th>
                                 <th>No Antrian</th>
+                                <th>Tanggal Antri</th>
+                                <th>Loket</th>
                                 <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Jenis Surat</th>
-                                <th>Tanggal Antri</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -49,10 +71,11 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <th>{{ $antrian->no_antrian }}</th>
+                                <th>{{ Carbon\Carbon::parse($antrian->tanggal_antri)->format('d/m/Y') }}</th>
+                                <th>Loket {{ $antrian->loket->nama }}</th>
                                 <th>{{ $antrian->warga->nik }}</th>
                                 <th>{{ $antrian->warga->nama_warga }}</th>
                                 <th>{{ $antrian->jenis->jenis_surat }}</th>
-                                <th>{{ $antrian->tanggal_antri }}</th>
                                 <td>
                                     <div class="btn-group group-{{ $antrian->id }}">
                                         @if($antrian->status == 0 )
@@ -105,8 +128,22 @@
 </div>
 @stop
 @push('script')
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+
 <script>
-    $('#datatable').DataTable()
+    $('#datatable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    })
     $('.delete_confirm').click(function(event) {
         let form = $(this).closest("form");
         event.preventDefault();

@@ -68,6 +68,9 @@
             <a class="side-menu__item" href="{{ route('desa.gallery.index') }}"><i class="side-menu__icon" data-eva="grid-outline"></i><span class="side-menu__label">Gallery</span></a>
         </li>
         <li>
+            <a class="side-menu__item" href="{{ route('desa.playlist.index') }}"><i class="side-menu__icon" data-eva="video-outline"></i><span class="side-menu__label">Playlist</span></a>
+        </li>
+        <li>
             <h3>Produk Warga</h3>
         </li>
         <li>
@@ -88,6 +91,15 @@
         </li>
         <li>
             <a class="side-menu__item" href="{{ route('desa.informasi.index') }}"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Informasi</span></a>
+        </li>
+        <li>
+            <a class="side-menu__item" href="{{ route('desa.marque.index') }}"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Marque</span></a>
+        </li>
+        <li>
+            <a class="side-menu__item" href="{{ route('desa.rates.index') }}"><i class="side-menu__icon" data-eva="star-outline"></i><span class="side-menu__label">Rates</span></a>
+        </li>
+        <li>
+            <a class="side-menu__item" href="{{ route('desa.rating.index') }}"><i class="side-menu__icon" data-eva="star-outline"></i><span class="side-menu__label">Rating</span></a>
         </li>
         <li>
             <h3>Setting</h3>

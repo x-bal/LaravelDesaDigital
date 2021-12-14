@@ -38,15 +38,28 @@ class DashboardController extends Controller
 
     public function updateSetting(Desa $desa)
     {
-        request()->validate([
-            'background' => 'required'
+
+        if (request()->file('background')) {
+            Storage::delete($desa->background);
+            $background = request()->file('background');
+            $backgroundUrl = $background->storeAs('desa/background/', Str::slug($desa->nama_desa) . '.' . $background->extension());
+        } else {
+            $backgroundUrl = $desa->background;
+        }
+
+        if (request()->file('logo')) {
+            Storage::delete($desa->logo);
+            $logo = request()->file('logo');
+            $logoUrl = $logo->storeAs('desa/logo/', Str::slug($desa->nama_desa) . '.' . $logo->extension());
+        } else {
+            $logoUrl = $desa->logo;
+        }
+
+        $desa->update([
+            'background' => $backgroundUrl,
+            'logo' => $logoUrl,
+            'alamat' => request('alamat'),
         ]);
-
-        Storage::delete($desa->background);
-        $background = request()->file('background');
-        $backgroundUrl = $background->storeAs('desa/background/', Str::slug($desa->nama_desa) . '.' . $background->extension());
-
-        $desa->update(['background' => $backgroundUrl]);
 
         Alert::success('Selamat', 'Background berhasil diubah');
         return back();
