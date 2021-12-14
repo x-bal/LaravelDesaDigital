@@ -24,4 +24,9 @@ class Antrian extends Model
     {
         return $this->belongsTo(Loket::class);
     }
+
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class);
+    }
 }
