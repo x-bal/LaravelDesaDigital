@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Desa;
 
 use App\Http\Controllers\Controller;
 use App\Models\Loket;
+use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -11,7 +12,7 @@ class LoketController extends Controller
 {
     public function index()
     {
-        $lokets = Loket::where('desa_id', auth()->user()->desa[0]->id)->get();
+        $lokets = Loket::with('admin')->where('desa_id', auth()->user()->desa[0]->id)->get();
 
         return view('desa.loket.index', compact('lokets'));
     }
@@ -19,8 +20,11 @@ class LoketController extends Controller
     public function create()
     {
         $loket = new Loket();
+        $admin = User::with('desa')->whereHas('desa', function ($q) {
+            $q->where('desa_id', auth()->user()->desa->first()->id);
+        })->get();
 
-        return view('desa.loket.create', compact('loket'));
+        return view('desa.loket.create', compact('loket', 'admin'));
     }
 
     public function store(Request $request)
@@ -31,11 +35,14 @@ class LoketController extends Controller
         ]);
 
         try {
-            Loket::create([
+            $loket = Loket::create([
                 'nama' => $request->nama,
                 'kuota' => $request->kuota,
                 'desa_id' => auth()->user()->desa[0]->id
             ]);
+
+            $user = User::find($request->admin);
+            $user->update(['loket_id' => $loket->id]);
 
             Alert::success('Success!', 'Loket berhasil dibuat');
             return redirect()->route('desa.loket.index');
@@ -52,7 +59,11 @@ class LoketController extends Controller
 
     public function edit(Loket $loket)
     {
-        return view('desa.loket.edit', compact('loket'));
+        $admin = User::with('desa')->whereHas('desa', function ($q) {
+            $q->where('desa_id', auth()->user()->desa->first()->id);
+        })->get();
+
+        return view('desa.loket.edit', compact('loket', 'admin'));
     }
 
     public function update(Request $request, Loket $loket)
@@ -67,6 +78,12 @@ class LoketController extends Controller
                 'nama' => $request->nama,
                 'kuota' => $request->kuota,
             ]);
+
+            $user = User::find($request->admin);
+            $user->update([
+                'loket_id' => $loket->id
+            ]);
+
 
             Alert::success('Success!', 'Loket berhasil diupdate');
             return redirect()->route('desa.loket.index');

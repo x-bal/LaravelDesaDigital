@@ -6,7 +6,12 @@ use App\Models\Aduan;
 use App\Models\Antrian;
 use App\Models\JenisSurat;
 use App\Models\Loket;
+use App\Models\Marque;
+use App\Models\Playlist;
+use App\Models\Rate;
+use App\Models\Rating;
 use App\Models\Warga;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -24,8 +29,11 @@ class HomeController extends Controller
         $sisaloket = Loket::where('kuota', '>', 0)->count();
         $loket = Loket::get();
         $jenis = JenisSurat::get();
+        $playlist = Playlist::first();
+        $marques = Marque::get();
+        $siswa = Antrian::where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->where('status', 0)->count();
 
-        return view('landing.antrian', compact('no_antri', 'jenis',  'loket', 'sisaloket'));
+        return view('landing.antrian', compact('no_antri', 'jenis',  'loket', 'sisaloket', 'playlist', 'marques', 'sisa'));
     }
 
     public function storeAntrian(Request $request)
@@ -41,18 +49,19 @@ class HomeController extends Controller
 
             $loket = Loket::where('desa_id', $warga->desa_id)->where('kuota', '>', 0)->find($request->loket_id);
 
-            Antrian::create([
+            $antrian =  Antrian::create([
                 'warga_id' => $warga->id,
                 'jenis_surat_id' => $request->jenis,
                 'no_antrian' => $request->no_antri,
                 'desa_id' => $warga->desa_id,
                 'loket_id' => $loket->id
+
             ]);
             $sisa = $loket->kuota - 1;
             $loket->update(['kuota' => $sisa]);
 
             Alert::success('Selamat!', 'Pendaftaran antrian berhasil dilakukan');
-            return back();
+            return view('landing.print', compact('antrian'));
         } catch (\Throwable $th) {
             Alert::error('Error!', $th->getMessage());
             return back();
@@ -86,5 +95,19 @@ class HomeController extends Controller
             Alert::error('Error!', 'Mohon periksa kembali data yang anda masukkan');
             return back();
         }
+    }
+
+    public function penilaian()
+    {
+        $rates = Rate::get();
+        return view('landing.penilaian', compact('rates'));
+    }
+
+    public function storePenilaian($id)
+    {
+        Rating::create(['rate_id' => $id]);
+
+        Alert::success('Selamat!', 'Penilaian anda berhasil dikirimkan, terima kasih.');
+        return back();
     }
 }

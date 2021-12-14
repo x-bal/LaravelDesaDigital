@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Loket List')
+@section('title', 'Marque')
 @push('bread')
-<li class="breadcrumb-item active">Loket</li>
+<li class="breadcrumb-item active">Marque</li>
 @endpush
 @section('content')
-<div class="row mt-3">
+<div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex flex-row justify-content-between">
-                <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline-info"><i class="fas fa-arrow-left"></i> Back</a>
-                <a href="{{ route('desa.loket.create') }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus"></i> Create New</a>
+                <a href="{{ url()->previous() }}" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> <span>Back</span></a>
+                <a href="{{ route('desa.marque.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> <span>add</span></a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -17,33 +17,22 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Nama Loket</th>
-                                <th>Admin</th>
-                                <th>Desa</th>
-                                <th>Kuota</th>
+                                <th>Text</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($lokets as $loket)
+                            @foreach($marques as $marque)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <th>{{ $loket->nama }}</th>
-                                <th>
-                                    @foreach($loket->admin as $admin)
-                                    {{ $admin->name }}
-                                    @endforeach
-                                </th>
-                                <th>{{ $loket->desa->nama_desa }}</th>
-                                <th>{{ $loket->kuota }}</th>
+                                <td>{{ $marque->marque }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('desa.loket.reset', $loket->id) }}" class="btn btn-sm btn-outline-success">Reset</a>
-                                        <a href="{{ route('desa.loket.edit', $loket->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
-                                        <form action="{{ route('desa.loket.destroy', $loket->id) }}" method="post">
+                                        <a href="{{ route('desa.marque.edit', $marque->id) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                        <form action="{{ route('desa.marque.destroy', $marque->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-sm btn-outline-danger delete_confirm" type="submit">Destroy</button>
+                                            <button class="btn btn-sm btn-danger delete_confirm" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                         </form>
                                     </div>
                                 </td>

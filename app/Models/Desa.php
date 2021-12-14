@@ -34,4 +34,9 @@ class Desa extends Model
     {
         return $this->hasMany(Loket::class);
     }
+
+    public function antrian()
+    {
+        return $this->hasMany(Antrian::class);
+    }
 }

@@ -9,8 +9,13 @@ use App\Http\Controllers\Desa\PermohonanSuratController;
 use App\Http\Controllers\Desa\InformasiController;
 use App\Http\Controllers\Desa\KategoriInformasiController;
 use App\Http\Controllers\Desa\LoketController;
+use App\Http\Controllers\Desa\MarqueController;
 use App\Http\Controllers\Desa\PenggunaController;
+use App\Http\Controllers\Desa\PlaylistController;
 use App\Http\Controllers\Desa\ProdukController;
+use App\Http\Controllers\Desa\RateController;
+use App\Http\Controllers\Desa\RatingController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Warga\MasyarakatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +41,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/antrian', [App\Http\Controllers\HomeController::class, 'storeAntrian'])->name('antrian.store');
     Route::get('/aduan', [App\Http\Controllers\HomeController::class, 'aduan'])->name('aduan');
     Route::post('/aduan', [App\Http\Controllers\HomeController::class, 'storeAduan'])->name('aduan.store');
+    Route::get('/penilaian', [HomeController::class, 'penilaian'])->name('penilaian');
+    Route::get('/penilaian/{id}', [HomeController::class, 'storePenilaian'])->name('penilaian.store');
 });
 
 Route::middleware('auth')->group(function () {
@@ -61,8 +68,14 @@ Route::middleware('auth')->group(function () {
         Route::resource('antrian', AntrianController::class);
         Route::get('antrian/{antrian:id}/status', [AntrianController::class, 'status'])->name('antrian.status');
         Route::resource('permohonan', PermohonanSuratController::class);
+        Route::resource('rates', RateController::class);
+        Route::resource('rating', RatingController::class);
+        Route::resource('playlist', PlaylistController::class);
+        Route::resource('marque', MarqueController::class);
     });
     Route::prefix('warga')->middleware('verified')->name('warga.')->group(function () {
         Route::resource('masyarakat', MasyarakatController::class);
     });
 });
+
+Route::get('video/{playlist:id}', [PlaylistController::class, 'getVideo']);

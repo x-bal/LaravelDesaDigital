@@ -4,28 +4,46 @@
 <li class="breadcrumb-item active">Setting</li>
 @endpush
 @section('content')
-<div class="row">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">Setting Background Antrian</div>
-
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="{{ asset('storage/' . $desa->background) }}" alt="" class="img-thumbnail wd-100 wd-sm-200">
-                    </div>
-                    <div class="col-md-8">
-                        <form action="{{ route('setting.update', $desa->id) }}" method="post" enctype="multipart/form-data">
-                            @csrf
+<div class="card">
+    <div class="card-header">Setting Background Antrian</div>
+    <div class="card-body">
+        <form action="{{ route('setting.update', $desa->id) }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{ asset('storage/' . $desa->background) }}" alt="" class="img-thumbnail border-0 wd-100 wd-sm-200">
+                        </div>
+                        <div class="col-md-8">
+                            <label for="">Background</label><br>
                             <div class="form-group">
                                 <input type="file" name="background" id="background">
                             </div>
-                            <button class="btn btn-sm btn-primary" type="submit">Upload</button>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{ asset('storage/' . $desa->logo) }}" alt="" class="img-thumbnail border-0 wd-100 wd-sm-200">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="">Logo</label><br>
+                                <input type="file" name="logo" id="logo">
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <textarea name="alamat" id="alamat" rows="3" class="form-control">{{ $desa->alamat }}</textarea>
+                    </div>
+                    <button class="btn btn-sm btn-primary" type="submit">Upload</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 @stop

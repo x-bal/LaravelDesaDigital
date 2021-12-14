@@ -19,4 +19,9 @@ class Loket extends Model
     {
         return $this->hasMany(Antrian::class);
     }
+
+    public function admin()
+    {
+        return $this->hasMany(User::class);
+    }
 }

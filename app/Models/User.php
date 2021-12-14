@@ -22,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'loket_id',
     ];
 
     /**
@@ -50,5 +51,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function warga()
     {
         return $this->hasOne(Warga::class, 'user_id');
+    }
+
+    public function loket()
+    {
+        return $this->belongsTo(Loket::class);
     }
 }
