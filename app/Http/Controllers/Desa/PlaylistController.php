@@ -11,7 +11,7 @@ class PlaylistController extends Controller
 {
     public function index()
     {
-        $playlists = Playlist::where('desa_id', auth()->user()->desa->first()->id)->get();
+        $playlists = Playlist::where('desa_id', auth()->user()->desa_id)->get();
         return view('desa.playlist.index', compact('playlists'));
     }
 
@@ -29,7 +29,7 @@ class PlaylistController extends Controller
             $videoUrl = $video->storeAs('desa/playlist', $video->getClientOriginalName());
 
             Playlist::create([
-                'desa_id' => auth()->user()->desa->first()->id,
+                'desa_id' => auth()->user()->desa_id,
                 'video' => $videoUrl
             ]);
 

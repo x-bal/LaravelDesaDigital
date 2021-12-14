@@ -3,24 +3,22 @@
 namespace App\Http\Controllers\Desa;
 
 use App\Http\Controllers\Controller;
-use App\Models\Rating;
-use App\Models\Rate;
+use App\Models\JenisSurat;
 use Illuminate\Http\Request;
 
-class RatingController extends Controller
+class CetakSuratController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $from = request('from');
-        $to = request('to');
-
-        if ($from && $to) {
-            $ratings = Rate::where('desa_id', auth()->user()->desa_id)->whereBetween('tanggal_antri', [$from, $to])->get();
-        } else {
-            $ratings = Rate::where('desa_id', auth()->user()->desa_id)->get();
-        }
-
-        return view('desa.rating.index', compact('ratings'));
+        $jenis_surat = JenisSurat::get();
+        return view('desa.cetak_surat.index',[
+            'jenis_surat' => $jenis_surat
+        ]);
     }
 
     /**
@@ -52,7 +50,9 @@ class RatingController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('desa.cetak_surat.show',[
+            'jenis_surat' => JenisSurat::findOrFail($id)
+        ]);
     }
 
     /**

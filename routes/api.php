@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AduanController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\DevController;
 use App\Http\Controllers\Api\InformasiController;
 use App\Http\Controllers\Api\JenisSuratController;
 use App\Http\Controllers\Api\ProdukController;
@@ -52,3 +53,6 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/select2/cetaksurat',[DevController::class,'getcetaksurat']);
+Route::get('/select2/cetaksurat/{id}',[DevController::class,'showcetaksurat']);

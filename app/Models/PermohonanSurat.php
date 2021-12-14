@@ -24,4 +24,45 @@ class PermohonanSurat extends Model
     {
         return $this->belongsTo(Desa::class);
     }
+
+    public function PermohonanSuratDomisiliUsaha()
+    {
+        return $this->hasMany(PermohonanSuratDomisiliUsaha::class);
+    }
+    public function PermohonanSuratIzinKeramaian()
+    {
+        return $this->hasMany(PermohonanSuratIzinKeramaian::class);
+    }
+    public function PermohonanSuratJaminanKesehatan()
+    {
+        return $this->hasMany(PermohonanSuratJaminanKesehatan::class);
+    }
+    public function PermohonanSuratKehilangan()
+    {
+        return $this->hasMany(PermohonanSuratKehilangan::class);
+    }
+    public function PermohonanSuratKuasa()
+    {
+        return $this->hasMany(PermohonanSuratKuasa::class);
+    }
+    public function PermohonanSuratKurangMampu()
+    {
+        return $this->hasMany(PermohonanSuratKurangMampu::class);
+    }
+    public function PermohonanSuratPengantar()
+    {
+        return $this->hasMany(PermohonanSuratPengantar::class);
+    }
+    public function PermohonanSuratPergiKawin()
+    {
+        return $this->hasMany(PermohonanSuratPergiKawin::class);
+    }
+    public function PermohonanSuratSkck()
+    {
+        return $this->hasMany(PermohonanSuratSkck::class);
+    }
+    public function PermohonanSuratUsaha()
+    {
+        return $this->hasMany(PermohonanSuratUsaha::class);
+    }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Desa\AduanController;
 use App\Http\Controllers\Desa\WargaController;
 use App\Http\Controllers\Desa\AntrianController;
+use App\Http\Controllers\Desa\CetakSuratController;
 use App\Http\Controllers\Desa\GalleryController;
 use App\Http\Controllers\Desa\PermohonanSuratController;
 use App\Http\Controllers\Desa\InformasiController;
@@ -70,6 +71,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('rating', RatingController::class);
         Route::resource('playlist', PlaylistController::class);
         Route::resource('marque', MarqueController::class);
+        Route::resource('cetak_surat',CetakSuratController::class);
     });
     Route::prefix('warga')->middleware('verified')->name('warga.')->group(function () {
         Route::resource('masyarakat', MasyarakatController::class);

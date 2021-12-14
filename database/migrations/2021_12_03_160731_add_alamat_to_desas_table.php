@@ -14,8 +14,8 @@ class AddAlamatToDesasTable extends Migration
     public function up()
     {
         Schema::table('desas', function (Blueprint $table) {
-            $table->text('alamat')->after('nama_desa');
-            $table->text('logo')->after('alamat');
+            $table->text('alamat')->after('nama_desa')->nullable();
+            $table->text('logo')->after('alamat')->nullable();
         });
     }
 

@@ -15,9 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RolePermissionSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(JenisSuratSeeder::class);
         $provinsi = \App\Models\Provinsi::factory(5)->create();
 
         $provinsi->each(function ($prov) {
@@ -37,5 +34,8 @@ class DatabaseSeeder extends Seeder
                 });
             });
         });
+        $this->call(RolePermissionSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(JenisSuratSeeder::class);
     }
 }

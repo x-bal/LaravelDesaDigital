@@ -11,7 +11,7 @@ class MarqueController extends Controller
 {
     public function index()
     {
-        $marques = Marque::where('desa_id', auth()->user()->desa->first()->id)->get();
+        $marques = Marque::where('desa_id', auth()->user()->desa_id)->get();
         return view('desa.marque.index', compact('marques'));
     }
 
@@ -27,7 +27,7 @@ class MarqueController extends Controller
 
         try {
             Marque::create([
-                'desa_id' => auth()->user()->desa->first()->id,
+                'desa_id' => auth()->user()->desa_id,
                 'marque' => $request->text
             ]);
 

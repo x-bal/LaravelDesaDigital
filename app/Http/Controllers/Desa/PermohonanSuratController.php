@@ -7,20 +7,21 @@ use App\Models\JenisSurat;
 use App\Models\PermohonanSurat;
 use App\Models\Warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PermohonanSuratController extends Controller
 {
     public function index()
     {
-        $permohonans = PermohonanSurat::where('desa_id', auth()->user()->desa[0]->id)->get();
+        $permohonans = PermohonanSurat::where('desa_id', auth()->user()->desa_id)->get();
 
         return view('desa.permohonan.index', compact('permohonans'));
     }
 
     public function create()
     {
-        $warga = Warga::where('desa_id', auth()->user()->desa[0]->id)->get();
+        $warga = Warga::where('desa_id', auth()->user()->desa_id)->get();
         $jenis = JenisSurat::get();
         $permohonanSurat = new PermohonanSurat();
 
@@ -33,12 +34,21 @@ class PermohonanSuratController extends Controller
             'warga' => 'required',
             'jenis' => 'required',
         ]);
-
-        PermohonanSurat::create([
-            'warga_id' => $request->warga,
-            'jenis_surat_id' => $request->jenis,
-            'desa_id' => auth()->user()->desa[0]->id
-        ]);
+        DB::beginTransaction();
+        try {
+            
+            $permohonan = PermohonanSurat::create([
+                'warga_id' => $request->warga,
+                'jenis_surat_id' => $request->jenis,
+                'desa_id' => auth()->user()->desa_id
+            ]);
+            dd($permohonan);
+            if($permohonan->jenis_surat_id){
+                
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
 
         Alert::success('Success', 'Permohonan Surat berhasil dibuat');
         return redirect()->route('desa.permohonan.index');
@@ -52,7 +62,7 @@ class PermohonanSuratController extends Controller
     public function edit($id)
     {
         $permohonanSurat = PermohonanSurat::findorFail($id);
-        $warga = Warga::where('desa_id', auth()->user()->desa[0]->id)->get();
+        $warga = Warga::where('desa_id', auth()->user()->desa_id)->get();
         $jenis = JenisSurat::get();
 
         return view('desa.permohonan.edit', compact('warga', 'jenis', 'permohonanSurat'));

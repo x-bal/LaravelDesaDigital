@@ -13,7 +13,7 @@ class RateController extends Controller
 {
     public function index()
     {
-        $rates = Rate::where('desa_id', auth()->user()->desa->first()->id)->get();
+        $rates = Rate::where('desa_id', auth()->user()->desa_id)->get();
         return view('desa.rates.index', compact('rates'));
     }
 
@@ -36,7 +36,7 @@ class RateController extends Controller
 
             Rate::create([
                 'name' => $request->name,
-                'desa_id' => auth()->user()->desa->first()->id,
+                'desa_id' => auth()->user()->desa_id,
                 'icon' => $iconUrl
             ]);
 
@@ -76,7 +76,7 @@ class RateController extends Controller
 
             $rate->update([
                 'name' => $request->name,
-                'desa_id' => auth()->user()->desa->first()->id,
+                'desa_id' => auth()->user()->desa_id,
                 'icon' => $iconUrl
             ]);
 

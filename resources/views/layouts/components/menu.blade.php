@@ -61,6 +61,10 @@
         <li>
             <a class="side-menu__item" href="{{ route('desa.permohonan.index') }}"><i class="side-menu__icon" data-eva="email-outline"></i><span class="side-menu__label">Permohonan Surat</span></a>
         </li>
+
+        <li>
+            <a class="side-menu__item" href="{{ route('desa.cetak_surat.index') }}"><i class="side-menu__icon" data-eva="email-outline"></i><span class="side-menu__label">Cetak Surat</span></a>
+        </li>
         <li>
             <h3>Gallery</h3>
         </li>

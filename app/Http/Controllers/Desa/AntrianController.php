@@ -19,12 +19,12 @@ class AntrianController extends Controller
         $to = $request->to;
 
         if ($from && $to) {
-            $antrians = Antrian::where('desa_id', auth()->user()->desa[0]->id)->whereBetween('tanggal_antri', [$from, $to])->get();
+            $antrians = Antrian::where('desa_id', auth()->user()->desa_id)->whereBetween('tanggal_antri', [$from, $to])->get();
         } else {
-            $antrians = Antrian::where('desa_id', auth()->user()->desa[0]->id)->where('tanggal_antri', now()->format('Y-m-d'))->get();
+            $antrians = Antrian::where('desa_id', auth()->user()->desa_id)->where('tanggal_antri', now()->format('Y-m-d'))->get();
         }
 
-        $loket = Loket::where('desa_id', auth()->user()->desa->first()->id)->get();
+        $loket = Loket::where('desa_id', auth()->user()->desa_id)->get();
 
         return view('desa.antrian.index', compact('antrians', 'loket'));
     }
@@ -32,10 +32,10 @@ class AntrianController extends Controller
     public function create()
     {
         $no_antri = Antrian::where('tanggal_antri', date('Y-m-d'))->where('status', 0)->count();
-        $warga = Warga::where('desa_id', auth()->user()->desa[0]->id)->get();
+        $warga = Warga::where('desa_id', auth()->user()->desa_id)->get();
         $jenis = JenisSurat::get();
         $antrian = new Antrian();
-        $loket = Loket::where('desa_id', auth()->user()->desa->first()->id)->get();
+        $loket = Loket::where('desa_id', auth()->user()->desa_id)->get();
 
         return view('desa.antrian.create', compact('warga', 'no_antri', 'jenis', 'antrian', 'loket'));
     }
@@ -53,7 +53,7 @@ class AntrianController extends Controller
         $attr['warga_id'] = $request->warga;
         $attr['loket_id'] = $request->loket;
         $attr['jenis_surat_id'] = $request->jenis;
-        $attr['desa_id'] = auth()->user()->desa[0]->id;
+        $attr['desa_id'] = auth()->user()->desa_id;
         $attr['tanggal_antri'] = now('Asia/Jakarta');
 
         Antrian::create($attr);
@@ -69,9 +69,9 @@ class AntrianController extends Controller
 
     public function edit(Antrian $antrian)
     {
-        $warga = Warga::where('desa_id', auth()->user()->desa[0]->id)->get();
+        $warga = Warga::where('desa_id', auth()->user()->desa_id)->get();
         $jenis = JenisSurat::get();
-        $loket = Loket::where('desa_id', auth()->user()->desa->first()->id)->get();
+        $loket = Loket::where('desa_id', auth()->user()->desa_id)->get();
 
         return view('desa.antrian.edit', compact('warga', 'jenis', 'antrian', 'loket'));
     }
@@ -89,7 +89,7 @@ class AntrianController extends Controller
         $attr['warga_id'] = $request->warga;
         $attr['jenis_surat_id'] = $request->jenis;
         $attr['loket_id'] = $request->loket;
-        $attr['desa_id'] = auth()->user()->desa[0]->id;
+        $attr['desa_id'] = auth()->user()->desa_id;
 
         $antrian->update($attr);
 

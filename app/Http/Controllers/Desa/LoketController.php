@@ -12,7 +12,7 @@ class LoketController extends Controller
 {
     public function index()
     {
-        $lokets = Loket::with('admin')->where('desa_id', auth()->user()->desa[0]->id)->get();
+        $lokets = Loket::with('admin')->where('desa_id', auth()->user()->desa_id)->get();
 
         return view('desa.loket.index', compact('lokets'));
     }
@@ -21,7 +21,7 @@ class LoketController extends Controller
     {
         $loket = new Loket();
         $admin = User::with('desa')->whereHas('desa', function ($q) {
-            $q->where('desa_id', auth()->user()->desa->first()->id);
+            $q->where('desa_id', auth()->user()->desa_id);
         })->get();
 
         return view('desa.loket.create', compact('loket', 'admin'));
@@ -38,7 +38,7 @@ class LoketController extends Controller
             $loket = Loket::create([
                 'nama' => $request->nama,
                 'kuota' => $request->kuota,
-                'desa_id' => auth()->user()->desa[0]->id
+                'desa_id' => auth()->user()->desa_id
             ]);
 
             $user = User::find($request->admin);
@@ -60,7 +60,7 @@ class LoketController extends Controller
     public function edit(Loket $loket)
     {
         $admin = User::with('desa')->whereHas('desa', function ($q) {
-            $q->where('desa_id', auth()->user()->desa->first()->id);
+            $q->where('desa_id', auth()->user()->desa_id);
         })->get();
 
         return view('desa.loket.edit', compact('loket', 'admin'));

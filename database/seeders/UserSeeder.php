@@ -40,7 +40,8 @@ class UserSeeder extends Seeder
             $user = User::create([
                 'name' => $key['name'],
                 'email' => $key['email'],
-                'password' => $key['password']
+                'password' => $key['password'],
+                'desa_id' => 1
             ]);
             $user->assignRole($key['role']);
         }
