@@ -12,17 +12,14 @@ class LoketController extends Controller
 {
     public function index()
     {
-        $lokets = Loket::with('admin')->where('desa_id', auth()->user()->desa_id)->get();
-
+        $lokets = Loket::where('desa_id', auth()->user()->desa_id)->get();
         return view('desa.loket.index', compact('lokets'));
     }
 
     public function create()
     {
         $loket = new Loket();
-        $admin = User::with('desa')->whereHas('desa', function ($q) {
-            $q->where('desa_id', auth()->user()->desa_id);
-        })->get();
+        $admin = User::where('desa_id', auth()->user()->desa_id)->get();
 
         return view('desa.loket.create', compact('loket', 'admin'));
     }

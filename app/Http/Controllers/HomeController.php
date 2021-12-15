@@ -59,9 +59,9 @@ class HomeController extends Controller
             ]);
             $sisa = $loket->kuota - 1;
             $loket->update(['kuota' => $sisa]);
-
+    
             Alert::success('Selamat!', 'Pendaftaran antrian berhasil dilakukan');
-            return view('landing.print', compact('antrian'));
+            return view('landing.print', compact('antrian','sisa'));
         } catch (\Throwable $th) {
             Alert::error('Error!', $th->getMessage());
             return back();

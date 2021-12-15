@@ -19,7 +19,7 @@ class CreatePengajuanWargasTable extends Migration
             $table->string('nama');
             $table->string('nik');
             $table->string('tempat_lahir');
-            $table->enum('jenis_kelamin',['Laki Laki','Perempuan']);
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->text('alamat');
             $table->string('agama');
             $table->string('status_perkawinan');

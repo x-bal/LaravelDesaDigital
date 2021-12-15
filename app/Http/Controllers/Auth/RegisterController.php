@@ -79,6 +79,7 @@ class RegisterController extends Controller
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
+                'desa_id' => Warga::where('nik', $data['nik'])->first()->desa_id
             ]);
             Warga::where('nama_warga', $user->name)->update([
                 'is_nik' => null,
@@ -89,7 +90,7 @@ class RegisterController extends Controller
             return $user;
         } catch (Exception $err) {
             DB::rollBack();
-            abort(500);
+            abort(500,$err->getMessage());
         }
     }
 }

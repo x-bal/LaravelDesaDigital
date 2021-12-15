@@ -32,6 +32,7 @@
                                 <th>{{ $permohonanSurat->jenis->jenis_surat }}</th>
                                 <td>
                                     <div class="btn-group">
+                                        <a href="{{ route('desa.cetak_surat.show',$permohonanSurat->id) }}" class="btn btn-sm btn-outline-info"><i class="fas fa-file"></i> Cetak Surat</a>
                                         <a href="{{ route('desa.permohonan.edit', $permohonanSurat->id) }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</a>
                                         <form action="{{ route('desa.permohonan.destroy', $permohonanSurat->id) }}" method="post">
                                             @csrf
