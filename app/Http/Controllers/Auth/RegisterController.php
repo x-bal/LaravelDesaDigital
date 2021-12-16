@@ -73,13 +73,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $desa_id = Warga::where('nik', $data['nik'])->first()->desa_id;
         DB::beginTransaction();
         try {
             $user =  User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'desa_id' => Warga::where('nik', $data['nik'])->first()->desa_id
+                'desa_id' => $desa_id
             ]);
             Warga::where('nama_warga', $user->name)->update([
                 'is_nik' => null,
@@ -90,6 +91,7 @@ class RegisterController extends Controller
             return $user;
         } catch (Exception $err) {
             DB::rollBack();
+            dd($err->getMessage());
             abort(500,$err->getMessage());
         }
     }

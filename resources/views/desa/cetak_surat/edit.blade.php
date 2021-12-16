@@ -19,23 +19,29 @@
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label for="" class="form-label">Nik</label>
-                            <input type="text" name="warga" readonly class="form-control" value="{{ $warga->nama_warga }} - {{ $warga->nik }}">
+                            <input type="text" name="nik" readonly class="form-control" value="{{ $warga->nik }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Nama</label>
+                            <input type="text" name="nama" readonly class="form-control" value="{{ $warga->nama_warga }}">
                         </div>
                     </div>
                     <div class="form-group row" id="warga">
                         <div class="col-md-4">
+                            <label for="" class="form-label">Tempat Lahir</label>
                             <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" readonly>
                         </div>
                         <div class="col-md-4">
+                            <label for="" class="form-label">Tanggal Lahir</label>
                             <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" readonly>
                         </div>
                         <div class="col-md-4">
+                            <label for="" class="form-label">Umur</label>
                             <input type="text" class="form-control" name="umur" id="umur" readonly>
                         </div>
                     </div>
-                    <div>
-                        @include('desa.cetak_surat.form')
-                    </div>
+                    <hr>
+                    @include('desa.cetak_surat.form')
                 </form>
 
             </div>

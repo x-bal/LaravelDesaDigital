@@ -56,9 +56,7 @@ class LoketController extends Controller
 
     public function edit(Loket $loket)
     {
-        $admin = User::with('desa')->whereHas('desa', function ($q) {
-            $q->where('desa_id', auth()->user()->desa_id);
-        })->get();
+        $admin = User::where('desa_id', auth()->user()->desa_id)->get();
 
         return view('desa.loket.edit', compact('loket', 'admin'));
     }

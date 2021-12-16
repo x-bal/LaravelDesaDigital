@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'loket_id',
+        'desa_id'
     ];
 
     /**
