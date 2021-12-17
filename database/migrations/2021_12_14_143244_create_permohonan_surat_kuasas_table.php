@@ -19,7 +19,7 @@ class CreatePermohonanSuratKuasasTable extends Migration
             $table->string('nama_pem');
             $table->string('tempat_lahir_pem');
             $table->date('tanggal_lahir_pem');
-            $table->enum('jenis_kelamin_pem',['Laki Laki','Perempuan']);
+            $table->enum('jenis_kelamin_pem',['Laki-Laki','Perempuan']);
             $table->text('alamat_pem');
             $table->string('desa_pem');
             $table->string('kecamatan_pem');
@@ -30,8 +30,14 @@ class CreatePermohonanSuratKuasasTable extends Migration
             $table->string('tempat_lahir_pen');
             $table->date('tanggal_lahir_pen');
             $table->string('umur_pen');
-            $table->enum('jenis_kelamin_pen',['Laki Laki','Perempuan']);
+            $table->enum('jenis_kelamin_pen',['Laki-Laki','Perempuan']);
             $table->string('pekerjaan_pen');
+            $table->string('alamat_pen');
+            $table->string('desa_pen');
+            $table->string('kecamatan_pen');
+            $table->string('kabupaten_pen');
+            
+            $table->string('keperluan');
             
             $table->timestamps();
         });

@@ -24,6 +24,11 @@ class CreateWargasTable extends Migration
             $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
+            $table->enum('agama',['Islam', 'Kristen', 'Katolik', 'Hindu','Buddha','Konghucu', 'Dll'])->nullable();
+            $table->string('pekerjaan')->nullable();
+            $table->string('pendidikan')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('warga_negara')->nullable();
             $table->timestamps();
         });
     }

@@ -19,7 +19,10 @@ class CreatePermohonanSuratUsahasTable extends Migration
             $table->string('ktp');
             $table->string('kk');
             $table->string('usaha');
+            $table->string('keterangan');
             $table->string('pemegang_usaha');
+            $table->date('berlaku_mulai');
+            $table->date('berlaku_sampai');
             $table->timestamps();
         });
     }

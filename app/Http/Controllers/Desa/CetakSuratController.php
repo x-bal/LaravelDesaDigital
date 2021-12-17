@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\JenisSurat;
 use App\Models\PengajuanWarga;
 use App\Models\PermohonanSurat;
+use App\Models\PermohonanSuratDomisiliUsaha;
 use App\Models\PermohonanSuratIzinKeramaian;
 use App\Models\PermohonanSuratKehilangan;
 use App\Models\PermohonanSuratKuasa;
 use App\Models\PermohonanSuratPengantar;
 use App\Models\PermohonanSuratSkck;
+use App\Models\PermohonanSuratUsaha;
 use App\Models\Warga;
 use Carbon\Carbon;
 use Exception;
@@ -266,10 +268,10 @@ class CetakSuratController extends Controller
                         'tempat_lahir' => $warga->tempat_lahir,
                         'jenis_kelamin' => $warga->jenis_kelamin,
                         'alamat' => $warga->desa->nama_desa . ' ,' . $warga->desa->alamat,
-                        'agama' => 'islam',
+                        'agama' => $warga->agama,
                         'status_perkawinan' => 'belum menikah',
-                        'pekerjaan' => 'dpr',
-                        'kewarganegaraan' => 'swedia',
+                        'pekerjaan' => $warga->pekerjaan,
+                        'kewarganegaraan' => $warga->warga_negara,
                         'golongan_darah' => '0'
                     ]);
                     PermohonanSuratSkck::create([
@@ -291,7 +293,7 @@ class CetakSuratController extends Controller
                         '[status]' => 'status',
                         '[pendidikan]' => $request->pendidikan,
                         '[pekerjaan]' => $request->pekerjaan,
-                        '[warga_negara]' => 'Indonesia',
+                        '[warga_negara]' => $warga->warga_negara,
                         '[form_keterangan]' => $request->keperluan,
                         '[Sebutan_desa]' => 'Desa',
                         '[penandatangan]' => $warga->nama_warga,
@@ -318,10 +320,10 @@ class CetakSuratController extends Controller
                         'tempat_lahir' => $warga->tempat_lahir,
                         'jenis_kelamin' => $warga->jenis_kelamin,
                         'alamat' => $warga->desa->nama_desa . ' ,' . $warga->desa->alamat,
-                        'agama' => 'islam',
+                        'agama' => $warga->agama,
                         'status_perkawinan' => 'belum menikah',
-                        'pekerjaan' => 'dpr',
-                        'kewarganegaraan' => 'swedia',
+                        'pekerjaan' => $warga->pekerjaan,
+                        'kewarganegaraan' => $warga->nama_warga,
                         'golongan_darah' => '0'
                     ]);
                     PermohonanSuratKehilangan::create([
@@ -335,13 +337,13 @@ class CetakSuratController extends Controller
                         '[no_kk]' => 'kk',
                         '[kepala_kk]' => $warga->nama_warga,
                         '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[agama]' => 'islam',
+                        '[agama]' => $warga->agama,
                         '[sex]' => $warga->jenis_kelamin,
                         '[alamat]' => $warga->desa->alamat,
                         '[status]' => 'status',
-                        '[pendidikan]' => 'pendidikan',
-                        '[pekerjaan]' => 'pekerjaaan',
-                        '[warga_negara]' => 'Indonesia',
+                        '[pendidikan]' => $warga->pendidikan,
+                        '[pekerjaan]' => $warga->pekerjaan,
+                        '[warga_negara]' => $warga->warga_negara,
                         '[form_keterangan]' => $request->keterangan_hilang,
                         '[form_rincian]' => $request->rincian_barang,
                         '[penandatangan]' => $warga->nama_warga,
@@ -369,10 +371,10 @@ class CetakSuratController extends Controller
                         'tempat_lahir' => $warga->tempat_lahir,
                         'jenis_kelamin' => $warga->jenis_kelamin,
                         'alamat' => $warga->desa->nama_desa . ' ,' . $warga->desa->alamat,
-                        'agama' => 'islam',
+                        'agama' => $warga->agama,
                         'status_perkawinan' => 'belum menikah',
-                        'pekerjaan' => 'dpr',
-                        'kewarganegaraan' => 'swedia',
+                        'pekerjaan' => $warga->pekerjaan,
+                        'kewarganegaraan' => $warga->warna_negara,
                         'golongan_darah' => '0'
                     ]);
                     PermohonanSuratIzinKeramaian::create([
@@ -471,7 +473,6 @@ class CetakSuratController extends Controller
                     DB::commit();
                     break;
                 case 5:
-                    dd($request->all());
                     $doc = '5_surat_kuasa';
                     PengajuanWarga::create([
                         'permohonan_surat_id' => $id,
@@ -488,47 +489,51 @@ class CetakSuratController extends Controller
                     ]);
                     PermohonanSuratKuasa::create([
                         'permohonan_surat_id' => $id,
-                        'nama_pem' => $request->nama_pem,
-                        'tempat_lahir_pem' => $request->tempat_lahir_pem,
-                        'tanggal_lahir_pem' => $request->tanggal_lahir_pem,
-                        'jenis_kelamin_pem' => $request->jenis_kelamin_pem,
-                        'alamat_pem' => $request->alamat_pem,
-                        'desa_pem' => $request->desa_pem,
-                        'kecamatan_pem' => $request->kecamatan_pem,
-                        'kabupaten_pem' => $request->kabupaten_pem,
+                        'nama_pem' => $warga->nama_warga,
+                        'tempat_lahir_pem' => $warga->tempat_lahir,
+                        'tanggal_lahir_pem' => $warga->tanggal_lahir,
+                        'jenis_kelamin_pem' => $warga->jenis_kelamin,
+                        'alamat_pem' => $warga->alamat,
+                        'desa_pem' => $warga->desa->nama_desa,
+                        'kecamatan_pem' => $warga->desa->kecamatan->nama_kecamatan,
+                        'kabupaten_pem' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
                         'nama_pen' => $request->nama_pen,
                         'nik_pen' => $request->nik_pen,
                         'tempat_lahir_pen' => $request->tempat_lahir_pen,
                         'tanggal_lahir_pen' => $request->tanggal_lahir_pen,
                         'umur_pen' => $request->umur_pen,
+                        'alamat_pen' => $request->alamat_pen,
+                        'desa_pen' => $request->desa_pen,
+                        'kecamatan_pen' => $request->kecamatan_pen,
+                        'kabupaten_pen' => $request->kabupaten_pen,
+                        'keperluan' => $request->keperluan,
                         'jenis_kelamin_pen' => $request->jenis_kelamin_pen,
                         'pekerjaan_pen' => $request->pekerjaan_pen,
                     ]);
                     $body = array(
-                        '[nama_pemberi_kuasa]' => '',
-                        '[nik_pemberi_kuasa]' => '',
-                        '[tempat_lahir_pemberi_kuasa]' => '',
-                        '[tanggal_lahir_pemberi_kuasa]' => '',
-                        '[umur_pemberi_kuasa]' => '',
-                        '[jkpemberi_kuasa]' => '',
-                        '[pekerjaanpemberi_kuasa]' => '',
-                        '[alamat_pemberi_kuasa]' => '',
-                        '[form_desapemberi_kuasa]' => '',
-                        '[form_kecpemberi_kuasa]' => '',
-                        '[form_kabpemberi_kuasa]' => '',
-                        '[nama_penerima_kuasa]' => '',
-                        '[nik_penerima_kuasa]' => '',
-                        '[tempat_lahir_penerima_kuasa]' => '',
-                        '[tanggal_lahir_penerima_kuasa]' => '',
-                        '[umur_penerima_kuasa]' => '',
-                        '[jkpenerima_kuasa]' => '',
-                        '[pekerjaanpenerima_kuasa]' => '',
-                        '[alamat_penerima_kuasa]' => '',
-                        '[form_desapenerima_kuasa]' => '',
-                        '[form_kecpenerima_kuasa]' => '',
-                        '[form_kabpenerima_kuasa]' => '',
-                        '[untuk_keperluan]' => '',
-
+                        '[nama_pemberi_kuasa]' => $warga->nama_warga,
+                        '[nik_pemberi_kuasa]' => $warga->nik,
+                        '[tempat_lahir_pemberi_kuasa]' => $warga->tempat_lahir,
+                        '[tanggal_lahir_pemberi_kuasa]' => $warga->tanggal_lahir,
+                        '[umur_pemberi_kuasa]' => $request->umur,
+                        '[jkpemberi_kuasa]' => $warga->jenis_kelamin,
+                        '[pekerjaanpemberi_kuasa]' => $warga->pekerjaan,
+                        '[alamat_pemberi_kuasa]' => $warga->alamat,
+                        '[form_desapemberi_kuasa]' => $warga->desa->nama_desa,
+                        '[form_kecpemberi_kuasa]' => $warga->desa->kecamatan->nama_kecamatan,
+                        '[form_kabpemberi_kuasa]' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
+                        '[nama_penerima_kuasa]' => $request->nama_pen,
+                        '[nik_penerima_kuasa]' => $request->nik_pen,
+                        '[tempat_lahir_penerima_kuasa]' => $request->tempat_lahir_pen,
+                        '[tanggal_lahir_penerima_kuasa]' => $request->tanggal_lahir_pen,
+                        '[umur_penerima_kuasa]' => $request->umur_pen,
+                        '[jkpenerima_kuasa]' => $request->jenis_kelamin_pen,
+                        '[pekerjaanpenerima_kuasa]' => $request->pekerjaan_pen,
+                        '[alamat_penerima_kuasa]' => $request->alamat_pen,
+                        '[form_desapenerima_kuasa]' => $request->desa_pen,
+                        '[form_kecpenerima_kuasa]' => $request->kecamatan_pen,
+                        '[form_kabpenerima_kuasa]' => $request->kabupaten_pen,
+                        '[untuk_keperluan]' => $request->keperluan
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -545,9 +550,112 @@ class CetakSuratController extends Controller
                     break;
                 case 6:
                     $doc = '6_surat_ket_usaha';
+                    PengajuanWarga::create([
+                        'permohonan_surat_id' => $id,
+                        'nama' => $warga->nama_warga,
+                        'nik' => $warga->nik,
+                        'tempat_lahir' => $warga->tempat_lahir,
+                        'jenis_kelamin' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->nama_desa . ' ,' . $warga->desa->alamat,
+                        'agama' => $warga->agama,
+                        'status_perkawinan' => 'belum menikah',
+                        'pekerjaan' => $warga->pekerjaan,
+                        'kewarganegaraan' => $warga->warga_negara,
+                        'golongan_darah' => '0'
+                    ]);
+                    PermohonanSuratUsaha::create([
+                        'permohonan_surat_id' => $idf,
+                        'ktp' => $request->ktp,
+                        'kk' => $request->kk,
+                        'pemegang_usaha' => $request->pemegang_usaha,
+                        'usaha' => $request->usaha,
+                        'keterangan' => $request->keterangan,
+                        'berlaku_mulai' => $request->berlaku_mulai,
+                        'berlaku_sampai' => $request->berlaku_sampai
+                    ]);
+                    $body = [
+                        '[nama]' => $warga->nama_warga,
+                        '[no_ktp]' => $warga->nik,
+                        '[no_kk]' => $request->kk,
+                        '[kepala_kk]' => $warga->nama_warga,
+                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        '[agama]' => $warga->agama,
+                        '[sex]' => $warga->jenis_kelamin,
+                        '[alamat]' => $warga->desa->alamat,
+                        '[status]' => 'status',
+                        '[pendidikan]' => $warga->pendidikan,
+                        '[pekerjaan]' => $warga->pekerjaan,
+                        '[warga_negara]' => $warga->warga_negara,
+                        '[keperluan]' => $request->keperluan,
+                        '[form_usaha]' => $request->usaha,
+                        '[form_keterangan]' => $request->keterangan,
+                        '[form_berlaku_dari]' => $request->berlaku_mulai,
+                        '[form_berlaku_sampai]' => $request->berlaku_sampai,
+                        '[penandatangan]' => $warga->nama_warga,
+                    ];
+                    $array = array_merge(
+                        $this->header($warga, [
+                            'judul_surat' => 'Surat Keterangan Usaha',
+                            'nomor_surat' => '12312321'
+                        ]),
+                        $body,
+                        $this->footer([
+                            'kode_desa' => $warga->desa->id,
+                            'kode_surat' => '1010110'
+                        ])
+                    );
+                    DB::commit();
                     break;
                 case 7:
                     $doc = '7_surat_ket_domisili_usaha';
+                    // dd($request->all());
+                    PengajuanWarga::create([
+                        'permohonan_surat_id' => $id,
+                        'nama' => $warga->nama_warga,
+                        'nik' => $warga->nik,
+                        'tempat_lahir' => $warga->tempat_lahir,
+                        'jenis_kelamin' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->nama_desa . ' ,' . $warga->desa->alamat,
+                        'agama' => $warga->agama,
+                        'status_perkawinan' => 'belum menikah',
+                        'pekerjaan' => $warga->pekerjaan,
+                        'kewarganegaraan' => $warga->warga_negara,
+                        'golongan_darah' => '0'
+                    ]);
+                    PermohonanSuratDomisiliUsaha::create([
+                        'permohonan_surat_id' => $id,
+                        'usaha' => $request->usaha,
+                        'alamat_usaha' => $request->alamat_usaha,
+                    ]);
+                    $body = [
+                        '[nama]' => $warga->nama_warga,
+                        '[no_ktp]' => $warga->nik,
+                        '[no_kk]' => $request->kk,
+                        '[kepala_kk]' => $warga->nama_warga,
+                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        '[agama]' => $warga->agama,
+                        '[sex]' => $warga->jenis_kelamin,
+                        '[alamat]' => $warga->desa->alamat,
+                        '[status]' => 'status',
+                        '[agama]' => $warga->agama,
+                        '[pendidikan]' => $warga->pendidikan,
+                        '[pekerjaan]' => $warga->pekerjaan,
+                        '[warga_negara]' => $warga->warga_negara,
+                    ];
+                    $array = array_merge(
+                        $this->header($warga, [
+                            'judul_surat' => 'Surat Keterangan Usaha',
+                            'nomor_surat' => '12312321'
+                        ]),
+                        $body,
+                        $this->footer([
+                            'kode_desa' => $warga->desa->id,
+                            'kode_surat' => '1010110'
+                        ])
+                    );
+                    DB::commit();
                     break;
                 case 8:
                     $doc = '8_surat_ket_pergi_kawin';

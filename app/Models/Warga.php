@@ -33,6 +33,18 @@ class Warga extends Model
         return $values;
     }
 
+    public static function getAgama()
+    {
+        $agama = DB::select(DB::raw('SHOW COLUMNS FROM wargas WHERE Field = "agama"'))[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $agama, $matches);
+        $values = [];
+        foreach (explode(',', $matches[1]) as $value) {
+            $values[] = trim($value, "'");
+        }
+
+        return $values;
+    }
+
     public function desa()
     {
         return $this->belongsTo(Desa::class);
