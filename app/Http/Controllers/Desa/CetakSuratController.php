@@ -11,6 +11,7 @@ use App\Models\PermohonanSuratIzinKeramaian;
 use App\Models\PermohonanSuratKehilangan;
 use App\Models\PermohonanSuratKuasa;
 use App\Models\PermohonanSuratPengantar;
+use App\Models\PermohonanSuratPergiKawin;
 use App\Models\PermohonanSuratSkck;
 use App\Models\PermohonanSuratUsaha;
 use App\Models\Warga;
@@ -643,6 +644,8 @@ class CetakSuratController extends Controller
                         '[pendidikan]' => $warga->pendidikan,
                         '[pekerjaan]' => $warga->pekerjaan,
                         '[warga_negara]' => $warga->warga_negara,
+                        '[penandatangan]' => auth()->user()->name,
+                        '[form_usaha]' => $request->usaha
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -659,9 +662,65 @@ class CetakSuratController extends Controller
                     break;
                 case 8:
                     $doc = '8_surat_ket_pergi_kawin';
+                    // dd($request->all());
+                    PengajuanWarga::create([
+                        'permohonan_surat_id' => $id,
+                        'nama' => $warga->nama_warga,
+                        'nik' => $warga->nik,
+                        'tempat_lahir' => $warga->tempat_lahir,
+                        'jenis_kelamin' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->nama_desa . ' ,' . $warga->desa->alamat,
+                        'agama' => $warga->agama,
+                        'status_perkawinan' => 'belum menikah',
+                        'pekerjaan' => $warga->pekerjaan,
+                        'kewarganegaraan' => $warga->warga_negara,
+                        'golongan_darah' => '0'
+                    ]);
+                    PermohonanSuratPergiKawin::create([
+                        'permohonan_surat_id' => $id,
+                        'tujuan' => $request->tujuan,
+                        'keperluan' => $request->keperluan,
+                        'berlaku_mulai' => $request->berlaku_mulai,
+                        'berlaku_sampai' => $request->berlaku_sampai
+                    ]);
+                    
+                    $body = [
+                        '[nama]' => $warga->nama_warga,
+                        '[no_ktp]' => $warga->nik,
+                        '[no_kk]' => $request->kk,
+                        '[kepala_kk]' => $warga->nama_warga,
+                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        '[agama]' => $warga->agama,
+                        '[sex]' => $warga->jenis_kelamin,
+                        '[alamat]' => $warga->desa->alamat,
+                        '[status]' => 'status',
+                        '[agama]' => $warga->agama,
+                        '[pendidikan]' => $warga->pendidikan,
+                        '[pekerjaan]' => $warga->pekerjaan,
+                        '[warga_negara]' => $warga->warga_negara,
+                        '[penandatangan]' => auth()->user()->name,
+                        '[form_tujuan]' => $request->tujuan,
+                        '[form_keterangan]' => $request->keperluan,
+                        '[form_berlaku_dari]' => $request->berlaku_mulai,
+                        '[form_berlaku_sampai]' => $request->berlaku_sampai
+                    ];
+                    $array = array_merge(
+                        $this->header($warga, [
+                            'judul_surat' => 'Surat Permohonan Pergi Kawin',
+                            'nomor_surat' => '12312321'
+                        ]),
+                        $body,
+                        $this->footer([
+                            'kode_desa' => $warga->desa->id,
+                            'kode_surat' => '1010110'
+                        ])
+                    );
+                    DB::commit();
                     break;
                 case 9:
                     $doc = '9_surat_ket_penghasilan_orangtua';
+                    dd($request->all());
                     break;
                 case 10:
                     $doc = 'permohonan_surat_jaminan_kesehatans';
