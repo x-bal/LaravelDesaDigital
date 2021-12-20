@@ -19,6 +19,7 @@ class CreateWargasTable extends Migration
             $table->foreignId('kecamatan_id')->constrained('kecamatans');
             $table->foreignId('kabupaten_id')->constrained('kabupatens');
             $table->foreignId('user_id')->nullable();
+            $table->string('kk')->nullable();
             $table->integer('nik')->unique();
             $table->string('nama_warga');
             $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
@@ -29,6 +30,9 @@ class CreateWargasTable extends Migration
             $table->string('pendidikan')->nullable();
             $table->string('alamat')->nullable();
             $table->string('warga_negara')->nullable();
+            $table->string('status_pernikahan')->nullable();
+            $table->string('golongan_darah')->nullable();
+            $table->string('status')->nullable()->default('ada');
             $table->timestamps();
         });
     }

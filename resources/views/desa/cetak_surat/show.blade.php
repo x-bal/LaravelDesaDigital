@@ -17,8 +17,14 @@
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label for="" class="form-label">Nik</label>
-                            <select id="select2" name="warga_id" class="form-control select2-ajax-cetak-surat"></select>
+                            <select id="select2" name="warga_id" class="form-control select2-ajax-cetak-surat @error('warga_id') is-invalid @enderror"></select>
+                            @error('warga_id')
+                            <span class="invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
+
                     </div>
                     <div class="form-group row" id="warga">
                         <div class="col-md-4">

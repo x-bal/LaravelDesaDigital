@@ -12,6 +12,17 @@
     </div>
     <div class="col-md-4">
         <div class="form-group">
+            <label for="kk" class="form-label">KK</label>
+            <input type="text" name="kk" id="kk" value="{{ $warga->kk ?? old('kk') }}" class="form-control @error('kk') is-invalid @enderror">
+            @error('kk')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
             <label for="nama_warga" class="form-label">Nama</label>
             <input type="text" name="nama_warga" id="nama_warga" value="{{ $warga->nama_warga ?? old('nama_warga') }}" class="form-control @error('nama_warga') is-invalid @enderror">
             @error('nama_warga')
@@ -90,6 +101,26 @@
         <div class="form-group">
             <label for="warga_negara">warga negara</label>
             <input type="text" name="warga_negara" id="warga_negara" class="form-control" value="{{ $warga->warga_negara }}">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="status_pernikahan">status pernikahan</label>
+            <select name="status_pernikahan" id="status_pernikahan" class="form-control">
+                <option value="belum menikah">belum menikah</option>
+                <option value="menikah">menikah</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="golongan_darah">golongan darah</label>
+            <select name="golongan_darah" id="golongan_darah" class="form-control">
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="ab">ab</option>
+                <option value="o">o</option>
+            </select>
         </div>
     </div>
 </div>

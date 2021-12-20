@@ -62,6 +62,9 @@ class WargaController extends Controller
             'pendidikan' => 'required',
             'alamat' => 'required',
             'warga_negara' => 'required',
+            'status_pernihakan' => 'required',
+            'golongan_darah' => 'required',
+            'kk' => 'required',
         ]);
         Warga::create($attr);
         Alert::success('success');
@@ -118,6 +121,9 @@ class WargaController extends Controller
             'pendidikan' => 'required',
             'alamat' => 'required',
             'warga_negara' => 'required',
+            'status_pernihakan' => 'required',
+            'golongan_darah' => 'required',
+            'kk' => 'required',
         ]);
         Warga::findOrFail($id)->update($attr);
         Alert::success('success');

@@ -19,6 +19,7 @@ class ProdukResource extends JsonResource
             'desa_id' => $this->desa_id,
             'nama_produk' => $this->nama_produk,
             'harga' => $this->harga,
+            'deskripsi' => $this->deskripsi,
             'created_at' => $this->created_at,
             'updated_at' => $this->created_at,
             'photo' => PhotoResource::collection($this->photo)

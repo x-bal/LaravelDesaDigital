@@ -20,9 +20,9 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $produk = Produk::where('desa_id', Auth::user()->warga->desa_id)->with('photo')->latest()->get();
+        $produk = Produk::where('desa_id', $request->user()->desa_id)->with('photo')->latest()->get();
         $response = ProdukResource::collection($produk);
         return response()->json($response);
     }
