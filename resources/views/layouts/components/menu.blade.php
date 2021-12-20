@@ -109,7 +109,7 @@
             <h3>Setting</h3>
         </li>
         <li>
-            <a class="side-menu__item" href="{{ route('setting') }}"><i class="side-menu__icon" data-eva="cube-outline"></i><span class="side-menu__label">Setting Profile</span></a>
+            <a class="side-menu__item" href="{{ route('setting') }}"><i class="side-menu__icon" data-eva="settings-outline"></i><span class="side-menu__label">Setting Profile</span></a>
         </li>
         @endrole
         @role('Warga')

@@ -63,6 +63,7 @@
                                 <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Jenis Surat</th>
+                                <td>Status</td>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -76,6 +77,19 @@
                                 <th>{{ $antrian->warga->nik }}</th>
                                 <th>{{ $antrian->warga->nama_warga }}</th>
                                 <th>{{ $antrian->jenis->jenis_surat }}</th>
+                                <th>
+                                    @if($antrian->status == 0)
+                                    <span class="badge badge-warning">belum proses</span>
+                                    @elseif($antrian->status == 1)
+                                    <span class="badge badge-info">sedang di proses</span>
+                                    @elseif($antrian->status == 2)
+                                    <span class="badge badge-primary">siap</span>
+                                    @elseif($antrian->status == 3)
+                                    <span class="badge badge-success">selesai</span>
+                                    @elseif($antrian->status == 4)
+                                    <span class="badge badge-danger">batal</span>
+                                    @endif
+                                </th>
                                 <td>
                                     <div class="btn-group group-{{ $antrian->id }}">
                                         @if($antrian->status == 0 )

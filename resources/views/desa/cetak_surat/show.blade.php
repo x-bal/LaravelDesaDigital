@@ -22,18 +22,20 @@
                     </div>
                     <div class="form-group row" id="warga">
                         <div class="col-md-4">
+                            <label for="" class="form-label">Tempat Lahir</label>
                             <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" readonly>
                         </div>
                         <div class="col-md-4">
+                            <label for="" class="form-label">Tanggal Lahir</label>
                             <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" readonly>
                         </div>
                         <div class="col-md-4">
+                            <label for="" class="form-label">Umur</label>
                             <input type="text" class="form-control" name="umur" id="umur" readonly>
                         </div>
                     </div>
-                    <div>
-                        @include('desa.cetak_surat.form')
-                    </div>
+                    <hr>
+                    @include('desa.cetak_surat.form')
                 </form>
 
             </div>

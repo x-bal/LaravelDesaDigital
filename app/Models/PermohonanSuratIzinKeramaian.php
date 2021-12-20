@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PermohonanSuratIzinKeramaian extends Model
 {
     use HasFactory;
+    protected $guarded = [];
     public function permohonan_surat()
     {
         return $this->belongsTo(PermohonanSurat::class);

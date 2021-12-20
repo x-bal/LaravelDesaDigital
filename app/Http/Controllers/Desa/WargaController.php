@@ -57,6 +57,11 @@ class WargaController extends Controller
             'desa_id' => 'required',
             'kecamatan_id' => 'required',
             'kabupaten_id' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'pendidikan' => 'required',
+            'alamat' => 'required',
+            'warga_negara' => 'required',
         ]);
         Warga::create($attr);
         Alert::success('success');
@@ -82,7 +87,7 @@ class WargaController extends Controller
      */
     public function edit($id)
     {
-        return view('desa.warga.edit',[
+        return view('desa.warga.edit', [
             'warga' => Warga::findOrFail($id),
             'desas' => Desa::get(),
             'kecamatans' => Kecamatan::get(),
@@ -108,6 +113,11 @@ class WargaController extends Controller
             'desa_id' => 'required',
             'kecamatan_id' => 'required',
             'kabupaten_id' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'pendidikan' => 'required',
+            'alamat' => 'required',
+            'warga_negara' => 'required',
         ]);
         Warga::findOrFail($id)->update($attr);
         Alert::success('success');

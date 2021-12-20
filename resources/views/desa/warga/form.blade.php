@@ -58,6 +58,40 @@
             @enderror
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="agama" class="form-label">Agama</label>
+            <select name="agama" id="agama" class="form-control">
+                @foreach(\App\Models\Warga::getAgama() as $data)
+                <option @if($warga->agama == $data) selected @endif value="{{ $data }}">{{ $data }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="pekerjaan">pekerjaan</label>
+            <input type="text" class="form-control" value="{{ $warga->pekerjaan }}" name="pekerjaan">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="pendidikan">pendidikan</label>
+            <input type="text" class="form-control" value="{{ $warga->pendidikan }}" name="pendidikan">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="alamat">alamat</label>
+            <textarea type="text" name="alamat" id="alamat" class="form-control">{{ $warga->alamat }}</textarea>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="warga_negara">warga negara</label>
+            <input type="text" name="warga_negara" id="warga_negara" class="form-control" value="{{ $warga->warga_negara }}">
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-4">

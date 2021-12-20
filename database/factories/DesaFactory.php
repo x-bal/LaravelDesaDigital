@@ -14,7 +14,8 @@ class DesaFactory extends Factory
     public function definition()
     {
         return [
-            'nama_desa' => $this->faker->word()
+            'nama_desa' => $this->faker->word(),
+            'alamat' => $this->faker->word()
         ];
     }
 }

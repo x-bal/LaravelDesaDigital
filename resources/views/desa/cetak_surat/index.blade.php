@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Gallery List')
+@section('title', 'Cetak Surat List')
 @push('bread')
-<li class="breadcrumb-item active">Gallery</li>
+<li class="breadcrumb-item active">Cetak Surat</li>
 @endpush
 @section('content')
 <div class="row">
@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped" id="datatable">
+                    <table class="table table-bordered table-hover" id="datatable">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -25,7 +25,7 @@
                             @foreach($jenis_surat as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>
+                                <td class="text-center">
                                     <div class="btn-group">
                                         <a href="{{ route('desa.cetak_surat.show',$data->id) }}" class="btn btn-sm btn-purple">Buat Surat</a>
                                     </div>

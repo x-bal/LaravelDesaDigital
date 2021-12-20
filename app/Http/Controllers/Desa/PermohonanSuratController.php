@@ -36,15 +36,14 @@ class PermohonanSuratController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            
+
             $permohonan = PermohonanSurat::create([
                 'warga_id' => $request->warga,
                 'jenis_surat_id' => $request->jenis,
                 'desa_id' => auth()->user()->desa_id
             ]);
             dd($permohonan);
-            if($permohonan->jenis_surat_id){
-                
+            if ($permohonan->jenis_surat_id) {
             }
         } catch (\Throwable $th) {
             //throw $th;
@@ -88,10 +87,15 @@ class PermohonanSuratController extends Controller
 
     public function destroy($id)
     {
-        $permohonanSurat = PermohonanSurat::findOrFail($id);
-        $permohonanSurat->delete();
+        try {
+            $permohonanSurat = PermohonanSurat::findOrFail($id);
+            $permohonanSurat->delete();
 
-        Alert::success('Success', 'Permohonan Surat berhasil didelete');
-        return redirect()->route('desa.permohonan.index');
+            Alert::success('Success', 'Permohonan Surat berhasil didelete');
+            return redirect()->route('desa.permohonan.index');
+        } catch (\Throwable $th) {
+            Alert::error('Error',$th->getMessage());
+            return back();
+        }
     }
 }

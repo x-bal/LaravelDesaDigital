@@ -17,6 +17,7 @@ class CreatePermohonanSuratPergiKawinsTable extends Migration
             $table->id();
             $table->foreignId('permohonan_surat_id')->constrained('permohonan_surats');
             $table->string('tujuan');
+            $table->string('keperluan');
             $table->date('berlaku_mulai')->nullable();
             $table->date('berlaku_sampai')->nullable();
             $table->timestamps();
