@@ -15,20 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $provinsi = \App\Models\Provinsi::factory(5)->create();
+        $provinsi = \App\Models\Provinsi::factory(3)->create();
 
         $provinsi->each(function ($prov) {
-            $kabupaten = \App\Models\Kabupaten::factory(3)->create([
+            $kabupaten = \App\Models\Kabupaten::factory(1)->create([
                 'provinsi_id' => $prov->id,
             ]);
 
             $kabupaten->each(function ($kab) {
-                $kecamatan = Kecamatan::factory(3)->create([
+                $kecamatan = Kecamatan::factory(1)->create([
                     'kabupaten_id' => $kab->id
                 ]);
 
                 $kecamatan->each(function ($kec) {
-                    Desa::factory(3)->create([
+                    Desa::factory(1)->create([
                         'kecamatan_id' => $kec->id
                     ]);
                 });
