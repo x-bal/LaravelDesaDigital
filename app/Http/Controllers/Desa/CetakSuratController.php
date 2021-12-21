@@ -88,7 +88,7 @@ class CetakSuratController extends Controller
                 $this->validate($request, [
                     'permohonan_surat_id' => 'required',
                     'keperluan' => 'required',
-                    $warga->pendidikan => 'required',
+                    'pendidikan' => 'required',
                     'pekerjaan' => 'required',
                 ]);
                 PengajuanWarga::create([
@@ -107,7 +107,7 @@ class CetakSuratController extends Controller
                 PermohonanSuratSkck::create([
                     'permohonan_surat_id' => $request->permohonan_surat_id,
                     'keperluan' => $request->keperluan,
-                    $warga->pendidikan => $request->pendidikan,
+                    'pendidikan' => $request->pendidikan,
                     'pekerjaan' => $request->pekerjaan,
                 ]);
 
@@ -784,7 +784,7 @@ class CetakSuratController extends Controller
                     PermohonanSuratSkck::create([
                         'permohonan_surat_id' => $id,
                         'keperluan' => $request->keperluan,
-                        $warga->pendidikan => $request->pendidikan,
+                        'pendidikan' => $request->pendidikan,
                         'pekerjaan' => $request->pekerjaan,
                     ]);
 

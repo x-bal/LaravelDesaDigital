@@ -62,7 +62,7 @@ class WargaController extends Controller
             'pendidikan' => 'required',
             'alamat' => 'required',
             'warga_negara' => 'required',
-            'status_pernihakan' => 'required',
+            'status_pernikahan' => 'required',
             'golongan_darah' => 'required',
             'kk' => 'required',
         ]);
@@ -121,7 +121,7 @@ class WargaController extends Controller
             'pendidikan' => 'required',
             'alamat' => 'required',
             'warga_negara' => 'required',
-            'status_pernihakan' => 'required',
+            'status_pernikahan' => 'required',
             'golongan_darah' => 'required',
             'kk' => 'required',
         ]);
