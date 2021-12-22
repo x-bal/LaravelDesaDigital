@@ -30,6 +30,7 @@ class CetakSuratController extends Controller
      */
     public function index()
     {
+        dd();
         $jenis_surat = JenisSurat::get();
         return view('desa.cetak_surat.index', [
             'jenis_surat' => $jenis_surat
@@ -95,20 +96,20 @@ class CetakSuratController extends Controller
                         'pekerjaan' => $request->pekerjaan,
                     ]);
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $request->pendidikan,
-                        '[pekerjaan]' => $request->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[form_keterangan]' => $request->keperluan,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $request->pendidikan,
+                        'pekerjaan' => $request->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'form_keterangan' => $request->keperluan,
+                        'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -143,22 +144,22 @@ class CetakSuratController extends Controller
                         'keterangan_hilang' => $request->keterangan_hilang
                     ]);
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[form_keterangan]' => $request->keterangan_hilang,
-                        '[form_rincian]' => $request->rincian_barang,
-                        '[form_barang]' => $request->rincian_barang,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'form_keterangan' => $request->keterangan_hilang,
+                        'form_rincian' => $request->rincian_barang,
+                        'form_barang' => $request->rincian_barang,
+                        'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -198,23 +199,23 @@ class CetakSuratController extends Controller
                         'keperluan' => $request->keperluan
                     ]);
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[form_berlaku_dari]' => $request->berlaku_mulai,
-                        '[form_berlaku_sampai]' => $request->berlaku_sampai,
-                        '[form_jenis_keramaian]' => $request->jenis_keramaian,
-                        '[form_keperluan]' => $request->keperluan,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'form_berlaku_dari' => $request->berlaku_mulai,
+                        'form_berlaku_sampai' => $request->berlaku_sampai,
+                        'form_jenis_keramaian' => $request->jenis_keramaian,
+                        'form_keperluan' => $request->keperluan,
+                        'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -250,24 +251,24 @@ class CetakSuratController extends Controller
                         'keperluan' => $request->keperluan
                     ]);
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[gol_darah]' => $warga->golongan_darah,
-                        '[mulai_berlaku]' => $request->berlaku_mulai,
-                        '[tgl_akhir]' => $request->berlaku_sampai,
-                        '[keperluan]' => $request->keperluan,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'gol_darah' => $warga->golongan_darah,
+                        'mulai_berlaku' => $request->berlaku_mulai,
+                        'tgl_akhir' => $request->berlaku_sampai,
+                        'keperluan' => $request->keperluan,
+                        'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -330,29 +331,29 @@ class CetakSuratController extends Controller
                         'pekerjaan_pen' => $request->pekerjaan_pen,
                     ]);
                     $body = array(
-                        '[nama_pemberi_kuasa]' => $warga->nama_warga,
-                        '[nik_pemberi_kuasa]' => $warga->nik,
-                        '[tempat_lahir_pemberi_kuasa]' => $warga->tempat_lahir,
-                        '[tanggal_lahir_pemberi_kuasa]' => $warga->tanggal_lahir,
-                        '[umur_pemberi_kuasa]' => $request->umur,
-                        '[jkpemberi_kuasa]' => $warga->jenis_kelamin,
-                        '[pekerjaanpemberi_kuasa]' => $warga->pekerjaan,
-                        '[alamat_pemberi_kuasa]' => $warga->alamat,
-                        '[form_desapemberi_kuasa]' => $warga->desa->nama_desa,
-                        '[form_kecpemberi_kuasa]' => $warga->desa->kecamatan->nama_kecamatan,
-                        '[form_kabpemberi_kuasa]' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
-                        '[nama_penerima_kuasa]' => $request->nama_pen,
-                        '[nik_penerima_kuasa]' => $request->nik_pen,
-                        '[tempat_lahir_penerima_kuasa]' => $request->tempat_lahir_pen,
-                        '[tanggal_lahir_penerima_kuasa]' => $request->tanggal_lahir_pen,
-                        '[umur_penerima_kuasa]' => $request->umur_pen,
-                        '[jkpenerima_kuasa]' => $request->jenis_kelamin_pen,
-                        '[pekerjaanpenerima_kuasa]' => $request->pekerjaan_pen,
-                        '[alamat_penerima_kuasa]' => $request->alamat_pen,
-                        '[form_desapenerima_kuasa]' => $request->desa_pen,
-                        '[form_kecpenerima_kuasa]' => $request->kecamatan_pen,
-                        '[form_kabpenerima_kuasa]' => $request->kabupaten_pen,
-                        '[untuk_keperluan]' => $request->keperluan
+                        'nama_pemberi_kuasa' => $warga->nama_warga,
+                        'nik_pemberi_kuasa' => $warga->nik,
+                        'tempat_lahir_pemberi_kuasa' => $warga->tempat_lahir,
+                        'tanggal_lahir_pemberi_kuasa' => $warga->tanggal_lahir,
+                        'umur_pemberi_kuasa' => $request->umur,
+                        'jkpemberi_kuasa' => $warga->jenis_kelamin,
+                        'pekerjaanpemberi_kuasa' => $warga->pekerjaan,
+                        'alamat_pemberi_kuasa' => $warga->alamat,
+                        'form_desapemberi_kuasa' => $warga->desa->nama_desa,
+                        'form_kecpemberi_kuasa' => $warga->desa->kecamatan->nama_kecamatan,
+                        'form_kabpemberi_kuasa' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
+                        'nama_penerima_kuasa' => $request->nama_pen,
+                        'nik_penerima_kuasa' => $request->nik_pen,
+                        'tempat_lahir_penerima_kuasa' => $request->tempat_lahir_pen,
+                        'tanggal_lahir_penerima_kuasa' => $request->tanggal_lahir_pen,
+                        'umur_penerima_kuasa' => $request->umur_pen,
+                        'jkpenerima_kuasa' => $request->jenis_kelamin_pen,
+                        'pekerjaanpenerima_kuasa' => $request->pekerjaan_pen,
+                        'alamat_penerima_kuasa' => $request->alamat_pen,
+                        'form_desapenerima_kuasa' => $request->desa_pen,
+                        'form_kecpenerima_kuasa' => $request->kecamatan_pen,
+                        'form_kabpenerima_kuasa' => $request->kabupaten_pen,
+                        'untuk_keperluan' => $request->keperluan
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -396,25 +397,25 @@ class CetakSuratController extends Controller
                         'berlaku_sampai' => $request->berlaku_sampai
                     ]);
                     $body = [
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $request->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[keperluan]' => $request->keperluan,
-                        '[form_usaha]' => $request->usaha,
-                        '[form_keterangan]' => $request->keterangan,
-                        '[form_berlaku_dari]' => $request->berlaku_mulai,
-                        '[form_berlaku_sampai]' => $request->berlaku_sampai,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'keperluan' => $request->keperluan,
+                        'form_usaha' => $request->usaha,
+                        'form_keterangan' => $request->keterangan,
+                        'form_berlaku_dari' => $request->berlaku_mulai,
+                        'form_berlaku_sampai' => $request->berlaku_sampai,
+                        'penandatangan' => $warga->nama_warga,
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -448,22 +449,22 @@ class CetakSuratController extends Controller
                         'alamat_usaha' => $request->alamat_usaha,
                     ]);
                     $body = [
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $request->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[agama]' => $warga->agama,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[penandatangan]' => auth()->user()->name,
-                        '[form_usaha]' => $request->usaha
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'form_usaha' => $request->usaha
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -502,25 +503,25 @@ class CetakSuratController extends Controller
                         'berlaku_sampai' => $request->berlaku_sampai
                     ]);
                     $body = [
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $request->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[agama]' => $warga->agama,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[penandatangan]' => auth()->user()->name,
-                        '[form_tujuan]' => $request->tujuan,
-                        '[form_keterangan]' => $request->keperluan,
-                        '[form_berlaku_dari]' => $request->berlaku_mulai,
-                        '[form_berlaku_sampai]' => $request->berlaku_sampai
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'form_tujuan' => $request->tujuan,
+                        'form_keterangan' => $request->keperluan,
+                        'form_berlaku_dari' => $request->berlaku_mulai,
+                        'form_berlaku_sampai' => $request->berlaku_sampai
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -559,22 +560,22 @@ class CetakSuratController extends Controller
                 $ayah = Warga::findOrFail($request->orangtua_ayah_id);
                 $ibu = Warga::findOrFail($request->orangtua_ibu_id);
                 $array_ayah = [
-                    '[d_nama_ayah]' => $ayah->nama_warga,
-                    '[d_nik_ayah]' => $ayah->nik,
-                    '[d_tempatlahir_ayah]' => $ayah->tempat_lahir ,
-                    '[d_tanggallahir_ayah]' => Carbon::parse($ayah->tanggal_lahir)->format('d F Y'),
-                    '[d_agama_ayah]' => $ayah->agama,
-                    '[d_pekerjaan_ayah]' => $ayah->pekerjaan,
-                    '[hasil_ayah]' => number_format($request->penghasilan_ayah)
+                    'd_nama_ayah' => $ayah->nama_warga,
+                    'd_nik_ayah' => $ayah->nik,
+                    'd_tempatlahir_ayah' => $ayah->tempat_lahir ,
+                    'd_tanggallahir_ayah' => Carbon::parse($ayah->tanggal_lahir)->format('d F Y'),
+                    'd_agama_ayah' => $ayah->agama,
+                    'd_pekerjaan_ayah' => $ayah->pekerjaan,
+                    'hasil_ayah' => number_format($request->penghasilan_ayah)
                 ];
                 $array_ibu = [
-                    '[d_nama_ibu]' => $ibu->nama_warga,
-                    '[d_nik_ibu]' => $ibu->nik,
-                    '[d_tempatlahir_ibu]' => $ibu->tempat_lahir ,
-                    '[d_tanggallahir_ibu]' => Carbon::parse($ibu->tanggal_lahir)->format('d F Y'),
-                    '[d_agama_ibu]' => $ibu->agama,
-                    '[d_pekerjaan_ibu]' => $ibu->pekerjaan,
-                    '[hasil_ibu]' => number_format($request->penghasilan_ibu)
+                    'd_nama_ibu' => $ibu->nama_warga,
+                    'd_nik_ibu' => $ibu->nik,
+                    'd_tempatlahir_ibu' => $ibu->tempat_lahir ,
+                    'd_tanggallahir_ibu' => Carbon::parse($ibu->tanggal_lahir)->format('d F Y'),
+                    'd_agama_ibu' => $ibu->agama,
+                    'd_pekerjaan_ibu' => $ibu->pekerjaan,
+                    'hasil_ibu' => number_format($request->penghasilan_ibu)
                 ];
                 try {
                     PermohonanSuratPenghasilan::create([
@@ -591,31 +592,31 @@ class CetakSuratController extends Controller
                         'berlaku_sampai' => $request->berlaku_sampai
                     ]);
                     $body = [
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $request->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[tempat_tgl_lahir]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[agama]' => $warga->agama,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[penandatangan]' => auth()->user()->name,
-                        '[nomor_induk]' => $request->no_induk,
-                        '[jurusan]' => $request->jurusan,
-                        '[sekolah_pt]' => $request->sekolah,
-                        '[kelas_semester]' => $request->kelas,
-                        '[form_tujuan]' => $request->tujuan,
-                        '[form_keterangan]' => $request->keperluan,
-                        '[form_berlaku_dari]' => $request->berlaku_mulai,
-                        '[form_berlaku_sampai]' => $request->berlaku_sampai,
-                        '[total_hasil]' => number_format($request->penghasilan_ayah + $request->penghasilan_ibu),
-                        '[pamong]' => auth()->user()->name,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'tempat_tgl_lahir' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'nomor_induk' => $request->no_induk,
+                        'jurusan' => $request->jurusan,
+                        'sekolah_pt' => $request->sekolah,
+                        'kelas_semester' => $request->kelas,
+                        'form_tujuan' => $request->tujuan,
+                        'form_keterangan' => $request->keperluan,
+                        'form_berlaku_dari' => $request->berlaku_mulai,
+                        'form_berlaku_sampai' => $request->berlaku_sampai,
+                        'total_hasil' => number_format($request->penghasilan_ayah + $request->penghasilan_ibu),
+                        'pamong' => auth()->user()->name,
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -784,7 +785,6 @@ class CetakSuratController extends Controller
     public function update(Request $request, $id)
     {
         $warga = Warga::findOrFail($request->warga_id);
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/template.docx'));
         DB::beginTransaction();
 
         PengajuanWarga::create([
@@ -818,21 +818,21 @@ class CetakSuratController extends Controller
                     ]);
 
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $request->pendidikan,
-                        '[pekerjaan]' => $request->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[form_keterangan]' => $request->keperluan,
-                        '[Sebutan_desa]' => 'Desa',
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $request->pendidikan,
+                        'pekerjaan' => $request->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'form_keterangan' => $request->keperluan,
+                        'Sebutan_desa' => 'Desa',
+                        'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -867,22 +867,22 @@ class CetakSuratController extends Controller
                         'keterangan_hilang' => $request->keterangan_hilang
                     ]);
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[form_keterangan]' => $request->keterangan_hilang,
-                        '[form_rincian]' => $request->rincian_barang,
-                        '[penandatangan]' => $warga->nama_warga,
-                        '[form_barang]' => $request->rincian_barang
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'form_keterangan' => $request->keterangan_hilang,
+                        'form_rincian' => $request->rincian_barang,
+                        'penandatangan' => $warga->nama_warga,
+                        'form_barang' => $request->rincian_barang
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -921,23 +921,23 @@ class CetakSuratController extends Controller
                         'keperluan' => $request->keperluan
                     ]);
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[form_berlaku_dari]' => $request->berlaku_mulai,
-                        '[form_berlaku_sampai]' => $request->berlaku_sampai,
-                        '[form_jenis_keramaian]' => $request->jenis_keramaian,
-                        '[form_keperluan]' => $request->keperluan,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'form_berlaku_dari' => $request->berlaku_mulai,
+                        'form_berlaku_sampai' => $request->berlaku_sampai,
+                        'form_jenis_keramaian' => $request->jenis_keramaian,
+                        'form_keperluan' => $request->keperluan,
+                        'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -976,24 +976,24 @@ class CetakSuratController extends Controller
                         'keperluan' => $request->keperluan
                     ]);
                     $body = array(
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $warga->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[gol_darah]' => 'tidak di ketahui',
-                        '[mulai_berlaku]' => $request->berlaku_mulai,
-                        '[tgl_akhir]' => $request->berlaku_sampai,
-                        '[keperluan]' => $request->keperluan,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $warga->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'gol_darah' => 'tidak di ketahui',
+                        'mulai_berlaku' => $request->berlaku_mulai,
+                        'tgl_akhir' => $request->berlaku_sampai,
+                        'keperluan' => $request->keperluan,
+                        'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -1064,29 +1064,29 @@ class CetakSuratController extends Controller
                         'pekerjaan_pen' => $request->pekerjaan_pen,
                     ]);
                     $body = array(
-                        '[nama_pemberi_kuasa]' => $warga->nama_warga,
-                        '[nik_pemberi_kuasa]' => $warga->nik,
-                        '[tempat_lahir_pemberi_kuasa]' => $warga->tempat_lahir,
-                        '[tanggal_lahir_pemberi_kuasa]' => $warga->tanggal_lahir,
-                        '[umur_pemberi_kuasa]' => $request->umur,
-                        '[jkpemberi_kuasa]' => $warga->jenis_kelamin,
-                        '[pekerjaanpemberi_kuasa]' => $warga->pekerjaan,
-                        '[alamat_pemberi_kuasa]' => $warga->alamat,
-                        '[form_desapemberi_kuasa]' => $warga->desa->nama_desa,
-                        '[form_kecpemberi_kuasa]' => $warga->desa->kecamatan->nama_kecamatan,
-                        '[form_kabpemberi_kuasa]' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
-                        '[nama_penerima_kuasa]' => $request->nama_pen,
-                        '[nik_penerima_kuasa]' => $request->nik_pen,
-                        '[tempat_lahir_penerima_kuasa]' => $request->tempat_lahir_pen,
-                        '[tanggal_lahir_penerima_kuasa]' => $request->tanggal_lahir_pen,
-                        '[umur_penerima_kuasa]' => $request->umur_pen,
-                        '[jkpenerima_kuasa]' => $request->jenis_kelamin_pen,
-                        '[pekerjaanpenerima_kuasa]' => $request->pekerjaan_pen,
-                        '[alamat_penerima_kuasa]' => $request->alamat_pen,
-                        '[form_desapenerima_kuasa]' => $request->desa_pen,
-                        '[form_kecpenerima_kuasa]' => $request->kecamatan_pen,
-                        '[form_kabpenerima_kuasa]' => $request->kabupaten_pen,
-                        '[untuk_keperluan]' => $request->keperluan
+                        'nama_pemberi_kuasa' => $warga->nama_warga,
+                        'nik_pemberi_kuasa' => $warga->nik,
+                        'tempat_lahir_pemberi_kuasa' => $warga->tempat_lahir,
+                        'tanggal_lahir_pemberi_kuasa' => $warga->tanggal_lahir,
+                        'umur_pemberi_kuasa' => $request->umur,
+                        'jkpemberi_kuasa' => $warga->jenis_kelamin,
+                        'pekerjaanpemberi_kuasa' => $warga->pekerjaan,
+                        'alamat_pemberi_kuasa' => $warga->alamat,
+                        'form_desapemberi_kuasa' => $warga->desa->nama_desa,
+                        'form_kecpemberi_kuasa' => $warga->desa->kecamatan->nama_kecamatan,
+                        'form_kabpemberi_kuasa' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
+                        'nama_penerima_kuasa' => $request->nama_pen,
+                        'nik_penerima_kuasa' => $request->nik_pen,
+                        'tempat_lahir_penerima_kuasa' => $request->tempat_lahir_pen,
+                        'tanggal_lahir_penerima_kuasa' => $request->tanggal_lahir_pen,
+                        'umur_penerima_kuasa' => $request->umur_pen,
+                        'jkpenerima_kuasa' => $request->jenis_kelamin_pen,
+                        'pekerjaanpenerima_kuasa' => $request->pekerjaan_pen,
+                        'alamat_penerima_kuasa' => $request->alamat_pen,
+                        'form_desapenerima_kuasa' => $request->desa_pen,
+                        'form_kecpenerima_kuasa' => $request->kecamatan_pen,
+                        'form_kabpenerima_kuasa' => $request->kabupaten_pen,
+                        'untuk_keperluan' => $request->keperluan
                     );
                     $array = array_merge(
                         $this->header($warga, [
@@ -1130,25 +1130,25 @@ class CetakSuratController extends Controller
                         'berlaku_sampai' => $request->berlaku_sampai
                     ]);
                     $body = [
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $request->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[keperluan]' => $request->keperluan,
-                        '[form_usaha]' => $request->usaha,
-                        '[form_keterangan]' => $request->keterangan,
-                        '[form_berlaku_dari]' => $request->berlaku_mulai,
-                        '[form_berlaku_sampai]' => $request->berlaku_sampai,
-                        '[penandatangan]' => $warga->nama_warga,
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'keperluan' => $request->keperluan,
+                        'form_usaha' => $request->usaha,
+                        'form_keterangan' => $request->keterangan,
+                        'form_berlaku_dari' => $request->berlaku_mulai,
+                        'form_berlaku_sampai' => $request->berlaku_sampai,
+                        'penandatangan' => $warga->nama_warga,
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -1182,22 +1182,22 @@ class CetakSuratController extends Controller
                         'alamat_usaha' => $request->alamat_usaha,
                     ]);
                     $body = [
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $request->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[agama]' => $warga->agama,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[penandatangan]' => auth()->user()->name,
-                        '[form_usaha]' => $request->usaha
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'form_usaha' => $request->usaha
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -1236,25 +1236,25 @@ class CetakSuratController extends Controller
                     ]);
 
                     $body = [
-                        '[nama]' => $warga->nama_warga,
-                        '[no_ktp]' => $warga->nik,
-                        '[no_kk]' => $request->kk,
-                        '[kepala_kk]' => $warga->nama_warga,
-                        '[ttl]' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
-                        '[usia]' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
-                        '[agama]' => $warga->agama,
-                        '[sex]' => $warga->jenis_kelamin,
-                        '[alamat]' => $warga->desa->alamat,
-                        '[status]' => $warga->status,
-                        '[agama]' => $warga->agama,
-                        '[pendidikan]' => $warga->pendidikan,
-                        '[pekerjaan]' => $warga->pekerjaan,
-                        '[warga_negara]' => $warga->warga_negara,
-                        '[penandatangan]' => auth()->user()->name,
-                        '[form_tujuan]' => $request->tujuan,
-                        '[form_keterangan]' => $request->keperluan,
-                        '[form_berlaku_dari]' => $request->berlaku_mulai,
-                        '[form_berlaku_sampai]' => $request->berlaku_sampai
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'form_tujuan' => $request->tujuan,
+                        'form_keterangan' => $request->keperluan,
+                        'form_berlaku_dari' => $request->berlaku_mulai,
+                        'form_berlaku_sampai' => $request->berlaku_sampai
                     ];
                     $array = array_merge(
                         $this->header($warga, [
@@ -1290,7 +1290,10 @@ class CetakSuratController extends Controller
         }
         $file = public_path('template/' . $doc . '.docx');
         // dd($array);
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/'.$doc.'.docx'));
+
         $nama_file = $doc . '.docx';
+        // dd($file);
         try {
             // return \WordTemplate::export($file, $array, $nama_file);
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file);
@@ -1318,24 +1321,25 @@ class CetakSuratController extends Controller
     public function header(Warga $warga, $surat)
     {
         return [
-            '[nama_kab]' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
-            '[nama_kec]' => $warga->desa->kecamatan->nama_kecamatan,
-            '[nama_des]' => $warga->desa->nama_desa,
-            '[alamat_des]' => $warga->desa->alamat,
-            '[nama_provinsi]' => $warga->desa->kecamatan->kabupaten->provinsi->nama_provinsi,
-            '[judul_surat]' => $surat['judul_surat'],
-            '[format_nomor_surat]' => $surat['nomor_surat'],
+            'nama_kab' => $warga->desa->kecamatan->kabupaten->nama_kabupaten,
+            'nama_kec' => $warga->desa->kecamatan->nama_kecamatan,
+            'nama_des' => $warga->desa->nama_desa,
+            'alamat_des' => $warga->desa->alamat,
+            'nama_provinsi' => $warga->desa->kecamatan->kabupaten->provinsi->nama_provinsi,
+            'judul_surat' => $surat['judul_surat'],
+            'format_nomor_surat' => $surat['nomor_surat'],
+            'logo' => public_path('qsindoflatbaru.jpg')
         ];
     }
     public function footer($surat)
     {
         return [
-            '[kode_desa]' => $surat['kode_desa'],
-            '[kode_surat]' => $surat['kode_surat'],
-            '[tgl_surat]' => Carbon::now()->format('d m Y'),
-            '[nama_pamong]' => auth()->user()->name,
-            '[pamong_nip]' => auth()->user()->id,
-            '[jabatan]' => auth()->user()->roles()->first()->name
+            'kode_desa' => $surat['kode_desa'],
+            'kode_surat' => $surat['kode_surat'],
+            'tgl_surat' => Carbon::now()->format('d m Y'),
+            'nama_pamong' => auth()->user()->name,
+            'pamong_nip' => auth()->user()->id,
+            'jabatan' => auth()->user()->roles()->first()->name
         ];
     }
 }
