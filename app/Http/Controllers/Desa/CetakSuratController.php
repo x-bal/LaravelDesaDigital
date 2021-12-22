@@ -784,6 +784,7 @@ class CetakSuratController extends Controller
     public function update(Request $request, $id)
     {
         $warga = Warga::findOrFail($request->warga_id);
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/template.docx'));
         DB::beginTransaction();
 
         PengajuanWarga::create([
@@ -844,6 +845,7 @@ class CetakSuratController extends Controller
                             'kode_surat' => '1010110'
                         ])
                     );
+                    
                     DB::commit();
                 } catch (\Throwable $th) {
                     DB::rollBack();
@@ -1286,25 +1288,16 @@ class CetakSuratController extends Controller
                 $doc = abort(404);
                 break;
         }
-        $file = public_path('template/' . $doc . '.rtf');
+        $file = public_path('template/' . $doc . '.docx');
         // dd($array);
-        $nama_file = $doc . '.doc';
+        $nama_file = $doc . '.docx';
         try {
             // return \WordTemplate::export($file, $array, $nama_file);
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/1_surat_ket_catatan_kriminal.docx'));
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file);
 
-            $templateProcessor->setValues([
-                'number' => '212/SKD/VII/2019',
-                'name' => 'Alfa',
-                'birthplace' => 'Bandung',
-                'birthdate' => '4 Mei 1991',
-                'gender' => 'Laki-Laki',
-                'religion' => 'Islam',
-                'address' => 'Jln. ABC no 12',
-                'date' => date('Y-m-d'),
-            ]);
+            $templateProcessor->setValues($array);
             $templateProcessor->setImageValue('CompanyLogo', public_path('qsindoflatbaru.jpg'));
-            header("Content-Disposition: attachment; filename=template.docx");
+            header("Content-Disposition: attachment; filename=".$nama_file);
     
             $templateProcessor->saveAs('php://output');
         } catch (\Throwable $th) {
