@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DevController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Desa\AduanController;
 use App\Http\Controllers\Desa\WargaController;

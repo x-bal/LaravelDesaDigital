@@ -34,7 +34,7 @@ Route::post('/register', [AuthController::class, 'register']);
 //API route for login user
 Route::post('/login', [AuthController::class, 'login']);
 //Protecting Routes
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', function (Request $request) {
         return auth()->user();
     });

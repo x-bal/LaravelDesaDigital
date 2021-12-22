@@ -12,7 +12,7 @@ class InformasiController extends Controller
     public function getinformasi()
     {
         try {
-            $informasi = Informasi::where('desa_id', Auth::user()->warga->desa_id)->latest()->get();
+            $informasi = Informasi::where('desa_id', Auth::user()->desa_id)->latest()->get();
             return response()->json($informasi);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage());

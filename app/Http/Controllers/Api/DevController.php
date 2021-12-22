@@ -12,9 +12,9 @@ class DevController extends Controller
     public function getcetaksurat(Request $request)
     {
         $data = [];
-        $resources = Warga::where('nama_warga','like','%'.$request->q.'$')->orWhere('nik','like','%'.$request->q.'%')->get();
-        foreach($resources as $resource){
-            $data[] = ['id'=>$resource->id,'text'=>$resource->nama_warga.' - '.$resource->nik];
+        $resources = Warga::where('nama_warga', 'like', '%' . $request->q . '$')->orWhere('nik', 'like', '%' . $request->q . '%')->get();
+        foreach ($resources as $resource) {
+            $data[] = ['id' => $resource->id, 'text' => $resource->nama_warga . ' - ' . $resource->nik];
         }
         return response()->json($data);
     }
@@ -26,5 +26,24 @@ class DevController extends Controller
             'umur' =>  Carbon::now()->format('Y') - Carbon::parse($resource->tanggal_lahir)->format('Y')
         ];
         return response()->json($response);
+    }
+    public function dev()
+    {
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/template.docx'));
+
+        $templateProcessor->setValues([
+            'number' => '212/SKD/VII/2019',
+            'name' => 'Alfa',
+            'birthplace' => 'Bandung',
+            'birthdate' => '4 Mei 1991',
+            'gender' => 'Laki-Laki',
+            'religion' => 'Islam',
+            'address' => 'Jln. ABC no 12',
+            'date' => date('Y-m-d'),
+        ]);
+        $templateProcessor->setImageValue('CompanyLogo', public_path('qsindoflatbaru.jpg'));
+        header("Content-Disposition: attachment; filename=template.docx");
+
+        $templateProcessor->saveAs('php://output');
     }
 }
