@@ -30,8 +30,8 @@ class CreateWargasTable extends Migration
             $table->string('pendidikan')->nullable();
             $table->string('alamat')->nullable();
             $table->string('warga_negara')->nullable();
-            $table->string('status_pernikahan')->nullable();
-            $table->string('golongan_darah')->nullable();
+            $table->enum('status_pernikahan',['Belum Menikah', 'Menikah','-'])->nullable();
+            $table->enum('golongan_darah',['A','B','O','AB','-'])->nullable();
             $table->string('status')->nullable()->default('ada');
             $table->timestamps();
         });

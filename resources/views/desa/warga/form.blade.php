@@ -116,10 +116,10 @@
         <div class="form-group">
             <label for="golongan_darah">golongan darah</label>
             <select name="golongan_darah" id="golongan_darah" class="form-control">
-                <option value="a">a</option>
-                <option value="b">b</option>
-                <option value="ab">ab</option>
-                <option value="o">o</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="AB">AB</option>
+                <option value="O">O</option>
             </select>
         </div>
     </div>
@@ -130,7 +130,7 @@
             <label for="desa_id" class="form-label">Desa</label>
             <select name="desa_id" id="desa_id" value="{{ $warga->desa_id ?? old('desa_id') }}" class="form-control @error('desa_id') is-invalid @enderror">
                 @foreach($desas as $desa)
-                <option @if($warga->desa_id ?? old('desa_id') == $desa->id) selected @endif value="{{ $desa->id }}">{{ $desa->nama_desa }}</option>
+                <option @if($warga->desa_id == $desa->id) selected @endif value="{{ $desa->id }}">{{ $desa->nama_desa }}</option>
                 @endforeach
             </select>
             @error('desa_id')
@@ -145,7 +145,7 @@
             <label for="kecamatan_id" class="form-label">Kecamatan</label>
             <select name="kecamatan_id" id="kecamatan_id" value="{{ $warga->kecamatan_id ?? old('kecamatan_id') }}" class="form-control @error('kecamatan_id') is-invalid @enderror">
                 @foreach($kecamatans as $kecamatan)
-                <option @if($warga->kecamatan_id ?? old('kecamatan_id') == $kecamatan->id) selected @endif value="{{ $kecamatan->id }}">{{ $kecamatan->nama_kecamatan }}</option>
+                <option @if($warga->kecamatan_id == $kecamatan->id) selected @endif value="{{ $kecamatan->id }}">{{ $kecamatan->nama_kecamatan }}</option>
                 @endforeach
             </select>
             @error('kecamatan_id')
@@ -160,7 +160,7 @@
             <label for="kabupaten_id" class="form-label">Kabupaten</label>
             <select name="kabupaten_id" id="kabupaten_id" value="{{ $warga->kabupaten_id ?? old('kabupaten_id') }}" class="form-control @error('kabupaten_id') is-invalid @enderror">
                 @foreach($kabupatens as $kabupaten)
-                <option @if($warga->kabupaten_id ?? old('kabupaten_id') == $kabupaten->id) selected @endif value="{{ $kabupaten->id }}">{{ $kabupaten->nama_kabupaten }}</option>
+                <option @if($warga->kabupaten_id == $kabupaten->id) selected @endif value="{{ $kabupaten->id }}">{{ $kabupaten->nama_kabupaten }}</option>
                 @endforeach
             </select>
             @error('kabupaten_id')
