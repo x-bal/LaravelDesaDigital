@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DevController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Desa\AduanController;
 use App\Http\Controllers\Desa\WargaController;
@@ -81,3 +82,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('video/{playlist:id}', [PlaylistController::class, 'getVideo']);
+
+Route::get('dev',[DevController::class, 'dev']);
