@@ -1,4 +1,4 @@
-@extends('layouts.landing')
+@extends('layouts.landing', ['title' => $title])
 @section('css')
 <style>
     body {
@@ -156,9 +156,7 @@
     </div>
 
     <div class="col-md-8">
-        <video id="player" width="100%" data-id="{{ $playlist->id }}" height="100%" controls autoplay muted>
-            <source src="{{ asset('storage/' . $playlist->video) }}" type="video/mp4">
-        </video>
+
     </div>
 </div>
 
@@ -240,7 +238,7 @@
 @stop
 
 @section('footer')
-<script>
+<!-- <script>
     var player = document.getElementById("player")
 
 
@@ -273,5 +271,5 @@
     for (let i = 0; i < marqueeElementsDisplayed; i++) {
         marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
     }
-</script>
+</script> -->
 @stop

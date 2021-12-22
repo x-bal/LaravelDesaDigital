@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aduan;
 use App\Models\Antrian;
+use App\Models\Desa;
 use App\Models\JenisSurat;
 use App\Models\Loket;
 use App\Models\Marque;
@@ -19,21 +20,33 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('landing.home');
+        $url = url()->current();
+        $url = explode('.', $url);
+        $url = str_replace('http:\/\/', '', $url[0]);
+        $url = str_replace('http://', '', $url);
+        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+
+        return view('landing.home', compact('title'));
     }
 
     public function antrian()
     {
+        $url = url()->current();
+        $url = explode('.', $url);
+        $url = str_replace('http:\/\/', '', $url[0]);
+        $url = str_replace('http://', '', $url);
+        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+
         // $selesai = Antrian::with('loket')->where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->where('status', 2)->get();
         $no_antri = Antrian::where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->count();
         $sisaloket = Loket::where('kuota', '>', 0)->count();
         $loket = Loket::get();
         $jenis = JenisSurat::get();
-        $playlist = Playlist::firstOrFail();
+        // $playlist = Playlist::firstOrFail();
         $marques = Marque::get();
         $siswa = Antrian::where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->where('status', 0)->count();
 
-        return view('landing.antrian', compact('no_antri', 'jenis',  'loket', 'sisaloket', 'playlist', 'marques'));
+        return view('landing.antrian', compact('no_antri', 'jenis',  'loket', 'sisaloket',  'marques', 'title'));
     }
 
     public function storeAntrian(Request $request)
@@ -59,9 +72,9 @@ class HomeController extends Controller
             ]);
             $sisa = $loket->kuota - 1;
             $loket->update(['kuota' => $sisa]);
-    
+
             Alert::success('Selamat!', 'Pendaftaran antrian berhasil dilakukan');
-            return view('landing.print', compact('antrian','sisa'));
+            return view('landing.print', compact('antrian', 'sisa'));
         } catch (\Throwable $th) {
             Alert::error('Error!', $th->getMessage());
             return back();
@@ -70,7 +83,13 @@ class HomeController extends Controller
 
     public function aduan()
     {
-        return view('landing.aduan');
+        $url = url()->current();
+        $url = explode('.', $url);
+        $url = str_replace('http:\/\/', '', $url[0]);
+        $url = str_replace('http://', '', $url);
+        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+
+        return view('landing.aduan', compact('title'));
     }
 
     public function storeAduan()
@@ -99,8 +118,13 @@ class HomeController extends Controller
 
     public function penilaian()
     {
+        $url = url()->current();
+        $url = explode('.', $url);
+        $url = str_replace('http:\/\/', '', $url[0]);
+        $url = str_replace('http://', '', $url);
+        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
         $rates = Rate::get();
-        return view('landing.penilaian', compact('rates'));
+        return view('landing.penilaian', compact('rates', 'title'));
     }
 
     public function storePenilaian($id)
