@@ -1,4 +1,4 @@
-@extends('layouts.landing')
+@extends('layouts.landing', ['title' => $title])
 
 @section('content')
 <div class="container-fluid bg-secondary rounded mt-5 p-5">
