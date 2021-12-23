@@ -105,7 +105,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/penilaian/{id}', [HomeController::class, 'storePenilaian'])->name('penilaian.store');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->middleware('accessadmin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/setting', [DashboardController::class, 'setting'])->name('setting');
     Route::post('/setting/{desa:id}', [DashboardController::class, 'updateSetting'])->name('setting.update');
