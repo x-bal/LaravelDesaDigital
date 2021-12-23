@@ -19,7 +19,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class HomeController extends Controller
 {
     public function index()
-    {
+    {   
         $url = url()->current();
         $url = explode('/', $url);
         $desa = Desa::where('sub_domain', $url[2])->firstOrFail();

@@ -42,11 +42,11 @@ class PermohonanSuratController extends Controller
                 'jenis_surat_id' => $request->jenis,
                 'desa_id' => auth()->user()->desa_id
             ]);
-            dd($permohonan);
-            if ($permohonan->jenis_surat_id) {
-            }
+            DB::commit();
+            return back();
         } catch (\Throwable $th) {
-            //throw $th;
+            DB::rollBack();
+            return back();
         }
 
         Alert::success('Success', 'Permohonan Surat berhasil dibuat');

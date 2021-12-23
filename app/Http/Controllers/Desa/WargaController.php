@@ -19,7 +19,7 @@ class WargaController extends Controller
      */
     public function index()
     {
-        $wargas = Warga::orderBy('created_at', 'desc')->get();
+        $wargas = Warga::orderBy('created_at', 'desc')->where('desa_id',auth()->user()->desa_id)->get();
         return view('desa.warga.index', [
             'wargas' => $wargas
         ]);
