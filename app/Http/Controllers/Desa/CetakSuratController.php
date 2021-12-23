@@ -30,7 +30,6 @@ class CetakSuratController extends Controller
      */
     public function index()
     {
-        dd();
         $jenis_surat = JenisSurat::get();
         return view('desa.cetak_surat.index', [
             'jenis_surat' => $jenis_surat
@@ -648,11 +647,22 @@ class CetakSuratController extends Controller
                 $doc = abort(404);
                 break;
         }
-        $file = public_path('template/' . $doc . '.rtf');
+        $file = public_path('template/' . $doc . '.docx');
         // dd($array);
-        $nama_file = $doc . '.doc';
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/'.$doc.'.docx'));
+
+        $nama_file = $doc . '.docx';
+        // dd($file);
         try {
-            return \WordTemplate::export($file, $array, $nama_file);
+            // return \WordTemplate::export($file, $array, $nama_file);
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file);
+
+            $templateProcessor->setValues($array);
+            $templateProcessor->setImageValue('logo', public_path('qsindoflatbaru.jpg'));
+            header("Content-Disposition: attachment; filename=".$nama_file);
+    
+            $templateProcessor->saveAs('php://output');
+        } catch (\Throwable $th) {
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }
@@ -786,7 +796,6 @@ class CetakSuratController extends Controller
     {
         $warga = Warga::findOrFail($request->warga_id);
         DB::beginTransaction();
-
         PengajuanWarga::create([
             'permohonan_surat_id' => $id,
             'nama' => $warga->nama_warga,
@@ -831,7 +840,6 @@ class CetakSuratController extends Controller
                         'pekerjaan' => $request->pekerjaan,
                         'warga_negara' => $warga->warga_negara,
                         'form_keterangan' => $request->keperluan,
-                        'Sebutan_desa' => 'Desa',
                         'penandatangan' => $warga->nama_warga,
                     );
                     $array = array_merge(
@@ -1299,7 +1307,7 @@ class CetakSuratController extends Controller
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file);
 
             $templateProcessor->setValues($array);
-            $templateProcessor->setImageValue('CompanyLogo', public_path('qsindoflatbaru.jpg'));
+            $templateProcessor->setImageValue('logo', public_path('qsindoflatbaru.jpg'));
             header("Content-Disposition: attachment; filename=".$nama_file);
     
             $templateProcessor->saveAs('php://output');
@@ -1328,7 +1336,6 @@ class CetakSuratController extends Controller
             'nama_provinsi' => $warga->desa->kecamatan->kabupaten->provinsi->nama_provinsi,
             'judul_surat' => $surat['judul_surat'],
             'format_nomor_surat' => $surat['nomor_surat'],
-            'logo' => public_path('qsindoflatbaru.jpg')
         ];
     }
     public function footer($surat)

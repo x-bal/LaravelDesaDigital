@@ -34,7 +34,8 @@ use PhpParser\Node\Stmt\Foreach_;
 | contains the "web" middleware group. Now create something great!
 |
 */
-        Auth::routes(['verify' => true]);
+
+Auth::routes(['verify' => true]);
 
 Route::get('apib/login', [App\Http\Controllers\Apib\AuthController::class, 'login'])->name('apib.login');
 Route::get('apib/aduan', [App\Http\Controllers\Apib\AuthController::class, 'aduan'])->name('apib.aduan');

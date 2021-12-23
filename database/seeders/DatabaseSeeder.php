@@ -15,25 +15,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $provinsi = \App\Models\Provinsi::factory(3)->create();
+        $provinsi = \App\Models\Provinsi::factory(5)->create();
 
         $provinsi->each(function ($prov) {
-            $kabupaten = \App\Models\Kabupaten::factory(1)->create([
+            $kabupaten = \App\Models\Kabupaten::factory(10)->create([
                 'provinsi_id' => $prov->id,
             ]);
 
             $kabupaten->each(function ($kab) {
-                $kecamatan = Kecamatan::factory(1)->create([
+                $kecamatan = Kecamatan::factory(10)->create([
                     'kabupaten_id' => $kab->id
                 ]);
 
                 $kecamatan->each(function ($kec) {
-                    Desa::factory(1)->create([
+                    Desa::factory(10)->create([
                         'kecamatan_id' => $kec->id
                     ]);
                 });
             });
         });
+        \App\Models\Warga::factory(300)->create();
         $this->call(RolePermissionSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(JenisSuratSeeder::class);
