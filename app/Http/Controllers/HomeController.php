@@ -19,12 +19,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 class HomeController extends Controller
 {
     public function index()
-    {
+    {   
         $url = url()->current();
         $url = explode('.', $url);
         $url = str_replace('http:\/\/', '', $url[0]);
         $url = str_replace('http://', '', $url);
-        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+        $title = Desa::where('nama_desa', $url)->first()->nama_desa ?? 'ngak ada';
 
         return view('landing.home', compact('title'));
     }

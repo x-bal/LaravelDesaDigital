@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Desa;
 
 use App\Http\Controllers\Controller;
+use App\Models\Desa;
 use App\Models\JenisSurat;
 use App\Models\PengajuanWarga;
 use App\Models\PermohonanSurat;
@@ -658,7 +659,7 @@ class CetakSuratController extends Controller
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file);
 
             $templateProcessor->setValues($array);
-            $templateProcessor->setImageValue('logo', public_path('qsindoflatbaru.jpg'));
+            $templateProcessor->setImageValue('logo', array('path' => public_path('storage/'.Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
             header("Content-Disposition: attachment; filename=".$nama_file);
     
             $templateProcessor->saveAs('php://output');
@@ -1291,6 +1292,7 @@ class CetakSuratController extends Controller
                 break;
             case 11:
                 $doc = 'permohonan_surat_kurang_mampus';
+                
                 break;
             default:
                 $doc = abort(404);
@@ -1307,7 +1309,8 @@ class CetakSuratController extends Controller
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file);
 
             $templateProcessor->setValues($array);
-            $templateProcessor->setImageValue('logo', public_path('qsindoflatbaru.jpg'));
+            // dd(asset('storage/'.Desa::find(auth()->user()->desa_id)->logo));
+            $templateProcessor->setImageValue('logo', array('path' => public_path('storage/'.Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
             header("Content-Disposition: attachment; filename=".$nama_file);
     
             $templateProcessor->saveAs('php://output');
