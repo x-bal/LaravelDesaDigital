@@ -17,6 +17,7 @@ class CreateDesasTable extends Migration
             $table->id();
             $table->foreignId('kecamatan_id')->constrained('kecamatans');
             $table->string('nama_desa');
+            $table->string('sub_domain')->nullable();
             $table->timestamps();
         });
     }

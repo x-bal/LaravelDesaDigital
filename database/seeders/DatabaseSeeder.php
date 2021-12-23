@@ -34,10 +34,10 @@ class DatabaseSeeder extends Seeder
                 });
             });
         });
-        \App\Models\Warga::factory(10)->create();
         $this->call(RolePermissionSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(JenisSuratSeeder::class);
+        \App\Models\Warga::factory(10)->create();
         $this->call(LoketAntrianWargaSeeder::class);
     }
 }

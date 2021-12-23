@@ -15,7 +15,8 @@ class DesaFactory extends Factory
     {
         return [
             'nama_desa' => $this->faker->word(),
-            'alamat' => $this->faker->word()
+            'alamat' => $this->faker->word(),
+            'sub_domain' => $this->faker->word()
         ];
     }
 }
