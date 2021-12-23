@@ -21,10 +21,9 @@ class HomeController extends Controller
     public function index()
     {
         $url = url()->current();
-        $url = explode('.', $url);
-        $url = str_replace('http:\/\/', '', $url[0]);
-        $url = str_replace('http://', '', $url);
-        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+        $url = explode(':', $url);
+        $url = str_replace('//', '', $url[1]);
+        $title = Desa::where('sub_domain', $url)->firstOrFail()->nama_desa;
 
         return view('landing.home', compact('title'));
     }
@@ -32,18 +31,18 @@ class HomeController extends Controller
     public function antrian()
     {
         $url = url()->current();
-        $url = explode('.', $url);
-        $url = str_replace('http:\/\/', '', $url[0]);
-        $url = str_replace('http://', '', $url);
-        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+        $url = explode(':', $url);
+        $url = str_replace('//', '', $url[1]);
+        $desa = Desa::where('sub_domain', $url)->firstOrFail();
+        $title = $desa->nama_desa;
 
         // $selesai = Antrian::with('loket')->where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->where('status', 2)->get();
         $no_antri = Antrian::where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->count();
-        $sisaloket = Loket::where('kuota', '>', 0)->count();
-        $loket = Loket::get();
+        $sisaloket = Loket::where('kuota', '>', 0)->where('desa_id', $desa->id)->count();
+        $loket = Loket::where('desa_id', $desa->id)->get();
         $jenis = JenisSurat::get();
         // $playlist = Playlist::firstOrFail();
-        $marques = Marque::get();
+        $marques = Marque::where('desa_id', $desa->id)->get();
         $siswa = Antrian::where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->where('status', 0)->count();
 
         return view('landing.antrian', compact('no_antri', 'jenis',  'loket', 'sisaloket',  'marques', 'title'));
@@ -84,10 +83,9 @@ class HomeController extends Controller
     public function aduan()
     {
         $url = url()->current();
-        $url = explode('.', $url);
-        $url = str_replace('http:\/\/', '', $url[0]);
-        $url = str_replace('http://', '', $url);
-        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+        $url = explode(':', $url);
+        $url = str_replace('//', '', $url[1]);
+        $title = Desa::where('sub_domain', $url)->firstOrFail()->nama_desa;
 
         return view('landing.aduan', compact('title'));
     }
@@ -119,10 +117,10 @@ class HomeController extends Controller
     public function penilaian()
     {
         $url = url()->current();
-        $url = explode('.', $url);
-        $url = str_replace('http:\/\/', '', $url[0]);
-        $url = str_replace('http://', '', $url);
-        $title = Desa::where('nama_desa', $url)->firstOrFail()->nama_desa;
+        $url = explode(':', $url);
+        $url = str_replace('//', '', $url[1]);
+        $title = Desa::where('sub_domain', $url)->firstOrFail()->nama_desa;
+
         $rates = Rate::get();
         return view('landing.penilaian', compact('rates', 'title'));
     }
