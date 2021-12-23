@@ -16,7 +16,7 @@ class CreatePermohonanSuratKurangMampusTable extends Migration
         Schema::create('permohonan_surat_kurang_mampus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('permohonan_surat_id')->constrained('permohonan_surats');
-            $table->string('permohonan');
+            $table->string('keperluan');
             $table->timestamps();
         });
     }

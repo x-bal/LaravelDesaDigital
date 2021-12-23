@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Desa;
 
 use App\Http\Controllers\Controller;
+use App\Models\DaftarKurangMampu;
 use App\Models\Desa;
 use App\Models\JenisSurat;
 use App\Models\PengajuanWarga;
 use App\Models\PermohonanSurat;
 use App\Models\PermohonanSuratDomisiliUsaha;
 use App\Models\PermohonanSuratIzinKeramaian;
+use App\Models\PermohonanSuratJaminanKesehatan;
 use App\Models\PermohonanSuratKehilangan;
 use App\Models\PermohonanSuratKuasa;
+use App\Models\PermohonanSuratKurangMampu;
 use App\Models\PermohonanSuratPengantar;
 use App\Models\PermohonanSuratPenghasilan;
 use App\Models\PermohonanSuratPergiKawin;
@@ -55,6 +58,7 @@ class CetakSuratController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'warga_id' => 'required',
             'permohonan_surat_id' => 'required'
@@ -543,7 +547,7 @@ class CetakSuratController extends Controller
                 break;
             case 9:
                 $doc = '9_surat_ket_penghasilan_orangtua';
-                
+
                 $this->validate($request, [
                     'permohonan_surat_id' => 'required',
                     'no_induk' => 'required',
@@ -562,7 +566,7 @@ class CetakSuratController extends Controller
                 $array_ayah = [
                     'd_nama_ayah' => $ayah->nama_warga,
                     'd_nik_ayah' => $ayah->nik,
-                    'd_tempatlahir_ayah' => $ayah->tempat_lahir ,
+                    'd_tempatlahir_ayah' => $ayah->tempat_lahir,
                     'd_tanggallahir_ayah' => Carbon::parse($ayah->tanggal_lahir)->format('d F Y'),
                     'd_agama_ayah' => $ayah->agama,
                     'd_pekerjaan_ayah' => $ayah->pekerjaan,
@@ -571,7 +575,7 @@ class CetakSuratController extends Controller
                 $array_ibu = [
                     'd_nama_ibu' => $ibu->nama_warga,
                     'd_nik_ibu' => $ibu->nik,
-                    'd_tempatlahir_ibu' => $ibu->tempat_lahir ,
+                    'd_tempatlahir_ibu' => $ibu->tempat_lahir,
                     'd_tanggallahir_ibu' => Carbon::parse($ibu->tanggal_lahir)->format('d F Y'),
                     'd_agama_ibu' => $ibu->agama,
                     'd_pekerjaan_ibu' => $ibu->pekerjaan,
@@ -639,10 +643,102 @@ class CetakSuratController extends Controller
                 }
                 break;
             case 10:
-                $doc = 'permohonan_surat_jaminan_kesehatans';
+                $doc = '10_surat_ket_jamkesos';
+                $this->validate($request, [
+                    'permohonan_surat_id' => 'required',
+                    'no_jamkes' => 'required',
+                    'keperluan' => 'required',
+                ]);
+
+                try {
+                    PermohonanSuratJaminanKesehatan::create([
+                        'permohonan_surat_id' => $permohonan_surat_id->id,
+                        'no_jamkes' => $request->no_jamkes,
+                        'keperluan' => $request->keperluan,
+                    ]);
+                    $body = [
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'form_no_jamkesos' => $request->no_jamkes,
+                        'form_keterangan' => $request->keperluan,
+                    ];
+                    $array = array_merge(
+                        $this->header($warga, [
+                            'judul_surat' => 'Permohonan Surat Jaminan Kesehatan',
+                            'nomor_surat' => '12312321'
+                        ]),
+                        $body,
+                        $this->footer([
+                            'kode_desa' => $warga->desa->id,
+                            'kode_surat' => '1010110'
+                        ])
+                    );
+                    DB::commit();
+                } catch (\Throwable $th) {
+                    DB::rollBack();
+                    Alert::error($th->getMessage());
+                    return back();
+                }
                 break;
             case 11:
-                $doc = 'permohonan_surat_kurang_mampus';
+                $doc = '11_surat_ket_kurang_mampu';
+                $this->validate($request, [
+                    'permohonan_surat_id' => 'required',
+                    'keperluan' => 'required',
+                ]);
+
+                try {
+                    $PermohonanSuratKurangMampu = PermohonanSuratKurangMampu::create([
+                        'permohonan_surat_id' => $permohonan_surat_id->id,
+                        'keperluan' => $request->keperluan,
+                    ]);
+                    $families = Warga::where('kk', $warga->kk)->get();
+                    if (!DaftarKurangMampu::where('warga_id', $warga->id)->exists()) {
+                        foreach ($families as $family) {
+                            DaftarKurangMampu::create([
+                                'surat_kurang_mampu_id' => $PermohonanSuratKurangMampu->id,
+                                'warga_id' => $family->id
+                            ]);
+                        }
+                    }
+                    $body = [
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'keperluan' => $request->keperluan
+                    ];
+                    
+                    DB::commit();
+                } catch (\Throwable $th) {
+                    DB::rollBack();
+                    Alert::error($th->getMessage());
+                    return back();
+                }
                 break;
             default:
                 $doc = abort(404);
@@ -650,20 +746,43 @@ class CetakSuratController extends Controller
         }
         $file = public_path('template/' . $doc . '.docx');
         // dd($array);
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/'.$doc.'.docx'));
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/' . $doc . '.docx'));
 
         $nama_file = $doc . '.docx';
-        // dd($file);
+        if ($doc == '11_surat_ket_kurang_mampu') {
+            $fams = [];
+            foreach($families as $key => $value ) {
+                $key += 1;
+                $fams['anggota_no_' . $key] = $value->id;
+                $fams['anggota_nik_' . $key] = $value->nik;
+                $fams['anggota_nama_' . $key] = $value->nama_warga;
+                $fams['anggota_sex_' . $key] = $value->jenis_kelamin;
+                $fams['anggota_tempatlahir_' . $key] = $value->tempat_lahir;
+                $fams['anggota_tanggallahir_' . $key] = $value->tanggal_lahir;
+                $fams['anggota_shdk_' . $key] = 'value';
+            }
+            $array = array_merge(
+                $this->header($warga, [
+                    'judul_surat' => 'Permohonan Surat Kurang Mampu',
+                    'nomor_surat' => '12312321'
+                ]),
+                $body,
+                $fams,
+                $this->footer([
+                    'kode_desa' => $warga->desa->id,
+                    'kode_surat' => '1010110'
+                ])
+            );
+        }
         try {
             // return \WordTemplate::export($file, $array, $nama_file);
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($file);
 
             $templateProcessor->setValues($array);
-            $templateProcessor->setImageValue('logo', array('path' => public_path('storage/'.Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
-            header("Content-Disposition: attachment; filename=".$nama_file);
-    
+            $templateProcessor->setImageValue('logo', array('path' => public_path('storage/' . Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
+            header("Content-Disposition: attachment; filename=" . $nama_file);
+
             $templateProcessor->saveAs('php://output');
-        } catch (\Throwable $th) {
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }
@@ -713,6 +832,8 @@ class CetakSuratController extends Controller
                 case 11:
                     $table = 'permohonan_surat_kurang_mampus';
                     break;
+                case 12:
+                    break;
                 default:
                     $table = '';
                     break;
@@ -758,7 +879,6 @@ class CetakSuratController extends Controller
                     $table = 'permohonan_surat_jaminan_kesehatans';
                     break;
                 case 11:
-
                     $table = 'permohonan_surat_kurang_mampus';
                     break;
                 default:
@@ -854,7 +974,7 @@ class CetakSuratController extends Controller
                             'kode_surat' => '1010110'
                         ])
                     );
-                    
+
                     DB::commit();
                 } catch (\Throwable $th) {
                     DB::rollBack();
@@ -1292,7 +1412,7 @@ class CetakSuratController extends Controller
                 break;
             case 11:
                 $doc = 'permohonan_surat_kurang_mampus';
-                
+
                 break;
             default:
                 $doc = abort(404);
@@ -1300,7 +1420,7 @@ class CetakSuratController extends Controller
         }
         $file = public_path('template/' . $doc . '.docx');
         // dd($array);
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/'.$doc.'.docx'));
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/' . $doc . '.docx'));
 
         $nama_file = $doc . '.docx';
         // dd($file);
@@ -1310,9 +1430,9 @@ class CetakSuratController extends Controller
 
             $templateProcessor->setValues($array);
             // dd(asset('storage/'.Desa::find(auth()->user()->desa_id)->logo));
-            $templateProcessor->setImageValue('logo', array('path' => public_path('storage/'.Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
-            header("Content-Disposition: attachment; filename=".$nama_file);
-    
+            $templateProcessor->setImageValue('logo', array('path' => public_path('storage/' . Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
+            header("Content-Disposition: attachment; filename=" . $nama_file);
+
             $templateProcessor->saveAs('php://output');
         } catch (\Throwable $th) {
             dd($th->getMessage());
@@ -1339,6 +1459,9 @@ class CetakSuratController extends Controller
             'nama_provinsi' => $warga->desa->kecamatan->kabupaten->provinsi->nama_provinsi,
             'judul_surat' => $surat['judul_surat'],
             'format_nomor_surat' => $surat['nomor_surat'],
+            'Sebutan_desa' => 'desa',
+            'Sebutan_kabupaten' => 'kabupaten',
+            'Sebutan_Desa' => 'desa'
         ];
     }
     public function footer($surat)

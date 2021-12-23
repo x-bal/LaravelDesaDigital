@@ -27,6 +27,12 @@ class DevController extends Controller
         ];
         return response()->json($response);
     }
+    public function getfindfamily($id)
+    {
+        $warga = Warga::find($id);
+        $resource = Warga::where('kk',$warga->kk)->get();
+        return response()->json($resource);
+    }
     public function dev()
     {
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(public_path('template/template.docx'));
