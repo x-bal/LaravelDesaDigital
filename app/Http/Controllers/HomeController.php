@@ -21,9 +21,9 @@ class HomeController extends Controller
     public function index()
     {
         $url = url()->current();
-        $url = explode(':', $url);
-        $url = str_replace('//', '', $url[1]);
-        $title = Desa::where('sub_domain', $url)->firstOrFail()->nama_desa;
+        $url = explode('/', $url);
+        $desa = Desa::where('sub_domain', $url[2])->firstOrFail();
+        $title = $desa->nama_desa;
 
         return view('landing.home', compact('title'));
     }
@@ -31,9 +31,8 @@ class HomeController extends Controller
     public function antrian()
     {
         $url = url()->current();
-        $url = explode(':', $url);
-        $url = str_replace('//', '', $url[1]);
-        $desa = Desa::where('sub_domain', $url)->firstOrFail();
+        $url = explode('/', $url);
+        $desa = Desa::where('sub_domain', $url[2])->firstOrFail();
         $title = $desa->nama_desa;
 
         // $selesai = Antrian::with('loket')->where('tanggal_antri', now('Asia/Jakarta')->format('Y-m-d'))->where('status', 2)->get();
@@ -83,9 +82,9 @@ class HomeController extends Controller
     public function aduan()
     {
         $url = url()->current();
-        $url = explode(':', $url);
-        $url = str_replace('//', '', $url[1]);
-        $title = Desa::where('sub_domain', $url)->firstOrFail()->nama_desa;
+        $url = explode('/', $url);
+        $desa = Desa::where('sub_domain', $url[2])->firstOrFail();
+        $title = $desa->nama_desa;
 
         return view('landing.aduan', compact('title'));
     }
@@ -117,9 +116,9 @@ class HomeController extends Controller
     public function penilaian()
     {
         $url = url()->current();
-        $url = explode(':', $url);
-        $url = str_replace('//', '', $url[1]);
-        $title = Desa::where('sub_domain', $url)->firstOrFail()->nama_desa;
+        $url = explode('/', $url);
+        $desa = Desa::where('sub_domain', $url[2])->firstOrFail();
+        $title = $desa->nama_desa;
 
         $rates = Rate::get();
         return view('landing.penilaian', compact('rates', 'title'));
