@@ -18,6 +18,8 @@ class CreatePermohonanSuratKelahiransTable extends Migration
             $table->foreignId('permohonan_surat_id')->constrained('permohonan_surats');
             $table->foreignId('orangtua_ayah_id')->constrained('wargas');
             $table->foreignId('orangtua_ibu_id')->constrained('wargas');
+            $table->foreignId('saksi_satu_id')->nullable();
+            $table->foreignId('saksi_dua_id')->nullable();
             $table->string('anak_ke');
             $table->string('nama_anak');
             $table->enum('jenis_kelamin_anak', ['Laki-Laki', 'Perempuan']);

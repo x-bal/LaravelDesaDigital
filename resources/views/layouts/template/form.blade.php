@@ -42,7 +42,7 @@ $forms = \DB::getSchemaBuilder()->getColumnListing($table);
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
-                @elseif(in_array($form,['orangtua_ayah_id','orangtua_ibu_id']))
+                @elseif(in_array($form,['orangtua_ayah_id','orangtua_ibu_id','saksi_satu_id','saksi_dua_id','pihak_id']))
                 <div class="form-group col-md-4 my-2">
                     <label for="{{ $form }}" class="form-label">{{ str_replace('_',' ',$form) }}</label>
                     <select id="{{ $form }}" name="{{ $form }}" class="form-control select2-ajax-cetak-surat @error('{{ $form }}') is-invalid @enderror"></select>
@@ -52,24 +52,38 @@ $forms = \DB::getSchemaBuilder()->getColumnListing($table);
                     </span>
                     @enderror
                 </div>
-                @else
-                @if($form == 'pukul_lahir_anak')
+                @elseif($form == 'agama_identitas')
                 <div class="form-group col-md-4 my-2">
-                    <label for="" class="label-form">{{ str_replace('_',' ',$form) }}</label>
-                    <input type="time" required {{ $form == 'permohonan_surat_id' ? 'readonly' : '' }} name="{{ $form }}"  value="{{ $form == 'permohonan_surat_id' ? $jenis_surat->id : '' }}" class="form-control @error($form) is-invalid @enderror" placeholder="{{ str_replace('_',' ',$form) }}">
+                    <label for="{{ $form }}" class="form-label">{{ str_replace('_',' ',$form) }}</label>
+                    <select id="{{ $form }}" name="{{ $form }}" class="form-control @error('{{ $form }}') is-invalid @enderror">
+                        @foreach(\App\Models\Warga::getAgama() as $agama)
+                        <option value="{{ $agama }}">{{ $agama }}</option>
+                        @endforeach
+                    </select>
                     @error($form)
-                    <span class="invalid-feedback">{{ $message }}</span>
+                    <span class="invalid-feedback">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
                 @else
-                <div class="form-group col-md-4 my-2">
-                    <label for="" class="label-form">{{ str_replace('_',' ',$form) }}</label>
-                    <input type="{{ in_array($form,['berlaku_mulai','berlaku_sampai','tanggal_lahir_pen','tanggal_lahir_pem','tanggal_lahir_anak']) ? 'date' : 'text' }}" required {{ $form == 'permohonan_surat_id' ? 'readonly' : '' }} name="{{ $form }}"  value="{{ $form == 'permohonan_surat_id' ? $jenis_surat->id : '' }}" class="form-control @error($form) is-invalid @enderror" placeholder="{{ str_replace('_',' ',$form) }}">
-                    @error($form)
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
-                @endif
+                    @if($form == 'pukul_lahir_anak')
+                    <div class="form-group col-md-4 my-2">
+                        <label for="" class="label-form">{{ str_replace('_',' ',$form) }}</label>
+                        <input type="time" required {{ $form == 'permohonan_surat_id' ? 'readonly' : '' }} name="{{ $form }}"  value="{{ $form == 'permohonan_surat_id' ? $jenis_surat->id : '' }}" class="form-control @error($form) is-invalid @enderror" placeholder="{{ str_replace('_',' ',$form) }}">
+                        @error($form)
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    @else
+                    <div class="form-group col-md-4 my-2">
+                        <label for="" class="label-form">{{ str_replace('_',' ',$form) }}</label>
+                        <input type="{{ in_array($form,['berlaku_mulai','berlaku_sampai','tanggal_lahir_pen','tanggal_lahir_pem','tanggal_lahir_anak', 'tanggal_lahir_identitas']) ? 'date' : 'text' }}" required {{ $form == 'permohonan_surat_id' ? 'readonly' : '' }} name="{{ $form }}"  value="{{ $form == 'permohonan_surat_id' ? $jenis_surat->id : '' }}" class="form-control @error($form) is-invalid @enderror" placeholder="{{ str_replace('_',' ',$form) }}">
+                        @error($form)
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    @endif
                 @endif
             @endif
         @endif

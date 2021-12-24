@@ -42,6 +42,26 @@
                     </div>
                     <hr>
                     @include('desa.cetak_surat.form')
+                    @if($table == 'permohonan_surat_kurang_mampus')
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>no</th>
+                                        <th>nik</th>
+                                        <th>nama</th>
+                                        <th>jenis kelamin</th>
+                                        <th>tempat tanggal lahir</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableloop">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @endif
                 </form>
 
             </div>
@@ -75,4 +95,32 @@
         $('#form').submit()
     });
 </script>
+@if($table == 'permohonan_surat_kurang_mampus')
+<script>
+    $(document).ready(function() {
+        const id = $('#warga_id').val()
+        $('#tableloop').html('')
+        $.ajax({
+            url: `/api/select2/findfamily/${id}`,
+            success: data => {
+                data.map(data => {
+                    return (
+                        $('#tableloop').append(
+                            `
+                                <tr class="${data.id == id ? 'text-primary text-bold' : 'text-dark' }">
+                                    <td>${data.id}</td>
+                                    <td>${data.nik}</td>
+                                    <td>${data.nama_warga}</td>
+                                    <td>${data.jenis_kelamin}</td>
+                                    <td>${data.tempat_lahir} / ${data.tanggal_lahir}</td>
+                                </tr>
+                            `
+                        )
+                    )
+                })
+            }
+        })
+    })
+</script>
+@endif
 @endpush
