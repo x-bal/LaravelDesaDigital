@@ -12,6 +12,8 @@ use App\Models\PermohonanSuratDomisiliUsaha;
 use App\Models\PermohonanSuratIzinKeramaian;
 use App\Models\PermohonanSuratJaminanKesehatan;
 use App\Models\PermohonanSuratKehilangan;
+use App\Models\PermohonanSuratKelahiran;
+use App\Models\PermohonanSuratKtp;
 use App\Models\PermohonanSuratKuasa;
 use App\Models\PermohonanSuratKurangMampu;
 use App\Models\PermohonanSuratPengantar;
@@ -730,9 +732,175 @@ class CetakSuratController extends Controller
                         'pekerjaan' => $warga->pekerjaan,
                         'warga_negara' => $warga->warga_negara,
                         'penandatangan' => auth()->user()->name,
+                    ];
+                    DB::commit();
+                } catch (\Throwable $th) {
+                    DB::rollBack();
+                    Alert::error($th->getMessage());
+                    return back();
+                }
+                break;
+            case 12:
+                $doc = '12_surat_ket_ktp_dalam_proses';
+                $this->validate($request, [
+                    'permohonan_surat_id' => 'required',
+                    'berlaku_mulai' => 'required',
+                    'berlaku_sampai' => 'required',
+                ]);
+
+                try {
+                    PermohonanSuratKtp::create([
+                        'permohonan_surat_id' => $permohonan_surat_id->id,
+                        'berlaku_mulai' => $request->berlaku_mulai,
+                        'berlaku_sampai' => $request->berlaku_sampai,
+                    ]);
+                    $body = [
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
                         'keperluan' => $request->keperluan
                     ];
-                    
+
+                    $array = array_merge(
+                        $this->header($warga, [
+                            'judul_surat' => 'Permohonan Surat KTP Dalam Proses',
+                            'nomor_surat' => '12312321'
+                        ]),
+                        $body,
+                        $this->footer([
+                            'kode_desa' => $warga->desa->id,
+                            'kode_surat' => '1010110'
+                        ])
+                    );
+                    DB::commit();
+                } catch (\Throwable $th) {
+                    DB::rollBack();
+                    Alert::error($th->getMessage());
+                    return back();
+                }
+                break;
+            case 13:
+                $doc = '13_surat_ket_kelahiran';
+                $this->validate($request, [
+                    'permohonan_surat_id' => 'required',
+                    'orangtua_ayah_id' => 'required',
+                    'orangtua_ibu_id' => 'required',
+                    'nama_anak' => 'required',
+                    'jenis_kelamin_anak' => 'required',
+                    'tanggal_lahir_anak' => 'required',
+                    'pukul_lahir_anak' => 'required',
+                    'tempat_lahir_anak' => 'required',
+                    'hubungan_pelapor' => 'required',
+                    'anak_ke' => 'required',
+                ]);
+                $ibu = Warga::findOrFail($request->orangtua_ibu_id);
+                $ayah = Warga::findOrFail($request->orangtua_ayah_id);
+                $pelapor = Warga::findOrFail($request->warga_id);
+                try {
+                    PermohonanSuratKelahiran::create([
+                        'permohonan_surat_id' => $permohonan_surat_id->id,
+                        'orangtua_ayah_id' => $request->orangtua_ayah_id,
+                        'orangtua_ibu_id' => $request->orangtua_ibu_id,
+                        'nama_anak' => $request->nama_anak,
+                        'jenis_kelamin_anak' => $request->jenis_kelamin_anak,
+                        'tanggal_lahir_anak' => $request->tanggal_lahir_anak,
+                        'pukul_lahir_anak' => $request->pukul_lahir_anak,
+                        'tempat_lahir_anak' => $request->tempat_lahir_anak,
+                        'hubungan_pelapor' => $request->hubungan_pelapor,
+                        'anak_ke' => $request->anak_ke
+                    ]);
+                    $body = [
+                        'nama' => $warga->nama_warga,
+                        'no_ktp' => $warga->nik,
+                        'no_kk' => $request->kk,
+                        'kepala_kk' => $warga->nama_warga,
+                        'ttl' => $warga->tempat_lahir . '/' . Carbon::parse($warga->tanggal_lahir)->format('d F Y'),
+                        'usia' => Carbon::now()->format('Y') - Carbon::parse($warga->tanggal_lahir)->format('Y'),
+                        'agama' => $warga->agama,
+                        'sex' => $warga->jenis_kelamin,
+                        'alamat' => $warga->desa->alamat,
+                        'status' => $warga->status,
+                        'agama' => $warga->agama,
+                        'pendidikan' => $warga->pendidikan,
+                        'pekerjaan' => $warga->pekerjaan,
+                        'warga_negara' => $warga->warga_negara,
+                        'penandatangan' => auth()->user()->name,
+                        'keperluan' => $request->keperluan,
+                        'orangtua_ayah_id' => $request->orangtua_ayah_id,
+                        'orangtua_ibu_id' => $request->orangtua_ibu_id,
+                        'form_nama_bayi' => $request->nama_anak,
+                        'form_nama_sex' => $request->jenis_kelamin_anak,
+                        'form_hari' => Carbon::parse($request->tanggal_lahir_anak)->format('l'),
+                        'form_tanggallahir' => Carbon::parse($request->tanggal_anak)->format('Y F d'),
+                        'form_waktu_lahir' => $request->pukul_lahir_anak,
+                        'form_tempatlahir' => $request->tempat_lahir_anak,
+                        'form_kelahiran_anak_ke' => $request->anak_ke,
+                        'form_hubungan_pelapor' => $request->hubungan_pelapor,
+                        'form_nama_ibu' => $ibu->nama_warga,
+
+                        'nik_ibu' => $ibu->nik,
+                        'umur_ibu' => Carbon::now()->format('Y') - Carbon::parse($ibu->tanggal_lahir)->format('Y'),
+                        'pekerjaanibu' => $ibu->pekerjaan,
+                        'alamat_ibu' => $ibu->alamat,
+                        'desaibu' => $ibu->desa->nama_desa,
+                        'kecibu' => $ibu->desa->kecamatan->nama_kecamatan,
+                        'kabibu' => $ibu->desa->kecamatan->kabupaten->nama_kabupaten,
+                        'form_nama_ayah' => $ayah->nama_warga,
+                        'nik_ayah' => $ayah->nik,
+                        'umur_ayah' => Carbon::now()->format('Y') - Carbon::parse($ayah->tanggal_lahir)->format('Y'),
+                        'pekerjaanayah' => $ayah->pekerjaan,
+                        'alamat_ayah' => $ayah->alamat,
+                        'desaayah' => $ayah->desa->nama_desa,
+                        'kecayah' => $ayah->desa->kecamatan->nama_kecamatan,
+                        'kabayah' => $ayah->desa->kecamatan->kabupaten->nama_kabupaten,
+                        'form_nama_pelapor' => $pelapor->nama_warga,
+                        'form_nik_pelapor' => $pelapor->nik,
+                        'form_umur_pelapor' => Carbon::now()->format('Y') - Carbon::parse($pelapor->tanggal_lahir)->format('Y'),
+                        'form_pekerjaanpelapor' => $pelapor->pekerjaan,
+                        'form_desapelapor' => $pelapor->desa->nama_desa,
+                        'form_kecpelapor' => $pelapor->desa->kecamatan->nama_kecamatan,
+                        'form_kabpelapor' => $pelapor->desa->kecamatan->kabupaten->nama_kabupaten,
+                        'form_provinsipelapor' => $pelapor->desa->kecamatan->kabupaten->provinsi->nama_provinsi,
+                        'lokasi_disdukcapil' => $pelapor->desa->alamat,
+
+                        'nama_pelapor' => $pelapor->nama_warga,
+                        'nik_pelapor' => $pelapor->nik,
+                        'umur_pelapor' => Carbon::now()->format('Y') - Carbon::parse($pelapor->tanggal_lahir)->format('Y'),
+                        'pekerjaanpelapor' => $pelapor->pekerjaan,
+                        'tempat_lahir_pelapor' => $pelapor->tempat_lahir,
+                        'tanggal_lahir_pelapor' => Carbon::parse($pelapor->tanggal_lahir)->format('d F Y'),
+                        'desapelapor' => $pelapor->desa->nama_desa,
+                        'kecpelapor' => $pelapor->desa->kecamatan->nama_kecamatan,
+                        'kabpelapor' => $pelapor->desa->kecamatan->kabupaten->nama_kabupaten,
+                        'provinsipelapor' => $pelapor->desa->kecamatan->kabupaten->provinsi->nama_provinsi,
+                        'Sebutan_Kecamatan' => 'Kecamatan',
+                        'Sebutan_Kabupaten' => 'Kabupaten',
+
+                    ];
+
+                    $array = array_merge(
+                        $this->header($warga, [
+                            'judul_surat' => 'Permohonan Surat Kelahiran',
+                            'nomor_surat' => '12312321'
+                        ]),
+                        $body,
+                        $this->footer([
+                            'kode_desa' => $warga->desa->id,
+                            'kode_surat' => '1010110'
+                        ])
+                    );
                     DB::commit();
                 } catch (\Throwable $th) {
                     DB::rollBack();
@@ -751,7 +919,7 @@ class CetakSuratController extends Controller
         $nama_file = $doc . '.docx';
         if ($doc == '11_surat_ket_kurang_mampu') {
             $fams = [];
-            foreach($families as $key => $value ) {
+            foreach ($families as $key => $value) {
                 $key += 1;
                 $fams['anggota_no_' . $key] = $value->id;
                 $fams['anggota_nik_' . $key] = $value->nik;
@@ -780,7 +948,7 @@ class CetakSuratController extends Controller
 
             $templateProcessor->setValues($array);
             $templateProcessor->setImageValue('logo', array('path' => public_path('storage/' . Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
-            header("Content-Disposition: attachment; filename=" . $nama_file);
+            header('Content-Disposition: attachment; filename=' . $nama_file);
 
             $templateProcessor->saveAs('php://output');
         } catch (\Throwable $th) {
@@ -833,9 +1001,13 @@ class CetakSuratController extends Controller
                     $table = 'permohonan_surat_kurang_mampus';
                     break;
                 case 12:
+                    $table = 'permohonan_surat_ktps';
+                    break;
+                case 13:
+                    $table = 'permohonan_surat_kelahirans';
                     break;
                 default:
-                    $table = '';
+                    abort(404);
                     break;
             }
             return view('desa.cetak_surat.show', [
@@ -1431,7 +1603,7 @@ class CetakSuratController extends Controller
             $templateProcessor->setValues($array);
             // dd(asset('storage/'.Desa::find(auth()->user()->desa_id)->logo));
             $templateProcessor->setImageValue('logo', array('path' => public_path('storage/' . Desa::find(auth()->user()->desa_id)->logo), 'width' => 50, 'height' => 50, 'ratio' => false));
-            header("Content-Disposition: attachment; filename=" . $nama_file);
+            header('Content-Disposition: attachment; filename=' . $nama_file);
 
             $templateProcessor->saveAs('php://output');
         } catch (\Throwable $th) {
