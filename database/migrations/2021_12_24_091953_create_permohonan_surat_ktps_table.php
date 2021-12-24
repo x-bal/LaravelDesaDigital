@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermohonanSuratJamkesdasTable extends Migration
+class CreatePermohonanSuratKtpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreatePermohonanSuratJamkesdasTable extends Migration
      */
     public function up()
     {
-        Schema::create('permohonan_surat_jamkesdas', function (Blueprint $table) {
+        Schema::create('permohonan_surat_ktps', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('permohonan_surat_id')->constrained('permohonan_surats');
+            $table->date('berlaku_mulai')->nullable();
+            $table->date('berlaku_sampai')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreatePermohonanSuratJamkesdasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permohonan_surat_jamkesdas');
+        Schema::dropIfExists('permohonan_surat_ktps');
     }
 }

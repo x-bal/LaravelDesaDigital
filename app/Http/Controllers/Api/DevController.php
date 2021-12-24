@@ -12,7 +12,7 @@ class DevController extends Controller
     public function getcetaksurat(Request $request)
     {
         $data = [];
-        $resources = Warga::where('nama_warga', 'like', '%' . $request->q . '$')->orWhere('nik', 'like', '%' . $request->q . '%')->get();
+        $resources = Warga::orWhere('nama_warga', 'like', '%' . $request->q . '%')->orWhere('nik', 'like', '%' . $request->q . '%')->get();
         foreach ($resources as $resource) {
             $data[] = ['id' => $resource->id, 'text' => $resource->nama_warga . ' - ' . $resource->nik];
         }
@@ -26,6 +26,12 @@ class DevController extends Controller
             'umur' =>  Carbon::now()->format('Y') - Carbon::parse($resource->tanggal_lahir)->format('Y')
         ];
         return response()->json($response);
+    }
+    public function getfindfamily($id)
+    {
+        $warga = Warga::find($id);
+        $resource = Warga::where('kk',$warga->kk)->get();
+        return response()->json($resource);
     }
     public function dev()
     {

@@ -47,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function desa()
     {
-        return $this->belongsToMany(Desa::class);
+        return $this->belongsTo(Desa::class);
     }
     public function warga()
     {

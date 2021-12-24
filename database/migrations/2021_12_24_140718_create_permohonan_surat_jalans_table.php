@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermohonanSuratKurangMampusTable extends Migration
+class CreatePermohonanSuratJalansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreatePermohonanSuratKurangMampusTable extends Migration
      */
     public function up()
     {
-        Schema::create('permohonan_surat_kurang_mampus', function (Blueprint $table) {
+        Schema::create('permohonan_surat_jalans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('permohonan_surat_id')->constrained('permohonan_surats');
-            $table->string('keperluan');
+            $table->string('keterangan');
+            $table->date('berlaku_mulai')->nullable();
+            $table->date('berlaku_sampai')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreatePermohonanSuratKurangMampusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permohonan_surat_kurang_mampus');
+        Schema::dropIfExists('permohonan_surat_jalans');
     }
 }

@@ -56,3 +56,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/select2/cetaksurat',[DevController::class,'getcetaksurat']);
 Route::get('/select2/cetaksurat/{id}',[DevController::class,'showcetaksurat']);
+Route::get('/select2/findfamily/{id}',[DevController::class,'getfindfamily']);
